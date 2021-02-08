@@ -16,7 +16,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/css/style.css">
 
     <title>SIMAPRO</title>
 </head>
@@ -40,7 +40,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#table').DataTable();
         });
     </script>
 

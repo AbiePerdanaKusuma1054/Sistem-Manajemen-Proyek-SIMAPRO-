@@ -5,7 +5,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark header">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="/img/logo.png" alt="" style="margin-top: -4px;">
+                <img src="<?= base_url() ?>/img/logo.png" alt="" style="margin-top: -4px;">
                 <span class="brand">SIMAPRO</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,12 +14,12 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <img src="/img/user-icons.png" alt="">
+                            <img src="<?= base_url() ?>/img/user-icons.png" alt="">
                             <span class="user">ALEXANDER</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/home/login">
+                        <a class="nav-link" href="<?= base_url() ?>/auth/login">
                             <img src="/img/exit.png" alt="" style="margin-top: -2px;">
                         </a>
                     </li>
@@ -32,11 +32,11 @@
         <!-- Menu Bar -->
         <div class="canvas">
             <div class="menu-list">
-                <a href="/home/dashboard"><span class="menu-list-title">Dashboard</span></a>
+                <a href="<?= base_url() ?>/home/dashboard"><span class="menu-list-title">Dashboard</span></a>
                 <div class="line"></div>
-                <a href="/home/project"><span class="menu-list-title">Project</span></a>
+                <a href="<?= base_url() ?>/home/project"><span class="menu-list-title">Project</span></a>
                 <div class="line"></div>
-                <a href="#"><span class="menu-list-title active">User</span></a>
+                <a href="<?= base_url() ?>/home/user"><span class="menu-list-title active">User</span></a>
                 </ul>
             </div>
         </div>
@@ -50,7 +50,7 @@
                     </button>
                 </div>
                 <!-- End -->
-                <table id="example" class="table table-striped table-dark " style="cursor: default;">
+                <table id="table" class="table table-striped table-dark " style="cursor: default;">
                     <thead class="attr">
                         <tr>
                             <th hidden> ID</th>
