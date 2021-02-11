@@ -28,6 +28,21 @@ class Home extends BaseController
 		return view('home/user');
 	}
 
+	public function addproject()
+	{
+		return view('home/addproject');
+	}
+
+	public function detailproject()
+	{
+		return view('home/detailproject');
+	}
+
+	public function editproject()
+	{
+		return view('home/editproject');
+	}
+
 	public function fetchProjectData()
 	{
 		//

@@ -50,7 +50,7 @@
             <div class="circle">
                 <p class="quantity">76</p>
             </div>
-            <p>Finish</p>
+            <p>Finished</p>
         </a>
 
         <a href="#" class="card cancel">
@@ -58,7 +58,7 @@
             <div class="circle">
                 <p class="quantity">15</p>
             </div>
-            <p>Cancel</p>
+            <p>Cancelled</p>
         </a>
     </div>
     <div class="status">

@@ -22,6 +22,9 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
+    <!-- Fontawesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>SIMAPRO</title>
 </head>
 
@@ -64,7 +67,7 @@
                     Sistem Manajemen Proyek (SIMAPRO)
                 </p>
                 <p class="foot2">
-                    Copyright @ 2021 by ABAY
+                    Copyright @2021
                 </p>
             </div>
         </div>
