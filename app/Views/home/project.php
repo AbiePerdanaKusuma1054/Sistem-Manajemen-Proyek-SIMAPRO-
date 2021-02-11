@@ -30,8 +30,8 @@
                     <th>Client</th>
                     <th>Project Manager</th>
                     <th>Start Date</th>
-                    <th>Project Status</th>
                     <th>Deadline</th>
+                    <th>Project Status</th>
                     <!-- <th>Payment</th> -->
                     <th>Action</th>
                 </tr>
@@ -42,13 +42,13 @@
                     <td>Dacoda</td>
                     <td>Alexander</td>
                     <td>01/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-primary">Hold</span>
-                    </td> -->
                     <td>01/03/2021</td>
-                    <td><img src="/img/pending.png" alt="" class="pin">
-                        <span class="pins">PENDING</span>
+                    <td>
+                        <span class="badge rounded-pill bg-primary">Hold</span>
                     </td>
+                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                        <span class="pins">PENDING</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -62,13 +62,13 @@
                     <td>LIPI</td>
                     <td>Bambang</td>
                     <td>08/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-info">On Progress</span>
-                    </td> -->
                     <td>30/02/2021</td>
-                    <td><img src="/img/pending.png" alt="" class="pin">
-                        <span class="pins">PENDING</span>
+                    <td>
+                        <span class="badge rounded-pill bg-info">On Progress</span>
                     </td>
+                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                        <span class="pins">PENDING</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -82,13 +82,13 @@
                     <td>Bioskop XXI</td>
                     <td>Frans Simanjuntak</td>
                     <td>08/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-secondary">Waiting</span>
-                    </td> -->
                     <td>-</td>
-                    <td><img src="/img/notyet.png" alt="" class="pin">
-                        <span class="pins">NOT YET</span>
+                    <td>
+                        <span class="badge rounded-pill bg-secondary">Waiting</span>
                     </td>
+                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                        <span class="pins">NOT YET</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -102,13 +102,13 @@
                     <td>Dicoding</td>
                     <td>Felix</td>
                     <td>01/09/2020</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-success">Finish</span>
-                    </td> -->
                     <td>01/10/2020</td>
-                    <td><img src="/img/complete.png" alt="" class="pin">
-                        <span class="pins">COMPLETE</span>
+                    <td>
+                        <span class="badge rounded-pill bg-success">Finish</span>
                     </td>
+                    <!-- <td><img src="/img/complete.png" alt="" class="pin">
+                        <span class="pins">COMPLETE</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -122,13 +122,13 @@
                     <td>UNILA</td>
                     <td>Hastria</td>
                     <td>01/12/2020</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-light text-dark">Cancel</span>
-                    </td> -->
                     <td>31/12/2020</td>
-                    <td><img src="/img/notyet.png" alt="" class="pin">
-                        <span class="pins">NOT YET</span>
+                    <td>
+                        <span class="badge rounded-pill bg-light text-dark">Cancel</span>
                     </td>
+                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                        <span class="pins">NOT YET</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -142,13 +142,13 @@
                     <td>Dacoda</td>
                     <td>Alexander</td>
                     <td>01/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-primary">Hold</span>
-                    </td> -->
                     <td>01/03/2021</td>
-                    <td><img src="/img/pending.png" alt="" class="pin">
-                        <span class="pins">PENDING</span>
+                    <td>
+                        <span class="badge rounded-pill bg-primary">Hold</span>
                     </td>
+                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                        <span class="pins">PENDING</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -162,13 +162,13 @@
                     <td>LIPI</td>
                     <td>Bambang</td>
                     <td>08/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-info">On Progress</span>
-                    </td> -->
                     <td>30/02/2021</td>
-                    <td><img src="/img/pending.png" alt="" class="pin">
-                        <span class="pins">PENDING</span>
+                    <td>
+                        <span class="badge rounded-pill bg-info">On Progress</span>
                     </td>
+                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                        <span class="pins">PENDING</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -182,13 +182,13 @@
                     <td>Bioskop XXI</td>
                     <td>Frans Simanjuntak</td>
                     <td>08/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-secondary">Waiting</span>
-                    </td> -->
                     <td>-</td>
-                    <td><img src="/img/notyet.png" alt="" class="pin">
-                        <span class="pins">NOT YET</span>
+                    <td>
+                        <span class="badge rounded-pill bg-secondary">Waiting</span>
                     </td>
+                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                        <span class="pins">NOT YET</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -202,13 +202,13 @@
                     <td>Dicoding</td>
                     <td>Felix</td>
                     <td>01/09/2020</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-success">Finish</span>
-                    </td> -->
                     <td>01/10/2020</td>
-                    <td><img src="/img/complete.png" alt="" class="pin">
-                        <span class="pins">COMPLETE</span>
+                    <td>
+                        <span class="badge rounded-pill bg-success">Finish</span>
                     </td>
+                    <!-- <td><img src="/img/complete.png" alt="" class="pin">
+                        <span class="pins">COMPLETE</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -222,13 +222,13 @@
                     <td>UNILA</td>
                     <td>Hastria</td>
                     <td>01/12/2020</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-light text-dark">Cancel</span>
-                    </td> -->
                     <td>31/12/2020</td>
-                    <td><img src="/img/notyet.png" alt="" class="pin">
-                        <span class="pins">NOT YET</span>
+                    <td>
+                        <span class="badge rounded-pill bg-light text-dark">Cancel</span>
                     </td>
+                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                        <span class="pins">NOT YET</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -242,13 +242,13 @@
                     <td>Dacoda</td>
                     <td>Alexander</td>
                     <td>01/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-primary">Hold</span>
-                    </td> -->
                     <td>01/03/2021</td>
-                    <td><img src="/img/pending.png" alt="" class="pin">
-                        <span class="pins">PENDING</span>
+                    <td>
+                        <span class="badge rounded-pill bg-primary">Hold</span>
                     </td>
+                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                        <span class="pins">PENDING</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -262,13 +262,13 @@
                     <td>LIPI</td>
                     <td>Bambang</td>
                     <td>08/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-info">On Progress</span>
-                    </td> -->
                     <td>30/02/2021</td>
-                    <td><img src="/img/pending.png" alt="" class="pin">
-                        <span class="pins">PENDING</span>
+                    <td>
+                        <span class="badge rounded-pill bg-info">On Progress</span>
                     </td>
+                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                        <span class="pins">PENDING</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -282,13 +282,13 @@
                     <td>Bioskop XXI</td>
                     <td>Frans Simanjuntak</td>
                     <td>08/02/2021</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-secondary">Waiting</span>
-                    </td> -->
                     <td>-</td>
-                    <td><img src="/img/notyet.png" alt="" class="pin">
-                        <span class="pins">NOT YET</span>
+                    <td>
+                        <span class="badge rounded-pill bg-secondary">Waiting</span>
                     </td>
+                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                        <span class="pins">NOT YET</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -302,13 +302,13 @@
                     <td>Dicoding</td>
                     <td>Felix</td>
                     <td>01/09/2020</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-success">Finish</span>
-                    </td> -->
                     <td>01/10/2020</td>
-                    <td><img src="/img/complete.png" alt="" class="pin">
-                        <span class="pins">COMPLETE</span>
+                    <td>
+                        <span class="badge rounded-pill bg-success">Finish</span>
                     </td>
+                    <!-- <td><img src="/img/complete.png" alt="" class="pin">
+                        <span class="pins">COMPLETE</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -322,13 +322,13 @@
                     <td>UNILA</td>
                     <td>Hastria</td>
                     <td>01/12/2020</td>
-                    <!-- <td>
-                        <span class="badge rounded-pill bg-light text-dark">Cancel</span>
-                    </td> -->
                     <td>31/12/2020</td>
-                    <td><img src="/img/notyet.png" alt="" class="pin">
-                        <span class="pins">NOT YET</span>
+                    <td>
+                        <span class="badge rounded-pill bg-light text-dark">Cancel</span>
                     </td>
+                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                        <span class="pins">NOT YET</span>
+                    </td> -->
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
