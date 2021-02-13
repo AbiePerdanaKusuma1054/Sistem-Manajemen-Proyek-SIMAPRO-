@@ -19,7 +19,7 @@ class UserModel extends Model
     public function button()
     {
         $closureFun = function () {
-            return '<button type="button" class="btn btn-info">Detail</button>';
+            return '<button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">Edit</button><a href=""><button type="button" class="btn btn-danger">Delete</button></a>';
         };
         return $closureFun;
     }

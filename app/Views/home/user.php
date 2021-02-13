@@ -18,7 +18,7 @@
         <!-- Button Triggered Modal Add User -->
         <div class="d-grid gap-2 col-6 mx-auto add">
             <a>
-                <button class="btn btn-outline-light add" type="button" data-toggle="modal" data-target="#exampleModal">
+                <button class="btn btn-outline-light add" type="button" name="addUser" id="addUser">
                     + Add User
                 </button>
             </a>
@@ -26,7 +26,7 @@
         <!-- End -->
 
         <!-- Modal Add User -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" name="addUserModal" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -42,32 +42,31 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate style="text-align: left;">
+                        <form id="addUserForm" style="text-align: left;" method="POST">
                             <div class="col">
-                                <label for="validationCustom01" class="form-label">Username *</label>
-                                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
-                                <div class="invalid-feedback">
-                                    Please input a name.
-                                </div>
+                                <label class="form-label">Username *</label>
+                                <input type="text" name="username" id="username" class="form-control fc">
+                                <!-- text warning masih kegedean -->
+                                <span class="text-danger" id="username_error"></span>
                             </div>
                             <div class="col">
                                 <label for="validationCustom02" class="form-label">Role *</label>
-                                <select class="form-select form-control fc" id="validationCustom02">
-                                    <option value="1">Admin</option>
-                                    <option value="2" selected>User</option>
+                                <select class="form-select form-control fc" name="role" id="role">
+                                    <option value="admin">Admin</option>
+                                    <option value="user" selected>User</option>
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="validationCustom02" class="form-label">Password *</label>
-                                <input type="password" class="form-control fc" id="validationCustom02" value="" required>
-                                <div class="invalid-feedback">
-                                    Please input a password.
-                                </div>
+                                <label class="form-label">Password *</label>
+                                <input type="password" class="form-control fc" name="password" id="password">
+                                <!-- text warning masih kegedean -->
+                                <span class="text-danger" id="password_error"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="action" id="action" value="Create" />
+                                <input class="btn btn-light plus" type="submit" name="submit" id="submitButtonCreate" />
                             </div>
                         </form>
-                        <div class="modal-footer">
-                            <button class="btn btn-light plus" type="submit">Create</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -75,66 +74,15 @@
         <!-- End -->
 
         <!-- Data Tables -->
-        <table id="example" class="table table-striped table-dark " style="cursor: default;">
+        <table id="table" class="table table-striped table-dark" style="cursor: default;">
             <thead class="attr">
                 <tr>
-                    <th hidden> ID</th>
                     <th>USERNAME</th>
-                    <th>ROLE ID</th>
+                    <th>ROLE</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td hidden>1</td>
-                    <td>Paul</td>
-                    <td>User</td>
-                    <td>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">
-                            Edit
-                        </button>
 
-                        <a href="">
-                            <button type="button" class="btn btn-danger">
-                                Delete
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td hidden>2</td>
-                    <td>Alexandeer</td>
-                    <td>Admin</td>
-                    <td>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">
-                            Edit
-                        </button>
-
-                        <a href="">
-                            <button type="button" class="btn btn-danger">
-                                Delete
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td hidden>3</td>
-                    <td>Frans</td>
-                    <td>User</td>
-                    <td>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal">
-                            Edit
-                        </button>
-
-                        <a href="">
-                            <button type="button" class="btn btn-danger">
-                                Delete
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-
-            </tbody>
         </table>
     </div>
     <div class="space">
@@ -171,8 +119,8 @@
                     <div class="col">
                         <label for="validationCustom02" class="form-label">Role *</label>
                         <select class="form-select form-control fc" id="validationCustom02">
-                            <option value="1">Admin</option>
-                            <option value="2" selected>User</option>
+                            <option value="admin">Admin</option>
+                            <option value="user" selected>User</option>
                         </select>
                     </div>
                     <div class="col">
@@ -182,10 +130,10 @@
                             Please input a password.
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-light plus" type="submit">Edit</button>
+                    </div>
                 </form>
-                <div class="modal-footer">
-                    <button class="btn btn-light plus" type="submit">Edit</button>
-                </div>
             </div>
         </div>
     </div>
@@ -194,7 +142,58 @@
 
 <script>
     $(document).ready(function() {
-        $('#table').DataTable();
+        $('#table').DataTable({
+            "aoColumnDefs": [{
+                "bSortable": false,
+                "aTargets": [2]
+            }],
+            "order": [],
+            "serverSide": true,
+            "ajax": {
+                url: "<?= base_url('/home/fetchUserData') ?>",
+                type: 'POST'
+            }
+        });
+
+        $('#addUser').click(function() {
+            $('#addUserForm')[0].reset();
+            $('#username_error').text('');
+            $('#password_error').text('');
+            $('#action').val('Create');
+            $('#submitButtonCreate').val('Create');
+            $('#addUserModal').modal('show');
+        });
+
+        $('#addUserForm').on('submit', function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: "<?= base_url('/home/saveUserData'); ?>",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+
+                beforeSend: function() {
+                    $('#submitButtonCreate').val('Wait...');
+                    $('#submitButtonCreate').attr('disabled', 'disabled');
+                },
+
+                success: function(data) {
+                    $('#submitButtonCreate').val('Create');
+                    $('#submitButtonCreate').attr('disabled', false);
+
+                    if (data.error == 'yes') {
+                        $('#username_error').text(data.username_error);
+                        $('#password_error').text(data.password_error);
+                    } else {
+                        $('#addUserModal').modal('hide');
+                        $('#table').DataTable().ajax.reload();
+                    }
+                }
+            })
+
+        });
+
     });
 </script>
 <?= $this->endSection(); ?>
