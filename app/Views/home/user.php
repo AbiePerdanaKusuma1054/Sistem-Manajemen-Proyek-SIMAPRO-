@@ -25,17 +25,12 @@
         </div>
         <!-- End -->
 
-        <!-- Modal Add User -->
+        <!-- Modal Add & Edit User -->
         <div class="modal fade" name="userModal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="modal-title" id="exampleModalLabel" style="color: white;">
-                            <i class="fa fa-user-plus">
-                                <span class="add-back-text">
-                                    asd
-                                </span>
-                            </i>
                         </div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -66,7 +61,7 @@
                                 <span class="text-danger" id="password_error"></span>
                             </div>
                             <div class="modal-footer">
-                                <input type="hidden" name="action" id="action" value="" />
+                                <input type="hidden" name="action" id="action" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
                                 <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
                             </div>
@@ -86,7 +81,6 @@
                     <th>ACTION</th>
                 </tr>
             </thead>
-
         </table>
     </div>
     <div class="space">
@@ -95,59 +89,7 @@
 </div>
 </div>
 
-<!-- Modal Edit User -->
-<!-- <div class="modal fade" name="editUserModal" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="exampleModalLabel">
-                    <i class="fa fa-pencil-square-o" style="color: white;">
-                        <span class="add-back-text">
-                            Edit User Account
-                        </span>
-                    </i>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="editUserForm" style="text-align: left;">
-                    <div class="col">
-                        <label class="form-label">Username *</label>
-                        <input type="text" name="username_edit" id="username_edit" class="form-control fc">
-                        <div class="invalid-feedback">
-                            Please input a name.
-                        </div>
-                    </div>
-                    <div class="col">
-                        <label for="validationCustom02" class="form-label">Role *</label>
-                        <select name="role_edit" id="role_edit" class="form-select form-control fc">
-                            <option value="admin">Admin</option>
-                            <option value="user" selected>User</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="validationCustom02" class="form-label">Password *</label>
-                        <input name="password_edit" id="password_edit" type="password" class="form-control fc">
-                        <div class="invalid-feedback">
-                            Please input a password.
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="action" id="action" value="edit" />
-                        <input type="hidden" name="hidden_id" id="hidden_id" />
-                        <input class="btn btn-light plus" type="submit" id="submitButtonEdit" />
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- End -->
-
-<!-- Scripts -->
-<!-- TODO: Bisa ubah icon dan title dari modal title -->
+<!-- Javascript -->
 <script>
     $(document).ready(function() {
         //Read Table w/ Datatables
@@ -159,7 +101,7 @@
             "order": [],
             "serverSide": true,
             "ajax": {
-                url: "<?= base_url('/home/fetchUserData') ?>",
+                url: "<?= base_url() ?>/home/fetchUserData",
                 type: 'POST'
             }
         });
@@ -170,7 +112,7 @@
             $('#userForm')[0].reset();
             $('#username_error').text('');
             $('#password_error').text('');
-            //$('.modal-title').text('Add User');
+            $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add User');
             $('#role_error').text('');
             $('#action').val('create');
             $('#submitButton').val('Create');
@@ -181,7 +123,7 @@
             event.preventDefault();
 
             $.ajax({
-                url: "<?= base_url('/home/saveUserData'); ?>",
+                url: "<?= base_url(); ?>/home/saveUserData",
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
@@ -192,7 +134,12 @@
                 },
 
                 success: function(data) {
-                    $('#submitButton').val('Create');
+                    if ($('#action').val() == 'create') {
+                        $('#submitButton').val('Create');
+                    } else {
+                        $('#submitButton').val('Edit');
+                    }
+
                     $('#submitButton').attr('disabled', false);
 
                     if (data.error == 'yes') {
@@ -215,7 +162,7 @@
             var id = $(this).data('id');
 
             $.ajax({
-                url: "<?= base_url('/home/fetchIdUser') ?>",
+                url: "<?= base_url() ?>/home/fetchIdUser",
                 method: "POST",
                 data: {
                     id: id
@@ -230,7 +177,7 @@
                     $('#username_error').text('');
                     $('#password_error').text('');
                     $('#role_error').text('');
-                    //$('.modal-title').text('Edit User Account');
+                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit User Account');
                     $('#action').val('edit');
                     $('#submitButton').val('Edit');
                     $('#userModal').modal('show');
@@ -246,7 +193,7 @@
 
             if (confirm("Are you sure you want to delete this account?")) {
                 $.ajax({
-                    url: "<?= base_url('/home/deleteUser') ?>",
+                    url: "<?= base_url() ?>/home/deleteUser",
                     method: "POST",
                     data: {
                         id: id
@@ -262,6 +209,6 @@
 
     });
 </script>
-<!-- End of Scripts -->
+<!-- End of JS -->
 
 <?= $this->endSection(); ?>

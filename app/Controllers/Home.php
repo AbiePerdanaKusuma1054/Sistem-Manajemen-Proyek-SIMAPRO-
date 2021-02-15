@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\ProjectModel;
 use monken\TablesIgniter;
 
 class Home extends BaseController
@@ -11,16 +12,19 @@ class Home extends BaseController
 	public function __construct()
 	{
 		$this->userModel = new UserModel();
+		$this->projectModel = new ProjectModel();
 	}
 
 	public function dashboard()
 	{
-		return view('home/dashboard');
-	}
-
-	public function project()
-	{
-		return view('home/project');
+		$data = [
+			'waiting' => $this->projectModel->where('project_status', 'waiting')->countAllResults(),
+			'on_progress' => $this->projectModel->where('project_status', 'on progress')->countAllResults(),
+			'hold' => $this->projectModel->where('project_status', 'hold')->countAllResults(),
+			'finish' => $this->projectModel->where('project_status', 'finish')->countAllResults(),
+			'cancelled' => $this->projectModel->where('project_status', 'cancelled')->countAllResults()
+		];
+		return view('home/dashboard', $data);
 	}
 
 	public function user()
@@ -129,6 +133,11 @@ class Home extends BaseController
 		}
 	}
 
+	public function project()
+	{
+		return view('home/project');
+	}
+
 	public function addproject()
 	{
 		return view('home/addproject');
@@ -146,6 +155,19 @@ class Home extends BaseController
 
 	public function fetchProjectData()
 	{
-		//
+		$table = new TablesIgniter();
+
+		$table->setTable($this->projectModel->noticeTable())
+			->setDefaultOrder('project_name', 'ASC')
+			->setOrder([
+				'project_name', 'client_name', 'pm_name',
+				'start_date', 'finish_date', 'project_status', null
+			])
+			->setSearch(['project_name', 'client_name', 'pm_name', 'project_status'])
+			->setOutput([
+				'project_name', 'client_name', 'pm_name', 'start_date',
+				'finish_date', 'project_status', $this->projectModel->button()
+			]);
+		return $table->getDatatable();
 	}
 }

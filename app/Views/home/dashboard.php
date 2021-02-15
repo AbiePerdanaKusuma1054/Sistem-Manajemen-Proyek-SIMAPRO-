@@ -25,14 +25,14 @@
         <a href="#" class="card waiting">
             <div class="overlay"></div>
             <div class="circle">
-                <p class="quantity">2</p>
+                <p class="quantity"><?= $waiting ?></p>
             </div>
             <p>Waiting</p>
         </a>
         <a href="#" class="card on-progress">
             <div class="overlay"></div>
             <div class="circle">
-                <p class="quantity">10</p>
+                <p class="quantity"><?= $on_progress ?></p>
             </div>
             <p>On Progress</p>
         </a>
@@ -40,7 +40,7 @@
         <a href="#" class="card hold">
             <div class="overlay"></div>
             <div class="circle">
-                <p class="quantity">7</p>
+                <p class="quantity"><?= $hold ?></p>
             </div>
             <p>Hold</p>
         </a>
@@ -48,7 +48,7 @@
         <a href="#" class="card finish">
             <div class="overlay"></div>
             <div class="circle">
-                <p class="quantity">76</p>
+                <p class="quantity"><?= $finish ?></p>
             </div>
             <p>Finished</p>
         </a>
@@ -56,7 +56,7 @@
         <a href="#" class="card cancel">
             <div class="overlay"></div>
             <div class="circle">
-                <p class="quantity">15</p>
+                <p class="quantity"><?= $cancelled ?></p>
             </div>
             <p>Cancelled</p>
         </a>

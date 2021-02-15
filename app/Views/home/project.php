@@ -15,8 +15,8 @@
     <div class="lay">
         <!-- Button Modal Add -->
         <div class="d-grid gap-2 col-6 mx-auto add">
-            <a href="/home/addproject">
-                <button class="btn btn-outline-light add" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a href="<?= base_url() ?>/home/addproject">
+                <button class="btn btn-outline-light add" type="button">
                     + Add Project
                 </button>
             </a>
@@ -36,7 +36,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <!-- <tbody>
                 <tr>
                     <td>Website Design</td>
                     <td>Dacoda</td>
@@ -46,9 +46,9 @@
                     <td>
                         <span class="badge rounded-pill bg-primary">Hold</span>
                     </td>
-                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                    <td><img src="/img/pending.png" alt="" class="pin">
                         <span class="pins">PENDING</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -66,9 +66,9 @@
                     <td>
                         <span class="badge rounded-pill bg-info">On Progress</span>
                     </td>
-                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                    <td><img src="/img/pending.png" alt="" class="pin">
                         <span class="pins">PENDING</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -86,9 +86,9 @@
                     <td>
                         <span class="badge rounded-pill bg-secondary">Waiting</span>
                     </td>
-                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                    <td><img src="/img/notyet.png" alt="" class="pin">
                         <span class="pins">NOT YET</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -106,9 +106,9 @@
                     <td>
                         <span class="badge rounded-pill bg-success">Finish</span>
                     </td>
-                    <!-- <td><img src="/img/complete.png" alt="" class="pin">
+                    <td><img src="/img/complete.png" alt="" class="pin">
                         <span class="pins">COMPLETE</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -126,9 +126,9 @@
                     <td>
                         <span class="badge rounded-pill bg-light text-dark">Cancel</span>
                     </td>
-                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                    <td><img src="/img/notyet.png" alt="" class="pin">
                         <span class="pins">NOT YET</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -146,9 +146,9 @@
                     <td>
                         <span class="badge rounded-pill bg-primary">Hold</span>
                     </td>
-                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                    <td><img src="/img/pending.png" alt="" class="pin">
                         <span class="pins">PENDING</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -166,9 +166,9 @@
                     <td>
                         <span class="badge rounded-pill bg-info">On Progress</span>
                     </td>
-                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                    <td><img src="/img/pending.png" alt="" class="pin">
                         <span class="pins">PENDING</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -186,9 +186,9 @@
                     <td>
                         <span class="badge rounded-pill bg-secondary">Waiting</span>
                     </td>
-                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                    <td><img src="/img/notyet.png" alt="" class="pin">
                         <span class="pins">NOT YET</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -206,9 +206,9 @@
                     <td>
                         <span class="badge rounded-pill bg-success">Finish</span>
                     </td>
-                    <!-- <td><img src="/img/complete.png" alt="" class="pin">
+                    <td><img src="/img/complete.png" alt="" class="pin">
                         <span class="pins">COMPLETE</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -226,9 +226,9 @@
                     <td>
                         <span class="badge rounded-pill bg-light text-dark">Cancel</span>
                     </td>
-                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                    <td><img src="/img/notyet.png" alt="" class="pin">
                         <span class="pins">NOT YET</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -246,9 +246,9 @@
                     <td>
                         <span class="badge rounded-pill bg-primary">Hold</span>
                     </td>
-                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                    <td><img src="/img/pending.png" alt="" class="pin">
                         <span class="pins">PENDING</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -266,9 +266,9 @@
                     <td>
                         <span class="badge rounded-pill bg-info">On Progress</span>
                     </td>
-                    <!-- <td><img src="/img/pending.png" alt="" class="pin">
+                    <td><img src="/img/pending.png" alt="" class="pin">
                         <span class="pins">PENDING</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -286,9 +286,9 @@
                     <td>
                         <span class="badge rounded-pill bg-secondary">Waiting</span>
                     </td>
-                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                    <td><img src="/img/notyet.png" alt="" class="pin">
                         <span class="pins">NOT YET</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -306,9 +306,9 @@
                     <td>
                         <span class="badge rounded-pill bg-success">Finish</span>
                     </td>
-                    <!-- <td><img src="/img/complete.png" alt="" class="pin">
+                    <td><img src="/img/complete.png" alt="" class="pin">
                         <span class="pins">COMPLETE</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -326,9 +326,9 @@
                     <td>
                         <span class="badge rounded-pill bg-light text-dark">Cancel</span>
                     </td>
-                    <!-- <td><img src="/img/notyet.png" alt="" class="pin">
+                    <td><img src="/img/notyet.png" alt="" class="pin">
                         <span class="pins">NOT YET</span>
-                    </td> -->
+                    </td>
                     <td>
                         <a href="/home/detailproject">
                             <button type="button" class="btn btn-info">
@@ -337,8 +337,7 @@
                         </a>
                     </td>
                 </tr>
-
-            </tbody>
+            </tbody> -->
         </table>
     </div>
     <div class="space">
@@ -349,7 +348,18 @@
 
 <script>
     $(document).ready(function() {
-        $('#table').DataTable();
+        $('#table').DataTable({
+            "aoColumnDefs": [{
+                "bSortable": false,
+                "aTargets": [6]
+            }],
+            "order": [],
+            "serverSide": true,
+            "ajax": {
+                url: "/home/fetchProjectData",
+                type: 'POST'
+            }
+        });
     });
 </script>
 <?= $this->endSection(); ?>
