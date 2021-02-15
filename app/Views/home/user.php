@@ -26,14 +26,14 @@
         <!-- End -->
 
         <!-- Modal Add User -->
-        <div class="modal fade" name="addUserModal" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" name="userModal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div class="modal-title" id="exampleModalLabel">
-                            <i class="fa fa-user-plus" style="color: white;">
+                        <div class="modal-title" id="exampleModalLabel" style="color: white;">
+                            <i class="fa fa-user-plus">
                                 <span class="add-back-text">
-                                    Add User
+                                    asd
                                 </span>
                             </i>
                         </div>
@@ -42,29 +42,33 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="addUserForm" style="text-align: left;" method="POST">
+                        <form id="userForm" style="text-align: left;" method="POST">
                             <div class="col">
                                 <label class="form-label">Username *</label>
                                 <input type="text" name="username" id="username" class="form-control fc">
-                                <!-- text warning masih kegedean -->
+                                <!-- TODO: text warning masih kegedean -->
                                 <span class="text-danger" id="username_error"></span>
                             </div>
                             <div class="col">
-                                <label for="validationCustom02" class="form-label">Role *</label>
+                                <label class="form-label">Role *</label>
                                 <select class="form-select form-control fc" name="role" id="role">
+                                    <option value="" selected>Select role</option>
                                     <option value="admin">Admin</option>
-                                    <option value="user" selected>User</option>
+                                    <option value="user">User</option>
                                 </select>
+                                <!-- TODO: text warning masih kegedean -->
+                                <span class="text-danger" id="role_error"></span>
                             </div>
                             <div class="col">
                                 <label class="form-label">Password *</label>
                                 <input type="password" class="form-control fc" name="password" id="password">
-                                <!-- text warning masih kegedean -->
+                                <!-- TODO: text warning masih kegedean -->
                                 <span class="text-danger" id="password_error"></span>
                             </div>
                             <div class="modal-footer">
-                                <input type="hidden" name="action" id="action" value="Create" />
-                                <input class="btn btn-light plus" type="submit" name="submit" id="submitButtonCreate" />
+                                <input type="hidden" name="action" id="action" value="" />
+                                <input type="hidden" name="hidden_id" id="hidden_id" />
+                                <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
                             </div>
                         </form>
                     </div>
@@ -92,7 +96,7 @@
 </div>
 
 <!-- Modal Edit User -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" name="editUserModal" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -108,40 +112,45 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" novalidate style="text-align: left;">
+                <form id="editUserForm" style="text-align: left;">
                     <div class="col">
-                        <label for="validationCustom01" class="form-label">Username *</label>
-                        <input type="text" class="form-control fc" id="validationCustom01" value="Paul" required>
+                        <label class="form-label">Username *</label>
+                        <input type="text" name="username_edit" id="username_edit" class="form-control fc">
                         <div class="invalid-feedback">
                             Please input a name.
                         </div>
                     </div>
                     <div class="col">
                         <label for="validationCustom02" class="form-label">Role *</label>
-                        <select class="form-select form-control fc" id="validationCustom02">
+                        <select name="role_edit" id="role_edit" class="form-select form-control fc">
                             <option value="admin">Admin</option>
                             <option value="user" selected>User</option>
                         </select>
                     </div>
                     <div class="col">
                         <label for="validationCustom02" class="form-label">Password *</label>
-                        <input type="password" class="form-control fc" id="validationCustom02" value="hahaha" required>
+                        <input name="password_edit" id="password_edit" type="password" class="form-control fc">
                         <div class="invalid-feedback">
                             Please input a password.
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-light plus" type="submit">Edit</button>
+                        <input type="hidden" name="action" id="action" value="edit" />
+                        <input type="hidden" name="hidden_id" id="hidden_id" />
+                        <input class="btn btn-light plus" type="submit" id="submitButtonEdit" />
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End -->
 
+<!-- Scripts -->
+<!-- TODO: Bisa ubah icon dan title dari modal title -->
 <script>
     $(document).ready(function() {
+        //Read Table w/ Datatables
         $('#table').DataTable({
             "aoColumnDefs": [{
                 "bSortable": false,
@@ -155,16 +164,20 @@
             }
         });
 
+        //Create User
+
         $('#addUser').click(function() {
-            $('#addUserForm')[0].reset();
+            $('#userForm')[0].reset();
             $('#username_error').text('');
             $('#password_error').text('');
-            $('#action').val('Create');
-            $('#submitButtonCreate').val('Create');
-            $('#addUserModal').modal('show');
+            //$('.modal-title').text('Add User');
+            $('#role_error').text('');
+            $('#action').val('create');
+            $('#submitButton').val('Create');
+            $('#userModal').modal('show');
         });
 
-        $('#addUserForm').on('submit', function(event) {
+        $('#userForm').on('submit', function(event) {
             event.preventDefault();
 
             $.ajax({
@@ -174,19 +187,20 @@
                 dataType: "JSON",
 
                 beforeSend: function() {
-                    $('#submitButtonCreate').val('Wait...');
-                    $('#submitButtonCreate').attr('disabled', 'disabled');
+                    $('#submitButton').val('Wait...');
+                    $('#submitButton').attr('disabled', 'disabled');
                 },
 
                 success: function(data) {
-                    $('#submitButtonCreate').val('Create');
-                    $('#submitButtonCreate').attr('disabled', false);
+                    $('#submitButton').val('Create');
+                    $('#submitButton').attr('disabled', false);
 
                     if (data.error == 'yes') {
                         $('#username_error').text(data.username_error);
                         $('#password_error').text(data.password_error);
+                        $('#role_error').text(data.role_error);
                     } else {
-                        $('#addUserModal').modal('hide');
+                        $('#userModal').modal('hide');
                         $('#table').DataTable().ajax.reload();
                     }
                 }
@@ -194,6 +208,60 @@
 
         });
 
+        //Edit Account
+
+        $(document).on('click', '.edit', function() {
+
+            var id = $(this).data('id');
+
+            $.ajax({
+                url: "<?= base_url('/home/fetchIdUser') ?>",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+
+                success: function(data) {
+                    $('#username').val(data.username);
+                    $('#password').val(data.password);
+                    $('#role').val(data.role);
+
+                    $('#username_error').text('');
+                    $('#password_error').text('');
+                    $('#role_error').text('');
+                    //$('.modal-title').text('Edit User Account');
+                    $('#action').val('edit');
+                    $('#submitButton').val('Edit');
+                    $('#userModal').modal('show');
+                    $('#hidden_id').val(id);
+                }
+            })
+        });
+
+        //Delete account
+
+        $(document).on('click', '.delete', function() {
+            var id = $(this).data('id');
+
+            if (confirm("Are you sure you want to delete this account?")) {
+                $.ajax({
+                    url: "<?= base_url('/home/deleteUser') ?>",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+
+                    success: function(data) {
+                        $('#table').DataTable().ajax.reload();
+                    }
+
+                })
+            }
+        });
+
     });
 </script>
+<!-- End of Scripts -->
+
 <?= $this->endSection(); ?>

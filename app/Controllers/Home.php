@@ -36,11 +36,13 @@ class Home extends BaseController
 			helper(['form', 'url']);
 			$username_error = '';
 			$password_error = '';
+			$role_error = '';
 			$error = 'no';
 			$success = 'no';
 			$rules = [
 				'username' => 'required|min_length[5]',
-				'password' => 'required|min_length[6]'
+				'password' => 'required|min_length[6]',
+				'role' => 'required'
 			];
 
 			$error = $this->validate($rules);
@@ -56,20 +58,37 @@ class Home extends BaseController
 				if ($validator->getError('password')) {
 					$password_error = $validator->getError('password');
 				}
+
+				if ($validator->getError('role')) {
+					$role_error = $validator->getError('role');
+				}
 			} else {
 				$success = 'yes';
-				if ($request->getVar('action') == 'Create') {
+
+				if ($request->getVar('action') == 'create') {
 					$this->userModel->save([
 						'username' => $request->getVar('username'),
 						'password' => $request->getVar('password'),
 						'role' => $request->getVar('role')
 					]);
 				}
+
+				if ($request->getVar('action') == 'edit') {
+					$id = $request->getVar('hidden_id');
+					$data = [
+						'username' => $request->getVar('username'),
+						'password' => $request->getVar('password'),
+						'role' => $request->getVar('role'),
+					];
+
+					$this->userModel->update($id, $data);
+				}
 			}
 
 			$output = [
 				'username_error' => $username_error,
 				'password_error' => $password_error,
+				'role_error' => $role_error,
 				'error' => $error,
 				'success' => $success
 			];
@@ -88,6 +107,26 @@ class Home extends BaseController
 			->setSearch(['username', 'role'])
 			->setOutput(['username', 'role', $this->userModel->button()]);
 		return $table->getDatatable();
+	}
+
+	public function fetchIdUser()
+	{
+		$request = service('request');
+
+		if ($request->getVar('id')) {
+			$userID = $this->userModel->where('id', $request->getVar('id'))->first();
+			echo json_encode($userID);
+		}
+	}
+
+	public function deleteUser()
+	{
+		$request = service('request');
+
+		if ($request->getVar('id')) {
+			$id = $request->getVar('id');
+			$this->userModel->where('id', $id)->delete();
+		}
 	}
 
 	public function addproject()
