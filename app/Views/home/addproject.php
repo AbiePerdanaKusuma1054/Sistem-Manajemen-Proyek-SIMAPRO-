@@ -74,7 +74,7 @@
                 <input disabled type="text" class="form-control fc" value="Waiting" required>
             </div>
             <div class="col-12">
-                <button class="btn btn-light plus" type="submit">Create</button>
+                <button class="btn btn-light plus" type="submit" id="addalerts">Create</button>
             </div>
         </form>
     </div>

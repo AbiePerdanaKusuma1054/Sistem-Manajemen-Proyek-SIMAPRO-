@@ -25,6 +25,9 @@
     <!-- Fontawesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Sweet Alerts 2 -->
+    <script src="<?= base_url() ?>/dist/sweetalert2.all.min.js"></script>
+
     <title>SIMAPRO</title>
 </head>
 
@@ -74,5 +77,49 @@
         <!-- ENDIF -->
 
 </body>
+<script>
+    const addalerts = document.getElementById('addalerts');
+    addalerts.addEventListener('click', function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Add project in successfully'
+        })
+    });
+</script>
+<script>
+    const submitButton = document.getElementById('submitButton');
+    submitButton.addEventListener('click', function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Add user in successfully'
+        })
+    });
+</script>
+
+
 
 </html>

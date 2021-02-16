@@ -16,6 +16,8 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>/css/style.css">
+  <!-- Sweet Alerts 2 -->
+  <script src="<?= base_url() ?>/dist/sweetalert2.all.min.js"></script>
 
   <title>SIMAPRO</title>
 </head>
@@ -32,11 +34,32 @@
         <form action="<?= base_url() ?>/home/dashboard" method='POST'>
           <input type="username" name="username" placeholder="Username">
           <input type="password" name="password" placeholder="Password">
-          <input type="submit" name="" value="Login">
+          <input type="submit" name="" value="Login" id="login">
         </form>
       </div>
     </div>
   </div>
 </body>
+<script>
+  const login = document.getElementById('login');
+  login.addEventListener('click', function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Signed in successfully'
+    })
+  });
+</script>
 
 </html>
