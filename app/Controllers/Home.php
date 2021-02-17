@@ -162,7 +162,7 @@ class Home extends BaseController
 			->setSearch(['project_name', 'client_name', 'pm_name', 'project_status'])
 			->setOutput([
 				'project_name', 'client_name', 'pm_name', 'start_date',
-				'finish_date', 'project_status', $this->projectModel->button()
+				'finish_date', $this->projectModel->status(), $this->projectModel->button()
 			]);
 		return $table->getDatatable();
 	}
