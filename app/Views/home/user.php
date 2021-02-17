@@ -134,6 +134,17 @@
                 },
 
                 success: function(data) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1700,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
                     if ($('#action').val() == 'create') {
                         $('#submitButton').val('Create');
                     } else {
@@ -146,9 +157,37 @@
                         $('#username_error').text(data.username_error);
                         $('#password_error').text(data.password_error);
                         $('#role_error').text(data.role_error);
+
+                        if ($('#action').val() == 'create') {
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'failed to create the data'
+                            })
+
+                        } else {
+                            Toast.fire({
+                                icon: 'error',
+                                title: 'failed to update the data'
+                            })
+                        }
+
+
                     } else {
                         $('#userModal').modal('hide');
                         $('#table').DataTable().ajax.reload();
+
+
+                        if ($('#action').val() == 'create') {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'User created'
+                            })
+                        } else {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'User data updated'
+                            })
+                        }
                     }
                 }
             })
@@ -191,20 +230,52 @@
         $(document).on('click', '.delete', function() {
             var id = $(this).data('id');
 
-            if (confirm("Are you sure you want to delete this account?")) {
-                $.ajax({
-                    url: "<?= base_url() ?>/home/deleteUser",
-                    method: "POST",
-                    data: {
-                        id: id
-                    },
+            const swalWithBootstrapButtons = Swal.mixin({
+                //TODO: Benerin kalau bisa, karena kalo 'buttonsStyling: true' 
+                // buttonnya jadi jelek, tapi kalo seluruh 
+                // const ini dihapus jadi gabisa dijalanin swalnya.
 
-                    success: function(data) {
-                        $('#table').DataTable().ajax.reload();
-                    }
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true
+            })
 
-                })
-            }
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this action",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'User has been deleted.',
+                        'success',
+
+                        $.ajax({
+                            url: "<?= base_url() ?>/home/deleteUser",
+                            method: "POST",
+                            data: {
+                                id: id
+                            },
+
+                            success: function(data) {
+                                $('#table').DataTable().ajax.reload();
+                            }
+
+                        })
+
+                    )
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    // Do Nothing
+                }
+            })
         });
 
     });

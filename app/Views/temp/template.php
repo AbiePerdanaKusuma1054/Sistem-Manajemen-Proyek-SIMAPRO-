@@ -52,7 +52,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url() ?>/auth/login">
-                                <img src="/img/exit.png" alt="" style="margin-top: -2px;">
+                                <img src="<?= base_url() ?>/img/exit.png" alt="" style="margin-top: -2px;">
                             </a>
                         </li>
                     </ul>
@@ -78,46 +78,24 @@
 
 </body>
 <script>
-    const addalerts = document.getElementById('addalerts');
-    addalerts.addEventListener('click', function() {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
+    // const addalerts = document.getElementById('addalerts');
+    // addalerts.addEventListener('click', function() {
+    //     const Toast = Swal.mixin({
+    //         toast: true,
+    //         position: 'top-end',
+    //         showConfirmButton: false,
+    //         timer: 1500,
+    //         didOpen: (toast) => {
+    //             toast.addEventListener('mouseenter', Swal.stopTimer)
+    //             toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //         }
+    //     })
 
-        Toast.fire({
-            icon: 'success',
-            title: 'Add project in successfully'
-        })
-    });
-</script>
-<script>
-    const submitButton = document.getElementById('submitButton');
-    submitButton.addEventListener('click', function() {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-
-        Toast.fire({
-            icon: 'success',
-            title: 'Add user in successfully'
-        })
-    });
+    //     Toast.fire({
+    //         icon: 'success',
+    //         title: 'Add project in successfully'
+    //     })
+    // });
 </script>
 
 
