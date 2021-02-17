@@ -161,7 +161,7 @@
                         if ($('#action').val() == 'create') {
                             Toast.fire({
                                 icon: 'error',
-                                title: 'failed to create the data'
+                                title: 'failed to create a user'
                             })
 
                         } else {

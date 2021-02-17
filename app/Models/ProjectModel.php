@@ -21,8 +21,9 @@ class ProjectModel extends Model
 
     public function button()
     {
-        $closureFun = function () {
-            return '<button type="button" class="btn btn-info">Detail</button>';
+        $closureFun = function ($row) {
+            return '<a href="' . base_url() . '/home/detailproject">
+            <button type="button" class="btn btn-info">Detail</button></a>';
         };
         return $closureFun;
     }

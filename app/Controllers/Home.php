@@ -42,7 +42,6 @@ class Home extends BaseController
 			$password_error = '';
 			$role_error = '';
 			$error = 'no';
-			$success = 'no';
 			$rules = [
 				'username' => 'required|min_length[5]',
 				'password' => 'required|min_length[6]',
@@ -67,8 +66,6 @@ class Home extends BaseController
 					$role_error = $validator->getError('role');
 				}
 			} else {
-				$success = 'yes';
-
 				if ($request->getVar('action') == 'create') {
 					$this->userModel->save([
 						'username' => $request->getVar('username'),
@@ -93,8 +90,7 @@ class Home extends BaseController
 				'username_error' => $username_error,
 				'password_error' => $password_error,
 				'role_error' => $role_error,
-				'error' => $error,
-				'success' => $success
+				'error' => $error
 			];
 
 			echo json_encode($output);
