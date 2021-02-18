@@ -195,7 +195,7 @@
 
         });
 
-        //Edit Data Client
+        //Edit Client
 
         $(document).on('click', '.edit', function() {
 
