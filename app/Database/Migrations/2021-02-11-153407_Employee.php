@@ -18,15 +18,15 @@ class Employee extends Migration
 			],
 			'employee_name'       => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '50'
 			],
 			'employee_email'      => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '50'
 			],
 			'employee_gender' => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '10'
 			],
 			'employee_address'      => [
 				'type'           => 'VARCHAR',

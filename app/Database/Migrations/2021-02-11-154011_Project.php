@@ -23,7 +23,7 @@ class Project extends Migration
 			],
 			'project_name'       => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '50'
 			],
 			'project_start'      => [
 				'type'           => 'DATE',
@@ -37,9 +37,9 @@ class Project extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
-			'project_manajer'      => [
+			'project_manager'      => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '50'
 			],
 			'project_status'      => [
 				'type'           => 'VARCHAR',

@@ -23,7 +23,7 @@ class CostCategory extends Migration
 			],
 			'category_name'       => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '50'
 			],
 		]);
 
