@@ -181,21 +181,22 @@
                     $('#submitButton').val('Create');
                     $('#submitButton').attr('disabled', false);
 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1700,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
                     if (data.error == 'yes') {
                         $('#name_error').text(data.name_error);
                         $('#email_error').text(data.email_error);
                         $('#address_error').text(data.address_error);
 
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 1700,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
 
                         Toast.fire({
                             icon: 'error',

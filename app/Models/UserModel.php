@@ -20,7 +20,7 @@ class UserModel extends Model
     {
         $buttonFun = function ($row) {
             return '<button type="button" name="editUser" class="btn btn-info edit" data-id="' . $row['id'] . '"
-            data-toggle="modal" data-target="#editUserModal">Edit</button>
+            data-toggle="modal" data-target="#userModal">Edit</button>
             &nbsp; 
             <button type="button" class="btn btn-danger delete" 
             data-id="' . $row['id'] . '">Delete</button></a>';
