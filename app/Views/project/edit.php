@@ -2,39 +2,39 @@
 
 <?= $this->section('content'); ?>
 
-<!-- Menu Bar -->
+
 <div class="canvas">
     <div class="menu-list">
-        <a href="<?= base_url() ?>/home/dashboard"><span class="menu-list-title">Dashboard</span></a>
+        <a href="<?= base_url() ?>/"><span class="menu-list-title">Dashboard</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/project"><span class="menu-list-title active">Project</span></a>
+        <a href="<?= base_url() ?>/project"><span class="menu-list-title active">Project</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/user"><span class="menu-list-title">User</span></a>
+        <a href="<?= base_url() ?>/user"><span class="menu-list-title">User</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title">Client</span></a>
+        <a href="<?= base_url() ?>/client"><span class="menu-list-title">Client</span></a>
     </div>
 </div>
 <!--  -->
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;">
         <div class="add-back">
-            <i class="fa fa-folder-open">
+            <i class="fa fa-pencil-square-o">
                 <span class="add-back-text">
-                    Add Your Project
+                    Edit Your Project
                 </span>
             </i>
         </div>
         <form class="row g-3 needs-validation" novalidate>
             <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Project Name *</label>
-                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
+                <input type="text" class="form-control fc" id="validationCustom01" value="Website" required>
                 <div class="invalid-feedback">
                     Please input a project name.
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom02" class="form-label">Project Master *</label>
-                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
+                <input type="text" class="form-control fc" id="validationCustom02" value="Alexander" required>
                 <div class="invalid-feedback">
                     Please input a project master.
                 </div>
@@ -43,8 +43,8 @@
                 <label for="validationCustom03" class="form-label">Client *</label>
                 <div class="input-group">
                     <select class="form-select form-control fc" id="validationCustom03">
-                        <option disabled selected>Choose client..</option>
-                        <option value="Dacoda">Dacoda</option>
+                        <option disabled>Choose client..</option>
+                        <option value="Dacoda" selected>Dacoda</option>
                         <option value="Shopii">Shopii</option>
                         <option value="XXI">XXI</option>
                         <option value="Tokotoko Team">Tokotoko Team</option>
@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc" id="validationCustom04" value="" required>
+                <input type="number" class="form-control fc" id="validationCustom04" value="10000000" required>
                 <div class="invalid-feedback">
                     Please input a contract amount.
                 </div>
@@ -82,16 +82,22 @@
                     Please input a deadline.
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <label class="form-label">Project Description</label>
-                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" placeholder="desc project..."></textarea>
+                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" placeholder="Desc project..."></textarea>
             </div>
             <div class="col-md-4">
-                <label class="form-label">Status Project</label>
-                <input disabled type="text" class="form-control fc" value="Waiting" required>
+                <label for="validationCustom04" class="form-label">Status Project</label>
+                <select class="form-select form-control fc" id="validationCustom03">
+                    <option value="1" selected>Waiting</option>
+                    <option value="2">On Progress</option>
+                    <option value="3">Hold</option>
+                    <option value="4">Finished</option>
+                    <option value="5">Cancelled</option>
+                </select>
             </div>
             <div class="col-12">
-                <button class="btn btn-light plus" type="submit" id="addalerts">Create</button>
+                <button class="btn btn-light plus" type="submit">Save</button>
             </div>
         </form>
 

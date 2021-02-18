@@ -44,7 +44,7 @@ class ProjectModel extends Model
     public function button()
     {
         $buttonFun = function ($row) {
-            return '<a href="' . base_url() . '/home/detailproject">
+            return '<a href="' . base_url() . '/project/detail">
             <button type="button" class="btn btn-info">Detail</button></a>';
         };
         return $buttonFun;

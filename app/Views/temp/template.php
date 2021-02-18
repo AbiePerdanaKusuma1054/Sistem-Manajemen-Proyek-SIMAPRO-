@@ -36,7 +36,7 @@
         <!-- IF not logged in -> this won't appear -->
         <nav class="navbar navbar-expand-sm navbar-dark header">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="<?= base_url() ?>/">
                     <img src="<?= base_url() ?>/img/logo.png" alt="" style="margin-top: -4px;">
                     <span class="brand">SIMAPRO</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

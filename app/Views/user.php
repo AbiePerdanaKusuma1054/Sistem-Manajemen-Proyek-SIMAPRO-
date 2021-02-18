@@ -4,30 +4,29 @@
 <!-- Menu Bar -->
 <div class="canvas">
     <div class="menu-list">
-        <a href="<?= base_url() ?>/home/dashboard"><span class="menu-list-title">Dashboard</span></a>
+        <a href="<?= base_url() ?>/"><span class="menu-list-title">Dashboard</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/project"><span class="menu-list-title">Project</span></a>
+        <a href="<?= base_url() ?>/project"><span class="menu-list-title">Project</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/user"><span class="menu-list-title">User</span></a>
+        <a href="<?= base_url() ?>/user"><span class="menu-list-title active">User</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title active">Client</span></a>
+        <a href="<?= base_url() ?>/client"><span class="menu-list-title">Client</span></a>
     </div>
 </div>
-<!--  -->
 <div class="canvas-2">
     <div class="lay">
-        <!-- Button Triggered Modal Add Client -->
+        <!-- Button Triggered Modal Add User -->
         <div class="d-grid gap-2 col-6 mx-auto add">
             <a>
-                <button class="btn btn-outline-light add" type="button" name="addClient" id="addClient">
-                    + Add Client
+                <button class="btn btn-outline-light add" type="button" name="addUser" id="addUser">
+                    + Add User
                 </button>
             </a>
         </div>
         <!-- End -->
 
-        <!-- Modal Add & Edit Client -->
-        <div class="modal fade" name="clientModal" id="clientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal Add & Edit User -->
+        <div class="modal fade" name="userModal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -38,28 +37,26 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="clientForm" style="text-align: left;" method="POST">
-
-                            <!-- Script errornya blm bisa -->
+                        <form id="userForm" style="text-align: left;" method="POST">
                             <div class="col">
-                                <label class="form-label">Client Name *</label>
-                                <input type="text" name="client" id="client" class="form-control fc">
-                                <span class="text-danger" id="client_error"></span>
+                                <label class="form-label">Username *</label>
+                                <input type="text" name="username" id="username" class="form-control fc">
+                                <span class="text-danger" id="username_error"></span>
                             </div>
-
                             <div class="col">
-                                <label class="form-label">Email *</label>
-                                <input type="text" name="email" id="email" class="form-control fc">
-                                <span class="text-danger" id="email_error"></span>
+                                <label class="form-label">Role *</label>
+                                <select class="form-select form-control fc" name="role" id="role">
+                                    <option disabled selected>Select role</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                </select>
+                                <span class="text-danger" id="role_error"></span>
                             </div>
-
                             <div class="col">
-                                <label class="form-label">Address *</label>
-                                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="3" placeholder="Client address"></textarea>
-                                <span class="text-danger" id="address_error"></span>
+                                <label class="form-label">Password *</label>
+                                <input type="password" class="form-control fc" name="password" id="password">
+                                <span class="text-danger" id="password_error"></span>
                             </div>
-                            <!--  -->
-
                             <div class="modal-footer">
                                 <input type="hidden" name="action" id="action" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -76,9 +73,8 @@
         <table id="table" class="table table-striped table-dark" style="cursor: default;">
             <thead class="attr">
                 <tr>
-                    <th>Client Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
+                    <th>Username</th>
+                    <th>Role</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -94,6 +90,7 @@
 <script>
     $(document).ready(function() {
         //Read Table w/ Datatables
+
         $('#table').DataTable({
             "aoColumnDefs": [{
                 "bSortable": false,
@@ -102,29 +99,29 @@
             "order": [],
             "serverSide": true,
             "ajax": {
-                url: "<?= base_url() ?>/home/fetchUserData",
+                url: "<?= base_url() ?>/user/fetchUserData",
                 type: 'POST'
             }
         });
 
-        //Create Client
+        //Create User
 
-        $('#addClient').click(function() {
-            $('#clientForm')[0].reset();
-            $('#client_error').text('');
-            $('#email_error').text('');
-            $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Client');
-            $('#address_error').text('');
+        $('#addUser').click(function() {
+            $('#userForm')[0].reset();
+            $('#username_error').text('');
+            $('#password_error').text('');
+            $('#role_error').text('');
+            $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add User');
             $('#action').val('create');
             $('#submitButton').val('Create');
-            $('#clientModal').modal('show');
+            $('#userModal').modal('show');
         });
 
-        $('#clientForm').on('submit', function(event) {
+        $('#userForm').on('submit', function(event) {
             event.preventDefault();
 
             $.ajax({
-                url: "<?= base_url(); ?>/home/saveUserData",
+                url: "<?= base_url(); ?>/user/saveUserData",
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
@@ -155,14 +152,14 @@
                     $('#submitButton').attr('disabled', false);
 
                     if (data.error == 'yes') {
-                        $('#client_error').text(data.username_error);
-                        $('#email_error').text(data.password_error);
-                        $('#address_error').text(data.role_error);
+                        $('#username_error').text(data.username_error);
+                        $('#password_error').text(data.password_error);
+                        $('#role_error').text(data.role_error);
 
                         if ($('#action').val() == 'create') {
                             Toast.fire({
                                 icon: 'error',
-                                title: 'failed to create a client'
+                                title: 'failed to create a user'
                             })
 
                         } else {
@@ -174,19 +171,19 @@
 
 
                     } else {
-                        $('#clientModal').modal('hide');
+                        $('#userModal').modal('hide');
                         $('#table').DataTable().ajax.reload();
 
 
                         if ($('#action').val() == 'create') {
                             Toast.fire({
                                 icon: 'success',
-                                title: 'Client created'
+                                title: 'User created'
                             })
                         } else {
                             Toast.fire({
                                 icon: 'success',
-                                title: 'Client data updated'
+                                title: 'User data updated'
                             })
                         }
                     }
@@ -195,14 +192,14 @@
 
         });
 
-        //Edit Client
+        //Edit Account
 
         $(document).on('click', '.edit', function() {
 
             var id = $(this).data('id');
 
             $.ajax({
-                url: "<?= base_url() ?>/home/fetchIdUser",
+                url: "<?= base_url() ?>/user/fetchIdUser",
                 method: "POST",
                 data: {
                     id: id
@@ -214,13 +211,13 @@
                     $('#password').val(data.password);
                     $('#role').val(data.role);
 
-                    $('#client_error').text('');
-                    $('#email_error').text('');
-                    $('#address_error').text('');
-                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit Data Client');
+                    $('#username_error').text('');
+                    $('#password_error').text('');
+                    $('#role_error').text('');
+                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit User Account');
                     $('#action').val('edit');
                     $('#submitButton').val('Edit');
-                    $('#clientModal').modal('show');
+                    $('#userModal').modal('show');
                     $('#hidden_id').val(id);
                 }
             })
@@ -254,11 +251,11 @@
                 if (result.isConfirmed) {
                     swalWithBootstrapButtons.fire(
                         'Deleted!',
-                        'Client has been deleted.',
+                        'User has been deleted.',
                         'success',
 
                         $.ajax({
-                            url: "<?= base_url() ?>/home/deleteUser",
+                            url: "<?= base_url() ?>/user/deleteUser",
                             method: "POST",
                             data: {
                                 id: id

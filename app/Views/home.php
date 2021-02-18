@@ -5,13 +5,13 @@
 <!-- Menu Bar -->
 <div class="canvas">
     <div class="menu-list">
-        <a href="<?= base_url() ?>/home/dashboard"><span class="menu-list-title active">Dashboard</span></a>
+        <a href="<?= base_url() ?>/"><span class="menu-list-title active">Dashboard</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/project"><span class="menu-list-title">Project</span></a>
+        <a href="<?= base_url() ?>/project"><span class="menu-list-title">Project</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/user"><span class="menu-list-title">User</span></a>
+        <a href="<?= base_url() ?>/user"><span class="menu-list-title">User</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title">Client</span></a>
+        <a href="<?= base_url() ?>/client"><span class="menu-list-title">Client</span></a>
     </div>
 </div>
 <!-- End -->

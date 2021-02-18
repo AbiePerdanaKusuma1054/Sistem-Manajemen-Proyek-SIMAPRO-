@@ -34,7 +34,7 @@
       <div class="content">
         <p class="title">Login</p>
 
-        <form action="<?= base_url() ?>/home/dashboard" method='POST'>
+        <form action="<?= base_url() ?>/" method='POST'>
           <input type="username" name="username" placeholder="Username">
           <input type="password" name="password" placeholder="Password">
           <input type="submit" name="" value="Login" id="login">

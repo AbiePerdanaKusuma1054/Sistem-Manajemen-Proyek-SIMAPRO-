@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-
+<!-- Menu Bar -->
 <div class="canvas">
     <div class="menu-list">
         <a href="<?= base_url() ?>/home/dashboard"><span class="menu-list-title">Dashboard</span></a>
@@ -18,33 +18,33 @@
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;">
         <div class="add-back">
-            <i class="fa fa-pencil-square-o">
+            <i class="fa fa-folder-open">
                 <span class="add-back-text">
-                    Edit Your Project
+                    Add Your Project
                 </span>
             </i>
         </div>
         <form class="row g-3 needs-validation" novalidate>
             <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Project Name *</label>
-                <input type="text" class="form-control fc" id="validationCustom01" value="Website" required>
+                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
                 <div class="invalid-feedback">
                     Please input a project name.
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="validationCustom02" class="form-label">Project Master *</label>
-                <input type="text" class="form-control fc" id="validationCustom02" value="Alexander" required>
+                <label for="validationCustom02" class="form-label">Project Manager *</label>
+                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
                 <div class="invalid-feedback">
-                    Please input a project master.
+                    Please input a project manager.
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom03" class="form-label">Client *</label>
                 <div class="input-group">
                     <select class="form-select form-control fc" id="validationCustom03">
-                        <option disabled>Choose client..</option>
-                        <option value="Dacoda" selected>Dacoda</option>
+                        <option disabled selected>Choose client..</option>
+                        <option value="Dacoda">Dacoda</option>
                         <option value="Shopii">Shopii</option>
                         <option value="XXI">XXI</option>
                         <option value="Tokotoko Team">Tokotoko Team</option>
@@ -53,7 +53,7 @@
                     <div class="input-group-append">
                         <!-- Button Triggered Modal Add Client -->
                         <button class="btn btn-secondary" type="button" name="addClient" id="addClient">
-                            Other Client
+                            + New Client
                         </button>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc" id="validationCustom04" value="10000000" required>
+                <input type="number" class="form-control fc" id="validationCustom04" value="" required>
                 <div class="invalid-feedback">
                     Please input a contract amount.
                 </div>
@@ -82,22 +82,16 @@
                     Please input a deadline.
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <label class="form-label">Project Description</label>
-                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" placeholder="Desc project..."></textarea>
+                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" placeholder="desc project..."></textarea>
             </div>
             <div class="col-md-4">
-                <label for="validationCustom04" class="form-label">Status Project</label>
-                <select class="form-select form-control fc" id="validationCustom03">
-                    <option value="1" selected>Waiting</option>
-                    <option value="2">On Progress</option>
-                    <option value="3">Hold</option>
-                    <option value="4">Finished</option>
-                    <option value="5">Cancelled</option>
-                </select>
+                <label class="form-label">Project Status</label>
+                <input disabled type="text" class="form-control fc" value="waiting" required>
             </div>
             <div class="col-12">
-                <button class="btn btn-light plus" type="submit">Save</button>
+                <button class="btn btn-light plus" type="submit" id="addalerts">Create</button>
             </div>
         </form>
 
@@ -115,11 +109,10 @@
                     <div class="modal-body">
                         <form id="clientForm" style="text-align: left;" method="POST">
 
-                            <!-- Script errornya blm bisa -->
                             <div class="col">
                                 <label class="form-label">Client Name *</label>
-                                <input type="text" name="client" id="client" class="form-control fc">
-                                <span class="text-danger" id="client_error"></span>
+                                <input type="text" name="name" id="name" class="form-control fc">
+                                <span class="text-danger" id="name_error"></span>
                             </div>
 
                             <div class="col">
@@ -130,14 +123,12 @@
 
                             <div class="col">
                                 <label class="form-label">Address *</label>
-                                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="3" placeholder="Client address"></textarea>
+                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="Client address"></textarea>
                                 <span class="text-danger" id="address_error"></span>
                             </div>
-                            <!--  -->
 
                             <div class="modal-footer">
                                 <input type="hidden" name="action" id="action" />
-                                <input type="hidden" name="hidden_id" id="hidden_id" />
                                 <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
                             </div>
                         </form>
@@ -157,28 +148,15 @@
 <!-- Javascript -->
 <script>
     $(document).ready(function() {
-        //Read Table w/ Datatables
-        $('#table').DataTable({
-            "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [2]
-            }],
-            "order": [],
-            "serverSide": true,
-            "ajax": {
-                url: "<?= base_url() ?>/home/fetchUserData",
-                type: 'POST'
-            }
-        });
 
         //Create Client
 
         $('#addClient').click(function() {
             $('#clientForm')[0].reset();
-            $('#client_error').text('');
+            $('#name_error').text('');
             $('#email_error').text('');
-            $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Client');
             $('#address_error').text('');
+            $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Client');
             $('#action').val('create');
             $('#submitButton').val('Create');
             $('#clientModal').modal('show');
@@ -188,7 +166,7 @@
             event.preventDefault();
 
             $.ajax({
-                url: "<?= base_url(); ?>/home/saveUserData",
+                url: "<?= base_url(); ?>/client/saveClientData",
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
@@ -199,64 +177,40 @@
                 },
 
                 success: function(data) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1700,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
 
-                    if ($('#action').val() == 'create') {
-                        $('#submitButton').val('Create');
-                    } else {
-                        $('#submitButton').val('Edit');
-                    }
-
+                    $('#submitButton').val('Create');
                     $('#submitButton').attr('disabled', false);
 
                     if (data.error == 'yes') {
-                        $('#client_error').text(data.username_error);
-                        $('#email_error').text(data.password_error);
-                        $('#address_error').text(data.role_error);
+                        $('#name_error').text(data.name_error);
+                        $('#email_error').text(data.email_error);
+                        $('#address_error').text(data.address_error);
 
-                        if ($('#action').val() == 'create') {
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'failed to create a client'
-                            })
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 1700,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
 
-                        } else {
-                            Toast.fire({
-                                icon: 'error',
-                                title: 'failed to update the data'
-                            })
-                        }
-
-
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'failed to create a client'
+                        })
                     } else {
                         $('#clientModal').modal('hide');
-                        $('#table').DataTable().ajax.reload();
 
-
-                        if ($('#action').val() == 'create') {
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Client created'
-                            })
-                        } else {
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Client data updated'
-                            })
-                        }
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'New client created'
+                        })
                     }
                 }
             })
-
         });
     });
 </script>
