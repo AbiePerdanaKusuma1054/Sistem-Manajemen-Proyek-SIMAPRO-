@@ -18,11 +18,11 @@ class User extends Migration
 			],
 			'role'       => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '10'
 			],
 			'username'       => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '10'
 			],
 			'password'      => [
 				'type'           => 'VARCHAR',

@@ -47,11 +47,22 @@ class Home extends BaseController
 			$password_error = '';
 			$role_error = '';
 			$error = 'no';
-			$rules = [
-				'username' => 'required|min_length[5]',
-				'password' => 'required|min_length[6]',
-				'role' => 'required'
-			];
+
+			if ($request->getVar('action') == 'create') {
+				$rules = [
+					'username' => 'required|min_length[5]|max_length[10]|is_unique[user.username]',
+					'password' => 'required|min_length[6]',
+					'role' => 'required'
+				];
+			}
+
+			if ($request->getVar('action') == 'edit') {
+				$rules = [
+					'username' => 'required|min_length[5]|max_length[10]',
+					'password' => 'required|min_length[6]',
+					'role' => 'required'
+				];
+			}
 
 			$error = $this->validate($rules);
 

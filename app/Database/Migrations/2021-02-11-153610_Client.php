@@ -22,11 +22,7 @@ class Client extends Migration
 			],
 			'client_email'      => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
-			],
-			'client_gender' => [
-				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '50'
 			],
 			'client_address'      => [
 				'type'           => 'VARCHAR',

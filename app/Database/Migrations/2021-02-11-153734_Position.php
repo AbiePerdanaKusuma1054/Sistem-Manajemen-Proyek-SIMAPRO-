@@ -18,7 +18,7 @@ class Position extends Migration
 			],
 			'position_name'       => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '255'
+				'constraint'     => '50'
 			],
 			'position_desc'      => [
 				'type'           => 'VARCHAR',
