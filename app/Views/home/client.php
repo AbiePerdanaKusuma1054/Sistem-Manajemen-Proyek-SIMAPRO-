@@ -1,101 +1,32 @@
 <?= $this->extend('temp/template'); ?>
 
 <?= $this->section('content'); ?>
-
 <!-- Menu Bar -->
 <div class="canvas">
     <div class="menu-list">
         <a href="<?= base_url() ?>/home/dashboard"><span class="menu-list-title">Dashboard</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/project"><span class="menu-list-title active">Project</span></a>
+        <a href="<?= base_url() ?>/home/project"><span class="menu-list-title">Project</span></a>
         <div class="line"></div>
         <a href="<?= base_url() ?>/home/user"><span class="menu-list-title">User</span></a>
         <div class="line"></div>
-        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title">Client</span></a>
+        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title active">Client</span></a>
     </div>
 </div>
 <!--  -->
 <div class="canvas-2">
-    <div class="lay" style="text-align: left ;">
-        <div class="add-back">
-            <i class="fa fa-folder-open">
-                <span class="add-back-text">
-                    Add Your Project
-                </span>
-            </i>
+    <div class="lay">
+        <!-- Button Triggered Modal Add Client -->
+        <div class="d-grid gap-2 col-6 mx-auto add">
+            <a>
+                <button class="btn btn-outline-light add" type="button" name="addClient" id="addClient">
+                    + Add Client
+                </button>
+            </a>
         </div>
-        <form class="row g-3 needs-validation" novalidate>
-            <div class="col-md-6">
-                <label for="validationCustom01" class="form-label">Project Name *</label>
-                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
-                <div class="invalid-feedback">
-                    Please input a project name.
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustom02" class="form-label">Project Master *</label>
-                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
-                <div class="invalid-feedback">
-                    Please input a project master.
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">Client *</label>
-                <div class="input-group">
-                    <select class="form-select form-control fc" id="validationCustom03">
-                        <option disabled selected>Choose client..</option>
-                        <option value="Dacoda">Dacoda</option>
-                        <option value="Shopii">Shopii</option>
-                        <option value="XXI">XXI</option>
-                        <option value="Tokotoko Team">Tokotoko Team</option>
-                        <option value="Unila">Unila</option>
-                    </select>
-                    <div class="input-group-append">
-                        <!-- Button Triggered Modal Add Client -->
-                        <button class="btn btn-secondary" type="button" name="addClient" id="addClient">
-                            Other Client
-                        </button>
-                    </div>
-                </div>
-                <div class="invalid-feedback">
-                    Please input a client.
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc" id="validationCustom04" value="" required>
-                <div class="invalid-feedback">
-                    Please input a contract amount.
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustom05" class="form-label">Project Start *</label>
-                <input type="date" class="form-control fc" id="validationCustom05" value="" required>
-                <div class="invalid-feedback">
-                    Please input a date start project.
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustom06" class="form-label">Project Deadline *</label>
-                <input type="date" class="form-control fc" id="validationCustom06" value="" required>
-                <div class="invalid-feedback">
-                    Please input a deadline.
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Project Description</label>
-                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" placeholder="desc project..."></textarea>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Status Project</label>
-                <input disabled type="text" class="form-control fc" value="Waiting" required>
-            </div>
-            <div class="col-12">
-                <button class="btn btn-light plus" type="submit" id="addalerts">Create</button>
-            </div>
-        </form>
+        <!-- End -->
 
-        <!-- Modal Add Client -->
+        <!-- Modal Add & Edit Client -->
         <div class="modal fade" name="clientModal" id="clientModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -140,13 +71,24 @@
             </div>
         </div>
         <!-- End -->
+
+        <!-- Data Tables -->
+        <table id="table" class="table table-striped table-dark" style="cursor: default;">
+            <thead class="attr">
+                <tr>
+                    <th>Client Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
     </div>
     <div class="space">
         <p class="dot">.</p>
     </div>
 </div>
 </div>
-
 
 <!-- Javascript -->
 <script>
@@ -252,6 +194,91 @@
             })
 
         });
+
+        //Edit Data Client
+
+        $(document).on('click', '.edit', function() {
+
+            var id = $(this).data('id');
+
+            $.ajax({
+                url: "<?= base_url() ?>/home/fetchIdUser",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+
+                success: function(data) {
+                    $('#username').val(data.username);
+                    $('#password').val(data.password);
+                    $('#role').val(data.role);
+
+                    $('#client_error').text('');
+                    $('#email_error').text('');
+                    $('#address_error').text('');
+                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit Data Client');
+                    $('#action').val('edit');
+                    $('#submitButton').val('Edit');
+                    $('#clientModal').modal('show');
+                    $('#hidden_id').val(id);
+                }
+            })
+        });
+
+        //Delete account
+
+        $(document).on('click', '.delete', function() {
+            var id = $(this).data('id');
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                //TODO: Benerin kalau bisa, karena kalo 'buttonsStyling: true' 
+                // buttonnya jadi jelek, tapi kalo seluruh 
+                // const ini dihapus jadi gabisa dijalanin swalnya.
+
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: true
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this action",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Client has been deleted.',
+                        'success',
+
+                        $.ajax({
+                            url: "<?= base_url() ?>/home/deleteUser",
+                            method: "POST",
+                            data: {
+                                id: id
+                            },
+
+                            success: function(data) {
+                                $('#table').DataTable().ajax.reload();
+                            }
+
+                        })
+
+                    )
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    // Do Nothing
+                }
+            })
+        });
+
     });
 </script>
 <!-- End of JS -->

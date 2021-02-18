@@ -32,6 +32,11 @@ class Home extends BaseController
 		return view('home/user');
 	}
 
+	public function client()
+	{
+		return view('home/client');
+	}
+
 	public function saveUserData()
 	{
 		$request = service('request');

@@ -10,7 +10,8 @@
         <a href="<?= base_url() ?>/home/project"><span class="menu-list-title">Project</span></a>
         <div class="line"></div>
         <a href="<?= base_url() ?>/home/user"><span class="menu-list-title">User</span></a>
-        </ul>
+        <div class="line"></div>
+        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title">Client</span></a>
     </div>
 </div>
 <!-- End -->

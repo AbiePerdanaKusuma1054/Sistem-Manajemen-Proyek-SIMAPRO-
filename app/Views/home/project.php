@@ -9,6 +9,8 @@
         <a href="<?= base_url() ?>/home/project"><span class="menu-list-title active">Project</span></a>
         <div class="line"></div>
         <a href="<?= base_url() ?>/home/user"><span class="menu-list-title">User</span></a>
+        <div class="line"></div>
+        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title">Client</span></a>
     </div>
 </div>
 <div class="canvas-2">
