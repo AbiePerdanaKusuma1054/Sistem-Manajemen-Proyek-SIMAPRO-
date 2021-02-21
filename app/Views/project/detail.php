@@ -1,18 +1,6 @@
 <?= $this->extend('temp/template'); ?>
 
 <?= $this->section('content'); ?>
-<div class="canvas">
-    <div class="menu-list">
-        <a href="<?= base_url() ?>/"><span class="menu-list-title">Dashboard</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/project"><span class="menu-list-title active">Project</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/user"><span class="menu-list-title">User</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/client"><span class="menu-list-title">Client</span></a>
-    </div>
-</div>
-<!--  -->
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;">
         <div class="add-back">
@@ -25,16 +13,17 @@
         <div class="date-project grids">
             <div class="back-date">
                 <div class="start">
-                    <p class="date-text">Project start in : <span class="date">
-                            01/01/2021
-                        </span>
-                    </p>
+                    <?php foreach ($detail as $d) : ?>
+                        <p class="date-text">Project start in: <span class="date">
+                                <?= date('d/m/Y', strtotime($d['project_start'])) ?>
+                            </span>
+                        </p>
                 </div>
             </div>
             <div class="back-date-dead">
                 <div class="end">
-                    <p class="date-text">Project deadline : <span class="date">
-                            01/02/2021
+                    <p class="date-text">Project deadline: <span class="date">
+                            <?= date('d/m/Y', strtotime($d['project_finish'])) ?>
                         </span>
                     </p>
                 </div>
@@ -45,136 +34,139 @@
 
                 <div class="detail-box">
 
+                    <?= $pm = $d['project_manager'] ?>
+
                     <!-- button edit -->
-                    <a href="/home/editproject">
+                    <a href="<?= base_url() ?>/project/edit/<?= $d['id'] ?>">
                         <i class="fa fa-pencil-square-o act act-l fa-lg" aria-hidden="true"></i>
                     </a>
                     <!-- button delete -->
-                    <a href="">
+                    <a href="<?= base_url() ?>/project/delete/<?= $d['id'] ?>" onclick="return confirm ('Proses ini TIDAK DAPAT DIBATALKAN. Apakah anda yakin?');">
                         <i class="fa fa-trash act act-r fa-lg" aria-hidden="true"></i>
                     </a>
 
                     <div class="grid">
                         <p>Project Name</p>
-                        <span>Website</span>
+                        <span><?= $d['project_name'] ?></span>
                     </div>
                     <div class="grid">
-                        <p>Project Master</p>
-                        <span>Alexander</span>
+                        <p>Project Manager</p>
+                        <span><?= $pm ?></span>
                     </div>
                     <div class="grid">
                         <p>Client</p>
-                        <span>Dacoda</span>
+                        <span><?= $d['client_name'] ?></span>
                     </div>
-                    <div class="grid">
-                        <p>Contract Amount</p>
-                        <span>Rp. 10.000.000</span>
-                    </div>
+                    <!-- <div class="grid">
+                            <p>Contract Amount</p>
+                            <span>Rp. 10.000.000</span>
+                        </div> -->
                     <div class="grid">
                         <p>Project Description</p>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi similique iusto sit nesciunt itaque accusantium perspiciatis, quisquam culpa libero. Sequi magni nam tenetur eum quos repudiandae non quia veniam at.</span>
+                        <span><?= $d['project_desc'] ?></span>
                     </div>
                     <div class="grid">
                         <p>Project Status</p>
-                        <span>Hold</span>
+                        <span><?= ucfirst($d['project_status']) ?></span>
                     </div>
+                <?php endforeach; ?>
 
 
-                    <div class="add-team">
-                        <i class="fa fa-users">
-                            <span class="add-team-text">
-                                Project Team
-                            </span>
-                        </i>
-                        <!-- Modal add team -->
-                        <!-- Button trigger modal -->
+                <div class="add-team">
+                    <i class="fa fa-users">
+                        <span class="add-team-text">
+                            Project Team
+                        </span>
+                    </i>
 
-                        <a>
-                            <i class="fa fa-plus-circle fa-lg btn-addteam" data-toggle="modal" data-target="#addteamModal"></i>
-                        </a>
+                    <!-- Button trigger modal -->
+
+                    <a>
+                        <i class="fa fa-plus-circle fa-lg btn-addteam" data-toggle="modal" data-target="#addteamModal"></i>
+                    </a>
 
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="addteamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="modal-title" id="exampleModalLabel">
-                                            <i class="fa fa-user-plus">
-                                                <span class="add-team-text">
-                                                    Add Members
-                                                </span>
-                                            </i>
-                                        </div>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                    <!-- Modal Add Team -->
+                    <div class="modal fade" id="addteamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="modal-title" id="exampleModalLabel">
+                                        <i class="fa fa-user-plus">
+                                            <span class="add-team-text">
+                                                Add Members
+                                            </span>
+                                        </i>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="col">
-                                            <label for="validationCustom01" class="form-label">Name</label>
-                                            <input type="text" class="form-control fc" id="validationCustom01" value="" required>
-                                            <div class="invalid-feedback">
-                                                Please input a name.
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <label for="validationCustom02" class="form-label">Position</label>
-                                            <input type="text" class="form-control fc" id="validationCustom02" value="" required>
-                                            <div class="invalid-feedback">
-                                                Please choose a position.
-                                            </div>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col">
+                                        <label for="validationCustom01" class="form-label">Name</label>
+                                        <input type="text" class="form-control fc" id="validationCustom01" value="" required>
+                                        <div class="invalid-feedback">
+                                            Please input a name.
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light plus">Add</button>
+                                    <div class="col">
+                                        <label for="validationCustom02" class="form-label">Position</label>
+                                        <input type="text" class="form-control fc" id="validationCustom02" value="" required>
+                                        <div class="invalid-feedback">
+                                            Please choose a position.
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light plus">Add</button>
                                 </div>
                             </div>
                         </div>
-                        <!-- End -->
-
                     </div>
+                    <!-- End -->
+
+                </div>
 
 
-                    <div id="back-team">
-                        <div class="inner grid-team">
-                            <i class="fa fa-user name">
-                                <span class="name-text">
-                                    Alexander
-                                </span>
-                            </i>
-                            <span class="post-text">Project Master
-                                <a href="" style="margin-left: 10px;">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                <div id="back-team">
+                    <div class="inner grid-team">
+                        <i class="fa fa-user name">
+                            <span class="name-text">
+                                <?= $pm ?>
                             </span>
-                        </div>
-                        <div class="inner grid-team">
-                            <i class="fa fa-user name">
-                                <span class="name-text">
-                                    Firaztori Yusuf Nurwanto
-                                </span>
-                            </i>
-                            <span class="post-text">Programmer
-                                <a href="" style="margin-left: 10px;">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </span>
-                        </div>
-                        <div class="inner grid-team">
-                            <i class="fa fa-user name">
-                                <span class="name-text">
-                                    Abie Perdana Kusuma
-                                </span>
-                            </i>
-                            <span class="post-text">Programmer
-                                <a href="" style="margin-left: 10px;">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </span>
-                        </div>
+                        </i>
+                        <span class="post-text">Project Manager
+                            <a href="" style="margin-left: 10px;">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </span>
                     </div>
+                    <div class="inner grid-team">
+                        <i class="fa fa-user name">
+                            <span class="name-text">
+                                Firaztori Yusuf Nurwanto
+                            </span>
+                        </i>
+                        <span class="post-text">Programmer
+                            <a href="" style="margin-left: 10px;">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="inner grid-team">
+                        <i class="fa fa-user name">
+                            <span class="name-text">
+                                Abie Perdana Kusuma
+                            </span>
+                        </i>
+                        <span class="post-text">Programmer
+                            <a href="" style="margin-left: 10px;">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
                 </div>
             </div>
             <div class="right">

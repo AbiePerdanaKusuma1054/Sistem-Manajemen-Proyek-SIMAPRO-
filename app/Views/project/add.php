@@ -1,20 +1,6 @@
 <?= $this->extend('temp/template'); ?>
 
 <?= $this->section('content'); ?>
-
-<!-- Menu Bar -->
-<div class="canvas">
-    <div class="menu-list">
-        <a href="<?= base_url() ?>/home/dashboard"><span class="menu-list-title">Dashboard</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/home/project"><span class="menu-list-title active">Project</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/home/user"><span class="menu-list-title">User</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/home/client"><span class="menu-list-title">Client</span></a>
-    </div>
-</div>
-<!--  -->
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;">
         <div class="add-back">
@@ -24,31 +10,31 @@
                 </span>
             </i>
         </div>
-        <form class="row g-3 needs-validation" novalidate>
+        <form class="row g-3 needs-validation" action="<?= base_url() ?>/project/addProject" method="POST">
             <div class="col-md-6">
-                <label for="validationCustom01" class="form-label">Project Name *</label>
-                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
+                <label for="project_name" class="form-label">Project Name *</label>
+                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" value="<?= old('project_name') ?>" required>
                 <div class="invalid-feedback">
-                    Please input a project name.
+                    <?= ($validator->getError('project_name')); ?>
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom02" class="form-label">Project Manager *</label>
-                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
+                <input type="text" class="form-control fc <?= ($validator->hasError('project_manager')) ? 'is-invalid' : ''; ?>" name="project_manager" value="<?= old('project_manager') ?>" required>
                 <div class="invalid-feedback">
-                    Please input a project manager.
+                    <?= ($validator->getError('project_manager')); ?>
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom03" class="form-label">Client *</label>
                 <div class="input-group">
-                    <select class="form-select form-control fc" id="validationCustom03">
-                        <option disabled selected>Choose client..</option>
-                        <option value="Dacoda">Dacoda</option>
-                        <option value="Shopii">Shopii</option>
-                        <option value="XXI">XXI</option>
-                        <option value="Tokotoko Team">Tokotoko Team</option>
-                        <option value="Unila">Unila</option>
+                    <select class="form-select form-control fc <?= ($validator->hasError('client_id')) ? 'is-invalid' : ''; ?>" name="client_id">
+                        <option disabled selected value=''>Choose client..</option>
+                        <?php foreach ($client as $c) : ?>
+                            <option value="<?= $c['id'] ?>">
+                                <?= $c['client_name'] ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                     <div class="input-group-append">
                         <!-- Button Triggered Modal Add Client -->
@@ -58,40 +44,40 @@
                     </div>
                 </div>
                 <div class="invalid-feedback">
-                    Please input a client.
+                    <?= ($validator->getError('client_id')); ?>
                 </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc" id="validationCustom04" value="" required>
+                <input type="number" class="form-control fc" name="" value="" required>
                 <div class="invalid-feedback">
                     Please input a contract amount.
                 </div>
+            </div> -->
+            <div class="col-md-3">
+                <label class="form-label">Project Status</label>
+                <input disabled type="text" class="form-control fc" value="waiting">
             </div>
             <div class="col-md-6">
                 <label for="validationCustom05" class="form-label">Project Start *</label>
-                <input type="date" class="form-control fc" id="validationCustom05" value="" required>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_start')) ? 'is-invalid' : ''; ?>" name="project_start" value="<?= old('project_start') ?>" required>
                 <div class="invalid-feedback">
-                    Please input a date start project.
+                    <?= ($validator->getError('project_start')); ?>
                 </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom06" class="form-label">Project Deadline *</label>
-                <input type="date" class="form-control fc" id="validationCustom06" value="" required>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_finish')) ? 'is-invalid' : ''; ?>" name="project_finish" value="<?= old('project_finish') ?>" required>
                 <div class="invalid-feedback">
-                    Please input a deadline.
+                    <?= ($validator->getError('project_finish')); ?>
                 </div>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Project Description</label>
-                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" placeholder="desc project..."></textarea>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Project Status</label>
-                <input disabled type="text" class="form-control fc" value="waiting" required>
+                <textarea class="form-control fc" name="project_desc" rows="4" placeholder="Describe the project..." value="<?= old('project_desc') ?>"></textarea>
             </div>
             <div class="col-12">
-                <button class="btn btn-light plus" type="submit" id="addalerts">Create</button>
+                <button class="btn btn-light plus" type="submit">Create</button>
             </div>
         </form>
 
@@ -123,7 +109,7 @@
 
                             <div class="col">
                                 <label class="form-label">Address *</label>
-                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="Client address"></textarea>
+                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="Client's address"></textarea>
                                 <span class="text-danger" id="address_error"></span>
                             </div>
 
@@ -197,13 +183,14 @@
                         $('#email_error').text(data.email_error);
                         $('#address_error').text(data.address_error);
 
-
                         Toast.fire({
                             icon: 'error',
                             title: 'failed to create a client'
                         })
                     } else {
                         $('#clientModal').modal('hide');
+
+                        setTimeout(location.reload.bind(location), 2200);
 
                         Toast.fire({
                             icon: 'success',

@@ -15,6 +15,14 @@ class Client extends BaseController
 
     public function index()
     {
+        $sessions = [
+            'client_mode' => true,
+            'project_mode' => false,
+            'dashboard_mode' => false,
+            'user_mode' => false
+        ];
+
+        session()->set($sessions);
         return view('client');
     }
 

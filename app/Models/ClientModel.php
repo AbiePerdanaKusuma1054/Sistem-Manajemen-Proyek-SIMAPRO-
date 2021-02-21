@@ -16,6 +16,13 @@ class ClientModel extends Model
         return $builder;
     }
 
+    public function getClientNames()
+    {
+        $builder = $this->db->table($this->table)
+            ->select('id, client_name')->get()->getResultArray();
+        return $builder;
+    }
+
     public function button()
     {
         $buttonFun = function ($row) {

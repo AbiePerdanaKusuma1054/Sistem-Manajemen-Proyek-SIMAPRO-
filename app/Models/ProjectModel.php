@@ -9,13 +9,14 @@ class ProjectModel extends Model
     protected $table = 'project';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'project_name', 'client_name', 'pm_name', 'start_date',
-        'finish_date', 'project_status'
+        'project_name', 'client_id', 'project_manager', 'project_start',
+        'project_finish', 'project_desc', 'project_status'
     ];
 
     public function noticeTable()
     {
-        $builder = $this->db->table($this->table);
+        $builder = $this->db->table('client')
+            ->join($this->table, 'project.client_id = client.id');
         return $builder;
     }
 
@@ -41,12 +42,44 @@ class ProjectModel extends Model
         return $statusFun;
     }
 
+    public function startDate()
+    {
+        $startDateFun = function ($row) {
+
+            return date('d/m/Y', strtotime($row['project_start']));
+        };
+
+        return $startDateFun;
+    }
+
+    public function finishDate()
+    {
+        $finishDateFun = function ($row) {
+
+            return date('d/m/Y', strtotime($row['project_finish']));
+        };
+
+        return $finishDateFun;
+    }
+
     public function button()
     {
         $buttonFun = function ($row) {
-            return '<a href="' . base_url() . '/project/detail">
+            return '<a href="' . base_url() . '/project/detail/' . $row['id'] . '">
             <button type="button" class="btn btn-info">Detail</button></a>';
         };
         return $buttonFun;
+    }
+
+    public function getProjectDetail($id)
+    {
+        $builder = $this->db->table('client')
+            ->join($this->table, 'project.client_id = client.id')
+            ->where('project.id', $id)
+            ->get()->getResultArray();
+
+        // dd($builder);
+
+        return $builder;
     }
 }

@@ -15,6 +15,14 @@ class User extends BaseController
 
     public function index()
     {
+        $sessions = [
+            'user_mode' => true,
+            'project_mode' => false,
+            'dashboard_mode' => false,
+            'client_mode' => false
+        ];
+
+        session()->set($sessions);
         return view('user');
     }
 

@@ -17,6 +17,15 @@ class Home extends BaseController
 			'finish' => $projectModel->where('project_status', 'finish')->countAllResults(),
 			'cancelled' => $projectModel->where('project_status', 'cancelled')->countAllResults()
 		];
+
+		$sessions = [
+			'dashboard_mode' => true,
+			'user_mode' => false,
+			'project_mode' => false,
+			'client_mode' => false
+		];
+
+		session()->set($sessions);
 		return view('home', $data);
 	}
 }

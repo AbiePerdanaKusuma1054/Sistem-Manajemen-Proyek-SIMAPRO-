@@ -1,18 +1,6 @@
 <?= $this->extend('temp/template'); ?>
 
 <?= $this->section('content'); ?>
-<!-- Menu Bar -->
-<div class="canvas">
-    <div class="menu-list">
-        <a href="<?= base_url() ?>/"><span class="menu-list-title">Dashboard</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/project"><span class="menu-list-title">Project</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/user"><span class="menu-list-title">User</span></a>
-        <div class="line"></div>
-        <a href="<?= base_url() ?>/client"><span class="menu-list-title active">Client</span></a>
-    </div>
-</div>
 <div class="canvas-2">
     <div class="lay">
         <!-- Button Triggered Modal Add Client -->
@@ -53,7 +41,7 @@
 
                             <div class="col">
                                 <label class="form-label">Address *</label>
-                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="Client address"></textarea>
+                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="Client's address"></textarea>
                                 <span class="text-danger" id="address_error"></span>
                             </div>
 
