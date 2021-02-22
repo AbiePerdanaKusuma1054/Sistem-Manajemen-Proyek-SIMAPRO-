@@ -203,7 +203,7 @@
                     $('#name_error').text('');
                     $('#email_error').text('');
                     $('#address_error').text('');
-                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit Data Client');
+                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit Client Data');
                     $('#action').val('edit');
                     $('#submitButton').val('Edit');
                     $('#clientModal').modal('show');
@@ -217,19 +217,7 @@
         $(document).on('click', '.delete', function() {
             var id = $(this).data('id');
 
-            const swalWithBootstrapButtons = Swal.mixin({
-                //TODO: Benerin kalau bisa, karena kalo 'buttonsStyling: true' 
-                // buttonnya jadi jelek, tapi kalo seluruh 
-                // const ini dihapus jadi gabisa dijalanin swalnya.
-
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: true
-            })
-
-            swalWithBootstrapButtons.fire({
+            Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this action",
                 icon: 'warning',
@@ -238,7 +226,7 @@
                 cancelButtonText: 'Cancel'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    swalWithBootstrapButtons.fire(
+                    Swal.fire(
                         'Deleted!',
                         'Client has been deleted.',
                         'success',
@@ -257,10 +245,6 @@
                         })
 
                     )
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    // Do Nothing
                 }
             })
         });

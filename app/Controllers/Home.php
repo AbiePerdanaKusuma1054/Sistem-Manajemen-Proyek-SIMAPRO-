@@ -20,6 +20,8 @@ class Home extends BaseController
 
 		$sessions = [
 			'dashboard_mode' => true,
+			'employee_mode' => false,
+			'position_mode' => false,
 			'user_mode' => false,
 			'project_mode' => false,
 			'client_mode' => false

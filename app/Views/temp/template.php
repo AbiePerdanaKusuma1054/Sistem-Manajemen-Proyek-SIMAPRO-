@@ -72,6 +72,10 @@
                     <a href="<?= base_url() ?>/user"><span class="menu-list-title <?= session()->get('user_mode') == TRUE  ? 'active' : ''; ?>">User</span></a>
                     <div class="line"></div>
                     <a href="<?= base_url() ?>/client"><span class="menu-list-title <?= session()->get('client_mode') == TRUE  ? 'active' : ''; ?>">Client</span></a>
+                    <div class="line"></div>
+                    <a href="<?= base_url() ?>/employee"><span class="menu-list-title <?= session()->get('employee_mode') == TRUE  ? 'active' : ''; ?>">Employee</span></a>
+                    <div class="line"></div>
+                    <a href="<?= base_url() ?>/position"><span class="menu-list-title <?= session()->get('position_mode') == TRUE  ? 'active' : ''; ?>">Positions</span></a>
                 </div>
             </div>
             <!-- End -->

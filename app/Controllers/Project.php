@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ProjectModel;
 use App\Models\ClientModel;
+use App\Models\EmployeeModel;
 use monken\TablesIgniter;
 
 class Project extends BaseController
@@ -13,12 +14,15 @@ class Project extends BaseController
     {
         $this->projectModel = new ProjectModel();
         $this->clientModel = new ClientModel();
+        $this->employeeModel = new EmployeeModel();
     }
 
     public function index()
     {
         $sessions = [
             'project_mode' => true,
+            'employee_mode' => false,
+            'position_mode' => false,
             'dashboard_mode' => false,
             'user_mode' => false,
             'client_mode' => false
@@ -36,6 +40,7 @@ class Project extends BaseController
 
         $data = [
             'client' => $this->clientModel->getClientNames(),
+            'employee' => $this->employeeModel->getEmployeeNames(),
             'validator' => \Config\Services::validation()
         ];
 
@@ -47,7 +52,13 @@ class Project extends BaseController
         $request = service('request');
 
         $rules = [
-            'project_name' => 'required|max_length[50]',
+            'project_name' => [
+                'rules' => 'required|max_length[50]',
+                'errors' => [
+                    'required' => 'Please input a project name.',
+                    'max_length' => 'The name should not be more than 50 characters.'
+                ]
+            ],
             'project_manager' => 'required',
             'client_id' => 'required',
             'project_start' => 'required',
@@ -96,6 +107,7 @@ class Project extends BaseController
         $data = [
             'validator' => \Config\Services::validation(),
             'detail' => $this->projectModel->getProjectDetail($id),
+            'employee' => $this->employeeModel->getEmployeeNames(),
             'client' => $this->clientModel->getClientNames()
         ];
 
@@ -107,7 +119,13 @@ class Project extends BaseController
         $request = service('request');
 
         $rules = [
-            'project_name' => 'required|max_length[50]',
+            'project_name' => [
+                'rules' => 'required|max_length[50]',
+                'errors' => [
+                    'required' => 'Please input a project name',
+                    'max_length' => 'The name should not be more than 50 characters'
+                ]
+            ],
             'project_manager' => 'required',
             'client_id' => 'required',
             'project_start' => 'required',
@@ -135,10 +153,14 @@ class Project extends BaseController
         }
     }
 
-    public function delete($id)
+    public function delete()
     {
-        $this->projectModel->delete($id);
-        return redirect()->to('/project');
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $id = $request->getVar('id');
+            $this->projectModel->where('id', $id)->delete();
+        }
     }
 
     public function fetchProjectData()

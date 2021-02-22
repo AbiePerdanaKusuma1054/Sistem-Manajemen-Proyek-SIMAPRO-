@@ -6,7 +6,7 @@
         <div class="add-back">
             <i class="fa fa-desktop">
                 <span class="add-back-text">
-                    Detail Project
+                    Project Details
                 </span>
             </i>
         </div>
@@ -34,16 +34,13 @@
 
                 <div class="detail-box">
 
-                    <?= $pm = $d['project_manager'] ?>
-
                     <!-- button edit -->
                     <a href="<?= base_url() ?>/project/edit/<?= $d['id'] ?>">
                         <i class="fa fa-pencil-square-o act act-l fa-lg" aria-hidden="true"></i>
                     </a>
                     <!-- button delete -->
-                    <a href="<?= base_url() ?>/project/delete/<?= $d['id'] ?>" onclick="return confirm ('Proses ini TIDAK DAPAT DIBATALKAN. Apakah anda yakin?');">
-                        <i class="fa fa-trash act act-r fa-lg" aria-hidden="true"></i>
-                    </a>
+
+                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id="<?= $d['id'] ?>"></i>
 
                     <div class="grid">
                         <p>Project Name</p>
@@ -51,7 +48,7 @@
                     </div>
                     <div class="grid">
                         <p>Project Manager</p>
-                        <span><?= $pm ?></span>
+                        <span><?= $d['project_manager'] ?></span>
                     </div>
                     <div class="grid">
                         <p>Client</p>
@@ -63,110 +60,69 @@
                         </div> -->
                     <div class="grid">
                         <p>Project Description</p>
-                        <span><?= $d['project_desc'] ?></span>
+                        <span><?= $d['project_desc'] == '' ? '-' : $d['project_desc']; ?></span>
                     </div>
                     <div class="grid">
                         <p>Project Status</p>
                         <span><?= ucfirst($d['project_status']) ?></span>
                     </div>
-                <?php endforeach; ?>
 
 
-                <div class="add-team">
-                    <i class="fa fa-users">
-                        <span class="add-team-text">
-                            Project Team
-                        </span>
-                    </i>
 
-                    <!-- Button trigger modal -->
+                    <div class="add-team">
+                        <i class="fa fa-users">
+                            <span class="add-team-text">
+                                Project Team
+                            </span>
+                        </i>
 
-                    <a>
-                        <i class="fa fa-plus-circle fa-lg btn-addteam" data-toggle="modal" data-target="#addteamModal"></i>
-                    </a>
+                        <!-- Button trigger modal -->
+
+                        <a>
+                            <i class="fa fa-plus-circle fa-lg btn-addteam" data-toggle="modal" data-target="#addteamModal"></i>
+                        </a>
+                    </div>
 
 
-                    <!-- Modal Add Team -->
-                    <div class="modal fade" id="addteamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <div class="modal-title" id="exampleModalLabel">
-                                        <i class="fa fa-user-plus">
-                                            <span class="add-team-text">
-                                                Add Members
-                                            </span>
-                                        </i>
-                                    </div>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="col">
-                                        <label for="validationCustom01" class="form-label">Name</label>
-                                        <input type="text" class="form-control fc" id="validationCustom01" value="" required>
-                                        <div class="invalid-feedback">
-                                            Please input a name.
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <label for="validationCustom02" class="form-label">Position</label>
-                                        <input type="text" class="form-control fc" id="validationCustom02" value="" required>
-                                        <div class="invalid-feedback">
-                                            Please choose a position.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light plus">Add</button>
-                                </div>
-                            </div>
+                    <div id="back-team">
+                        <div class="inner grid-team">
+                            <i class="fa fa-user name">
+                                <span class="name-text">
+                                    <?= $d['project_manager'] ?>
+                                </span>
+                            <?php endforeach; ?>
+                            </i>
+                            <span class="post-text">Project Manager
+                                <a href="" style="margin-left: 10px;">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="inner grid-team">
+                            <i class="fa fa-user name">
+                                <span class="name-text">
+                                    Firaztori Yusuf Nurwanto
+                                </span>
+                            </i>
+                            <span class="post-text">Programmer
+                                <a href="" style="margin-left: 10px;">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="inner grid-team">
+                            <i class="fa fa-user name">
+                                <span class="name-text">
+                                    Abie Perdana Kusuma
+                                </span>
+                            </i>
+                            <span class="post-text">Programmer
+                                <a href="" style="margin-left: 10px;">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </span>
                         </div>
                     </div>
-                    <!-- End -->
-
-                </div>
-
-
-                <div id="back-team">
-                    <div class="inner grid-team">
-                        <i class="fa fa-user name">
-                            <span class="name-text">
-                                <?= $pm ?>
-                            </span>
-                        </i>
-                        <span class="post-text">Project Manager
-                            <a href="" style="margin-left: 10px;">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="inner grid-team">
-                        <i class="fa fa-user name">
-                            <span class="name-text">
-                                Firaztori Yusuf Nurwanto
-                            </span>
-                        </i>
-                        <span class="post-text">Programmer
-                            <a href="" style="margin-left: 10px;">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="inner grid-team">
-                        <i class="fa fa-user name">
-                            <span class="name-text">
-                                Abie Perdana Kusuma
-                            </span>
-                        </i>
-                        <span class="post-text">Programmer
-                            <a href="" style="margin-left: 10px;">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </span>
-                    </div>
-                </div>
                 </div>
             </div>
             <div class="right">
@@ -176,6 +132,47 @@
                 </div>
                 <!-- end -->
             </div>
+
+            <!-- Modal Add Team -->
+            <div class="modal fade" id="addteamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title" id="exampleModalLabel">
+                                <i class="fa fa-user-plus">
+                                    <span class="add-team-text">
+                                        Add Members
+                                    </span>
+                                </i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col">
+                                <label for="validationCustom01" class="form-label">Name</label>
+                                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
+                                <div class="invalid-feedback">
+                                    Please input a name.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="validationCustom02" class="form-label">Position</label>
+                                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
+                                <div class="invalid-feedback">
+                                    Please choose a position.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light plus">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+
         </div>
     </div>
     <div class="space">
@@ -185,6 +182,38 @@
 </div>
 
 <script>
+    $('#deleteProject').click(function() {
+        var id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this action",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Project has been deleted.',
+                    'success',
+
+                    $.ajax({
+                        url: "<?= base_url() ?>/project/delete",
+                        method: "POST",
+                        data: {
+                            id: id
+                        },
+
+                        success: function(data) {
+                            location.href = "<?= base_url() ?>/project"
+                        }
+                    })
+                )
+            }
+        })
+    });
     /*
 
         Name    : Responsive HTML5 Chat
@@ -265,14 +294,8 @@
     responsiveChat('.responsive-html5-chat');
 
     /* Let's push some dummy data */
-    responsiveChatPush('.chat', 'Alexander', 'you', '08.03.2021 14:31:22', 'This design responsive?');
-    responsiveChatPush('.chat', 'Firaz', 'me', '08.03.2021 14:33:32', 'Yep, is this design responsive');
-    responsiveChatPush('.chat', 'Firaz', 'me', '08.03.2021 14:36:4', 'By the way when I hover on my message it shows date.');
-    responsiveChatPush('.chat', 'Alexander', 'you', '09.03.2021 09:12:12', 'Yes, this is completely responsive.');
-    responsiveChatPush('.chat', 'Abie', 'you', '09.03.2021 11:33:02', 'Of course');
-    responsiveChatPush('.chat', 'Firaz', 'me', '09.03.2021 11:36:43', 'I hope this project is completed quickly');
-    responsiveChatPush('.chat', 'Alexander', 'you', '10.03.2021 12:09:12', 'I want this project completed before the deadline');
-    responsiveChatPush('.chat', 'Abie', 'you', '10.03.2021 12:11:32', 'we will try our best');
+    responsiveChatPush('.chat', 'Alexander', 'you', '08.03.2021 14:31:22', 'Ey, this chat section will be doomed right?');
+    responsiveChatPush('.chat', 'Firaz', 'me', '08.03.2021 14:33:32', 'Yeah, we\'ll replace it with a comment plugin or something like that.');
 
     /* DEMO */
     if (parent == top) {

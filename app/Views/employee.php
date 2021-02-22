@@ -3,18 +3,18 @@
 <?= $this->section('content'); ?>
 <div class="canvas-2">
     <div class="lay">
-        <!-- Button Triggered Modal Add User -->
+        <!-- Button Triggered Modal Add Employee -->
         <div class="d-grid gap-2 col-6 mx-auto add">
             <a>
-                <button class="btn btn-outline-light add" type="button" name="addUser" id="addUser">
-                    + Add User
+                <button class="btn btn-outline-light add" type="button" name="addEmployee" id="addEmployee">
+                    + Add Employee
                 </button>
             </a>
         </div>
         <!-- End -->
 
-        <!-- Modal Add & Edit User -->
-        <div class="modal fade" name="userModal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal Add & Edit Employee -->
+        <div class="modal fade" name="employeeModal" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -25,26 +25,36 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="userForm" style="text-align: left;" method="POST">
+                        <form id="employeeForm" style="text-align: left;" method="POST">
+
                             <div class="col">
-                                <label class="form-label">Username *</label>
-                                <input type="text" name="username" id="username" class="form-control fc">
-                                <span class="text-danger" id="username_error"></span>
+                                <label class="form-label">Employee Name *</label>
+                                <input type="text" name="name" id="name" class="form-control fc">
+                                <span class="text-danger" id="name_error"></span>
                             </div>
+
                             <div class="col">
-                                <label class="form-label">Role *</label>
-                                <select class="form-select form-control fc" name="role" id="role">
-                                    <option disabled selected>Select role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">User</option>
+                                <label class="form-label">Email *</label>
+                                <input type="text" name="email" id="email" class="form-control fc">
+                                <span class="text-danger" id="email_error"></span>
+                            </div>
+
+                            <div class="col">
+                                <label class="form-label">Gender *</label>
+                                <select class="form-select form-control fc" name="gender" id="gender">
+                                    <option disabled selected>Select one...</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
                                 </select>
-                                <span class="text-danger" id="role_error"></span>
+                                <span class="text-danger" id="gender_error"></span>
                             </div>
+
                             <div class="col">
-                                <label class="form-label">Password *</label>
-                                <input type="password" class="form-control fc" name="password" id="password">
-                                <span class="text-danger" id="password_error"></span>
+                                <label class="form-label">Address *</label>
+                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="employee's address"></textarea>
+                                <span class="text-danger" id="address_error"></span>
                             </div>
+
                             <div class="modal-footer">
                                 <input type="hidden" name="action" id="action" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -61,8 +71,10 @@
         <table id="table" class="table table-striped table-dark" style="cursor: default;">
             <thead class="attr">
                 <tr>
-                    <th>Username</th>
-                    <th>Role</th>
+                    <th>Employee Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Address</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -82,34 +94,34 @@
         $('#table').DataTable({
             "aoColumnDefs": [{
                 "bSortable": false,
-                "aTargets": [2]
+                "aTargets": [4]
             }],
             "order": [],
             "serverSide": true,
             "ajax": {
-                url: "<?= base_url() ?>/user/fetchUserData",
+                url: "<?= base_url() ?>/employee/fetchEmployeeData",
                 type: 'POST'
             }
         });
 
-        //Create User
+        //Create employee
 
-        $('#addUser').click(function() {
-            $('#userForm')[0].reset();
-            $('#username_error').text('');
-            $('#password_error').text('');
-            $('#role_error').text('');
-            $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add User');
+        $('#addEmployee').click(function() {
+            $('#employeeForm')[0].reset();
+            $('#name_error').text('');
+            $('#email_error').text('');
+            $('#address_error').text('');
+            $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Employee');
             $('#action').val('create');
             $('#submitButton').val('Create');
-            $('#userModal').modal('show');
+            $('#employeeModal').modal('show');
         });
 
-        $('#userForm').on('submit', function(event) {
+        $('#employeeForm').on('submit', function(event) {
             event.preventDefault();
 
             $.ajax({
-                url: "<?= base_url(); ?>/user/saveUserData",
+                url: "<?= base_url(); ?>/employee/saveEmployeeData",
                 method: "POST",
                 data: $(this).serialize(),
                 dataType: "JSON",
@@ -140,38 +152,39 @@
                     $('#submitButton').attr('disabled', false);
 
                     if (data.error == 'yes') {
-                        $('#username_error').text(data.username_error);
-                        $('#password_error').text(data.password_error);
-                        $('#role_error').text(data.role_error);
+                        $('#name_error').text(data.name_error);
+                        $('#email_error').text(data.email_error);
+                        $('#gender_error').text(data.gender_error);
+                        $('#address_error').text(data.address_error);
 
                         if ($('#action').val() == 'create') {
                             Toast.fire({
                                 icon: 'error',
-                                title: 'failed to create a user'
+                                title: 'Failed to create an Employee'
                             })
 
                         } else {
                             Toast.fire({
                                 icon: 'error',
-                                title: 'failed to update the data'
+                                title: 'Failed to update the data'
                             })
                         }
 
 
                     } else {
-                        $('#userModal').modal('hide');
+                        $('#employeeModal').modal('hide');
                         $('#table').DataTable().ajax.reload();
 
 
                         if ($('#action').val() == 'create') {
                             Toast.fire({
                                 icon: 'success',
-                                title: 'User created'
+                                title: 'New data created'
                             })
                         } else {
                             Toast.fire({
                                 icon: 'success',
-                                title: 'User data updated'
+                                title: 'Employee data updated'
                             })
                         }
                     }
@@ -180,14 +193,14 @@
 
         });
 
-        //Edit Account
+        //Edit employee Data
 
         $(document).on('click', '.edit', function() {
 
             var id = $(this).data('id');
 
             $.ajax({
-                url: "<?= base_url() ?>/user/fetchIdUser",
+                url: "<?= base_url() ?>/employee/fetchIdEmployee",
                 method: "POST",
                 data: {
                     id: id
@@ -195,23 +208,25 @@
                 dataType: "JSON",
 
                 success: function(data) {
-                    $('#username').val(data.username);
-                    $('#password').val(data.password);
-                    $('#role').val(data.role);
+                    $('#name').val(data.employee_name);
+                    $('#email').val(data.employee_email);
+                    $('#gender').val(data.employee_gender);
+                    $('#address').val(data.employee_address);
 
-                    $('#username_error').text('');
-                    $('#password_error').text('');
-                    $('#role_error').text('');
-                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit User Account');
+                    $('#name_error').text('');
+                    $('#email_error').text('');
+                    $('#gender_error').text('');
+                    $('#address_error').text('');
+                    $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit Employee Data');
                     $('#action').val('edit');
                     $('#submitButton').val('Edit');
-                    $('#userModal').modal('show');
+                    $('#employeeModal').modal('show');
                     $('#hidden_id').val(id);
                 }
             })
         });
 
-        //Delete account
+        //Delete Employee Data
 
         $(document).on('click', '.delete', function() {
             var id = $(this).data('id');
@@ -227,11 +242,11 @@
                 if (result.isConfirmed) {
                     Swal.fire(
                         'Deleted!',
-                        'User has been deleted.',
+                        'Employee has been deleted.',
                         'success',
 
                         $.ajax({
-                            url: "<?= base_url() ?>/user/deleteUser",
+                            url: "<?= base_url() ?>/employee/deleteEmployee",
                             method: "POST",
                             data: {
                                 id: id
@@ -242,6 +257,7 @@
                             }
 
                         })
+
                     )
                 }
             })

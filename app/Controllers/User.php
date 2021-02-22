@@ -17,6 +17,8 @@ class User extends BaseController
     {
         $sessions = [
             'user_mode' => true,
+            'employee_mode' => false,
+            'position_mode' => false,
             'project_mode' => false,
             'dashboard_mode' => false,
             'client_mode' => false
