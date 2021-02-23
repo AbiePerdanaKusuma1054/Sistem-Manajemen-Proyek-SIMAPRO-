@@ -7,6 +7,18 @@ use App\Models\ProjectModel;
 class Home extends BaseController
 {
 
+	public function team()
+	{
+		return view('/project/team');
+	}
+	public function rab()
+	{
+		return view('/project/rab');
+	}
+	public function comment()
+	{
+		return view('/project/comment');
+	}
 	public function index()
 	{
 		$projectModel = new ProjectModel();

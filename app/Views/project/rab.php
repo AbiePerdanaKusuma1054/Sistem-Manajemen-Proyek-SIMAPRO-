@@ -6,87 +6,69 @@
         <div class="menu-detail">
             <div class="table-responsive">
                 <ul>
-                    <li class="actived"><a href="<?= base_url() ?>/project/detail">Project</a></li>
-                    <li class=""><a href="<?= base_url() ?>/home/rab">RAB</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/detail">Project</a></li>
+                    <li class="actived"><a href="<?= base_url() ?>/home/rab">RAB</a></li>
                     <li class=""><a href="<?= base_url() ?>/home/team">Team</a></li>
                     <li class=""><a href="<?= base_url() ?>/home/comment">Comment</a></li>
                 </ul>
             </div>
         </div>
         <div class="add-back">
-            <i class="fa fa-desktop">
+            <i class="fa fa-calculator">
                 <span class="add-back-text">
-                    Project Details
+                    RAB
                 </span>
             </i>
         </div>
-        <div class="date-project grids">
-            <div class="back-date">
-                <div class="start">
-                    <?php foreach ($detail as $d) : ?>
-                        <p class="date-text">Project start in: <span class="date">
-                                <?= date('d/m/Y', strtotime($d['project_start'])) ?>
-                            </span>
-                        </p>
-                </div>
-            </div>
-            <div class="back-date-dead">
-                <div class="end">
-                    <p class="date-text">Project deadline: <span class="date">
-                            <?= date('d/m/Y', strtotime($d['project_finish'])) ?>
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
+
         <div class="box">
             <div class="left-box">
 
                 <div class="detail-box">
 
                     <!-- button edit -->
-                    <a href="<?= base_url() ?>/project/edit/<?= $d['id'] ?>">
+                    <a href="<?= base_url() ?>/project/edit/">
                         <i class="fa fa-pencil-square-o act act-l fa-lg" aria-hidden="true"></i>
                     </a>
                     <!-- button delete -->
 
-                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id="<?= $d['id'] ?>"></i>
+                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id=""></i>
 
                     <div class="back-detail">
                         <div class="detail-row">
                             <p><i class="fa fa-cubes"><span class="l">Project Name</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_name'] ?></p>
+                            <p class="r">Lorem, ipsum.</p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
                             <p><i class="fa fa-id-card"><span class="l">Project Manager</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_manager'] ?></p>
+                            <p class="r">Lorem, ipsum.</p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
                             <p><i class="fa fa-handshake-o"><span class="l">Client</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['client_name'] ?></p>
+                            <p class="r">Lorem, ipsum.</p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
                             <p><i class="fa fa-hashtag"><span class="l">Project Description</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_desc'] == '' ? '-' : $d['project_desc']; ?></p>
+                            <p class="r">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quidem maiores nulla enim hic, temporibus minus velit quod et similique? Non magni incidunt numquam amet fuga ab vitae quidem dicta!</p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
                             <p><i class="fa fa-flag"><span class="l">Project Status</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= ucfirst($d['project_status']) ?></p>
+                            <p class="r">Lorem</p>
                             <div class="enter"></div>
                         </div>
 
                     </div>
 
-                <?php endforeach; ?>
+
                 </div>
             </div>
 

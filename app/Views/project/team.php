@@ -6,87 +6,61 @@
         <div class="menu-detail">
             <div class="table-responsive">
                 <ul>
-                    <li class="actived"><a href="<?= base_url() ?>/project/detail">Project</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/detail">Project</a></li>
                     <li class=""><a href="<?= base_url() ?>/home/rab">RAB</a></li>
-                    <li class=""><a href="<?= base_url() ?>/home/team">Team</a></li>
+                    <li class="actived"><a href="<?= base_url() ?>/home/team">Team</a></li>
                     <li class=""><a href="<?= base_url() ?>/home/comment">Comment</a></li>
                 </ul>
             </div>
         </div>
         <div class="add-back">
-            <i class="fa fa-desktop">
-                <span class="add-back-text">
-                    Project Details
+            <i class="fa fa-users">
+                <span class="add-team-text">
+                    Project Team
                 </span>
+                <!-- Button trigger modal -->
+
             </i>
+            <a>
+                <i class="fa fa-plus-circle fa-lg btn-addteam" data-toggle="modal" data-target="#addteamModal"></i>
+            </a>
+            <!-- <div class="add-team">
+            </div> -->
         </div>
-        <div class="date-project grids">
-            <div class="back-date">
-                <div class="start">
-                    <?php foreach ($detail as $d) : ?>
-                        <p class="date-text">Project start in: <span class="date">
-                                <?= date('d/m/Y', strtotime($d['project_start'])) ?>
-                            </span>
-                        </p>
-                </div>
-            </div>
-            <div class="back-date-dead">
-                <div class="end">
-                    <p class="date-text">Project deadline: <span class="date">
-                            <?= date('d/m/Y', strtotime($d['project_finish'])) ?>
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
+
         <div class="box">
             <div class="left-box">
-
                 <div class="detail-box">
 
-                    <!-- button edit -->
-                    <a href="<?= base_url() ?>/project/edit/<?= $d['id'] ?>">
-                        <i class="fa fa-pencil-square-o act act-l fa-lg" aria-hidden="true"></i>
-                    </a>
-                    <!-- button delete -->
 
-                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id="<?= $d['id'] ?>"></i>
-
-                    <div class="back-detail">
-                        <div class="detail-row">
-                            <p><i class="fa fa-cubes"><span class="l">Project Name</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_name'] ?></p>
-                            <div class="enter"></div>
+                    <div id="back-team" style="padding: 20px 1.5rem 0 1.5rem;">
+                        <div class="row">
+                            <div class="col">
+                                <i class="fa fa-user-circle white"><span class="name-text">Abie Perdana Kusuma
+                                    </span></i>
+                            </div>
+                            <div class="col-md-auto">
+                                <p class="post-text">Project Master</p>
+                            </div>
+                            <div class="col col-lg-1" style="text-align: right;">
+                                <!-- Kalau mau dihapus tombolnya hapus line dibawah ini aja -->
+                                <i class="fa fa-trash-o icon-del-team" id="deleteMember"></i>
+                                <!--  -->
+                            </div>
                         </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-id-card"><span class="l">Project Manager</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_manager'] ?></p>
-                            <div class="enter"></div>
-                        </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-handshake-o"><span class="l">Client</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['client_name'] ?></p>
-                            <div class="enter"></div>
-                        </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-hashtag"><span class="l">Project Description</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_desc'] == '' ? '-' : $d['project_desc']; ?></p>
-                            <div class="enter"></div>
-                        </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-flag"><span class="l">Project Status</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r"><?= ucfirst($d['project_status']) ?></p>
-                            <div class="enter"></div>
+                        <div class="row">
+                            <div class="col">
+                                <i class="fa fa-user-circle white"><span class="name-text">Firaztori Yusuf Nurwanto</span></i>
+                            </div>
+                            <div class="col-md-auto">
+                                <p class="post-text">Programmer</p>
+                            </div>
+                            <div class="col col-lg-1" style="text-align: right;">
+                                <i class="fa fa-trash-o icon-del-team" id="deleteMember"></i>
+                            </div>
                         </div>
 
                     </div>
-
-                <?php endforeach; ?>
                 </div>
             </div>
 
@@ -108,23 +82,25 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="col">
-                                <label for="validationCustom01" class="form-label">Name</label>
-                                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
-                                <div class="invalid-feedback">
-                                    Please input a name.
+                            <form action="memberForm">
+                                <div class="col">
+                                    <label for="validationCustom01" class="form-label">Name</label>
+                                    <input type="text" class="form-control fc" id="validationCustom01" value="" required>
+                                    <div class="invalid-feedback">
+                                        Please input a name.
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <label for="validationCustom02" class="form-label">Position</label>
-                                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
-                                <div class="invalid-feedback">
-                                    Please choose a position.
+                                <div class="col">
+                                    <label for="validationCustom02" class="form-label">Position</label>
+                                    <input type="text" class="form-control fc" id="validationCustom02" value="" required>
+                                    <div class="invalid-feedback">
+                                        Please choose a position.
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light plus">Add</button>
+                            <button type="button" class="btn btn-light plus" id="submitButton">Add</button>
                         </div>
                     </div>
                 </div>
@@ -140,7 +116,7 @@
 </div>
 
 <script>
-    $('#deleteProject').click(function() {
+    $('#deleteMember').click(function() {
         var id = $(this).data('id');
 
         Swal.fire({
@@ -154,11 +130,11 @@
             if (result.isConfirmed) {
                 Swal.fire(
                     'Deleted!',
-                    'Project has been deleted.',
+                    'Member has been deleted.',
                     'success',
 
                     $.ajax({
-                        url: "<?= base_url() ?>/project/delete",
+                        url: "<?= base_url() ?>/project/team",
                         method: "POST",
                         data: {
                             id: id
