@@ -58,7 +58,7 @@
         <!-- End -->
 
         <!-- Data Tables -->
-        <table id="table" class="table table-striped table-dark" style="cursor: default;">
+        <table id="table" class="table table-striped table-dark display nowrap" style="cursor: default;  width: 100%;">
             <thead class="attr">
                 <tr>
                     <th>Client Name</th>
@@ -87,6 +87,7 @@
             }],
             "order": [],
             "serverSide": true,
+            "responsive": true,
             "ajax": {
                 url: "<?= base_url() ?>/client/fetchClientData",
                 type: 'POST'

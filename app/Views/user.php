@@ -58,7 +58,7 @@
         <!-- End -->
 
         <!-- Data Tables -->
-        <table id="table" class="table table-striped table-dark" style="cursor: default;">
+        <table id="table" class="table table-striped table-dark display nowrap" style="cursor: default; width: 100%;">
             <thead class="attr">
                 <tr>
                     <th>Username</th>
@@ -86,6 +86,7 @@
             }],
             "order": [],
             "serverSide": true,
+            "responsive": true,
             "ajax": {
                 url: "<?= base_url() ?>/user/fetchUserData",
                 type: 'POST'

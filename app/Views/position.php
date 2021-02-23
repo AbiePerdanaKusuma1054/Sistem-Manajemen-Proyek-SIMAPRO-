@@ -51,7 +51,7 @@
         <!-- End -->
 
         <!-- Data Tables -->
-        <table id="table" class="table table-striped table-dark" style="cursor: default;">
+        <table id="table" class="table table-striped table-dark display nowrap" style="cursor: default;  width: 100%;">
             <thead class="attr">
                 <tr>
                     <th>Position Name</th>
@@ -79,6 +79,7 @@
             }],
             "order": [],
             "serverSide": true,
+            "responsive": true,
             "ajax": {
                 url: "<?= base_url() ?>/position/fetchPositionData",
                 type: 'POST'
