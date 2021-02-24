@@ -111,6 +111,7 @@
             $('#employeeForm')[0].reset();
             $('#name_error').text('');
             $('#email_error').text('');
+            $('#gender_error').text('');
             $('#address_error').text('');
             $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Employee');
             $('#action').val('create');

@@ -70,4 +70,9 @@ class ProjectModel extends Model
         };
         return $buttonFun;
     }
+
+    public function getPM($id)
+    {
+        return $this->select('project_manager')->where('id', $id)->first();
+    }
 }

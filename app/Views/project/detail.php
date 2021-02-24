@@ -73,7 +73,7 @@
                         <div class="detail-row">
                             <p><i class="fa fa-flag"><span class="l">Project Status</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= ucfirst($detail['project_status']) ?></p>
+                            <p class="r"><?= ucwords($detail['project_status']) ?></p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">

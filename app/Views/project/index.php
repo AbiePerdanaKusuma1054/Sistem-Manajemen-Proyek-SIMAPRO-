@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <div class="canvas-2">
     <div class="lay">
-        <!-- Button Modal Add -->
+        <!-- Button Add -->
         <div class="d-grid gap-2 col-6 mx-auto add">
             <a href="<?= base_url() ?>/project/add">
                 <button class="btn btn-outline-light add" type="button">

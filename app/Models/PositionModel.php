@@ -16,12 +16,6 @@ class PositionModel extends Model
         return $builder;
     }
 
-    public function getPositionNames()
-    {
-        $builder = $this->db->table($this->table)
-            ->select('id, position_name')->get()->getResultArray();
-        return $builder;
-    }
 
     public function button()
     {
@@ -33,5 +27,12 @@ class PositionModel extends Model
             data-id="' . $row['id'] . '">Delete</button></a>';
         };
         return $buttonFun;
+    }
+
+    public function getPositionNames()
+    {
+        $builder = $this->db->table($this->table)
+            ->select('id, position_name')->get()->getResultArray();
+        return $builder;
     }
 }

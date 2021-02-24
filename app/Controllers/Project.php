@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\ProjectModel;
 use App\Models\ClientModel;
 use App\Models\EmployeeModel;
+use App\Models\PositionModel;
+use App\Models\PteamModel;
 use monken\TablesIgniter;
 
 class Project extends BaseController
@@ -15,6 +17,8 @@ class Project extends BaseController
         $this->projectModel = new ProjectModel();
         $this->clientModel = new ClientModel();
         $this->employeeModel = new EmployeeModel();
+        $this->positionModel = new PositionModel();
+        $this->pteamModel = new PteamModel();
     }
 
     public function index()
@@ -186,12 +190,83 @@ class Project extends BaseController
     {
         $data = [
             'id' => $id,
-            'pm' => $this->projectModel
-                ->select('project_manager')->where('id', $id)->first()
+            'pm' => $this->projectModel->getPM($id),
+            'employee' => $this->employeeModel->getEmployeeNames(),
+            'position' => $this->positionModel->getPositionNames(),
+            'members' => $this->pteamModel->getMembers($id)
         ];
 
         return view('/project/team', $data);
     }
+
+    public function saveMemberData()
+    {
+        $request = service('request');
+
+        if ($request->getVar('action')) {
+            helper(['form', 'url']);
+            $name_error = '';
+            $position_error = '';
+            $error = 'no';
+
+            $rules = [
+                'name' => 'required',
+                'position' => 'required'
+            ];
+
+            $error = $this->validate($rules);
+
+            if (!$error) {
+                $error = 'yes';
+                $validator = \Config\Services::validation();
+
+                if ($validator->getError('name')) {
+                    $name_error = $validator->getError('name');
+                }
+
+                if ($validator->getError('position')) {
+                    $position_error = $validator->getError('position');
+                }
+            } else {
+                if ($request->getVar('action') == 'create') {
+                    $this->pteamModel->save([
+                        'project_id' => intval($request->getVar('project_id')),
+                        'employee_id' => intval($request->getVar('name')),
+                        'position_id' => intval($request->getVar('position'))
+                    ]);
+                }
+
+                if ($request->getVar('action') == 'edit') {
+                    $id = $request->getVar('hidden_id');
+                    $data = [
+                        'employee_id' => intval($request->getVar('name')),
+                        'position_id' => intval($request->getVar('position'))
+                    ];
+
+                    $this->pteamModel->update($id, $data);
+                }
+            }
+
+            $output = [
+                'name_error' => $name_error,
+                'position_error' => $position_error,
+                'error' => $error
+            ];
+
+            echo json_encode($output);
+        }
+    }
+
+    public function deleteTeamMember()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $id = $request->getVar('id');
+            $this->pteamModel->where('id', $id)->delete();
+        }
+    }
+
     public function rab($id)
     {
         $data = [
@@ -200,6 +275,7 @@ class Project extends BaseController
 
         return view('/project/rab', $data);
     }
+
     public function comment($id)
     {
         $data = [
