@@ -70,16 +70,4 @@ class ProjectModel extends Model
         };
         return $buttonFun;
     }
-
-    public function getProjectDetail($id)
-    {
-        $builder = $this->db->table('client')
-            ->join($this->table, 'project.client_id = client.id')
-            ->where('project.id', $id)
-            ->get()->getResultArray();
-
-        // dd($builder);
-
-        return $builder;
-    }
 }

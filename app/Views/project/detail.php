@@ -6,10 +6,10 @@
         <div class="menu-detail">
             <div class="table-responsive">
                 <ul>
-                    <li class="actived"><a href="<?= base_url() ?>/project/detail">Project</a></li>
-                    <li class=""><a href="<?= base_url() ?>/home/rab">RAB</a></li>
-                    <li class=""><a href="<?= base_url() ?>/home/team">Team</a></li>
-                    <li class=""><a href="<?= base_url() ?>/home/comment">Comment</a></li>
+                    <li class="actived"><a href="<?= base_url() ?>/project/detail/<?= $id ?>">Project</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/rab/<?= $id ?>">RAB</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/team/<?= $id ?>">Team</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/comment/<?= $id ?>">Comment</a></li>
                 </ul>
             </div>
         </div>
@@ -23,17 +23,16 @@
         <div class="date-project grids">
             <div class="back-date">
                 <div class="start">
-                    <?php foreach ($detail as $d) : ?>
-                        <p class="date-text">Project start in: <span class="date">
-                                <?= date('d/m/Y', strtotime($d['project_start'])) ?>
-                            </span>
-                        </p>
+                    <p class="date-text">Project start in: <span class="date">
+                            <?= date('d/m/Y', strtotime($detail['project_start'])) ?>
+                        </span>
+                    </p>
                 </div>
             </div>
             <div class="back-date-dead">
                 <div class="end">
                     <p class="date-text">Project deadline: <span class="date">
-                            <?= date('d/m/Y', strtotime($d['project_finish'])) ?>
+                            <?= date('d/m/Y', strtotime($detail['project_finish'])) ?>
                         </span>
                     </p>
                 </div>
@@ -45,48 +44,45 @@
                 <div class="detail-box">
 
                     <!-- button edit -->
-                    <a href="<?= base_url() ?>/project/edit/<?= $d['id'] ?>">
+                    <a href="<?= base_url() ?>/project/edit/<?= $detail['id'] ?>">
                         <i class="fa fa-pencil-square-o act act-l fa-lg" aria-hidden="true"></i>
                     </a>
                     <!-- button delete -->
 
-                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id="<?= $d['id'] ?>"></i>
+                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id="<?= $detail['id'] ?>"></i>
 
                     <div class="back-detail">
                         <div class="detail-row">
                             <p><i class="fa fa-cubes"><span class="l">Project Name</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_name'] ?></p>
+                            <p class="r"><?= $detail['project_name'] ?></p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
                             <p><i class="fa fa-id-card"><span class="l">Project Manager</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_manager'] ?></p>
+                            <p class="r"><?= $detail['project_manager'] ?></p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
                             <p><i class="fa fa-handshake-o"><span class="l">Client</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['client_name'] ?></p>
-                            <div class="enter"></div>
-                        </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-hashtag"><span class="l">Project Description</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r"><?= $d['project_desc'] == '' ? '-' : $d['project_desc']; ?></p>
+                            <p class="r"><?= $detail['client_name'] ?></p>
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
                             <p><i class="fa fa-flag"><span class="l">Project Status</span></i></p>
                             <div class="line-horizontal"></div>
-                            <p class="r"><?= ucfirst($d['project_status']) ?></p>
+                            <p class="r"><?= ucfirst($detail['project_status']) ?></p>
                             <div class="enter"></div>
                         </div>
-
+                        <div class="detail-row">
+                            <p><i class="fa fa-hashtag"><span class="l">Project Description</span></i></p>
+                            <div class="line-horizontal"></div>
+                            <p class="r"><?= $detail['project_desc'] == '' ? '-' : $detail['project_desc']; ?></p>
+                            <div class="enter"></div>
+                        </div>
                     </div>
-
-                <?php endforeach; ?>
                 </div>
             </div>
 
@@ -184,8 +180,7 @@
         Web     : www.vatanay.com
         Support : hi@vatanay.com
 
-        */
-
+    
     function responsiveChat(element) {
         $(element).html('<form class="chat"><span></span><div class="messages"></div><div class="back-comment"><input type="text" class="form-control comment" placeholder="Comment..."><input type="submit" class="send" value=">"></form></div>');
 
@@ -248,14 +243,14 @@
         $(element + ' .messages').append('<div class="message"><div class="' + originClass + '"><p>' + message + '</p><date><b>' + sender + '</b> ' + date + '</date></div></div>');
     }
 
-    /* Activating chatbox on element */
+    // Activating chatbox on element
     responsiveChat('.responsive-html5-chat');
 
-    /* Let's push some dummy data */
+    // Let's push some dummy data
     responsiveChatPush('.chat', 'Alexander', 'you', '08.03.2021 14:31:22', 'Ey, this chat section will be doomed right?');
     responsiveChatPush('.chat', 'Firaz', 'me', '08.03.2021 14:33:32', 'Yeah, we\'ll replace it with a comment plugin or something like that.');
 
-    /* DEMO */
+    // DEMO
     if (parent == top) {
         $("a.article").show();
     }

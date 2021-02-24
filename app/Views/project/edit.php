@@ -11,90 +11,88 @@
                 </span>
             </i>
         </div>
-        <?php foreach ($detail as $d) : ?>
-            <form class="row g-3 needs-validation" action="<?= base_url() ?>/project/saveEditProject/<?= $d['id'] ?>">
-                <div class="col-md-6">
-                    <label for="validationCustom01" class="form-label">Project Name *</label>
-                    <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" value="<?= $d['project_name'] ?>" required>
-                    <div class="invalid-feedback">
-                        <?= ($validator->getError('project_name')); ?>
+        <form class="row g-3 needs-validation" action="<?= base_url() ?>/project/saveEditProject/<?= $detail['id'] ?>">
+            <div class="col-md-6">
+                <label for="validationCustom01" class="form-label">Project Name *</label>
+                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" value="<?= $detail['project_name'] ?>" required>
+                <div class="invalid-feedback">
+                    <?= ($validator->getError('project_name')); ?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom02" class="form-label">Project Manager *</label>
+                <div class="input-group">
+                    <select class="form-select form-control fc <?= ($validator->hasError('project_manager')) ? 'is-invalid' : ''; ?>" name="project_manager">
+                        <option disabled selected value=''>Choose one..</option>
+                        <?php foreach ($employee as $e) : ?>
+                            <option value="<?= $e['employee_name'] ?>" <?= $e['employee_name'] == $detail['project_manager'] ? 'selected' : ''; ?>>
+                                <?= $e['employee_name'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="input-group-append">
+                        <!-- Button Triggered Modal Add Employee -->
+                        <button class="btn btn-secondary" type="button" name="addEmployee" id="addEmployee">
+                            + New Employee
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="validationCustom02" class="form-label">Project Manager *</label>
-                    <div class="input-group">
-                        <select class="form-select form-control fc <?= ($validator->hasError('project_manager')) ? 'is-invalid' : ''; ?>" name="project_manager">
-                            <option disabled selected value=''>Choose one..</option>
-                            <?php foreach ($employee as $e) : ?>
-                                <option value="<?= $e['employee_name'] ?>" <?= $e['employee_name'] == $d['project_manager'] ? 'selected' : ''; ?>>
-                                    <?= $e['employee_name'] ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <div class="input-group-append">
-                            <!-- Button Triggered Modal Add Employee -->
-                            <button class="btn btn-secondary" type="button" name="addEmployee" id="addEmployee">
-                                + New Employee
-                            </button>
-                        </div>
-                    </div>
-                    <div class="invalid-feedback">
-                        Please input a project manager.
-                    </div>
+                <div class="invalid-feedback">
+                    Please input a project manager.
                 </div>
-                <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">Client *</label>
-                    <div class="input-group">
-                        <select class="form-select form-control fc" name="client_id">
-                            <?php foreach ($client as $c) : ?>
-                                <option value="<?= $c['id'] ?>" <?= $c['id'] == $d['client_id'] ? 'selected' : ''; ?>><?= $c['client_name'] ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="invalid-feedback">
-                        Please input a client.
-                    </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Client *</label>
+                <div class="input-group">
+                    <select class="form-select form-control fc" name="client_id">
+                        <?php foreach ($client as $c) : ?>
+                            <option value="<?= $c['id'] ?>" <?= $c['id'] == $detail['client_id'] ? 'selected' : ''; ?>><?= $c['client_name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
-                <!-- <div class="col-md-4">
+                <div class="invalid-feedback">
+                    Please input a client.
+                </div>
+            </div>
+            <!-- <div class="col-md-4">
                     <label for="validationCustom04" class="form-label">Contract Amount *</label>
                     <input type="number" class="form-control fc" name="" value="10000000" required>
                     <div class="invalid-feedback">
                         Please input a contract amount.
                     </div>
                 </div> -->
-                <div class="col-md-3">
-                    <label for="validationCustom04" class="form-label">Project Status</label>
-                    <select class="form-select form-control fc <?= ($validator->hasError('project_status')) ? 'is-invalid' : ''; ?>" name="project_status">
-                        <option value="waiting" <?= $d['project_status'] == 'waiting' ? 'selected' : ''; ?>>Waiting</option>
-                        <option value="on progress" <?= $d['project_status'] == 'on progress' ? 'selected' : ''; ?>>On Progress</option>
-                        <option value="hold" <?= $d['project_status'] == 'hold' ? 'selected' : ''; ?>>Hold</option>
-                        <option value="finish" <?= $d['project_status'] == 'finish' ? 'selected' : ''; ?>>Finished</option>
-                        <option value="cancelled" <?= $d['project_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
-                    </select>
+            <div class="col-md-3">
+                <label for="validationCustom04" class="form-label">Project Status</label>
+                <select class="form-select form-control fc <?= ($validator->hasError('project_status')) ? 'is-invalid' : ''; ?>" name="project_status">
+                    <option value="waiting" <?= $detail['project_status'] == 'waiting' ? 'selected' : ''; ?>>Waiting</option>
+                    <option value="on progress" <?= $detail['project_status'] == 'on progress' ? 'selected' : ''; ?>>On Progress</option>
+                    <option value="hold" <?= $detail['project_status'] == 'hold' ? 'selected' : ''; ?>>Hold</option>
+                    <option value="finish" <?= $detail['project_status'] == 'finish' ? 'selected' : ''; ?>>Finished</option>
+                    <option value="cancelled" <?= $detail['project_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom05" class="form-label">Project Start *</label>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_start')) ? 'is-invalid' : ''; ?>" name="project_start" value="<?= $detail['project_start'] ?>" required>
+                <div class="invalid-feedback">
+                    Please input a valid start date.
                 </div>
-                <div class="col-md-6">
-                    <label for="validationCustom05" class="form-label">Project Start *</label>
-                    <input type="date" class="form-control fc <?= ($validator->hasError('project_start')) ? 'is-invalid' : ''; ?>" name="project_start" value="<?= $d['project_start'] ?>" required>
-                    <div class="invalid-feedback">
-                        Please input a valid start date.
-                    </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom06" class="form-label">Project Deadline *</label>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_finish')) ? 'is-invalid' : ''; ?>" name="project_finish" value="<?= $detail['project_finish'] ?>" required>
+                <div class="invalid-feedback">
+                    Please input a valid date for deadline.
                 </div>
-                <div class="col-md-6">
-                    <label for="validationCustom06" class="form-label">Project Deadline *</label>
-                    <input type="date" class="form-control fc <?= ($validator->hasError('project_finish')) ? 'is-invalid' : ''; ?>" name="project_finish" value="<?= $d['project_finish'] ?>" required>
-                    <div class="invalid-feedback">
-                        Please input a valid date for deadline.
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Project Description</label>
-                    <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" name="project_desc" placeholder="Describe the project..."><?= $d['project_desc'] ?></textarea>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-light plus" type="submit">Save</button>
-                </div>
-            </form>
-        <?php endforeach; ?>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Project Description</label>
+                <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" name="project_desc" placeholder="Describe the project..."><?= $detail['project_desc'] ?></textarea>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-light plus" type="submit">Save</button>
+            </div>
+        </form>
     </div>
 
     <!-- Modal Add Employee -->

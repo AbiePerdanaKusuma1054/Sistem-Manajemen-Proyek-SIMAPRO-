@@ -92,7 +92,8 @@ class Project extends BaseController
         }
 
         $data = [
-            'detail' => $this->projectModel->getProjectDetail($id)
+            'detail' => $this->clientModel->getDetail($id),
+            'id' => $id
         ];
 
         return view('project/detail', $data);
@@ -106,7 +107,7 @@ class Project extends BaseController
 
         $data = [
             'validator' => \Config\Services::validation(),
-            'detail' => $this->projectModel->getProjectDetail($id),
+            'detail' => $this->clientModel->getDetail($id),
             'employee' => $this->employeeModel->getEmployeeNames(),
             'client' => $this->clientModel->getClientNames()
         ];
@@ -179,5 +180,32 @@ class Project extends BaseController
                 $this->projectModel->finishDate(), $this->projectModel->status(), $this->projectModel->button()
             ]);
         return $table->getDatatable();
+    }
+
+    public function team($id)
+    {
+        $data = [
+            'id' => $id,
+            'pm' => $this->projectModel
+                ->select('project_manager')->where('id', $id)->first()
+        ];
+
+        return view('/project/team', $data);
+    }
+    public function rab($id)
+    {
+        $data = [
+            'id' => $id
+        ];
+
+        return view('/project/rab', $data);
+    }
+    public function comment($id)
+    {
+        $data = [
+            'id' => $id
+        ];
+
+        return view('/project/comment', $data);
     }
 }

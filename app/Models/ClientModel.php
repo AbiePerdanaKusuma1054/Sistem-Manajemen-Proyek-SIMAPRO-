@@ -16,12 +16,6 @@ class ClientModel extends Model
         return $builder;
     }
 
-    public function getClientNames()
-    {
-        $builder = $this->db->table($this->table)
-            ->select('id, client_name')->get()->getResultArray();
-        return $builder;
-    }
 
     public function button()
     {
@@ -33,5 +27,18 @@ class ClientModel extends Model
             data-id="' . $row['id'] . '">Delete</button></a>';
         };
         return $buttonFun;
+    }
+
+    public function getClientNames()
+    {
+        $builder = $this->db->table($this->table)
+            ->select('id, client_name')->get()->getResultArray();
+        return $builder;
+    }
+
+    public function getDetail($id)
+    {
+        return $this->join('project', 'project.client_id = client.id')
+            ->where('project.id', $id)->first();
     }
 }
