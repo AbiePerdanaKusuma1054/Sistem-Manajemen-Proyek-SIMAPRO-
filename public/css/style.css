@@ -618,6 +618,7 @@ input[type="number"] {
   background-color: #232923;
   padding: 1rem 1rem 2rem 1rem;
   width: 100%;
+  border-radius: 5px;
   position: sticky;
   /* sticky experimental tech still */
   top: 1rem;
@@ -799,7 +800,7 @@ form.chat .message p {
 
 form.chat .myMessage,
 form.chat .fromThem {
-  max-width: 50%;
+  max-width: 100%;
   word-wrap: break-word;
   margin-bottom: 20px;
 }
@@ -808,7 +809,8 @@ form.chat .myMessage,
 .fromThem {
   padding: 10px 20px;
   color: white;
-  border-radius: 25px;
+  width: 100%;
+  border-radius: 10px;
   clear: both;
   font: 400 15px "Open Sans", sans-serif;
 }
@@ -816,17 +818,13 @@ form.chat .myMessage,
 form.chat .myMessage {
   background: #151518;
   color: white;
-  float: right;
   clear: both;
-  border-bottom-right-radius: 20px 0px\9;
 }
 
 form.chat .fromThem {
   background: #070707;
   color: white;
-  float: left;
   clear: both;
-  border-bottom-left-radius: 30px 0px\9;
 }
 form.chat date {
   top: 10px;
@@ -853,7 +851,7 @@ form.chat input {
 }
 
 form.chat input[type="text"] {
-  width: 70%;
+  width: 65%;
   float: left;
   font-size: 10pt;
   font-weight: 600;
@@ -867,8 +865,9 @@ form.chat input[type="submit"] {
   background: transparent;
   color: #00e34d;
   font-weight: 700;
-  text-align: right;
+  text-align: center;
   float: right;
+  border-radius: 5px;
   border-color: #222121;
   background-color: #222121;
   font-size: 14pt;
@@ -902,7 +901,7 @@ form.chat .fromThem date {
 
 form.chat .myMessage,
 form.chat .fromThem {
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .act {
@@ -1037,7 +1036,7 @@ option:first {
 
 .back-detail {
   padding: 20px 8% 20px 8%;
-  margin: 25px auto 10px auto;
+  margin: 0 auto 10px auto;
   max-width: 1000px;
   border-radius: 5px;
   background-color: #1b201b;
@@ -1061,8 +1060,18 @@ option:first {
   margin-right: 3%;
   color: #b8f9d3;
 }
+.icon-edit-member {
+  margin: 0 5px;
+  color: rgb(146, 190, 255);
+}
+
+.icon-edit-member:hover {
+  color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
 
 .icon-del-team {
+  margin: 0 5px;
   color: rgb(255, 149, 62);
 }
 
@@ -1073,4 +1082,90 @@ option:first {
 
 .fa-lg {
   padding: 5px 0 0 0;
+}
+
+/* Hide and Show */
+.back-rab {
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  background-color: #131618;
+}
+.sub {
+  color: #b8f9d3;
+}
+.date-rab {
+  margin-left: 15px;
+  font-size: 10pt;
+}
+.amount-day {
+  font-size: 10pt;
+}
+.sub-sub {
+  color: #b8f9d3;
+}
+.add-rab {
+  color: white;
+}
+.add-rab:hover {
+  color: rgb(169, 155, 248);
+}
+.detail-rab tbody tr td {
+  font-size: 9pt;
+}
+.no {
+  color: rgb(182, 255, 47);
+  font-size: 10pt;
+  text-align: center;
+}
+
+/* show and hide table-rab*/
+.btn-container {
+  display: flex;
+  position: relative;
+}
+.btn-container i {
+  position: absolute;
+}
+#hide {
+  display: none;
+  color: white;
+}
+#show {
+  color: white;
+}
+
+.detail-rab {
+  transform-origin: top center;
+  animation: rotateX 1000ms ease-in-out forwards;
+}
+
+@keyframes rotateX {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deq);
+  }
+  50% {
+    transform: rotateX(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+.row.total .col p {
+  margin: 0;
+  color: #d0f886;
+  font-size: 10pt;
+}
+
+.category-rab {
+  color: white;
+  font-weight: 600;
+  font-size: 13pt;
+}
+
+.act-rab {
+  text-align: center;
 }

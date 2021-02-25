@@ -42,7 +42,7 @@
                             <div class="col-md-auto">
                                 <p class="post-text">Project Manager</p>
                             </div>
-                            <div class="col col-lg-1" style="text-align: right;">
+                            <div class="col col-lg-2" style="text-align: right;">
                             </div>
                         </div>
 
@@ -54,10 +54,8 @@
                                 <div class="col-md-auto">
                                     <p class="post-text"><?= ucwords($m['position_name']) ?></p>
                                 </div>
-                                <div class="col col-lg-1" style="text-align: right;">
-                                    <!-- tolong kecilin tombol editnya lah ya wkwk, gabisa gua -->
-                                    <!-- Kalo bisa jadi oren mantep si -->
-                                    <i class="fa fa-pencil-square-o act act-l fa-lg editMember" aria-hidden="true" data-id="<?= $m['id'] ?>"></i>
+                                <div class="col col-lg-2" style="text-align: right;display: inline;">
+                                    <i class="fa fa-pencil act icon-edit-member editMember" data-id="<?= $m['id'] ?>"></i>
                                     <i class="fa fa-trash-o icon-del-team deleteMember" data-id="<?= $m['id'] ?>"></i>
                                 </div>
                             </div>
@@ -194,7 +192,7 @@
         })
     })
 
-    //Edit Account
+    //Edit Member
 
     $(document).on('click', '.editMember', function() {
 

@@ -23,90 +23,340 @@
 
         <div class="box">
             <div class="left-box">
-
-                <div class="detail-box">
-
-                    <!-- button edit -->
-                    <a href="<?= base_url() ?>/project/edit/">
-                        <i class="fa fa-pencil-square-o act act-l fa-lg" aria-hidden="true"></i>
-                    </a>
-                    <!-- button delete -->
-
-                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id=""></i>
-
-                    <div class="back-detail">
-                        <div class="detail-row">
-                            <p><i class="fa fa-cubes"><span class="l">Project Name</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r">Lorem, ipsum.</p>
-                            <div class="enter"></div>
+                <div class="detail-box back-rab inclusion">
+                    <!-- Pemasukkan -->
+                    <div class="row sub" style="margin-bottom: -15px;">
+                        <div class="col" style="margin-bottom: 0;">
+                            <p class="category-rab">Inclusion</p>
                         </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-id-card"><span class="l">Project Manager</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r">Lorem, ipsum.</p>
-                            <div class="enter"></div>
+                        <div class="col" style="text-align: right;">
+                            <a>
+                                <i class="fa fa-plus-circle add-rab" id="addInclu"></i>
+                            </a>
                         </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-handshake-o"><span class="l">Client</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r">Lorem, ipsum.</p>
-                            <div class="enter"></div>
-                        </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-hashtag"><span class="l">Project Description</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quidem maiores nulla enim hic, temporibus minus velit quod et similique? Non magni incidunt numquam amet fuga ab vitae quidem dicta!</p>
-                            <div class="enter"></div>
-                        </div>
-                        <div class="detail-row">
-                            <p><i class="fa fa-flag"><span class="l">Project Status</span></i></p>
-                            <div class="line-horizontal"></div>
-                            <p class="r">Lorem</p>
-                            <div class="enter"></div>
-                        </div>
-
                     </div>
-
+                    <div class="back-detail" style="margin: 0 auto 16px auto;">
+                        <!-- Looping disini -->
+                        <div class="row sub-sub">
+                            <div class="col">
+                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#inclusion-1" role="button" aria-expanded="false" aria-controls="inclusion-1">
+                                    <i class="fa fa-list-ol"></i>
+                                </a>
+                                <span class="date-rab">11/01/2021</span>
+                            </div>
+                            <div class="col" style="text-align: right;">
+                                <p class="amount-day">Rp. 2.000.000</p>
+                            </div>
+                            <div class="row" style="padding:0;margin: 0;">
+                                <!-- inclusion-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
+                                <div class="collapse multi-collapse" id="inclusion-1">
+                                    <div class="table-responsive" style="margin-bottom: 5px;">
+                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                            <thead>
+                                                <tr hidden>
+                                                    <th>No.</th>
+                                                    <!-- <th>Quantity</th> -->
+                                                    <th>What</th>
+                                                    <!-- <th>Unit</th> -->
+                                                    <th>Amount</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">1</td>
+                                                    <!-- <td>1</td> -->
+                                                    <td>DP 1</td>
+                                                    <!-- <td>2 Unit</td> -->
+                                                    <td>Rp. 500.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                    </td>
+                                                </tr>
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">2</td>
+                                                    <!-- <td>2</td> -->
+                                                    <td>DP 2</td>
+                                                    <!-- <td>1 Unit</td> -->
+                                                    <td>Rp. 1.500.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="row sub-sub">
+                            <div class="col">
+                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#inclusion-2" role="button" aria-expanded="false" aria-controls="inclusion-2">
+                                    <i class="fa fa-list-ol"></i>
+                                </a>
+                                <span class="date-rab">01/02/2021</span>
+                            </div>
+                            <div class="col" style="text-align: right;">
+                                <p class="amount-day">Rp. 1750.000</p>
+                            </div>
+                            <div class="row" style="padding:0;margin: 0;">
+                                <div class="collapse multi-collapse" id="inclusion-2">
+                                    <div class="table-responsive" style="margin-bottom: 5px;">
+                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                            <thead>
+                                                <tr hidden>
+                                                    <th>No.</th>
+                                                    <!-- <th>Quantity</th> -->
+                                                    <th>What</th>
+                                                    <!-- <th>Unit</th> -->
+                                                    <th>Amount</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">1</td>
+                                                    <!-- <td>1</td> -->
+                                                    <td>DP 3</td>
+                                                    <!-- <td>1 Unit</td> -->
+                                                    <td>Rp. 250.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                    </td>
+                                                </tr>
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">2</td>
+                                                    <!-- <td>2</td> -->
+                                                    <td>DP 4</td>
+                                                    <!-- <td>1 Unit</td> -->
+                                                    <td>Rp. 1.500.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row total" style="text-align: right;">
+                            <div class="col" style="height: fit-content;">
+                                <p style="font-weight: 600;">Total</p>
+                            </div>
+                            <div class="col" style="height: fit-content;">
+                                <p>Rp. 3.750.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pengeluaran -->
+                    <div class="row sub" style="margin-bottom: -15px;">
+                        <div class="col" style="margin-bottom: 0;">
+                            <p class="category-rab">Expenses</p>
+                        </div>
+                        <div class="col" style="text-align: right;">
+                            <a>
+                                <i class="fa fa-plus-circle add-rab" id="addExpen"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="back-detail" style="margin: 0 auto;">
+                        <!-- Looping disini -->
+                        <div class="row sub-sub">
+                            <div class="col">
+                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#expanses-1" role="button" aria-expanded="false" aria-controls="expanses-1">
+                                    <i class="fa fa-list-ol"></i>
+                                </a>
+                                <span class="date-rab">11/01/2021</span>
+                            </div>
+                            <div class="col" style="text-align: right;">
+                                <p class="amount-day">Rp. 2.000.000</p>
+                            </div>
+                            <div class="row" style="padding:0;margin: 0;">
+                                <!-- expanses-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
+                                <div class="collapse multi-collapse" id="expanses-1">
+                                    <div class="table-responsive" style="margin-bottom: 5px;">
+                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                            <thead>
+                                                <tr hidden>
+                                                    <th>No.</th>
+                                                    <!-- <th>Quantity</th> -->
+                                                    <th>What</th>
+                                                    <th>Unit</th>
+                                                    <th>Amount</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">1</td>
+                                                    <!-- <td>1</td> -->
+                                                    <td>Server</td>
+                                                    <td>2 Unit</td>
+                                                    <td>Rp. 500.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                    </td>
+                                                </tr>
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">2</td>
+                                                    <!-- <td>2</td> -->
+                                                    <td>Salary</td>
+                                                    <td>1 Unit</td>
+                                                    <td>Rp. 1.500.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="row sub-sub">
+                            <div class="col">
+                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#expenses-2" role="button" aria-expanded="false" aria-controls="expenses-2">
+                                    <i class="fa fa-list-ol"></i>
+                                </a>
+                                <span class="date-rab">01/02/2021</span>
+                            </div>
+                            <div class="col" style="text-align: right;">
+                                <p class="amount-day">Rp. 1750.000</p>
+                            </div>
+                            <div class="row" style="padding:0;margin: 0;">
+                                <div class="collapse multi-collapse" id="expenses-2">
+                                    <div class="table-responsive" style="margin-bottom: 5px;">
+                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                            <thead>
+                                                <tr hidden>
+                                                    <th>No.</th>
+                                                    <!-- <th>Quantity</th> -->
+                                                    <th>What</th>
+                                                    <th>Unit</th>
+                                                    <th>Amount</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tab-rab">
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">1</td>
+                                                    <!-- <td>1</td> -->
+                                                    <td>Server</td>
+                                                    <td>1 Unit</td>
+                                                    <td>Rp. 250.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                    </td>
+                                                </tr>
+                                                <tr style="vertical-align: text-bottom;">
+                                                    <td class="no">2</td>
+                                                    <!-- <td>2</td> -->
+                                                    <td>Salary</td>
+                                                    <td>1 Unit</td>
+                                                    <td>Rp. 1.500.000</td>
+                                                    <td class="act-rab">
+                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row total" style="text-align: right;">
+                            <div class="col" style="height: fit-content;">
+                                <p style="font-weight: 600;">Total</p>
+                            </div>
+                            <div class="col" style="height: fit-content;">
+                                <p>Rp. 3.750.000</p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
 
-            <!-- Modal Add Team -->
-            <div class="modal fade" id="addteamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal Inlcus -->
+            <div class="modal fade" id="incluModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <div class="modal-title" id="exampleModalLabel">
-                                <i class="fa fa-user-plus" style="color: white;">
-                                    <span class="add-team-text">
-                                        Add Members
-                                    </span>
-                                </i>
+                            <div class="modal-title" id="exampleModalLabel" style="color: white;">
                             </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="col">
-                                <label for="validationCustom01" class="form-label">Name</label>
-                                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
-                                <div class="invalid-feedback">
-                                    Please input a name.
+                            <form id="incluForm" method="POST">
+                                <div class="col">
+                                    <label class="form-label">Name *</label>
+                                    <input type="text" name="name" id="name" class="form-control fc">
+                                    <span class="text-danger" id="name_error"></span>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <label for="validationCustom02" class="form-label">Position</label>
-                                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
-                                <div class="invalid-feedback">
-                                    Please choose a position.
+                                <div class="col">
+                                    <label class="form-label">Amount *</label>
+                                    <input type="number" class="form-control fc" name="" value="" required>
+                                    <span class="text-danger" id="amount_error"></span>
                                 </div>
-                            </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="action" id="action" />
+                                    <input type="hidden" name="hidden_id" id="hidden_id" />
+                                    <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light plus">Add</button>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+            <!-- Modal Expen -->
+            <div class="modal fade" id="expenModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title" id="exampleModalLabel" style="color: white;">
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="expenForm" method="POST">
+                                <div class="col">
+                                    <label class="form-label">Name *</label>
+                                    <input type="text" name="name" id="name" class="form-control fc">
+                                    <span class="text-danger" id="name_error"></span>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Unit *</label>
+                                    <input type="number" class="form-control fc" name="" value="" required>
+                                    <span class="text-danger" id="unit_error"></span>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Amount *</label>
+                                    <input type="number" class="form-control fc" name="" value="" required>
+                                    <span class="text-danger" id="amount_error"></span>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="action" id="action" />
+                                    <input type="hidden" name="hidden_id" id="hidden_id" />
+                                    <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -121,8 +371,123 @@
 </div>
 </div>
 
+<!-- JS Data table -->
+<!-- <script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "scrollX": true,
+            "paging": false,
+            "filter": false,
+            "ordering": false,
+            "info": false
+        });
+    });
+    $(document).ready(function() {
+        var table = $('#example').DataTable();
+
+        new $.fn.dataTable.Responsive(table);
+    });
+</script> -->
 <script>
-    $('#deleteProject').click(function() {
+    //Create Inclu
+    $('#addInclu').click(function() {
+        $('#incluForm')[0].reset();
+        $('#name_error').text('');
+        $('#position_error').text('');
+        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add a Inclusion');
+        $('#action').val('create');
+        $('#submitButton').val('Add');
+        $('#incluModal').modal('show');
+    })
+
+    $('#incluForm').on('submit', function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: "<?= base_url(); ?>/project/saveMemberData",
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "JSON",
+
+            beforeSend: function() {
+                $('#submitButton').val('Wait...');
+                $('#submitButton').attr('disabled', 'disabled');
+            },
+
+            success: function(data) {
+
+                if ($('#action').val() == 'create') {
+                    $('#submitButton').val('Add');
+                } else {
+                    $('#submitButton').val('Edit');
+                }
+
+                $('#submitButton').attr('disabled', false);
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1700,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                if (data.error == 'yes') {
+                    $('#name_error').text(data.name_error);
+                    $('#position_error').text(data.position_error);
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'failed to add a member'
+                    })
+                } else {
+                    $('#incluModal').modal('hide');
+
+                    setTimeout(location.reload.bind(location), 2200);
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'New member added'
+                    })
+                }
+            }
+        })
+    })
+
+    //Edit Inclu
+
+    $(document).on('click', '#editInclu', function() {
+
+        var id = $(this).data('id');
+
+        $.ajax({
+            url: "<?= base_url() ?>/project/fetchIdPteam",
+            method: "POST",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
+
+            success: function(data) {
+                $('#name').val(data.employee_id);
+                $('#position').val(data.position_id);
+
+                $('#name_error').text('');
+                $('#position_error').text('');
+                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Inclusion');
+                $('#action').val('edit');
+                $('#submitButton').val('Edit');
+                $('#inlcuModal').modal('show');
+                $('#member_id').val(id);
+            }
+        })
+    });
+
+    //Delete Inclu
+    $(document).on('click', '#deleteInclu', function() {
         var id = $(this).data('id');
 
         Swal.fire({
@@ -134,113 +499,146 @@
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Project has been deleted.',
-                    'success',
+                $.ajax({
+                    url: "<?= base_url() ?>/project/deleteTeamMember",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
 
-                    $.ajax({
-                        url: "<?= base_url() ?>/project/delete",
-                        method: "POST",
-                        data: {
-                            id: id
-                        },
-
-                        success: function(data) {
-                            location.href = "<?= base_url() ?>/project"
-                        }
-                    })
-                )
+                    success: function(data) {
+                        setTimeout(location.reload.bind(location));
+                    }
+                })
             }
         })
     });
-    /*
+</script>
+<script>
+    //Create Expen
+    $('#addExpen').click(function() {
+        $('#expenForm')[0].reset();
+        $('#name_error').text('');
+        $('#position_error').text('');
+        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add a Inclusion');
+        $('#action').val('create');
+        $('#submitButton').val('Add');
+        $('#expenModal').modal('show');
+    })
 
-        Name    : Responsive HTML5 Chat
+    $('#expenForm').on('submit', function(event) {
+        event.preventDefault();
 
-        Responsive HTML5 Chat helps you to create useful chatbox on your website easly. 
-        You can change skin and sizes. You can read the installation and support documentation 
-        before you begin. If you do not find the answer, do not hesitate to send a message to me.
+        $.ajax({
+            url: "<?= base_url(); ?>/project/saveMemberData",
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "JSON",
 
-        Owner   : Vatanay Ozbeyli
-        Web     : www.vatanay.com
-        Support : hi@vatanay.com
+            beforeSend: function() {
+                $('#submitButton').val('Wait...');
+                $('#submitButton').attr('disabled', 'disabled');
+            },
 
-        */
+            success: function(data) {
 
-    function responsiveChat(element) {
-        $(element).html('<form class="chat"><span></span><div class="messages"></div><div class="back-comment"><input type="text" class="form-control comment" placeholder="Comment..."><input type="submit" class="send" value=">"></form></div>');
+                if ($('#action').val() == 'create') {
+                    $('#submitButton').val('Add');
+                } else {
+                    $('#submitButton').val('Edit');
+                }
 
-        function showLatestMessage() {
-            $(element).find('.messages').scrollTop($(element).find('.messages').height());
-        }
-        showLatestMessage();
+                $('#submitButton').attr('disabled', false);
 
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1700,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
-        $(element + ' input[type="text"]').keypress(function(event) {
-            if (event.which == 13) {
-                event.preventDefault();
-                $(element + ' input[type="submit"]').click();
+                if (data.error == 'yes') {
+                    $('#name_error').text(data.name_error);
+                    $('#position_error').text(data.position_error);
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'failed to add a member'
+                    })
+                } else {
+                    $('#expenModal').modal('hide');
+
+                    setTimeout(location.reload.bind(location), 2200);
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'New member added'
+                    })
+                }
             }
-        });
-        $(element + ' input[type="submit"]').click(function(event) {
-            event.preventDefault();
-            var message = $(element + ' input[type="text"]').val();
-            if ($(element + ' input[type="text"]').val()) {
-                var d = new Date();
-                var clock = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-                var month = d.getMonth() + 1;
-                var day = d.getDate();
-                var currentDate =
-                    (("" + day).length < 2 ? "0" : "") +
-                    day +
-                    "." +
-                    (("" + month).length < 2 ? "0" : "") +
-                    month +
-                    "." +
-                    d.getFullYear() +
-                    "&nbsp;&nbsp;" +
-                    clock;
-                $(element + ' div.messages').append(
-                    '<div class="message"><div class="myMessage"><p>' +
-                    message +
-                    "</p><date>" +
-                    currentDate +
-                    "</date></div></div>"
-                );
-                setTimeout(function() {
-                    $(element + ' > span').addClass("spinner");
-                }, 100);
-                setTimeout(function() {
-                    $(element + ' > span').removeClass("spinner");
-                }, 2000);
+        })
+    })
+
+    //Edit Expen
+
+    $(document).on('click', '#editExpen', function() {
+
+        var id = $(this).data('id');
+
+        $.ajax({
+            url: "<?= base_url() ?>/project/fetchIdPteam",
+            method: "POST",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
+
+            success: function(data) {
+                $('#name').val(data.employee_id);
+                $('#position').val(data.position_id);
+
+                $('#name_error').text('');
+                $('#position_error').text('');
+                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Inclusion');
+                $('#action').val('edit');
+                $('#submitButton').val('Edit');
+                $('#expenModal').modal('show');
+                $('#member_id').val(id);
             }
-            $(element + ' input[type="text"]').val("");
-            showLatestMessage();
-        });
-    }
+        })
+    });
 
-    function responsiveChatPush(element, sender, origin, date, message) {
-        var originClass;
-        if (origin == 'me') {
-            originClass = 'myMessage';
-        } else {
-            originClass = 'fromThem';
-        }
-        $(element + ' .messages').append('<div class="message"><div class="' + originClass + '"><p>' + message + '</p><date><b>' + sender + '</b> ' + date + '</date></div></div>');
-    }
+    //Delete Inclu
+    $(document).on('click', '#deleteExpen', function() {
+        var id = $(this).data('id');
 
-    /* Activating chatbox on element */
-    responsiveChat('.responsive-html5-chat');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this action",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= base_url() ?>/project/deleteTeamMember",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
 
-    /* Let's push some dummy data */
-    responsiveChatPush('.chat', 'Alexander', 'you', '08.03.2021 14:31:22', 'Ey, this chat section will be doomed right?');
-    responsiveChatPush('.chat', 'Firaz', 'me', '08.03.2021 14:33:32', 'Yeah, we\'ll replace it with a comment plugin or something like that.');
-
-    /* DEMO */
-    if (parent == top) {
-        $("a.article").show();
-    }
+                    success: function(data) {
+                        setTimeout(location.reload.bind(location));
+                    }
+                })
+            }
+        })
+    });
 </script>
 
 <?= $this->endSection(); ?>
