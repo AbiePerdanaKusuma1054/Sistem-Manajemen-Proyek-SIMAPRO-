@@ -43,14 +43,11 @@
                                 <p class="post-text">Project Manager</p>
                             </div>
                             <div class="col col-lg-1" style="text-align: right;">
-                                <!-- Kalau mau dihapus tombolnya hapus line dibawah ini aja -->
-                                <i class="fa fa-trash-o icon-del-team" id="deleteMember"></i>
-                                <!--  -->
                             </div>
                         </div>
 
                         <?php foreach ($members as $m) : ?>
-                            <div class="row">
+                            <div class="row memberList">
                                 <div class="col">
                                     <i class="fa fa-user-circle white"><span class="name-text"><?= $m['employee_name'] ?></span></i>
                                 </div>
@@ -58,12 +55,13 @@
                                     <p class="post-text"><?= ucwords($m['position_name']) ?></p>
                                 </div>
                                 <div class="col col-lg-1" style="text-align: right;">
-                                    <i class="fa fa-trash-o icon-del-team" id="deleteMember"></i>
+                                    <!-- tolong kecilin tombol editnya lah ya wkwk, gabisa gua -->
+                                    <!-- Kalo bisa jadi oren mantep si -->
+                                    <i class="fa fa-pencil-square-o act act-l fa-lg editMember" aria-hidden="true" data-id="<?= $m['id'] ?>"></i>
+                                    <i class="fa fa-trash-o icon-del-team deleteMember" data-id="<?= $m['id'] ?>"></i>
                                 </div>
                             </div>
                         <?php endforeach; ?>
-
-
                     </div>
                 </div>
             </div>
@@ -110,6 +108,7 @@
                             <div class="modal-footer">
                                 <input type="hidden" name="action" id="action" />
                                 <input type="hidden" name="project_id" id="project_id" value="<?= $id ?>" />
+                                <input type="hidden" name="member_id" id="member_id" />
                                 <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
                             </div>
                         </form>
@@ -154,7 +153,12 @@
 
             success: function(data) {
 
-                $('#submitButton').val('Add');
+                if ($('#action').val() == 'create') {
+                    $('#submitButton').val('Add');
+                } else {
+                    $('#submitButton').val('Edit');
+                }
+
                 $('#submitButton').attr('disabled', false);
 
                 const Toast = Swal.mixin({
@@ -190,8 +194,37 @@
         })
     })
 
+    //Edit Account
+
+    $(document).on('click', '.editMember', function() {
+
+        var id = $(this).data('id');
+
+        $.ajax({
+            url: "<?= base_url() ?>/project/fetchIdPteam",
+            method: "POST",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
+
+            success: function(data) {
+                $('#name').val(data.employee_id);
+                $('#position').val(data.position_id);
+
+                $('#name_error').text('');
+                $('#position_error').text('');
+                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Member');
+                $('#action').val('edit');
+                $('#submitButton').val('Edit');
+                $('#teamModal').modal('show');
+                $('#member_id').val(id);
+            }
+        })
+    });
+
     //Delete Team Member
-    $('#deleteMember').click(function() {
+    $(document).on('click', '.deleteMember', function() {
         var id = $(this).data('id');
 
         Swal.fire({
@@ -203,23 +236,17 @@
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Member has been deleted.',
-                    'success',
+                $.ajax({
+                    url: "<?= base_url() ?>/project/deleteTeamMember",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
 
-                    $.ajax({
-                        url: "<?= base_url() ?>/project/deleteTeamMember",
-                        method: "POST",
-                        data: {
-                            id: id
-                        },
-
-                        success: function(data) {
-                            location.href = "<?= base_url() ?>/project"
-                        }
-                    })
-                )
+                    success: function(data) {
+                        setTimeout(location.reload.bind(location));
+                    }
+                })
             }
         })
     });

@@ -14,7 +14,8 @@ class PteamModel extends Model
 
     public function getMembers($id)
     {
-        $getdata = $this->join('project', 'pteam.project_id = project.id')
+        $getdata = $this->select('pteam.id, project_name, employee_name, position_name')
+            ->join('project', 'pteam.project_id = project.id')
             ->join('employee', 'pteam.employee_id = employee.id')
             ->join('position', 'pteam.position_id = position.id')
             ->where('project.id', $id)->get()->getResultArray();

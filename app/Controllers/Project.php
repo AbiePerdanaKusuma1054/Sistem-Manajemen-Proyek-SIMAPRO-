@@ -237,7 +237,7 @@ class Project extends BaseController
                 }
 
                 if ($request->getVar('action') == 'edit') {
-                    $id = $request->getVar('hidden_id');
+                    $id = $request->getVar('member_id');
                     $data = [
                         'employee_id' => intval($request->getVar('name')),
                         'position_id' => intval($request->getVar('position'))
@@ -254,6 +254,22 @@ class Project extends BaseController
             ];
 
             echo json_encode($output);
+        }
+    }
+
+    public function fetchIdPteam()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $pteamID = $this->pteamModel
+                ->select('pteam.id, employee_id, position_id')
+                ->join('project', 'pteam.project_id = project.id')
+                ->join('employee', 'pteam.employee_id = employee.id')
+                ->join('position', 'pteam.position_id = position.id')
+                ->where('pteam.id', $request->getVar('id'))->first();
+
+            echo json_encode($pteamID);
         }
     }
 
