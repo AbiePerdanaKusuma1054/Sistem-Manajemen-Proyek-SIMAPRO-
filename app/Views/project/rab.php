@@ -37,9 +37,9 @@
                     </div>
                     <div class="back-detail" style="margin: 0 auto 16px auto;">
                         <!-- Looping disini -->
-                        <div class="row sub-sub">
+                        <div class="row sub-sub row-cols-2">
                             <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#inclusion-1" role="button" aria-expanded="false" aria-controls="inclusion-1">
+                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#inclusion-1" role="button" aria-expanded="false" aria-controls="inclusion-1">
                                     <i class="fa fa-list-ol"></i>
                                 </a>
                                 <span class="date-rab">11/01/2021</span>
@@ -47,54 +47,54 @@
                             <div class="col" style="text-align: right;">
                                 <p class="amount-day">Rp. 2.000.000</p>
                             </div>
-                            <div class="row" style="padding:0;margin: 0;">
-                                <!-- inclusion-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
-                                <div class="collapse multi-collapse" id="inclusion-1">
-                                    <div class="table-responsive" style="margin-bottom: 5px;">
-                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                            <thead>
-                                                <tr hidden>
-                                                    <th>No.</th>
-                                                    <!-- <th>Quantity</th> -->
-                                                    <th>What</th>
-                                                    <!-- <th>Unit</th> -->
-                                                    <th>Amount</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">1</td>
-                                                    <!-- <td>1</td> -->
-                                                    <td>DP 1</td>
-                                                    <!-- <td>2 Unit</td> -->
-                                                    <td>Rp. 500.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">2</td>
-                                                    <!-- <td>2</td> -->
-                                                    <td>DP 2</td>
-                                                    <!-- <td>1 Unit</td> -->
-                                                    <td>Rp. 1.500.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        </div>
+                        <div class="" style="padding:0;margin: 0;">
+                            <!-- inclusion-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
+                            <div class="collapse multi-collapse" id="inclusion-1">
+                                <div class="table-responsive" style="margin-bottom: 5px;">
+                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                        <thead>
+                                            <tr hidden>
+                                                <th>No.</th>
+                                                <!-- <th>Quantity</th> -->
+                                                <th>What</th>
+                                                <!-- <th>Unit</th> -->
+                                                <th>Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">1</td>
+                                                <!-- <td>1</td> -->
+                                                <td>DP 1</td>
+                                                <!-- <td>2 Unit</td> -->
+                                                <td>Rp. 500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                </td>
+                                            </tr>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">2</td>
+                                                <!-- <td>2</td> -->
+                                                <td>DP 2</td>
+                                                <!-- <td>1 Unit</td> -->
+                                                <td>Rp. 1.500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                         <!--  -->
-                        <div class="row sub-sub">
+                        <div class="row sub-sub row-cols-2">
                             <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#inclusion-2" role="button" aria-expanded="false" aria-controls="inclusion-2">
+                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#inclusion-2" role="button" aria-expanded="false" aria-controls="inclusion-2">
                                     <i class="fa fa-list-ol"></i>
                                 </a>
                                 <span class="date-rab">01/02/2021</span>
@@ -102,46 +102,46 @@
                             <div class="col" style="text-align: right;">
                                 <p class="amount-day">Rp. 1750.000</p>
                             </div>
-                            <div class="row" style="padding:0;margin: 0;">
-                                <div class="collapse multi-collapse" id="inclusion-2">
-                                    <div class="table-responsive" style="margin-bottom: 5px;">
-                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                            <thead>
-                                                <tr hidden>
-                                                    <th>No.</th>
-                                                    <!-- <th>Quantity</th> -->
-                                                    <th>What</th>
-                                                    <!-- <th>Unit</th> -->
-                                                    <th>Amount</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">1</td>
-                                                    <!-- <td>1</td> -->
-                                                    <td>DP 3</td>
-                                                    <!-- <td>1 Unit</td> -->
-                                                    <td>Rp. 250.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">2</td>
-                                                    <!-- <td>2</td> -->
-                                                    <td>DP 4</td>
-                                                    <!-- <td>1 Unit</td> -->
-                                                    <td>Rp. 1.500.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        </div>
+                        <div class="" style="padding:0;margin: 0;">
+                            <div class="collapse multi-collapse" id="inclusion-2">
+                                <div class="table-responsive" style="margin-bottom: 5px;">
+                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                        <thead>
+                                            <tr hidden>
+                                                <th>No.</th>
+                                                <!-- <th>Quantity</th> -->
+                                                <th>What</th>
+                                                <!-- <th>Unit</th> -->
+                                                <th>Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">1</td>
+                                                <!-- <td>1</td> -->
+                                                <td>DP 3</td>
+                                                <!-- <td>1 Unit</td> -->
+                                                <td>Rp. 250.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                </td>
+                                            </tr>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">2</td>
+                                                <!-- <td>2</td> -->
+                                                <td>DP 4</td>
+                                                <!-- <td>1 Unit</td> -->
+                                                <td>Rp. 1.500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -167,9 +167,9 @@
                     </div>
                     <div class="back-detail" style="margin: 0 auto;">
                         <!-- Looping disini -->
-                        <div class="row sub-sub">
+                        <div class="row sub-sub row-cols-2">
                             <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#expanses-1" role="button" aria-expanded="false" aria-controls="expanses-1">
+                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#expanses-1" role="button" aria-expanded="false" aria-controls="expanses-1">
                                     <i class="fa fa-list-ol"></i>
                                 </a>
                                 <span class="date-rab">11/01/2021</span>
@@ -177,54 +177,54 @@
                             <div class="col" style="text-align: right;">
                                 <p class="amount-day">Rp. 2.000.000</p>
                             </div>
-                            <div class="row" style="padding:0;margin: 0;">
-                                <!-- expanses-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
-                                <div class="collapse multi-collapse" id="expanses-1">
-                                    <div class="table-responsive" style="margin-bottom: 5px;">
-                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                            <thead>
-                                                <tr hidden>
-                                                    <th>No.</th>
-                                                    <!-- <th>Quantity</th> -->
-                                                    <th>What</th>
-                                                    <th>Unit</th>
-                                                    <th>Amount</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">1</td>
-                                                    <!-- <td>1</td> -->
-                                                    <td>Server</td>
-                                                    <td>2 Unit</td>
-                                                    <td>Rp. 500.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">2</td>
-                                                    <!-- <td>2</td> -->
-                                                    <td>Salary</td>
-                                                    <td>1 Unit</td>
-                                                    <td>Rp. 1.500.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        </div>
+                        <div class="" style="padding:0;margin: 0;">
+                            <!-- expanses-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
+                            <div class="collapse multi-collapse" id="expanses-1">
+                                <div class="table-responsive" style="margin-bottom: 5px;">
+                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                        <thead>
+                                            <tr hidden>
+                                                <th>No.</th>
+                                                <!-- <th>Quantity</th> -->
+                                                <th>What</th>
+                                                <th>Unit</th>
+                                                <th>Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">1</td>
+                                                <!-- <td>1</td> -->
+                                                <td>Server</td>
+                                                <td>2 Unit</td>
+                                                <td>Rp. 500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                </td>
+                                            </tr>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">2</td>
+                                                <!-- <td>2</td> -->
+                                                <td>Salary</td>
+                                                <td>1 Unit</td>
+                                                <td>Rp. 1.500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                         <!--  -->
-                        <div class="row sub-sub">
+                        <div class="row sub-sub row-cols-2">
                             <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-bs-toggle="collapse" href="#expenses-2" role="button" aria-expanded="false" aria-controls="expenses-2">
+                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#expenses-2" role="button" aria-expanded="false" aria-controls="expenses-2">
                                     <i class="fa fa-list-ol"></i>
                                 </a>
                                 <span class="date-rab">01/02/2021</span>
@@ -232,46 +232,46 @@
                             <div class="col" style="text-align: right;">
                                 <p class="amount-day">Rp. 1750.000</p>
                             </div>
-                            <div class="row" style="padding:0;margin: 0;">
-                                <div class="collapse multi-collapse" id="expenses-2">
-                                    <div class="table-responsive" style="margin-bottom: 5px;">
-                                        <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                            <thead>
-                                                <tr hidden>
-                                                    <th>No.</th>
-                                                    <!-- <th>Quantity</th> -->
-                                                    <th>What</th>
-                                                    <th>Unit</th>
-                                                    <th>Amount</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="tab-rab">
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">1</td>
-                                                    <!-- <td>1</td> -->
-                                                    <td>Server</td>
-                                                    <td>1 Unit</td>
-                                                    <td>Rp. 250.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr style="vertical-align: text-bottom;">
-                                                    <td class="no">2</td>
-                                                    <!-- <td>2</td> -->
-                                                    <td>Salary</td>
-                                                    <td>1 Unit</td>
-                                                    <td>Rp. 1.500.000</td>
-                                                    <td class="act-rab">
-                                                        <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                        <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        </div>
+                        <div class="" style="padding:0;margin: 0;">
+                            <div class="collapse multi-collapse" id="expenses-2">
+                                <div class="table-responsive" style="margin-bottom: 5px;">
+                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                        <thead>
+                                            <tr hidden>
+                                                <th>No.</th>
+                                                <!-- <th>Quantity</th> -->
+                                                <th>What</th>
+                                                <th>Unit</th>
+                                                <th>Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tab-rab">
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">1</td>
+                                                <!-- <td>1</td> -->
+                                                <td>Server</td>
+                                                <td>1 Unit</td>
+                                                <td>Rp. 250.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                </td>
+                                            </tr>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">2</td>
+                                                <!-- <td>2</td> -->
+                                                <td>Salary</td>
+                                                <td>1 Unit</td>
+                                                <td>Rp. 1.500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

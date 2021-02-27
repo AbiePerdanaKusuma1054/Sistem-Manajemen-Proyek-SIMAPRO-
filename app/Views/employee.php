@@ -96,6 +96,7 @@
                 "bSortable": false,
                 "aTargets": [4]
             }],
+            "scrollX": true,
             "order": [],
             "serverSide": true,
             "responsive": true,

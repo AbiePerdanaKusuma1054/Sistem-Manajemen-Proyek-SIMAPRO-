@@ -3,6 +3,9 @@
   margin: 0;
   font-family: "Poppins", sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   min-height: 100vh;
 }
@@ -462,15 +465,16 @@ body {
   color: white;
   background-color: teal;
 }
+.dataTables_wrapper .dataTables_filter label {
+  margin-left: -8%;
+}
 .dataTables_wrapper .dataTables_filter input {
-  margin-left: 0.5em;
-  display: block;
-  width: auto;
   border-width: 2px;
   border-color: teal;
   color: white;
   font-weight: 400;
   background: none;
+  width: 70%;
 }
 .page-item.active .page-link {
   background-color: teal;
@@ -909,9 +913,11 @@ form.chat .fromThem {
   margin-bottom: 10px;
 }
 .act-l {
+  margin-top: -2rem;
   float: left;
 }
 .act-r {
+  margin-top: -2rem;
   float: right;
 }
 .act-l:hover {
