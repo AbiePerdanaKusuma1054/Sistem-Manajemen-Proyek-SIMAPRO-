@@ -283,13 +283,21 @@ class Project extends BaseController
         }
     }
 
-    public function rab($id)
+    public function cost($id)
     {
         $data = [
             'id' => $id
         ];
 
-        return view('/project/rab', $data);
+        return view('/project/cost', $data);
+    }
+    public function transaction($id)
+    {
+        $data = [
+            'id' => $id
+        ];
+
+        return view('/project/transaction', $data);
     }
 
     public function comment($id)

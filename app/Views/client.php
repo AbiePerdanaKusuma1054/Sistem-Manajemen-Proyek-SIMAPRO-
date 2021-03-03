@@ -82,9 +82,22 @@
 
         $('#table').DataTable({
             "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [2, 3]
-            }],
+                    responsivePriority: 3,
+                    targets: -1
+                },
+                {
+                    responsivePriority: 2,
+                    targets: 1
+                },
+                {
+                    responsivePriority: 1,
+                    targets: 0
+                },
+                {
+                    "bSortable": false,
+                    "aTargets": [2, 3]
+                }
+            ],
             "scrollX": true,
             "order": [],
             "serverSide": true,

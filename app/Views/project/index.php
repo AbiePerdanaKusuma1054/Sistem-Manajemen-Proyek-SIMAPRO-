@@ -13,9 +13,9 @@
         </div>
         <!-- End -->
 
-        <table id="table" class="table table-striped table-dark display nowrap" style="cursor: default;  width: 100%;">
+        <table id="table" class="table table-striped table-dark display nowrap text-left" style="cursor: default;  width: 100%;">
             <thead class="attr">
-                <tr>
+                <tr class="text-center">
                     <th>Project</th>
                     <th>Client</th>
                     <th>Project Manager</th>
@@ -100,9 +100,26 @@
     $(document).ready(function() {
         $('#table').DataTable({
             "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [6]
-            }],
+                    targets: -1,
+                    className: 'text-center'
+                },
+                {
+                    responsivePriority: 3,
+                    targets: -1
+                },
+                {
+                    responsivePriority: 2,
+                    targets: 1
+                },
+                {
+                    responsivePriority: 1,
+                    targets: 0
+                },
+                {
+                    "bSortable": false,
+                    "aTargets": [6]
+                }
+            ],
             "scrollX": true,
             "order": [],
             "serverSide": true,

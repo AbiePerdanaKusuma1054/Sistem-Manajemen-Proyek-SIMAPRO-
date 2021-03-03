@@ -7,7 +7,8 @@
             <div class="table-responsive">
                 <ul>
                     <li class=""><a href="<?= base_url() ?>/project/detail/<?= $id ?>">Project</a></li>
-                    <li class=""><a href="<?= base_url() ?>/project/rab/<?= $id ?>">RAB</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/cost/<?= $id ?>">Cost</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/transaction/<?= $id ?>">Transaction</a></li>
                     <li class="actived"><a href="<?= base_url() ?>/project/team/<?= $id ?>">Team</a></li>
                     <li class=""><a href="<?= base_url() ?>/project/comment/<?= $id ?>">Comment</a></li>
                 </ul>

@@ -7,7 +7,8 @@
             <div class="table-responsive">
                 <ul>
                     <li class=""><a href="<?= base_url() ?>/project/detail/<?= $id ?>">Project</a></li>
-                    <li class="actived"><a href="<?= base_url() ?>/project/rab/<?= $id ?>">RAB</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/cost/<?= $id ?>">Cost</a></li>
+                    <li class="actived"><a href="<?= base_url() ?>/project/transaction/<?= $id ?>">Transaction</a></li>
                     <li class=""><a href="<?= base_url() ?>/project/team/<?= $id ?>">Team</a></li>
                     <li class=""><a href="<?= base_url() ?>/project/comment/<?= $id ?>">Comment</a></li>
                 </ul>
@@ -16,7 +17,7 @@
         <div class="add-back">
             <i class="fa fa-calculator">
                 <span class="add-back-text">
-                    RAB
+                    Plan
                 </span>
             </i>
         </div>
@@ -24,10 +25,10 @@
         <div class="box">
             <div class="left-box">
                 <div class="detail-box back-rab inclusion">
-                    <!-- Pemasukkan -->
+                    <!-- Perencanaan -->
                     <div class="row sub" style="margin-bottom: -15px;">
                         <div class="col" style="margin-bottom: 0;">
-                            <p class="category-rab">Inclusion</p>
+                            <p class="category-rab">Planning</p>
                         </div>
                         <div class="col" style="text-align: right;">
                             <a>
@@ -36,29 +37,28 @@
                         </div>
                     </div>
                     <div class="back-detail" style="margin: 0 auto 16px auto;">
-                        <!-- Looping disini -->
-                        <div class="row sub-sub row-cols-2">
-                            <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#inclusion-1" role="button" aria-expanded="false" aria-controls="inclusion-1">
-                                    <i class="fa fa-list-ol"></i>
-                                </a>
-                                <span class="date-rab">11/01/2021</span>
-                            </div>
-                            <div class="col" style="text-align: right;">
-                                <p class="amount-day">Rp. 2.000.000</p>
-                            </div>
-                        </div>
                         <div class="" style="padding:0;margin: 0;">
                             <!-- inclusion-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
-                            <div class="collapse multi-collapse" id="inclusion-1">
+                            <div class="row sub-sub row-cols-2">
+                                <div class="col">
+                                    <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#planning-1" role="button" aria-expanded="false" aria-controls="expanses-1">
+                                        <i class="fa fa-list-ol"></i>
+                                    </a>
+                                    <span class="date-rab">11/01/2021</span>
+                                </div>
+                                <div class="col" style="text-align: right;">
+                                    <p class="amount-day">Rp. 2.000.000</p>
+                                </div>
+                            </div>
+                            <div class="collapse multi-collapse" id="planning-1">
                                 <div class="table-responsive" style="margin-bottom: 5px;">
                                     <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
                                         <thead>
-                                            <tr hidden>
+                                            <tr>
                                                 <th>No.</th>
-                                                <!-- <th>Quantity</th> -->
-                                                <th>What</th>
-                                                <!-- <th>Unit</th> -->
+                                                <th>Quantity</th>
+                                                <th>Item</th>
+                                                <th>Unit</th>
                                                 <th>Amount</th>
                                                 <th>Action</th>
                                             </tr>
@@ -66,9 +66,9 @@
                                         <tbody>
                                             <tr style="vertical-align: text-bottom;">
                                                 <td class="no">1</td>
-                                                <!-- <td>1</td> -->
+                                                <td>1</td>
                                                 <td>DP 1</td>
-                                                <!-- <td>2 Unit</td> -->
+                                                <td>2 Unit</td>
                                                 <td>Rp. 500.000</td>
                                                 <td class="act-rab">
                                                     <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
@@ -77,9 +77,9 @@
                                             </tr>
                                             <tr style="vertical-align: text-bottom;">
                                                 <td class="no">2</td>
-                                                <!-- <td>2</td> -->
+                                                <td>2</td>
                                                 <td>DP 2</td>
-                                                <!-- <td>1 Unit</td> -->
+                                                <td>1 Unit</td>
                                                 <td>Rp. 1.500.000</td>
                                                 <td class="act-rab">
                                                     <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
@@ -91,28 +91,16 @@
                                 </div>
                             </div>
                         </div>
-                        <!--  -->
-                        <div class="row sub-sub row-cols-2">
-                            <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#inclusion-2" role="button" aria-expanded="false" aria-controls="inclusion-2">
-                                    <i class="fa fa-list-ol"></i>
-                                </a>
-                                <span class="date-rab">01/02/2021</span>
-                            </div>
-                            <div class="col" style="text-align: right;">
-                                <p class="amount-day">Rp. 1750.000</p>
-                            </div>
-                        </div>
                         <div class="" style="padding:0;margin: 0;">
                             <div class="collapse multi-collapse" id="inclusion-2">
                                 <div class="table-responsive" style="margin-bottom: 5px;">
                                     <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
                                         <thead>
-                                            <tr hidden>
+                                            <tr>
                                                 <th>No.</th>
-                                                <!-- <th>Quantity</th> -->
-                                                <th>What</th>
-                                                <!-- <th>Unit</th> -->
+                                                <th>Quantity</th>
+                                                <th>Item</th>
+                                                <th>Unit</th>
                                                 <th>Amount</th>
                                                 <th>Action</th>
                                             </tr>
@@ -120,9 +108,9 @@
                                         <tbody>
                                             <tr style="vertical-align: text-bottom;">
                                                 <td class="no">1</td>
-                                                <!-- <td>1</td> -->
+                                                <td>1</td>
                                                 <td>DP 3</td>
-                                                <!-- <td>1 Unit</td> -->
+                                                <td>1 Unit</td>
                                                 <td>Rp. 250.000</td>
                                                 <td class="act-rab">
                                                     <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
@@ -131,9 +119,84 @@
                                             </tr>
                                             <tr style="vertical-align: text-bottom;">
                                                 <td class="no">2</td>
-                                                <!-- <td>2</td> -->
+                                                <td>2</td>
                                                 <td>DP 4</td>
-                                                <!-- <td>1 Unit</td> -->
+                                                <td>1 Unit</td>
+                                                <td>Rp. 1.500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row total" style="text-align: right;">
+                            <div class="col" style="height: fit-content;">
+                                <p style="font-weight: 600;">Total</p>
+                            </div>
+                            <div class="col" style="height: fit-content;">
+                                <p>Rp. 3.750.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pemasukkan -->
+                    <div class="row sub" style="margin-bottom: -15px;">
+                        <div class="col" style="margin-bottom: 0;">
+                            <p class="category-rab">Income</p>
+                        </div>
+                        <div class="col" style="text-align: right;">
+                            <a>
+                                <i class="fa fa-plus-circle add-rab" id="addInclu"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="back-detail" style="margin: 0 auto 16px auto;">
+                        <div class="" style="padding:0;margin: 0;">
+                            <!-- Income-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
+                            <div class="row sub-sub row-cols-2">
+                                <div class="col">
+                                    <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#income-1" role="button" aria-expanded="false" aria-controls="expanses-1">
+                                        <i class="fa fa-list-ol"></i>
+                                    </a>
+                                    <span class="date-rab">11/01/2021</span>
+                                </div>
+                                <div class="col" style="text-align: right;">
+                                    <p class="amount-day">Rp. 2.000.000</p>
+                                </div>
+                            </div>
+                            <div class="collapse multi-collapse" id="income-1">
+                                <div class="table-responsive" style="margin-bottom: 5px;">
+                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Quantity</th>
+                                                <th>Item</th>
+                                                <th>Unit</th>
+                                                <th>Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">1</td>
+                                                <td>1</td>
+                                                <td>DP 1</td>
+                                                <td>2 Unit</td>
+                                                <td>Rp. 500.000</td>
+                                                <td class="act-rab">
+                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                                </td>
+                                            </tr>
+                                            <tr style="vertical-align: text-bottom;">
+                                                <td class="no">2</td>
+                                                <td>2</td>
+                                                <td>DP 2</td>
+                                                <td>1 Unit</td>
                                                 <td>Rp. 1.500.000</td>
                                                 <td class="act-rab">
                                                     <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
@@ -166,28 +229,27 @@
                         </div>
                     </div>
                     <div class="back-detail" style="margin: 0 auto;">
-                        <!-- Looping disini -->
-                        <div class="row sub-sub row-cols-2">
-                            <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#expanses-1" role="button" aria-expanded="false" aria-controls="expanses-1">
-                                    <i class="fa fa-list-ol"></i>
-                                </a>
-                                <span class="date-rab">11/01/2021</span>
-                            </div>
-                            <div class="col" style="text-align: right;">
-                                <p class="amount-day">Rp. 2.000.000</p>
-                            </div>
-                        </div>
                         <div class="" style="padding:0;margin: 0;">
                             <!-- expanses-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
-                            <div class="collapse multi-collapse" id="expanses-1">
+                            <div class="row sub-sub row-cols-2">
+                                <div class="col">
+                                    <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#expenses-1" role="button" aria-expanded="false" aria-controls="expanses-1">
+                                        <i class="fa fa-list-ol"></i>
+                                    </a>
+                                    <span class="date-rab">11/01/2021</span>
+                                </div>
+                                <div class="col" style="text-align: right;">
+                                    <p class="amount-day">Rp. 2.000.000</p>
+                                </div>
+                            </div>
+                            <div class="collapse multi-collapse" id="expenses-1">
                                 <div class="table-responsive" style="margin-bottom: 5px;">
                                     <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
                                         <thead>
-                                            <tr hidden>
+                                            <tr>
                                                 <th>No.</th>
-                                                <!-- <th>Quantity</th> -->
-                                                <th>What</th>
+                                                <th>Quantity</th>
+                                                <th>Item</th>
                                                 <th>Unit</th>
                                                 <th>Amount</th>
                                                 <th>Action</th>
@@ -196,7 +258,7 @@
                                         <tbody>
                                             <tr style="vertical-align: text-bottom;">
                                                 <td class="no">1</td>
-                                                <!-- <td>1</td> -->
+                                                <td>1</td>
                                                 <td>Server</td>
                                                 <td>2 Unit</td>
                                                 <td>Rp. 500.000</td>
@@ -207,7 +269,7 @@
                                             </tr>
                                             <tr style="vertical-align: text-bottom;">
                                                 <td class="no">2</td>
-                                                <!-- <td>2</td> -->
+                                                <td>2</td>
                                                 <td>Salary</td>
                                                 <td>1 Unit</td>
                                                 <td>Rp. 1.500.000</td>
@@ -222,59 +284,6 @@
                             </div>
                         </div>
                         <!--  -->
-                        <div class="row sub-sub row-cols-2">
-                            <div class="col">
-                                <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#expenses-2" role="button" aria-expanded="false" aria-controls="expenses-2">
-                                    <i class="fa fa-list-ol"></i>
-                                </a>
-                                <span class="date-rab">01/02/2021</span>
-                            </div>
-                            <div class="col" style="text-align: right;">
-                                <p class="amount-day">Rp. 1750.000</p>
-                            </div>
-                        </div>
-                        <div class="" style="padding:0;margin: 0;">
-                            <div class="collapse multi-collapse" id="expenses-2">
-                                <div class="table-responsive" style="margin-bottom: 5px;">
-                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                        <thead>
-                                            <tr hidden>
-                                                <th>No.</th>
-                                                <!-- <th>Quantity</th> -->
-                                                <th>What</th>
-                                                <th>Unit</th>
-                                                <th>Amount</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="tab-rab">
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">1</td>
-                                                <!-- <td>1</td> -->
-                                                <td>Server</td>
-                                                <td>1 Unit</td>
-                                                <td>Rp. 250.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                </td>
-                                            </tr>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">2</td>
-                                                <!-- <td>2</td> -->
-                                                <td>Salary</td>
-                                                <td>1 Unit</td>
-                                                <td>Rp. 1.500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row total" style="text-align: right;">
                             <div class="col" style="height: fit-content;">
                                 <p style="font-weight: 600;">Total</p>
@@ -284,12 +293,11 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
 
-            <!-- Modal Inlcus -->
+            <!-- Modal Inclus -->
             <div class="modal fade" id="incluModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -394,7 +402,7 @@
         $('#incluForm')[0].reset();
         $('#name_error').text('');
         $('#position_error').text('');
-        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add a Inclusion');
+        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add an Income');
         $('#action').val('create');
         $('#submitButton').val('Add');
         $('#incluModal').modal('show');
@@ -477,7 +485,7 @@
 
                 $('#name_error').text('');
                 $('#position_error').text('');
-                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Inclusion');
+                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Income');
                 $('#action').val('edit');
                 $('#submitButton').val('Edit');
                 $('#inlcuModal').modal('show');
@@ -520,7 +528,7 @@
         $('#expenForm')[0].reset();
         $('#name_error').text('');
         $('#position_error').text('');
-        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add a Inclusion');
+        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add an Expenses');
         $('#action').val('create');
         $('#submitButton').val('Add');
         $('#expenModal').modal('show');
@@ -603,7 +611,7 @@
 
                 $('#name_error').text('');
                 $('#position_error').text('');
-                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Inclusion');
+                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Expenses');
                 $('#action').val('edit');
                 $('#submitButton').val('Edit');
                 $('#expenModal').modal('show');
