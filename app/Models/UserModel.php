@@ -27,4 +27,9 @@ class UserModel extends Model
         };
         return $buttonFun;
     }
+
+    public function getLogin($username)
+    {
+        return $this->where('username', $username)->get()->getRow();
+    }
 }

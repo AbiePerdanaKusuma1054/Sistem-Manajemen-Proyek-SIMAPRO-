@@ -84,21 +84,22 @@
 <script>
     //When logged in:
 
-    // const Toast = Swal.mixin({
-    //     toast: true,
-    //     position: 'top-end',
-    //     showConfirmButton: false,
-    //     timer: 1700,
-    //     timerProgressBar: true,
-    //     didOpen: (toast) => {
-    //         toast.addEventListener('mouseenter', Swal.stopTimer)
-    //         toast.addEventListener('mouseleave', Swal.resumeTimer)
-    //     }
-    // })
+    <?php if (session()->getFlashdata('message')) { ?>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 2000,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
-    // Toast.fire({
-    //     icon: 'success',
-    //     title: 'Signed in'
-    // })
+        Toast.fire({
+            icon: 'success',
+            title: 'Signed in'
+        })
+    <?php } ?>
 </script>
 <?= $this->endSection(); ?>

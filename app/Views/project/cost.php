@@ -17,7 +17,7 @@
         <div class="add-back">
             <i class="fa fa-calculator">
                 <span class="add-back-text">
-                    Plan
+                    Costs
                 </span>
             </i>
         </div>
