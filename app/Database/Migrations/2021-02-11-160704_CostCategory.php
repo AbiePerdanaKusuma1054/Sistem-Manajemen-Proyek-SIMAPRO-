@@ -16,7 +16,7 @@ class CostCategory extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true
 			],
-			'pcost_id'          => [
+			'project_id'          => [
 				'type'           => 'INT',
 				'constraint'     => 5,
 				'unsigned'       => true,
@@ -31,7 +31,7 @@ class CostCategory extends Migration
 		$this->forge->addKey('id', TRUE);
 
 		//fk
-		$this->forge->addForeignKey('pcost_id', 'pcost', 'id');
+		$this->forge->addForeignKey('project_id', 'project', 'id');
 
 		// Membuat tabel cost category
 		$this->forge->createTable('cost_category', TRUE);

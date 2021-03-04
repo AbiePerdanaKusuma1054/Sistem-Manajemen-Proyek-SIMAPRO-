@@ -21,6 +21,10 @@ class Prevenues extends Migration
 				'constraint'     => 5,
 				'unsigned'       => true,
 			],
+			'prevenues_desc'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '255'
+			],
 			'prevenues_amount'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
