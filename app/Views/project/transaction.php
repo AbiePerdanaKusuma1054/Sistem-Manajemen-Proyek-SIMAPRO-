@@ -3,7 +3,8 @@
 <?= $this->section('content'); ?>
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;">
-        <div class="menu-detail">
+        <!-- tolong dikasih class text-center untuk disetiap halaman yg ada menu ini, cuma div class dibawah ini doang -->
+        <div class="menu-detail text-center">
             <div class="table-responsive">
                 <ul>
                     <li class=""><a href="<?= base_url() ?>/project/detail/<?= $id ?>">Project</a></li>
@@ -17,7 +18,7 @@
         <div class="add-back">
             <i class="fa fa-calculator">
                 <span class="add-back-text">
-                    Plan
+                    Transaction
                 </span>
             </i>
         </div>
@@ -25,127 +26,17 @@
         <div class="box">
             <div class="left-box">
                 <div class="detail-box back-rab inclusion">
-                    <!-- Perencanaan -->
-                    <div class="row sub" style="margin-bottom: -15px;">
-                        <div class="col" style="margin-bottom: 0;">
-                            <p class="category-rab">Planning</p>
-                        </div>
-                        <div class="col" style="text-align: right;">
-                            <a>
-                                <i class="fa fa-plus-circle add-rab" id="addInclu"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="back-detail" style="margin: 0 auto 16px auto;">
-                        <div class="" style="padding:0;margin: 0;">
-                            <!-- inclusion-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
-                            <div class="row sub-sub row-cols-2">
-                                <div class="col">
-                                    <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#planning-1" role="button" aria-expanded="false" aria-controls="expanses-1">
-                                        <i class="fa fa-list-ol"></i>
-                                    </a>
-                                    <span class="date-rab">11/01/2021</span>
-                                </div>
-                                <div class="col" style="text-align: right;">
-                                    <p class="amount-day">Rp. 2.000.000</p>
-                                </div>
-                            </div>
-                            <div class="collapse multi-collapse" id="planning-1">
-                                <div class="table-responsive" style="margin-bottom: 5px;">
-                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Quantity</th>
-                                                <th>Item</th>
-                                                <th>Unit</th>
-                                                <th>Amount</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">1</td>
-                                                <td>1</td>
-                                                <td>DP 1</td>
-                                                <td>2 Unit</td>
-                                                <td>Rp. 500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                </td>
-                                            </tr>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">2</td>
-                                                <td>2</td>
-                                                <td>DP 2</td>
-                                                <td>1 Unit</td>
-                                                <td>Rp. 1.500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="" style="padding:0;margin: 0;">
-                            <div class="collapse multi-collapse" id="inclusion-2">
-                                <div class="table-responsive" style="margin-bottom: 5px;">
-                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Quantity</th>
-                                                <th>Item</th>
-                                                <th>Unit</th>
-                                                <th>Amount</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">1</td>
-                                                <td>1</td>
-                                                <td>DP 3</td>
-                                                <td>1 Unit</td>
-                                                <td>Rp. 250.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                </td>
-                                            </tr>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">2</td>
-                                                <td>2</td>
-                                                <td>DP 4</td>
-                                                <td>1 Unit</td>
-                                                <td>Rp. 1.500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row total" style="text-align: right;">
-                            <div class="col" style="height: fit-content;">
-                                <p style="font-weight: 600;">Total</p>
-                            </div>
-                            <div class="col" style="height: fit-content;">
-                                <p>Rp. 3.750.000</p>
-                            </div>
-                        </div>
-                    </div>
+
                     <!-- Pemasukkan -->
                     <div class="row sub" style="margin-bottom: -15px;">
                         <div class="col" style="margin-bottom: 0;">
-                            <p class="category-rab">Income</p>
+
+                            <p class="category-rab">
+                                <a class="btn btn-light" style="border: none;margin-right: 5px;" data-toggle="collapse" href="#income" role="button" aria-expanded="false" aria-controls="income">
+                                    <i class="fa fa-list-ol"></i>
+                                </a>
+                                Income
+                            </p>
                         </div>
                         <div class="col" style="text-align: right;">
                             <a>
@@ -155,141 +46,113 @@
                     </div>
                     <div class="back-detail" style="margin: 0 auto 16px auto;">
                         <div class="" style="padding:0;margin: 0;">
-                            <!-- Income-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
-                            <div class="row sub-sub row-cols-2">
-                                <div class="col">
-                                    <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#income-1" role="button" aria-expanded="false" aria-controls="expanses-1">
-                                        <i class="fa fa-list-ol"></i>
-                                    </a>
-                                    <span class="date-rab">11/01/2021</span>
-                                </div>
-                                <div class="col" style="text-align: right;">
-                                    <p class="amount-day">Rp. 2.000.000</p>
-                                </div>
-                            </div>
-                            <div class="collapse multi-collapse" id="income-1">
-                                <div class="table-responsive" style="margin-bottom: 5px;">
-                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Quantity</th>
-                                                <th>Item</th>
-                                                <th>Unit</th>
-                                                <th>Amount</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">1</td>
-                                                <td>1</td>
-                                                <td>DP 1</td>
-                                                <td>2 Unit</td>
-                                                <td>Rp. 500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                </td>
-                                            </tr>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">2</td>
-                                                <td>2</td>
-                                                <td>DP 2</td>
-                                                <td>1 Unit</td>
-                                                <td>Rp. 1.500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="collapse multi-collapse" id="income">
+                                <table id="example-1" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Action</th>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Status</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="act-rab">
+                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                            </td>
+                                            <td class="text-right">02/03/2021</td>
+                                            <td>DP 1</td>
+                                            <td class="text-center"><i class="fa fa-times-circle-o fa-lg incomplete-bedge" aria-hidden="true"><span>Incomplete</span></i></td>
+                                            <td class="text-right">2000000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="act-rab">
+                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                            </td>
+                                            <td class="text-right">04/03/2021</td>
+                                            <td>Pelunasan Biaya Proyek</td>
+                                            <td class="text-center"><i class="fa fa-check-circle-o fa-lg complete-bedge" aria-hidden="true"><span>Complete</span></i></td>
+                                            <td class="text-right">8000000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="row total" style="text-align: right;">
+                        <div class="row total">
                             <div class="col" style="height: fit-content;">
-                                <p style="font-weight: 600;">Total</p>
+                                <p style="font-weight: 600;margin-left: 10px;">Total Amount</p>
                             </div>
                             <div class="col" style="height: fit-content;">
-                                <p>Rp. 3.750.000</p>
+                                <p style="margin-right: 10px;text-align: right;">Rp. 10.000.000</p>
                             </div>
                         </div>
                     </div>
                     <!-- Pengeluaran -->
                     <div class="row sub" style="margin-bottom: -15px;">
                         <div class="col" style="margin-bottom: 0;">
-                            <p class="category-rab">Expenses</p>
+
+                            <p class="category-rab">
+                                <a class="btn btn-light" style="border: none;margin-right: 5px;" data-toggle="collapse" href="#outcome" role="button" aria-expanded="false" aria-controls="outcome">
+                                    <i class="fa fa-list-ol"></i>
+                                </a>
+                                Outcome
+                            </p>
                         </div>
                         <div class="col" style="text-align: right;">
                             <a>
-                                <i class="fa fa-plus-circle add-rab" id="addExpen"></i>
+                                <i class="fa fa-plus-circle add-rab" id="addOutcome"></i>
                             </a>
                         </div>
                     </div>
                     <div class="back-detail" style="margin: 0 auto;">
                         <div class="" style="padding:0;margin: 0;">
-                            <!-- expanses-1 "angka=1nya harus di looping juga biar pas dipencet tombol detailnya enggak muncul expenses lainnya(Intinya idnya harus beda)" -->
-                            <div class="row sub-sub row-cols-2">
-                                <div class="col">
-                                    <a class="btn btn-outline-light" style="border: none;" data-toggle="collapse" href="#expenses-1" role="button" aria-expanded="false" aria-controls="expanses-1">
-                                        <i class="fa fa-list-ol"></i>
-                                    </a>
-                                    <span class="date-rab">11/01/2021</span>
-                                </div>
-                                <div class="col" style="text-align: right;">
-                                    <p class="amount-day">Rp. 2.000.000</p>
-                                </div>
-                            </div>
-                            <div class="collapse multi-collapse" id="expenses-1">
-                                <div class="table-responsive" style="margin-bottom: 5px;">
-                                    <table id="example" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Quantity</th>
-                                                <th>Item</th>
-                                                <th>Unit</th>
-                                                <th>Amount</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">1</td>
-                                                <td>1</td>
-                                                <td>Server</td>
-                                                <td>2 Unit</td>
-                                                <td>Rp. 500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                </td>
-                                            </tr>
-                                            <tr style="vertical-align: text-bottom;">
-                                                <td class="no">2</td>
-                                                <td>2</td>
-                                                <td>Salary</td>
-                                                <td>1 Unit</td>
-                                                <td>Rp. 1.500.000</td>
-                                                <td class="act-rab">
-                                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="collapse multi-collapse" id="outcome">
+                                <table id="example-2" class="table table-striped table-dark display nowrap detail-rab" style="width:100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Action</th>
+                                            <th>Date</th>
+                                            <th>Item Cost</th>
+                                            <th>Status</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="act-rab">
+                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                            </td>
+                                            <td class="text-right">02/03/2021</td>
+                                            <td>Server</td>
+                                            <td class="text-center"><i class="fa fa-times-circle-o fa-lg incomplete-bedge" aria-hidden="true"><span>Incomplete</span></i></td>
+                                            <td class="text-right">800000</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="act-rab">
+                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
+                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
+                                            </td>
+                                            <td class="text-right">04/03/2021</td>
+                                            <td>Gaji Developer</td>
+                                            <td class="text-center"><i class="fa fa-check-circle-o fa-lg complete-bedge" aria-hidden="true"><span>Complete</span></i></td>
+                                            <td class="text-right">7000000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <!--  -->
-                        <div class="row total" style="text-align: right;">
+                        <div class="row total">
                             <div class="col" style="height: fit-content;">
-                                <p style="font-weight: 600;">Total</p>
+                                <p style="font-weight: 600;margin-left: 10px;">Total Amount</p>
                             </div>
                             <div class="col" style="height: fit-content;">
-                                <p>Rp. 3.750.000</p>
+                                <p style="margin-right: 10px;text-align: right;">Rp. 7.800.000</p>
                             </div>
                         </div>
                     </div>
@@ -297,8 +160,8 @@
             </div>
 
 
-            <!-- Modal Inclus -->
-            <div class="modal fade" id="incluModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal Income -->
+            <div class="modal fade" id="incomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -309,16 +172,30 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="incluForm" method="POST">
+                            <form id="incomeForm" method="POST">
                                 <div class="col">
-                                    <label class="form-label">Name *</label>
-                                    <input type="text" name="name" id="name" class="form-control fc">
-                                    <span class="text-danger" id="name_error"></span>
+                                    <label class="form-label">Date *</label>
+                                    <input type="date" class="form-control fc" name="" value="" required>
+                                    <span class="text-danger" id="unit_error"></span>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Description *</label>
+                                    <input type="text" name="description" id="description" class="form-control fc" placeholder="Description...">
+                                    <span class="text-danger" id="description_error"></span>
                                 </div>
                                 <div class="col">
                                     <label class="form-label">Amount *</label>
-                                    <input type="number" class="form-control fc" name="" value="" required>
+                                    <input type="number" class="form-control fc" name="amount" placeholder="Type a number..." value="" required>
                                     <span class="text-danger" id="amount_error"></span>
+                                </div>
+                                <div class="col mb-4">
+                                    <label class="form-label">Status *</label>
+                                    <select class="form-select form-control fc" name="itemCost" id="itemCost">
+                                        <option disabled selected>Select One...</option>
+                                        <option value="Complete">Complete</option>
+                                        <option value="Incomplete">Incomplete</option>
+                                    </select>
+                                    <span class="text-danger" id="itemCost_error"></span>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" name="action" id="action" />
@@ -331,8 +208,8 @@
                 </div>
             </div>
             <!-- End -->
-            <!-- Modal Expen -->
-            <div class="modal fade" id="expenModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal Outcome -->
+            <div class="modal fade" id="outcomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -343,21 +220,34 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="expenForm" method="POST">
+                            <form id="outcomeForm" method="POST">
                                 <div class="col">
-                                    <label class="form-label">Name *</label>
-                                    <input type="text" name="name" id="name" class="form-control fc">
-                                    <span class="text-danger" id="name_error"></span>
-                                </div>
-                                <div class="col">
-                                    <label class="form-label">Unit *</label>
-                                    <input type="number" class="form-control fc" name="" value="" required>
+                                    <label class="form-label">Date *</label>
+                                    <input type="date" class="form-control fc" name="" value="" required>
                                     <span class="text-danger" id="unit_error"></span>
                                 </div>
                                 <div class="col">
+                                    <label class="form-label">Item Cost*</label>
+                                    <select class="form-select form-control fc" name="itemCost" id="itemCost">
+                                        <option disabled selected>Select Item...</option>
+                                        <option value="server">Server</option>
+                                        <option value="gaji">Gaji Developer</option>
+                                    </select>
+                                    <span class="text-danger" id="itemCost_error"></span>
+                                </div>
+                                <div class="col">
                                     <label class="form-label">Amount *</label>
-                                    <input type="number" class="form-control fc" name="" value="" required>
+                                    <input type="number" class="form-control fc" name="amount" placeholder="Type a number..." value="" required>
                                     <span class="text-danger" id="amount_error"></span>
+                                </div>
+                                <div class="col mb-4">
+                                    <label class="form-label">Status *</label>
+                                    <select class="form-select form-control fc" name="itemCost" id="itemCost">
+                                        <option disabled selected>Select One...</option>
+                                        <option value="Complete">Complete</option>
+                                        <option value="Incomplete">Incomplete</option>
+                                    </select>
+                                    <span class="text-danger" id="itemCost_error"></span>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" name="action" id="action" />
@@ -380,273 +270,274 @@
 </div>
 
 <!-- JS Data table -->
-<!-- <script>
+<script>
     $(document).ready(function() {
-        $('#example').DataTable({
-            "scrollX": true,
+        $('#example-1').DataTable({
+            // "scrollX": true,
             "paging": false,
             "filter": false,
-            "ordering": false,
             "info": false
         });
     });
+
     $(document).ready(function() {
-        var table = $('#example').DataTable();
-
-        new $.fn.dataTable.Responsive(table);
-    });
-</script> -->
-<script>
-    //Create Inclu
-    $('#addInclu').click(function() {
-        $('#incluForm')[0].reset();
-        $('#name_error').text('');
-        $('#position_error').text('');
-        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add an Income');
-        $('#action').val('create');
-        $('#submitButton').val('Add');
-        $('#incluModal').modal('show');
-    })
-
-    $('#incluForm').on('submit', function(event) {
-        event.preventDefault();
-
-        $.ajax({
-            url: "<?= base_url(); ?>/project/saveMemberData",
-            method: "POST",
-            data: $(this).serialize(),
-            dataType: "JSON",
-
-            beforeSend: function() {
-                $('#submitButton').val('Wait...');
-                $('#submitButton').attr('disabled', 'disabled');
-            },
-
-            success: function(data) {
-
-                if ($('#action').val() == 'create') {
-                    $('#submitButton').val('Add');
-                } else {
-                    $('#submitButton').val('Edit');
-                }
-
-                $('#submitButton').attr('disabled', false);
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1700,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-
-                if (data.error == 'yes') {
-                    $('#name_error').text(data.name_error);
-                    $('#position_error').text(data.position_error);
-
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'failed to add a member'
-                    })
-                } else {
-                    $('#incluModal').modal('hide');
-
-                    setTimeout(location.reload.bind(location), 2200);
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'New member added'
-                    })
-                }
-            }
-        })
-    })
-
-    //Edit Inclu
-
-    $(document).on('click', '#editInclu', function() {
-
-        var id = $(this).data('id');
-
-        $.ajax({
-            url: "<?= base_url() ?>/project/fetchIdPteam",
-            method: "POST",
-            data: {
-                id: id
-            },
-            dataType: "JSON",
-
-            success: function(data) {
-                $('#name').val(data.employee_id);
-                $('#position').val(data.position_id);
-
-                $('#name_error').text('');
-                $('#position_error').text('');
-                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Income');
-                $('#action').val('edit');
-                $('#submitButton').val('Edit');
-                $('#inlcuModal').modal('show');
-                $('#member_id').val(id);
-            }
-        })
+        $('#example-2').DataTable({
+            // "scrollX": true,
+            "paging": false,
+            "filter": false,
+            "info": false
+        });
     });
 
-    //Delete Inclu
-    $(document).on('click', '#deleteInclu', function() {
-        var id = $(this).data('id');
+    // //Create Inclu
+    // $('#addInclu').click(function() {
+    //     $('#incomeForm')[0].reset();
+    //     $('#name_error').text('');
+    //     $('#position_error').text('');
+    //     $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add an Income');
+    //     $('#action').val('create');
+    //     $('#submitButton').val('Add');
+    //     $('#incomeModal').modal('show');
+    // })
 
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this action",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Delete',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "<?= base_url() ?>/project/deleteTeamMember",
-                    method: "POST",
-                    data: {
-                        id: id
-                    },
+    // $('#incomeForm').on('submit', function(event) {
+    //     event.preventDefault();
 
-                    success: function(data) {
-                        setTimeout(location.reload.bind(location));
-                    }
-                })
-            }
-        })
-    });
-</script>
-<script>
-    //Create Expen
-    $('#addExpen').click(function() {
-        $('#expenForm')[0].reset();
-        $('#name_error').text('');
-        $('#position_error').text('');
-        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add an Expenses');
-        $('#action').val('create');
-        $('#submitButton').val('Add');
-        $('#expenModal').modal('show');
-    })
+    //     $.ajax({
+    //         url: "<?= base_url(); ?>/project/saveMemberData",
+    //         method: "POST",
+    //         data: $(this).serialize(),
+    //         dataType: "JSON",
 
-    $('#expenForm').on('submit', function(event) {
-        event.preventDefault();
+    //         beforeSend: function() {
+    //             $('#submitButton').val('Wait...');
+    //             $('#submitButton').attr('disabled', 'disabled');
+    //         },
 
-        $.ajax({
-            url: "<?= base_url(); ?>/project/saveMemberData",
-            method: "POST",
-            data: $(this).serialize(),
-            dataType: "JSON",
+    //         success: function(data) {
 
-            beforeSend: function() {
-                $('#submitButton').val('Wait...');
-                $('#submitButton').attr('disabled', 'disabled');
-            },
+    //             if ($('#action').val() == 'create') {
+    //                 $('#submitButton').val('Add');
+    //             } else {
+    //                 $('#submitButton').val('Edit');
+    //             }
 
-            success: function(data) {
+    //             $('#submitButton').attr('disabled', false);
 
-                if ($('#action').val() == 'create') {
-                    $('#submitButton').val('Add');
-                } else {
-                    $('#submitButton').val('Edit');
-                }
+    //             const Toast = Swal.mixin({
+    //                 toast: true,
+    //                 position: 'top-end',
+    //                 showConfirmButton: false,
+    //                 timer: 1700,
+    //                 didOpen: (toast) => {
+    //                     toast.addEventListener('mouseenter', Swal.stopTimer)
+    //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //                 }
+    //             })
 
-                $('#submitButton').attr('disabled', false);
+    //             if (data.error == 'yes') {
+    //                 $('#name_error').text(data.name_error);
+    //                 $('#position_error').text(data.position_error);
 
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1700,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
+    //                 Toast.fire({
+    //                     icon: 'error',
+    //                     title: 'failed to add a member'
+    //                 })
+    //             } else {
+    //                 $('#incomeModal').modal('hide');
 
-                if (data.error == 'yes') {
-                    $('#name_error').text(data.name_error);
-                    $('#position_error').text(data.position_error);
+    //                 setTimeout(location.reload.bind(location), 2200);
 
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'failed to add a member'
-                    })
-                } else {
-                    $('#expenModal').modal('hide');
+    //                 Toast.fire({
+    //                     icon: 'success',
+    //                     title: 'New member added'
+    //                 })
+    //             }
+    //         }
+    //     })
+    // })
 
-                    setTimeout(location.reload.bind(location), 2200);
+    // //Edit Inclu
 
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'New member added'
-                    })
-                }
-            }
-        })
-    })
+    // $(document).on('click', '#editInclu', function() {
 
-    //Edit Expen
+    //     var id = $(this).data('id');
 
-    $(document).on('click', '#editExpen', function() {
+    //     $.ajax({
+    //         url: "<?= base_url() ?>/project/fetchIdPteam",
+    //         method: "POST",
+    //         data: {
+    //             id: id
+    //         },
+    //         dataType: "JSON",
 
-        var id = $(this).data('id');
+    //         success: function(data) {
+    //             $('#name').val(data.employee_id);
+    //             $('#position').val(data.position_id);
 
-        $.ajax({
-            url: "<?= base_url() ?>/project/fetchIdPteam",
-            method: "POST",
-            data: {
-                id: id
-            },
-            dataType: "JSON",
+    //             $('#name_error').text('');
+    //             $('#position_error').text('');
+    //             $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Income');
+    //             $('#action').val('edit');
+    //             $('#submitButton').val('Edit');
+    //             $('#inlcuModal').modal('show');
+    //             $('#member_id').val(id);
+    //         }
+    //     })
+    // });
 
-            success: function(data) {
-                $('#name').val(data.employee_id);
-                $('#position').val(data.position_id);
+    // //Delete Inclu
+    // $(document).on('click', '#deleteInclu', function() {
+    //     var id = $(this).data('id');
 
-                $('#name_error').text('');
-                $('#position_error').text('');
-                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Expenses');
-                $('#action').val('edit');
-                $('#submitButton').val('Edit');
-                $('#expenModal').modal('show');
-                $('#member_id').val(id);
-            }
-        })
-    });
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this action",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Delete',
+    //         cancelButtonText: 'Cancel'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             $.ajax({
+    //                 url: "<?= base_url() ?>/project/deleteTeamMember",
+    //                 method: "POST",
+    //                 data: {
+    //                     id: id
+    //                 },
 
-    //Delete Inclu
-    $(document).on('click', '#deleteExpen', function() {
-        var id = $(this).data('id');
+    //                 success: function(data) {
+    //                     setTimeout(location.reload.bind(location));
+    //                 }
+    //             })
+    //         }
+    //     })
+    // });
 
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this action",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Delete',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "<?= base_url() ?>/project/deleteTeamMember",
-                    method: "POST",
-                    data: {
-                        id: id
-                    },
+    // //Create Expen
+    // $('#addOutcome').click(function() {
+    //     $('#outcomeForm')[0].reset();
+    //     $('#name_error').text('');
+    //     $('#position_error').text('');
+    //     $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add an Outcome');
+    //     $('#action').val('create');
+    //     $('#submitButton').val('Add');
+    //     $('#outcomeModal').modal('show');
+    // })
 
-                    success: function(data) {
-                        setTimeout(location.reload.bind(location));
-                    }
-                })
-            }
-        })
-    });
+    // $('#outcomeForm').on('submit', function(event) {
+    //     event.preventDefault();
+
+    //     $.ajax({
+    //         url: "<?= base_url(); ?>/project/saveMemberData",
+    //         method: "POST",
+    //         data: $(this).serialize(),
+    //         dataType: "JSON",
+
+    //         beforeSend: function() {
+    //             $('#submitButton').val('Wait...');
+    //             $('#submitButton').attr('disabled', 'disabled');
+    //         },
+
+    //         success: function(data) {
+
+    //             if ($('#action').val() == 'create') {
+    //                 $('#submitButton').val('Add');
+    //             } else {
+    //                 $('#submitButton').val('Edit');
+    //             }
+
+    //             $('#submitButton').attr('disabled', false);
+
+    //             const Toast = Swal.mixin({
+    //                 toast: true,
+    //                 position: 'top-end',
+    //                 showConfirmButton: false,
+    //                 timer: 1700,
+    //                 didOpen: (toast) => {
+    //                     toast.addEventListener('mouseenter', Swal.stopTimer)
+    //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //                 }
+    //             })
+
+    //             if (data.error == 'yes') {
+    //                 $('#name_error').text(data.name_error);
+    //                 $('#position_error').text(data.position_error);
+
+    //                 Toast.fire({
+    //                     icon: 'error',
+    //                     title: 'failed to add a member'
+    //                 })
+    //             } else {
+    //                 $('#outcomeModal').modal('hide');
+
+    //                 setTimeout(location.reload.bind(location), 2200);
+
+    //                 Toast.fire({
+    //                     icon: 'success',
+    //                     title: 'New member added'
+    //                 })
+    //             }
+    //         }
+    //     })
+    // })
+
+    // //Edit Expen
+
+    // $(document).on('click', '#editExpen', function() {
+
+    //     var id = $(this).data('id');
+
+    //     $.ajax({
+    //         url: "<?= base_url() ?>/project/fetchIdPteam",
+    //         method: "POST",
+    //         data: {
+    //             id: id
+    //         },
+    //         dataType: "JSON",
+
+    //         success: function(data) {
+    //             $('#name').val(data.employee_id);
+    //             $('#position').val(data.position_id);
+
+    //             $('#name_error').text('');
+    //             $('#position_error').text('');
+    //             $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Expenses');
+    //             $('#action').val('edit');
+    //             $('#submitButton').val('Edit');
+    //             $('#outcomeModal').modal('show');
+    //             $('#member_id').val(id);
+    //         }
+    //     })
+    // });
+
+    // //Delete Inclu
+    // $(document).on('click', '#deleteExpen', function() {
+    //     var id = $(this).data('id');
+
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this action",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Delete',
+    //         cancelButtonText: 'Cancel'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             $.ajax({
+    //                 url: "<?= base_url() ?>/project/deleteTeamMember",
+    //                 method: "POST",
+    //                 data: {
+    //                     id: id
+    //                 },
+
+    //                 success: function(data) {
+    //                     setTimeout(location.reload.bind(location));
+    //                 }
+    //             })
+    //         }
+    //     })
+    // });
 </script>
 
 <?= $this->endSection(); ?>

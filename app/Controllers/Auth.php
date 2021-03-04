@@ -27,7 +27,7 @@ class Auth extends BaseController
         if ($password == $row->password) {
             $data = [
                 'login' => TRUE,
-                'id_user' => $row->id,
+                'user_id' => $row->id,
                 'username' => $row->username,
                 'role' => $row->role
             ];

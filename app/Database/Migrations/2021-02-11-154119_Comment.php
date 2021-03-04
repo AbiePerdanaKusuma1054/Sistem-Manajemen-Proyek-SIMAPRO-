@@ -30,8 +30,12 @@ class Comment extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
-			'comment_date' => [
-				'type'           => 'DATE',
+			'created_at' => [
+				'type'           => 'DATETIME',
+				'null'     		 => TRUE,
+			],
+			'updated_at' => [
+				'type'           => 'DATETIME',
 				'null'     		 => TRUE,
 			],
 		]);

@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;">
-        <div class="menu-detail">
+        <div class="menu-detail text-center">
             <div class="table-responsive">
                 <ul>
                     <li class=""><a href="<?= base_url() ?>/project/detail/<?= $id ?>">Project</a></li>

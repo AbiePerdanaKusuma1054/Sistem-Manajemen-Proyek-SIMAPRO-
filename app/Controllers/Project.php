@@ -7,6 +7,7 @@ use App\Models\ClientModel;
 use App\Models\EmployeeModel;
 use App\Models\PositionModel;
 use App\Models\PteamModel;
+use App\Models\CommentModel;
 use monken\TablesIgniter;
 
 class Project extends BaseController
@@ -19,6 +20,7 @@ class Project extends BaseController
         $this->employeeModel = new EmployeeModel();
         $this->positionModel = new PositionModel();
         $this->pteamModel = new PteamModel();
+        $this->commentModel = new CommentModel();
     }
 
     public function index()
@@ -303,9 +305,98 @@ class Project extends BaseController
     public function comment($id)
     {
         $data = [
-            'id' => $id
+            'id' => $id,
+            'comment' => $this->commentModel->getComment($id)
         ];
 
         return view('/project/comment', $data);
+    }
+
+    public function fetchComment()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $commentID = $this->commentModel
+                ->select('comment_text')
+                ->where('id', $request->getVar('id'))->first();
+            echo json_encode($commentID);
+        }
+    }
+
+    public function saveComment()
+    {
+        $request = service('request');
+        helper(['form', 'url']);
+        $comment_error = '';
+        $error = 'no';
+
+        $rules = [
+            'comment' => 'required|max_length[255]'
+        ];
+
+        $error = $this->validate($rules);
+
+        if (!$error) {
+            $error = 'yes';
+            $validator = \Config\Services::validation();
+            $comment_error = $validator->getError('comment');
+        } else {
+            $this->commentModel->save([
+                'project_id' => intval($request->getVar('project_id')),
+                'user_id' => session()->get('user_id'),
+                'comment_text' => $request->getVar('comment')
+            ]);
+        }
+
+        $output = [
+            'comment_error' => $comment_error,
+            'error' => $error
+        ];
+
+        echo json_encode($output);
+    }
+
+    public function editComment()
+    {
+        $request = service('request');
+        helper(['form', 'url']);
+        $comment_error = '';
+        $error = 'no';
+
+        $rules = [
+            'comment_edit' => 'required|max_length[255]'
+        ];
+
+        $error = $this->validate($rules);
+
+        if (!$error) {
+            $error = 'yes';
+            $validator = \Config\Services::validation();
+            $comment_error = $validator->getError('comment_edit');
+        } else {
+            $this->commentModel->save([
+                'id' => intval($request->getVar('comment_id')),
+                'user_id' => session()->get('user_id'),
+                'comment_text' => $request->getVar('comment_edit')
+            ]);
+        }
+
+        $output = [
+            'comment_error' => $comment_error,
+            'error' => $error
+        ];
+
+        echo json_encode($output);
+    }
+
+    public function deleteComment()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $id = $request->getVar('id');
+            $this->commentModel->where('id', $id)->delete();
+        }
     }
 }
