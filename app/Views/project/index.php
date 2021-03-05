@@ -97,6 +97,17 @@
 </div>
 
 <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 1700,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
     $(document).ready(function() {
         $('#table').DataTable({
             "aoColumnDefs": [{
@@ -130,5 +141,12 @@
             }
         });
     });
+
+    <?php if (session()->getFlashdata('msg') == 'success') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'Project created'
+        })
+    <?php } ?>
 </script>
 <?= $this->endSection(); ?>

@@ -25,6 +25,10 @@ class Prevenues extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
+			'prevenues_status'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '255'
+			],
 			'prevenues_amount'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'

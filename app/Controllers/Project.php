@@ -68,7 +68,8 @@ class Project extends BaseController
             'project_manager' => 'required',
             'client_id' => 'required',
             'project_start' => 'required',
-            'project_finish' => 'required'
+            'project_finish' => 'required',
+            'contract_amount' => 'required|max_length[10]'
         ];
 
         if ($this->validate($rules)) {
@@ -78,15 +79,18 @@ class Project extends BaseController
                 'client_id' => intval($request->getVar('client_id')),
                 'project_start' => $request->getVar('project_start'),
                 'project_finish' => $request->getVar('project_finish'),
+                'contract_amount' => $request->getVar('contract_amount'),
                 'project_desc' => $request->getVar('project_desc'),
                 'project_status' => 'waiting'
             ];
 
             $this->projectModel->insert($data);
 
+            session()->setFlashdata('msg', 'success');
             return redirect()->to('/project');
         } else {
             $validator = \Config\Services::validation();
+            session()->setFlashdata('msg', 'error');
             return redirect()->to('/project/add')->withInput()->with('validator', $validator);
         }
     }
@@ -137,7 +141,8 @@ class Project extends BaseController
             'client_id' => 'required',
             'project_start' => 'required',
             'project_finish' => 'required',
-            'project_status' => 'required'
+            'project_status' => 'required',
+            'contract_amount' => 'required'
         ];
 
         if ($this->validate($rules)) {
@@ -147,15 +152,18 @@ class Project extends BaseController
                 'client_id' => intval($request->getVar('client_id')),
                 'project_start' => $request->getVar('project_start'),
                 'project_finish' => $request->getVar('project_finish'),
+                'contract_amount' => $request->getVar('contract_amount'),
                 'project_desc' => $request->getVar('project_desc'),
                 'project_status' => $request->getVar('project_status')
             ];
 
             $this->projectModel->update($id, $data);
 
+            session()->setFlashdata('msg', 'success');
             return redirect()->to('/project/detail/' . $id);
         } else {
             $validator = \Config\Services::validation();
+            session()->setFlashdata('msg', 'error');
             return redirect()->to('/project/edit/' . $id)->withInput()->with('validator', $validator);
         }
     }
@@ -345,7 +353,8 @@ class Project extends BaseController
             $this->commentModel->save([
                 'project_id' => intval($request->getVar('project_id')),
                 'user_id' => session()->get('user_id'),
-                'comment_text' => $request->getVar('comment')
+                'comment_text' => $request->getVar('comment'),
+                session()->setFlashdata('msg', 'success_create')
             ]);
         }
 
@@ -380,6 +389,7 @@ class Project extends BaseController
                 'user_id' => session()->get('user_id'),
                 'comment_text' => $request->getVar('comment_edit')
             ]);
+            session()->setFlashdata('msg', 'success_edit');
         }
 
         $output = [

@@ -21,15 +21,15 @@ class PcostTransaction extends Migration
 				'constraint'     => 5,
 				'unsigned'       => true,
 			],
+			'cost_item' => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '255'
+			],
 			'pcost_amount'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
-			'cost_quantity'      => [
-				'type'           => 'VARCHAR',
-				'constraint'     => '255'
-			],
-			'cost_item' => [
+			'cost_status'      => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],

@@ -37,6 +37,10 @@ class Project extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
+			'contract_amount'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '10'
+			],
 			'project_manager'      => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '50'

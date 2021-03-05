@@ -62,16 +62,12 @@
                     Please input a client
                 </div>
             </div>
-            <!-- <div class="col-md-4">
+            <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc" name="" value="" required>
+                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" value="<?= old('contract_amount') ?>" required>
                 <div class="invalid-feedback">
                     Please input a contract amount.
                 </div>
-            </div> -->
-            <div class="col-md-3">
-                <label class="form-label">Project Status</label>
-                <input disabled type="text" class="form-control fc" value="waiting">
             </div>
             <div class="col-md-6">
                 <label for="validationCustom05" class="form-label">Project Start *</label>
@@ -90,6 +86,10 @@
             <div class="col-md-6">
                 <label class="form-label">Project Description</label>
                 <textarea class="form-control fc" name="project_desc" rows="4" placeholder="Describe the project..." value="<?= old('project_desc') ?>"></textarea>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Project Status</label>
+                <input disabled type="text" class="form-control fc" value="waiting">
             </div>
             <div class="col-12">
                 <button class="btn btn-light plus" type="submit">Create</button>
@@ -203,6 +203,17 @@
 
 <!-- Javascript -->
 <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1700,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
     $(document).ready(function() {
 
         //Create Client
@@ -303,17 +314,6 @@
                     $('#submitButtonEmployee').val('Create');
                     $('#submitButtonEmployee').attr('disabled', false);
 
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1700,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
                     if (data.error == 'yes') {
                         $('#employee_name_error').text(data.name_error);
                         $('#employee_email_error').text(data.email_error);
@@ -338,6 +338,13 @@
             })
         });
     });
+
+    <?php if (session()->getFlashdata('msg') == 'error') { ?>
+        Toast.fire({
+            icon: 'error',
+            title: 'failed to create project'
+        })
+    <?php } ?>
 </script>
 <!-- End of JS -->
 

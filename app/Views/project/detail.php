@@ -72,6 +72,12 @@
                             <div class="enter"></div>
                         </div>
                         <div class="detail-row">
+                            <p><i class="fa fa-money"><span class="l">Contract Amount</span></i></p>
+                            <div class="line-horizontal"></div>
+                            <p class="r">Rp<?= $detail['contract_amount'] ?></p>
+                            <div class="enter"></div>
+                        </div>
+                        <div class="detail-row">
                             <p><i class="fa fa-flag"><span class="l">Project Status</span></i></p>
                             <div class="line-horizontal"></div>
                             <p class="r"><?= ucwords($detail['project_status']) ?></p>
@@ -169,6 +175,24 @@
             }
         })
     });
+
+    <?php if (session()->getFlashdata('msg') == 'success') { ?>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 1700,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Project updated'
+        })
+    <?php } ?>
 </script>
 
 <?= $this->endSection(); ?>

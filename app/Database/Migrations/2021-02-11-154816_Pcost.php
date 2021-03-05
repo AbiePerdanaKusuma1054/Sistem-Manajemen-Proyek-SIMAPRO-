@@ -16,10 +16,9 @@ class Pcost extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true
 			],
-			'category_id'          => [
-				'type'           => 'INT',
-				'constraint'     => 5,
-				'unsigned'       => true,
+			'pcost_desc'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '255'
 			],
 			'pcost_amount'       => [
 				'type'           => 'VARCHAR',
@@ -50,7 +49,7 @@ class Pcost extends Migration
 		// Membuat primary key
 		$this->forge->addKey('id', TRUE);
 
-	
+
 
 		// Membuat tabel pcost
 		$this->forge->createTable('pcost', TRUE);

@@ -54,22 +54,12 @@
                     Please input a client.
                 </div>
             </div>
-            <!-- <div class="col-md-4">
-                    <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                    <input type="number" class="form-control fc" name="" value="10000000" required>
-                    <div class="invalid-feedback">
-                        Please input a contract amount.
-                    </div>
-                </div> -->
-            <div class="col-md-3">
-                <label for="validationCustom04" class="form-label">Project Status</label>
-                <select class="form-select form-control fc <?= ($validator->hasError('project_status')) ? 'is-invalid' : ''; ?>" name="project_status">
-                    <option value="waiting" <?= $detail['project_status'] == 'waiting' ? 'selected' : ''; ?>>Waiting</option>
-                    <option value="on progress" <?= $detail['project_status'] == 'on progress' ? 'selected' : ''; ?>>On Progress</option>
-                    <option value="hold" <?= $detail['project_status'] == 'hold' ? 'selected' : ''; ?>>Hold</option>
-                    <option value="finish" <?= $detail['project_status'] == 'finish' ? 'selected' : ''; ?>>Finished</option>
-                    <option value="cancelled" <?= $detail['project_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
-                </select>
+            <div class="col-md-4">
+                <label for="validationCustom04" class="form-label">Contract Amount *</label>
+                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" value="<?= $detail['contract_amount'] ?>" required>
+                <div class="invalid-feedback">
+                    Please input a contract amount.
+                </div>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom05" class="form-label">Project Start *</label>
@@ -88,6 +78,16 @@
             <div class="col-md-6">
                 <label class="form-label">Project Description</label>
                 <textarea class="form-control fc" id="exampleFormControlTextarea1" rows="4" name="project_desc" placeholder="Describe the project..."><?= $detail['project_desc'] ?></textarea>
+            </div>
+            <div class="col-md-3">
+                <label for="validationCustom04" class="form-label">Project Status</label>
+                <select class="form-select form-control fc <?= ($validator->hasError('project_status')) ? 'is-invalid' : ''; ?>" name="project_status">
+                    <option value="waiting" <?= $detail['project_status'] == 'waiting' ? 'selected' : ''; ?>>Waiting</option>
+                    <option value="on progress" <?= $detail['project_status'] == 'on progress' ? 'selected' : ''; ?>>On Progress</option>
+                    <option value="hold" <?= $detail['project_status'] == 'hold' ? 'selected' : ''; ?>>Hold</option>
+                    <option value="finish" <?= $detail['project_status'] == 'finish' ? 'selected' : ''; ?>>Finished</option>
+                    <option value="cancelled" <?= $detail['project_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
+                </select>
             </div>
             <div class="col-12">
                 <button class="btn btn-light plus" type="submit">Save</button>
@@ -158,6 +158,17 @@
 <script>
     $(document).ready(function() {
 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 1700,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
         //Create Employee
 
         $('#addEmployee').click(function() {
@@ -191,17 +202,6 @@
                     $('#submitButton').val('Create');
                     $('#submitButton').attr('disabled', false);
 
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1700,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
                     if (data.error == 'yes') {
                         $('#name_error').text(data.name_error);
                         $('#email_error').text(data.email_error);
@@ -226,6 +226,13 @@
             })
         });
     });
+
+    <?php if (session()->getFlashdata('msg') == 'error') { ?>
+        Toast.fire({
+            icon: 'error',
+            title: 'failed to update project'
+        })
+    <?php } ?>
 </script>
 
 <?= $this->endSection(); ?>

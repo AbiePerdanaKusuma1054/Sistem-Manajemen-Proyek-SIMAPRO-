@@ -107,6 +107,17 @@
 <!-- End -->
 
 <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1700,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
     $('#addComment').on('submit', function(event) {
         event.preventDefault();
 
@@ -127,17 +138,6 @@
 
                 if (data.error == 'yes') {
                     $('#comment_error').text(data.comment_error);
-
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1700,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
 
                     Toast.fire({
                         icon: 'error',
@@ -195,17 +195,6 @@
                 if (data.error == 'yes') {
                     $('#comment_edit_error').text(data.comment_error);
 
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1700,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
                     Toast.fire({
                         icon: 'error',
                         title: 'failed to edit your comment'
@@ -245,6 +234,20 @@
             }
         })
     });
+
+    <?php if (session()->getFlashdata('msg') == 'success_edit') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'Comment Updated'
+        })
+    <?php } ?>
+
+    <?php if (session()->getFlashdata('msg') == 'success_create') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'Comment Uploaded'
+        })
+    <?php } ?>
     /*
 
         Name    : Responsive HTML5 Chat
