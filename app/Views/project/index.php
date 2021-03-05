@@ -13,7 +13,7 @@
         </div>
         <!-- End -->
 
-        <table id="table" class="table table-striped table-dark display nowrap text-left" style="cursor: default;  width: 100%;">
+        <table id="table" class="table table-striped table-dark display nowrap text-left anim" style="cursor: default;  width: 100%;">
             <thead class="attr">
                 <tr class="text-center">
                     <th>Project</th>

@@ -52,7 +52,7 @@
                     <!-- button delete -->
                     <i class="fa fa-trash act act-r fa-lg det-action" id="deleteProject" data-id="<?= $detail['id'] ?>"></i>
 
-                    <div class="back-detail">
+                    <div class="back-detail anim">
                         <div class="detail-row">
                             <p><i class="fa fa-cubes"><span class="l">Project Name</span></i></p>
                             <div class="line-horizontal"></div>

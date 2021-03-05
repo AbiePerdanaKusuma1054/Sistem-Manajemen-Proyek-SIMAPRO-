@@ -1396,3 +1396,9 @@ form.chat .fromThem {
   font-size: 9pt;
   font-weight: 600;
 }
+
+/* Animation */
+.anim {
+  transform-origin: top center;
+  animation: rotateX 1000ms ease-in-out backwards;
+}

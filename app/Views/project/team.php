@@ -31,7 +31,7 @@
 
         <div class="box">
             <div class="left-box">
-                <div class="detail-box">
+                <div class="detail-box anim">
 
 
                     <div id="back-team" style="padding: 20px 1.5rem 0 1.5rem;">

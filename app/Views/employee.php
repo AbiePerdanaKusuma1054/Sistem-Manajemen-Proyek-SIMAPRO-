@@ -68,7 +68,7 @@
         <!-- End -->
 
         <!-- Data Tables -->
-        <table id="table" class="table table-striped table-dark display nowrap" style="cursor: default;  width: 100%;">
+        <table id="table" class="table table-striped table-dark display nowrap anim" style="cursor: default;  width: 100%;">
             <thead class="attr">
                 <tr>
                     <th>Employee Name</th>
