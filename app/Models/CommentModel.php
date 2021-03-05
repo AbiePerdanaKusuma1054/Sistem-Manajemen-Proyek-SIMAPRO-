@@ -17,6 +17,6 @@ class CommentModel extends Model
     {
         return $this->select('comment.id, username, comment_text, created_at, updated_at')
             ->join('user', 'comment.user_id = user.id')
-            ->where('project_id', $id)->get()->getResultArray();
+            ->where('project_id', $id)->orderBy('comment.id', 'ASC')->get()->getResultArray();
     }
 }

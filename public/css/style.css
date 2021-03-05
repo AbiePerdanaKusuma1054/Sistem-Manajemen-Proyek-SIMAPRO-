@@ -1322,10 +1322,10 @@ form.chat .fromThem {
   font-size: 12px;
 }
 
-/* .chat .message .fromThem:hover {
+.chat .message .fromThem:hover {
   transform: translateY(18px);
   -webkit-transform: translateY(18px);
-} */
+}
 
 .chat .fromThem .date {
   top: -20px;

@@ -21,7 +21,7 @@
                     Costs
                 </span>
             </i>
-            <button style="float: right;" type="button" class="btn btn-light" id="addCost"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Cost</span></i></button>
+            <button style="float: right;" type="button" class="btn btn-light" id="addCost"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Category</span></i></button>
         </div>
 
         <div class="box">

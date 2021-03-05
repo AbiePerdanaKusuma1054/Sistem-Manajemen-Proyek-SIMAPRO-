@@ -35,7 +35,7 @@
                                 <span></span>
                                 <div class="massages">
                                     <div class="message">
-                                        <div class="<?= $c['username'] == session()->get('username')  ? 'myMessage' : 'fromThem'; ?>">
+                                        <div class="<?= $c['username'] == session()->get('username')  ? 'fromThem myMessage' : 'fromThem'; ?>">
                                             <p><?= $c['comment_text'] ?></p>
                                             <p class="date">
                                                 <b><?= $c['username'] ?></b>

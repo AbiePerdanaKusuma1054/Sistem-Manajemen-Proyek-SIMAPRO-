@@ -46,9 +46,9 @@
                     </div>
                     <div class="back-detail" style="margin: 0 auto 16px auto;">
                         <div class="" style="padding:0;margin: 0;">
-                            <div class="collapse multi-collapse" id="income">
-                                <table id="example-1" class="table table-striped table-dark nowrap detail-rab" style="width:100%;">
-                                    <thead>
+                            <div class="collapse show multi-collapse" id="income">
+                                <table id="example-1" class="table table-striped table-dark display nowrap detail-rab" style="width:100%;">
+                                    <thead class="text-center">
                                         <tr>
                                             <th>Action</th>
                                             <th>Date</th>
@@ -110,9 +110,9 @@
                     </div>
                     <div class="back-detail" style="margin: 0 auto;">
                         <div class="" style="padding:0;margin: 0;">
-                            <div class="collapse multi-collapse" id="outcome">
+                            <div class="collapse show multi-collapse" id="outcome">
                                 <table id="example-2" class="table table-striped table-dark display nowrap detail-rab" style="width:100%;">
-                                    <thead>
+                                    <thead class="text-center">
                                         <tr>
                                             <th>Action</th>
                                             <th>Date</th>
@@ -273,8 +273,7 @@
 <script>
     $(document).ready(function() {
         $('#example-1').DataTable({
-            // "scrollX": true,
-            "paging": false,
+            "scrollX": true,
             "filter": false,
             "info": false
         });
@@ -282,8 +281,7 @@
 
     $(document).ready(function() {
         $('#example-2').DataTable({
-            // "scrollX": true,
-            "paging": false,
+            "scrollX": true,
             "filter": false,
             "info": false
         });
