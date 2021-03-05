@@ -21,6 +21,11 @@ class CostCategory extends Migration
 				'constraint'     => 5,
 				'unsigned'       => true,
 			],
+			'pcost_id'          => [
+				'type'           => 'INT',
+				'constraint'     => 5,
+				'unsigned'       => true,
+			],
 			'category_name'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '50'
@@ -33,6 +38,9 @@ class CostCategory extends Migration
 		//fk
 		$this->forge->addForeignKey('project_id', 'project', 'id');
 
+		//fk
+		$this->forge->addForeignKey('pcost_id', 'pcost', 'id');
+		
 		// Membuat tabel cost category
 		$this->forge->createTable('cost_category', TRUE);
 	}
