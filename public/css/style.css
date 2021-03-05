@@ -750,6 +750,9 @@ input[type="number"] {
   color: white;
   margin-bottom: 10px;
 }
+.det-action {
+  color: #b8f9d3;
+}
 .act-l {
   margin-top: -2rem;
   float: left;

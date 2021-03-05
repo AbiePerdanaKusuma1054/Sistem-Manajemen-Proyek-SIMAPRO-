@@ -47,10 +47,10 @@
 
                     <!-- button edit -->
                     <a href="<?= base_url() ?>/project/edit/<?= $detail['id'] ?>">
-                        <i class="fa fa-pencil-square-o act act-l fa-lg" aria-hidden="true"></i>
+                        <i class="fa fa-pencil-square-o act act-l fa-lg det-action"></i>
                     </a>
                     <!-- button delete -->
-                    <i class="fa fa-trash act act-r fa-lg" aria-hidden="true" id="deleteProject" data-id="<?= $detail['id'] ?>"></i>
+                    <i class="fa fa-trash act act-r fa-lg det-action" id="deleteProject" data-id="<?= $detail['id'] ?>"></i>
 
                     <div class="back-detail">
                         <div class="detail-row">
