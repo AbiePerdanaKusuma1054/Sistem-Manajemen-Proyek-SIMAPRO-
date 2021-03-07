@@ -92,48 +92,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <!-- Modal Add Team -->
-            <div class="modal fade" id="addteamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="modal-title" id="exampleModalLabel">
-                                <i class="fa fa-user-plus" style="color: white;">
-                                    <span class="add-team-text">
-                                        Add Members
-                                    </span>
-                                </i>
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col">
-                                <label for="validationCustom01" class="form-label">Name</label>
-                                <input type="text" class="form-control fc" id="validationCustom01" value="" required>
-                                <div class="invalid-feedback">
-                                    Please input a name.
-                                </div>
-                            </div>
-                            <div class="col">
-                                <label for="validationCustom02" class="form-label">Position</label>
-                                <input type="text" class="form-control fc" id="validationCustom02" value="" required>
-                                <div class="invalid-feedback">
-                                    Please choose a position.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light plus">Add</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End -->
-
         </div>
     </div>
     <div class="space">

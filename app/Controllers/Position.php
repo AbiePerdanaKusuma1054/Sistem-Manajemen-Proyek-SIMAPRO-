@@ -51,13 +51,26 @@ class Position extends BaseController
 
             if ($request->getVar('action') == 'create') {
                 $rules = [
-                    'name' => 'required|is_unique[position.position_name]|max_length[50]'
+                    'name' => [
+                        'rules' => 'required|is_unique[position.position_name]|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input a name',
+                            'is_unique' => 'This position is already available',
+                            'max_length' => 'The name should not be more than 50 characters'
+                        ]
+                    ],
                 ];
             }
 
             if ($request->getVar('action') == 'edit') {
                 $rules = [
-                    'name' => 'required|max_length[50]'
+                    'name' => [
+                        'rules' => 'required|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input a name',
+                            'max_length' => 'The name should not be more than 50 characters'
+                        ]
+                    ]
                 ];
             }
 

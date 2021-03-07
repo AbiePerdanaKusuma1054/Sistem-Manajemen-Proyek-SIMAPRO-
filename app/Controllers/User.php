@@ -53,16 +53,43 @@ class User extends BaseController
 
             if ($request->getVar('action') == 'create') {
                 $rules = [
-                    'username' => 'required|min_length[5]|max_length[10]|is_unique[user.username]',
-                    'password' => 'required|min_length[6]',
+                    'username' => [
+                        'rules' => 'required|min_length[5]|max_length[10]|is_unique[user.username]',
+                        'errors' => [
+                            'required' => 'Please input a name',
+                            'min_length' => 'The name should not be less than 5 characters',
+                            'max_length' => 'The name should not be more than 10 characters',
+                            'is_unique' => 'The username is already used',
+                        ]
+                    ],
+                    'password' => [
+                        'rules' => 'required|min_length[6]',
+                        'errors' => [
+                            'required' => 'Please input a password',
+                            'min_length' => 'The password should not be less than 6 characters'
+                        ]
+                    ],
                     'role' => 'required'
                 ];
             }
 
             if ($request->getVar('action') == 'edit') {
                 $rules = [
-                    'username' => 'required|min_length[5]|max_length[10]',
-                    'password' => 'required|min_length[6]',
+                    'username' => [
+                        'rules' => 'required|min_length[5]|max_length[10]',
+                        'errors' => [
+                            'required' => 'Please input a name',
+                            'min_length' => 'The name should not be less than 5 characters',
+                            'max_length' => 'The name should not be more than 10 characters'
+                        ]
+                    ],
+                    'password' => [
+                        'rules' => 'required|min_length[6]',
+                        'errors' => [
+                            'required' => 'Please input a password',
+                            'min_length' => 'The password should not be less than 6 characters'
+                        ]
+                    ],
                     'role' => 'required'
                 ];
             }

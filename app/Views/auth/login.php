@@ -32,7 +32,7 @@
   <?php if (session()->getFlashdata('errlog') == 'username') { ?>
     Toast.fire({
       icon: 'error',
-      title: 'Incorrect Username'
+      title: 'Username is not available'
     })
   <?php } ?>
 

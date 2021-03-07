@@ -8,11 +8,13 @@ class PositionModel extends Model
 {
     protected $table = 'position';
     protected $primaryKey = 'id';
+    protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
     protected $allowedFields = ['position_name', 'position_desc'];
 
     public function noticeTable()
     {
-        $builder = $this->db->table($this->table);
+        $builder = $this->db->table($this->table)->where('deleted_at', NULL);
         return $builder;
     }
 
@@ -32,7 +34,7 @@ class PositionModel extends Model
     public function getPositionNames()
     {
         $builder = $this->db->table($this->table)
-            ->select('id, position_name')->get()->getResultArray();
+            ->select('id, position_name')->where('deleted_at', NULL)->get()->getResultArray();
         return $builder;
     }
 }

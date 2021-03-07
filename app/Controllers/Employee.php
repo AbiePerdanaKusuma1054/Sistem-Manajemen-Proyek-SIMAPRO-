@@ -54,8 +54,22 @@ class Employee extends BaseController
 
             if ($request->getVar('action') == 'create') {
                 $rules = [
-                    'name' => 'required|is_unique[employee.employee_name]|max_length[50]',
-                    'email' => 'required|valid_email|is_unique[employee.employee_email]|max_length[50]',
+                    'name' => [
+                        'rules' => 'required|is_unique[employee.employee_name]|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input a valid employee name',
+                            'max_length' => 'The name should not be more than 50 characters'
+                        ]
+                    ],
+                    'email' => [
+                        'rules' => 'required|valid_email|is_unique[employee.employee_email]|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input the email',
+                            'max_length' => 'The email should not be more than 50 characters',
+                            'is_unique' => 'The email is already used',
+                            'valid_email' => 'The email is invalid',
+                        ]
+                    ],
                     'gender' => 'required',
                     'address' => 'required|max_length[255]'
                 ];
@@ -63,8 +77,21 @@ class Employee extends BaseController
 
             if ($request->getVar('action') == 'edit') {
                 $rules = [
-                    'name' => 'required|max_length[50]',
-                    'email' => 'required|valid_email|max_length[50]',
+                    'name' => [
+                        'rules' => 'required|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input a valid employee name',
+                            'max_length' => 'The name should not be more than 50 characters'
+                        ]
+                    ],
+                    'email' => [
+                        'rules' => 'required|valid_email|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input the email',
+                            'max_length' => 'The email should not be more than 50 characters',
+                            'valid_email' => 'The email is invalid',
+                        ]
+                    ],
                     'gender' => 'required',
                     'address' => 'required|max_length[255]'
                 ];

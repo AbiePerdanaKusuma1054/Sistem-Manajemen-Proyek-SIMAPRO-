@@ -8,6 +8,8 @@ class PteamModel extends Model
 {
     protected $table = 'pteam';
     protected $primaryKey = 'id';
+    protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
     protected $allowedFields = [
         'project_id', 'employee_id', 'position_id'
     ];
@@ -18,7 +20,8 @@ class PteamModel extends Model
             ->join('project', 'pteam.project_id = project.id')
             ->join('employee', 'pteam.employee_id = employee.id')
             ->join('position', 'pteam.position_id = position.id')
-            ->where('project.id', $id)->get()->getResultArray();
+            ->where('project.id', $id)->where('pteam.deleted_at', NULL)
+            ->where('project.deleted_at', NULL)->get()->getResultArray();
 
         return $getdata;
     }

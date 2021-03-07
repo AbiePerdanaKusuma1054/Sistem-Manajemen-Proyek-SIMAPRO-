@@ -220,7 +220,12 @@ class Project extends BaseController
             $error = 'no';
 
             $rules = [
-                'name' => 'required',
+                'name' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Please select a name'
+                    ]
+                ],
                 'position' => 'required'
             ];
 
@@ -340,7 +345,13 @@ class Project extends BaseController
         $error = 'no';
 
         $rules = [
-            'comment' => 'required|max_length[255]'
+            'comment' => [
+                'rules' => 'required|max_length[255]',
+                'errors' => [
+                    'required' => 'Please input your comment',
+                    'max_length' => 'Your comment must be less than 255 characters'
+                ]
+            ],
         ];
 
         $error = $this->validate($rules);
@@ -374,7 +385,14 @@ class Project extends BaseController
         $error = 'no';
 
         $rules = [
-            'comment_edit' => 'required|max_length[255]'
+            'comment_edit' => [
+                'rules' => 'required|max_length[255]',
+                'errors' => [
+                    'required' => 'Please input your comment',
+                    'max_length' => 'Your comment must be less than 255 characters'
+                ]
+            ],
+
         ];
 
         $error = $this->validate($rules);

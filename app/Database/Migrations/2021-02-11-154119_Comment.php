@@ -38,6 +38,10 @@ class Comment extends Migration
 				'type'           => 'DATETIME',
 				'null'     		 => TRUE,
 			],
+			'deleted_at' => [
+				'type' 			 => 'DATETIME',
+				'null' 			 => TRUE,
+			]
 		]);
 
 		// Membuat primary key

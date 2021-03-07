@@ -8,11 +8,13 @@ class UserModel extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'id';
+    protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
     protected $allowedFields = ['username', 'password', 'role'];
 
     public function noticeTable()
     {
-        $builder = $this->db->table($this->table);
+        $builder = $this->db->table($this->table)->where('deleted_at', NULL);
         return $builder;
     }
 
@@ -30,6 +32,6 @@ class UserModel extends Model
 
     public function getLogin($username)
     {
-        return $this->where('username', $username)->get()->getRow();
+        return $this->where('username', $username)->where('deleted_at', NULL)->get()->getRow();
     }
 }

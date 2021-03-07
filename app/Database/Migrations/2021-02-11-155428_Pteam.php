@@ -30,6 +30,18 @@ class Pteam extends Migration
 				'type'           => 'INT',
 				'constraint'     => 5,
 				'unsigned'       => true,
+			],
+			'created_at' => [
+				'type'           => 'DATETIME',
+				'null'     		 => TRUE,
+			],
+			'updated_at' => [
+				'type'           => 'DATETIME',
+				'null'     		 => TRUE,
+			],
+			'deleted_at' => [
+				'type' 			 => 'DATETIME',
+				'null' 			 => TRUE,
 			]
 		]);
 

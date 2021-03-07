@@ -44,6 +44,18 @@ class Pcost extends Migration
 				'type'           => 'DATE',
 				'null'     		 => TRUE,
 			],
+			'created_at' => [
+				'type'           => 'DATETIME',
+				'null'     		 => TRUE,
+			],
+			'updated_at' => [
+				'type'           => 'DATETIME',
+				'null'     		 => TRUE,
+			],
+			'deleted_at' => [
+				'type' 			 => 'DATETIME',
+				'null' 			 => TRUE,
+			]
 		]);
 
 		// Membuat primary key

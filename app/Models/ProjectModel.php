@@ -8,6 +8,8 @@ class ProjectModel extends Model
 {
     protected $table = 'project';
     protected $primaryKey = 'id';
+    protected $useTimestamps = true;
+    protected $useSoftDeletes = true;
     protected $allowedFields = [
         'project_name', 'client_id', 'project_manager', 'project_start',
         'project_finish', 'project_desc', 'project_status', 'contract_amount'
@@ -16,7 +18,7 @@ class ProjectModel extends Model
     public function noticeTable()
     {
         $builder = $this->db->table('client')
-            ->join($this->table, 'project.client_id = client.id');
+            ->join($this->table, 'project.client_id = client.id')->where('project.deleted_at', NULL);
         return $builder;
     }
 

@@ -30,6 +30,18 @@ class CostCategory extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '50'
 			],
+			'created_at' => [
+				'type'           => 'DATETIME',
+				'null'     		 => TRUE,
+			],
+			'updated_at' => [
+				'type'           => 'DATETIME',
+				'null'     		 => TRUE,
+			],
+			'deleted_at' => [
+				'type' 			 => 'DATETIME',
+				'null' 			 => TRUE,
+			]
 		]);
 
 		// Membuat primary key

@@ -53,8 +53,22 @@ class Client extends BaseController
 
             if ($request->getVar('action') == 'create') {
                 $rules = [
-                    'name' => 'required|is_unique[client.client_name]|max_length[255]',
-                    'email' => 'required|valid_email|is_unique[client.client_email]|max_length[50]',
+                    'name' => [
+                        'rules' => 'required|is_unique[client.client_name]|max_length[255]',
+                        'errors' => [
+                            'required' => 'Please input a valid client name',
+                            'max_length' => 'The name should not be more than 255 characters'
+                        ]
+                    ],
+                    'email' => [
+                        'rules' => 'required|valid_email|is_unique[client.client_email]|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input the email',
+                            'max_length' => 'The email should not be more than 50 characters',
+                            'is_unique' => 'The email is already used',
+                            'valid_email' => 'The email is invalid',
+                        ]
+                    ],
                     'address' => 'required|max_length[255]'
                 ];
             }
