@@ -3,7 +3,6 @@
 <?= $this->section('content'); ?>
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;padding-bottom: 2rem;">
-        <!-- tolong dikasih class text-center untuk disetiap halaman yg ada menu ini, cuma div class dibawah ini doang -->
         <div class="menu-detail text-center">
             <div class="table-responsive">
                 <ul>
@@ -21,90 +20,95 @@
                     Costs
                 </span>
             </i>
-            <button style="float: right;" type="button" class="btn btn-light" id="addCost"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Category</span></i></button>
+            <button style="float: right;" type="button" class="btn btn-light" id="addCostCat"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Category</span></i></button>
         </div>
 
         <div class="box">
             <div class="left-box">
-                <div class="detail-box back-rab inclusion">
-                    <div class="row sub" style="margin-bottom: -20px;">
-                        <div class="col" style="margin-bottom: 0;">
-                            <p class="category-rab">Personnel</p>
+                <?php foreach ($category as $cat) : ?>
+                    <div class="detail-box back-rab inclusion">
+                        <div class="row sub" style="margin-bottom: -20px;">
+                            <div class="col" style="margin-bottom: 0;">
+                                <p class="category-rab"><?= $cat['category_name'] ?>
+                                    <i class="fa fa-pencil act icon-edit-member editCat" data-id="<?= $cat['id'] ?>"></i>
+                                    <i class="fa fa-trash-o icon-del-team deleteCat" data-id="<?= $cat['id'] ?>"></i>
+                                </p>
+                            </div>
+                            <div class="col" style="text-align: right;">
+                                <a>
+                                    <i class="fa fa-plus-circle add-rab addCost" data-id="<?= $cat['id'] ?>"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="col" style="text-align: right;">
-                            <a>
-                                <i class="fa fa-plus-circle add-rab" id="addCostCategory"></i>
-                            </a>
-                        </div>
+                        <table id="table" class="table table-striped table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
+                            <thead>
+                                <tr>
+                                    <th>Cost Description</th>
+                                    <th>Amount</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Quantity</th>
+                                    <th>Duration</th>
+                                    <th>Unit Duration</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <?php $cost = $costs->where('category_id', $cat['id'])->findAll() ?>
+                            <tbody>
+                                <?php foreach ($cost as $c) : ?>
+                                    <tr>
+                                        <td><?= $c['pcost_desc'] ?></td>
+                                        <td class="text-right">Rp<?= $c['pcost_amount'] ?></td>
+                                        <td class="text-right"><?= $c['pcost_quantity'] ?></td>
+                                        <td><?= $c['pcost_unit'] ?></td>
+                                        <td class="text-right"><?= $c['pcost_duration'] ?></td>
+                                        <td><?= $c['pcost_unit_duration'] ?></td>
+                                        <td class="act-rab">
+                                            <i class="fa fa-pencil act icon-edit-member editCost" data-id="<?= $c['id'] ?>"></i>
+                                            <i class="fa fa-trash-o icon-del-team deleteCost" data-id="<?= $c['id'] ?>"></i>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
                     </div>
-                    <table id="example-1" class="table table-striped table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
-                        <thead>
-                            <tr>
-                                <th>Cost Description</th>
-                                <th>Quantity</th>
-                                <th>Unit Quantity</th>
-                                <th>Duration</th>
-                                <th>Unit Duration</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Gaji Developer</td>
-                                <td class="text-right">2</td>
-                                <td>Orang</td>
-                                <td class="text-right">1</td>
-                                <td>Bulan</td>
-                                <td class="act-rab">
-                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="row sub" style="margin-bottom: -20px;margin-top: 15px;">
-                        <div class="col" style="margin-bottom: 0;">
-                            <p class="category-rab">Non Personnel</p>
-                        </div>
-                        <div class="col" style="text-align: right;">
-                            <a>
-                                <i class="fa fa-plus-circle add-rab" id="addCostCategory"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <table id="example-2" class="table table-striped table-dark display nowrap responsive detail-rab" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Cost Description</th>
-                                <th>Quantity</th>
-                                <th>Unit Quantity</th>
-                                <th>Duration</th>
-                                <th>Unit Duration</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sewa Server</td>
-                                <td class="text-right">2</td>
-                                <td>Unit</td>
-                                <td class="text-right">1</td>
-                                <td>Tahun</td>
-                                <td class="act-rab">
-                                    <i class="fa fa-pencil act icon-edit-member" id="editExpen"></i>
-                                    <i class="fa fa-trash-o icon-del-team" id="deleteExpen"></i>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
 
 
-    <!-- Modal Add New Category Cost -->
+    <!-- Modal New Cost Category -->
+    <div class="modal fade text-left" id="costCatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title" id="exampleModalLabel" style="color: white;">
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="costCatForm" method="POST">
+                        <div class="col">
+                            <label class="form-label">Category *</label>
+                            <input type="text" name="name" id="name" class="form-control fc" placeholder="New category...">
+                            <span class="text-danger" id="name_error"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="action_costcat" id="action_costcat" />
+                            <input type="hidden" name="project_id" value="<?= $id ?>" />
+                            <input type="hidden" name="cat_id" id="cat_id" />
+                            <button class="btn btn-light plus" type="submit" id="submitButtonCostCat"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
 
+    <!-- Modal Cost Per Category -->
     <div class="modal fade text-left" id="costModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -118,43 +122,18 @@
                 <div class="modal-body">
                     <form id="costForm" method="POST">
                         <div class="col">
-                            <label class="form-label">Category *</label>
-                            <input type="text" name="category" id="category" class="form-control fc" placeholder="New Category...">
-                            <span class="text-danger" id="category_error"></span>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" name="action" id="action" />
-                            <input type="hidden" name="hidden_id" id="hidden_id" />
-                            <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End -->
-    <!-- Modal Add Cost Per Category -->
-
-    <div class="modal fade text-left" id="expenModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title" id="exampleModalLabel" style="color: white;">
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="expenForm" method="POST">
-                        <div class="col">
                             <label class="form-label">Cost Description *</label>
-                            <input type="text" name="costdec" id="costdec" class="form-control fc">
-                            <span class="text-danger" id="costdec_error"></span>
+                            <input type="text" name="desc" id="desc" class="form-control fc">
+                            <span class="text-danger" id="desc_error"></span>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Amount *</label>
+                            <input type="text" class="form-control fc" name="amount" placeholder="Type a number..." required>
+                            <span class="text-danger" id="amount_error"></span>
                         </div>
                         <div class="col">
                             <label class="form-label">Quantity *</label>
-                            <input type="number" class="form-control fc" name="quantity" placeholder="Type a number..." value="" required>
+                            <input type="number" class="form-control fc" name="quantity" placeholder="Type a number..." required>
                             <span class="text-danger" id="quantity_error"></span>
                         </div>
                         <div class="col">
@@ -164,7 +143,7 @@
                         </div>
                         <div class="col">
                             <label class="form-label">Duration *</label>
-                            <input type="number" class="form-control fc" name="duration" placeholder="Type a number..." value="" required>
+                            <input type="number" class="form-control fc" name="duration" placeholder="Type a number..." required>
                             <span class="text-danger" id="duration_error"></span>
                         </div>
                         <div class="col">
@@ -173,9 +152,10 @@
                             <span class="text-danger" id="unitDuration_error"></span>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="action" id="action" />
-                            <input type="hidden" name="hidden_id" id="hidden_id" />
-                            <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
+                            <input type="hidden" name="category_id" id="category_id" />
+                            <input type="hidden" name="cost_id" id="cost_id" />
+                            <input type="hidden" name="action_cost" id="action_cost" />
+                            <button class="btn btn-light plus" type="submit" name="submit" id="submitButtonCost">Add</button>
                         </div>
                     </form>
                 </div>
@@ -185,281 +165,301 @@
     <!-- End -->
 
 </div>
-</div>
 <div class="space text-center">
     <p class="dot">.</p>
 </div>
 </div>
 
-<!-- JS Data table -->
+<!-- JQuery -->
 <script>
-    $(document).ready(function() {
-        $('#example-1').DataTable({
-            // "scrollX": true,
-            "paging": false,
-            "filter": false,
-            "info": false
-        });
+    //Create New Cost Category
+    $('#addCostCat').click(function() {
+        $('#costCatForm')[0].reset();
+        $('#name_error').text('');
+        $('.modal-title').html('<i class="fa fa-list" style="color: white;"></i> Add a Category');
+        $('#action_costcat').val('add');
+        $('#submitButtonCostCat').html('Add');
+        $('#costCatModal').modal('show');
+    })
+
+    $('#costCatForm').on('submit', function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: "<?= base_url(); ?>/project/saveCostCat",
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "JSON",
+
+            beforeSend: function() {
+                $('#submitButtonCostCat').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
+                $('#submitButtonCostCat').attr('disabled', 'disabled');
+            },
+
+            success: function(data) {
+                if ($('#action_costcat').val() == 'add') {
+                    $('#submitButtonCostCat').html('Add');
+
+                } else {
+                    $('#submitButtonCostCat').html('Edit');
+                }
+
+                $('#submitButtonCostCat').attr('disabled', false);
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1700,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                if (data.error == 'yes') {
+                    $('#name_error').text(data.name_error);
+
+                    if ($('#action_costcat').val() == 'add') {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'failed to add the category'
+                        })
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'failed to edit the category'
+                        })
+                    }
+                } else {
+                    $('#costCatModal').modal('hide');
+
+                    setTimeout(location.reload.bind(location), 2200);
+
+                    if ($('#action_costcat').val() == 'add') {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'New category added'
+                        })
+                    } else {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Updated'
+                        })
+                    }
+                }
+            }
+        })
+    })
+
+    //Edit Cost Category
+    $(document).on('click', '.editCat', function() {
+        var id = $(this).data('id');
+
+        $.ajax({
+            url: "<?= base_url() ?>/project/fetchIdCategory",
+            method: "POST",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
+
+            success: function(data) {
+                $('#name').val(data.category_name);
+
+                $('#name_error').text('');
+                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Category');
+                $('#action_costcat').val('edit');
+                $('#submitButtonCostCat').html('Edit');
+                $('#costCatModal').modal('show');
+                $('#cat_id').val(id);
+            }
+        })
     });
 
-    $(document).ready(function() {
-        $('#example-2').DataTable({
-            // "scrollX": true,
-            "paging": false,
-            "filter": false,
-            "info": false
-        });
+    //Delete Cost Category
+    $(document).on('click', '.deleteCat', function() {
+        var id = $(this).data('id');
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this action",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= base_url() ?>/project/deleteCostCat",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+
+                    success: function(data) {
+                        setTimeout(location.reload.bind(location));
+                    }
+                })
+            }
+        })
     });
 
-    // //Create New Cost Category
-    // $('#addCost').click(function() {
-    //     $('#costForm')[0].reset();
-    //     $('#name_error').text('');
-    //     $('#position_error').text('');
-    //     $('.modal-title').html('<i class="fa fa-list" style="color: white;"></i> Add an Category Cost');
-    //     $('#action').val('create');
-    //     $('#submitButton').val('Add');
-    //     $('#costModal').modal('show');
-    // })
+    //Create Cost Per Category
+    $(document).on('click', '.addCost', function() {
+        var id = $(this).data('id');
+        $('#costForm')[0].reset();
+        $('#desc_error').text('');
+        $('#amount_error').text('');
+        $('#quantity_error').text('');
+        $('#unitQuantity_error').text('');
+        $('#duration_error').text('');
+        $('#unitDuration_error').text('');
+        $('.modal-title').html('<i class="fa fa-list" style="color: white;"></i> Add the Cost Details');
+        $('#action_cost').val('add');
+        $('#costModal').modal('show');
+        $('#category_id').val(id);
+    })
 
-    // $('#costForm').on('submit', function(event) {
-    //     event.preventDefault();
+    $('#costForm').on('submit', function(event) {
+        event.preventDefault();
 
-    //     $.ajax({
-    //         url: "<?= base_url(); ?>/project/saveMemberData",
-    //         method: "POST",
-    //         data: $(this).serialize(),
-    //         dataType: "JSON",
+        $.ajax({
+            url: "<?= base_url(); ?>/project/saveCostData",
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "JSON",
 
-    //         beforeSend: function() {
-    //             $('#submitButton').val('Wait...');
-    //             $('#submitButton').attr('disabled', 'disabled');
-    //         },
+            beforeSend: function() {
+                $('#submitButtonCost').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
+                $('#submitButtonCost').attr('disabled', 'disabled');
+            },
 
-    //         success: function(data) {
+            success: function(data) {
+                if ($('#action_cost').val() == 'add') {
+                    $('#submitButtonCost').html('Add');
 
-    //             if ($('#action').val() == 'create') {
-    //                 $('#submitButton').val('Add');
-    //             } else {
-    //                 $('#submitButton').val('Edit');
-    //             }
+                } else {
+                    $('#submitButtonCost').html('Edit');
+                }
+                $('#submitButtonCost').attr('disabled', false);
 
-    //             $('#submitButton').attr('disabled', false);
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1700,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
-    //             const Toast = Swal.mixin({
-    //                 toast: true,
-    //                 position: 'top-end',
-    //                 showConfirmButton: false,
-    //                 timer: 1700,
-    //                 didOpen: (toast) => {
-    //                     toast.addEventListener('mouseenter', Swal.stopTimer)
-    //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-    //                 }
-    //             })
+                if (data.error == 'yes') {
+                    $('#name_error').text(data.name_error);
+                    $('#desc_error').text(data.desc_error);
+                    $('#amount_error').text(data.amount_error);
+                    $('#quantity_error').text(data.quantity_error);
+                    $('#unitQuantity_error').text(data.unitQuantity_error);
+                    $('#duration_error').text(data.duration_error);
+                    $('#unitDuration_error').text(data.unitDuration_error);
 
-    //             if (data.error == 'yes') {
-    //                 $('#name_error').text(data.name_error);
-    //                 $('#position_error').text(data.position_error);
+                    if ($('#action_cost').val() == 'add') {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'failed to add the details'
+                        })
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'failed to update the details'
+                        })
+                    }
+                } else {
+                    $('#costModal').modal('hide');
 
-    //                 Toast.fire({
-    //                     icon: 'error',
-    //                     title: 'failed to add a member'
-    //                 })
-    //             } else {
-    //                 $('#costModal').modal('hide');
+                    setTimeout(location.reload.bind(location), 2200);
 
-    //                 setTimeout(location.reload.bind(location), 2200);
+                    if ($('#action_cost').val() == 'add') {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'New details added'
+                        })
+                    } else {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Details updated'
+                        })
+                    }
+                }
+            }
+        })
+    })
 
-    //                 Toast.fire({
-    //                     icon: 'success',
-    //                     title: 'New member added'
-    //                 })
-    //             }
-    //         }
-    //     })
-    // })
+    //Edit Cost
 
-    // //Edit Inclu
+    $(document).on('click', '.editCost', function() {
 
-    // $(document).on('click', '#editInclu', function() {
+        var id = $(this).data('id');
 
-    //     var id = $(this).data('id');
+        $.ajax({
+            url: "<?= base_url() ?>/project/fetchIdCost",
+            method: "POST",
+            data: {
+                id: id
+            },
+            dataType: "JSON",
 
-    //     $.ajax({
-    //         url: "<?= base_url() ?>/project/fetchIdPteam",
-    //         method: "POST",
-    //         data: {
-    //             id: id
-    //         },
-    //         dataType: "JSON",
+            success: function(data) {
+                $('#desc').val(data.pcost_desc);
+                $('#amount').val(data.pcost_amount);
+                $('#quantity').val(data.pcost_quantity);
+                $('#unitQuantity').val(data.pcost_unit);
+                $('#duration').val(data.pcost_duration);
+                $('#unitDuration').val(data.pcost_unit_duration);
 
-    //         success: function(data) {
-    //             $('#name').val(data.employee_id);
-    //             $('#position').val(data.position_id);
+                $('#desc_error').text('');
+                $('#amount_error').text('');
+                $('#quantity_error').text('');
+                $('#unitQuantity_error').text('');
+                $('#duration_error').text('');
+                $('#unitDuration_error').text('');
+                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Cost');
+                $('#action_cost').val('edit');
+                $('#submitButtonCost').html('Edit');
+                $('#costModal').modal('show');
+                $('#cost_id').val(id);
+            }
+        })
+    });
 
-    //             $('#name_error').text('');
-    //             $('#position_error').text('');
-    //             $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Income');
-    //             $('#action').val('edit');
-    //             $('#submitButton').val('Edit');
-    //             $('#inlcuModal').modal('show');
-    //             $('#member_id').val(id);
-    //         }
-    //     })
-    // });
+    //Delete Cost
+    $(document).on('click', '.deleteCost', function() {
+        var id = $(this).data('id');
 
-    // //Delete Inclu
-    // $(document).on('click', '#deleteInclu', function() {
-    //     var id = $(this).data('id');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this action",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?= base_url() ?>/project/deleteCost",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
 
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't be able to revert this action",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Delete',
-    //         cancelButtonText: 'Cancel'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             $.ajax({
-    //                 url: "<?= base_url() ?>/project/deleteTeamMember",
-    //                 method: "POST",
-    //                 data: {
-    //                     id: id
-    //                 },
-
-    //                 success: function(data) {
-    //                     setTimeout(location.reload.bind(location));
-    //                 }
-    //             })
-    //         }
-    //     })
-    // });
-
-    // //Create Cost Per Category
-    // $('#addCostCategory').click(function() {
-    //     $('#expenForm')[0].reset();
-    //     $('#name_error').text('');
-    //     $('#position_error').text('');
-    //     $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add an Expenses');
-    //     $('#action').val('create');
-    //     $('#submitButton').val('Add');
-    //     $('#expenModal').modal('show');
-    // })
-
-    // $('#expenForm').on('submit', function(event) {
-    //     event.preventDefault();
-
-    //     $.ajax({
-    //         url: "<?= base_url(); ?>/project/saveMemberData",
-    //         method: "POST",
-    //         data: $(this).serialize(),
-    //         dataType: "JSON",
-
-    //         beforeSend: function() {
-    //             $('#submitButton').val('Wait...');
-    //             $('#submitButton').attr('disabled', 'disabled');
-    //         },
-
-    //         success: function(data) {
-
-    //             if ($('#action').val() == 'create') {
-    //                 $('#submitButton').val('Add');
-    //             } else {
-    //                 $('#submitButton').val('Edit');
-    //             }
-
-    //             $('#submitButton').attr('disabled', false);
-
-    //             const Toast = Swal.mixin({
-    //                 toast: true,
-    //                 position: 'top-end',
-    //                 showConfirmButton: false,
-    //                 timer: 1700,
-    //                 didOpen: (toast) => {
-    //                     toast.addEventListener('mouseenter', Swal.stopTimer)
-    //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-    //                 }
-    //             })
-
-    //             if (data.error == 'yes') {
-    //                 $('#name_error').text(data.name_error);
-    //                 $('#position_error').text(data.position_error);
-
-    //                 Toast.fire({
-    //                     icon: 'error',
-    //                     title: 'failed to add a member'
-    //                 })
-    //             } else {
-    //                 $('#expenModal').modal('hide');
-
-    //                 setTimeout(location.reload.bind(location), 2200);
-
-    //                 Toast.fire({
-    //                     icon: 'success',
-    //                     title: 'New member added'
-    //                 })
-    //             }
-    //         }
-    //     })
-    // })
-
-    // //Edit Expen
-
-    // $(document).on('click', '#editExpen', function() {
-
-    //     var id = $(this).data('id');
-
-    //     $.ajax({
-    //         url: "<?= base_url() ?>/project/fetchIdPteam",
-    //         method: "POST",
-    //         data: {
-    //             id: id
-    //         },
-    //         dataType: "JSON",
-
-    //         success: function(data) {
-    //             $('#name').val(data.employee_id);
-    //             $('#position').val(data.position_id);
-
-    //             $('#name_error').text('');
-    //             $('#position_error').text('');
-    //             $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit an Expenses');
-    //             $('#action').val('edit');
-    //             $('#submitButton').val('Edit');
-    //             $('#expenModal').modal('show');
-    //             $('#member_id').val(id);
-    //         }
-    //     })
-    // });
-
-    // //Delete Inclu
-    // $(document).on('click', '#deleteExpen', function() {
-    //     var id = $(this).data('id');
-
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't be able to revert this action",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Delete',
-    //         cancelButtonText: 'Cancel'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             $.ajax({
-    //                 url: "<?= base_url() ?>/project/deleteTeamMember",
-    //                 method: "POST",
-    //                 data: {
-    //                     id: id
-    //                 },
-
-    //                 success: function(data) {
-    //                     setTimeout(location.reload.bind(location));
-    //                 }
-    //             })
-    //         }
-    //     })
-    // });
+                    success: function(data) {
+                        setTimeout(location.reload.bind(location));
+                    }
+                })
+            }
+        })
+    });
 </script>
 
 <?= $this->endSection(); ?>

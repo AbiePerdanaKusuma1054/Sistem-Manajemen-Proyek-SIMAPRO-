@@ -8,6 +8,8 @@ use App\Models\EmployeeModel;
 use App\Models\PositionModel;
 use App\Models\PteamModel;
 use App\Models\CommentModel;
+use App\Models\CostCategoryModel;
+use App\Models\PcostModel;
 use monken\TablesIgniter;
 
 class Project extends BaseController
@@ -21,6 +23,8 @@ class Project extends BaseController
         $this->positionModel = new PositionModel();
         $this->pteamModel = new PteamModel();
         $this->commentModel = new CommentModel();
+        $this->costModel = new CostCategoryModel();
+        $this->pcostModel = new PcostModel();
     }
 
     public function index()
@@ -37,6 +41,8 @@ class Project extends BaseController
         session()->set($sessions);
         return view('project/index');
     }
+
+    //Projects and it's details
 
     public function add()
     {
@@ -196,6 +202,8 @@ class Project extends BaseController
         return $table->getDatatable();
     }
 
+    //Project's team and it's members
+
     public function team($id)
     {
         $data = [
@@ -298,14 +306,263 @@ class Project extends BaseController
         }
     }
 
+    //Costs (Pcost)
+
     public function cost($id)
     {
         $data = [
+            'category' => $this->costModel->getCategories($id),
+            'costs' => $this->pcostModel,
             'id' => $id
         ];
 
         return view('/project/cost', $data);
     }
+
+    //Cost Categories
+
+    public function saveCostCat()
+    {
+        $request = service('request');
+
+        if ($request->getVar('action_costcat')) {
+            helper(['form', 'url']);
+            $name_error = '';
+            $error = 'no';
+
+            $rules = [
+                'name' => [
+                    'rules' => 'required|max_length[50]',
+                    'errors' => [
+                        'required' => 'Please input the category name',
+                        'max_length' => 'The name must be less than 50 characters'
+                    ]
+                ],
+            ];
+
+            $error = $this->validate($rules);
+
+            if (!$error) {
+                $error = 'yes';
+                $validator = \Config\Services::validation();
+                $name_error = $validator->getError('name');
+            } else {
+
+                if ($request->getVar('action_costcat') == 'add') {
+                    $this->costModel->save([
+                        'project_id' => intval($request->getVar('project_id')),
+                        'category_name' => $request->getVar('name')
+                    ]);
+                }
+
+                if ($request->getVar('action_costcat') == 'edit') {
+                    $id = $request->getVar('cat_id');
+                    $data = [
+                        'category_name' => $request->getVar('name')
+                    ];
+
+                    $this->costModel->update($id, $data);
+                }
+            }
+            $output = [
+                'name_error' => $name_error,
+                'error' => $error
+            ];
+
+            echo json_encode($output);
+        }
+    }
+
+    public function fetchIdCategory()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $categoryID = $this->costModel->select('category_name')
+                ->where('id', $request->getVar('id'))->first();
+
+            echo json_encode($categoryID);
+        }
+    }
+
+    public function deleteCostCat()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $id = $request->getVar('id');
+            $this->costModel->where('id', $id)->delete();
+        }
+    }
+
+    //Project Cost's Details
+
+    public function saveCostData()
+    {
+        $request = service('request');
+        if ($request->getVar('action_cost')) {
+            helper(['form', 'url']);
+            $desc_error = '';
+            $amount_error = '';
+            $quantity_error = '';
+            $unitQuantity_error = '';
+            $duration_error = '';
+            $unitDuration_error = '';
+            $error = 'no';
+
+            $rules = [
+                'desc' => [
+                    'rules' => 'required|max_length[255]',
+                    'errors' => [
+                        'required' => 'Please describe the cost',
+                        'max_length' => 'The description must be less than 255 characters'
+                    ]
+                ],
+                'amount' => [
+                    'rules' => 'required|integer|max_length[10]',
+                    'errors' => [
+                        'required' => 'Please input the amount of cost',
+                        'integer' => 'The amount must be a number',
+                        'max_length' => 'The amount should not be more than 10 numbers'
+                    ]
+                ],
+                'quantity' => [
+                    'rules' => 'required|integer|max_length[10]',
+                    'errors' => [
+                        'required' => 'Please input the quantity of cost',
+                        'integer' => 'The quantity must be a number',
+                        'max_length' => 'The quantity should not be more than 10 numbers'
+                    ]
+                ],
+                'unitQuantity' => [
+                    'rules' => 'required|alpha_space|max_length[10]',
+                    'errors' => [
+                        'required' => 'Please input the unit of quantity',
+                        'alpha_space' => 'The unit of quantity should not be a number',
+                        'max_length' => 'The unit of quantity should not be more than 10 characters'
+                    ]
+                ],
+                'duration' => [
+                    'rules' => 'required|integer|max_length[10]',
+                    'errors' => [
+                        'required' => 'Please input the duration of cost',
+                        'integer' => 'The duration must be a number',
+                        'max_length' => 'The duration should not be more than 10 numbers'
+                    ]
+                ],
+                'unitDuration' => [
+                    'rules' => 'required|alpha_space|max_length[10]',
+                    'errors' => [
+                        'required' => 'Please input the unit of duration',
+                        'alpha_space' => 'The unit of duration should not be a number',
+                        'max_length' => 'The unit of duration should not be more than 10 characters'
+                    ]
+                ],
+            ];
+
+            $error = $this->validate($rules);
+
+            if (!$error) {
+                $error = 'yes';
+                $validator = \Config\Services::validation();
+                if ($validator->getError('desc')) {
+                    $desc_error = $validator->getError('desc');
+                }
+
+                if ($validator->getError('amount')) {
+                    $amount_error = $validator->getError('amount');
+                }
+
+                if ($validator->getError('quantity')) {
+                    $quantity_error = $validator->getError('quantity');
+                }
+                if ($validator->getError('unitQuantity')) {
+                    $unitQuantity_error = $validator->getError('unitQuantity');
+                }
+                if ($validator->getError('duration')) {
+                    $duration_error = $validator->getError('duration');
+                }
+                if ($validator->getError('unitDuration')) {
+                    $unitDuration_error = $validator->getError('unitDuration');
+                }
+            } else {
+
+                if ($request->getVar('action_cost') == 'add') {
+                    $this->pcostModel->save([
+                        'category_id' => intval($request->getVar('category_id')),
+                        'pcost_desc' => $request->getVar('desc'),
+                        'pcost_amount' => $request->getVar('amount'),
+                        'pcost_quantity' => $request->getVar('quantity'),
+                        'pcost_unit' => $request->getVar('unitQuantity'),
+                        'pcost_duration' => $request->getVar('duration'),
+                        'pcost_unit_duration' => $request->getVar('unitDuration'),
+                    ]);
+                } else {
+                    $id = $request->getVar('cost_id');
+                    $data = [
+                        'pcost_desc' => $request->getVar('desc'),
+                        'pcost_amount' => $request->getVar('amount'),
+                        'pcost_quantity' => $request->getVar('quantity'),
+                        'pcost_unit' => $request->getVar('unitQuantity'),
+                        'pcost_duration' => $request->getVar('duration'),
+                        'pcost_unit_duration' => $request->getVar('unitDuration')
+                    ];
+
+                    $this->pcostModel->update($id, $data);
+                }
+            }
+
+            $output = [
+                'desc_error' => $desc_error,
+                'amount_error' => $amount_error,
+                'quantity_error' => $quantity_error,
+                'unitQuantity_error' => $unitQuantity_error,
+                'duration_error' => $duration_error,
+                'unitDuration_error' => $unitDuration_error,
+                'error' => $error
+            ];
+
+            echo json_encode($output);
+        }
+    }
+
+    public function fetchIdCost()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $costID = $this->pcostModel->where('id', $request->getVar('id'))->first();
+            echo json_encode($costID);
+        }
+    }
+
+    public function deleteCost()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $id = $request->getVar('id');
+            $this->pcostModel->where('id', $id)->delete();
+        }
+    }
+    // public function fetchCostsData($id)
+    // {
+    //     $table = new TablesIgniter();
+
+    //     $table->setTable($this->pcostModel->noticeTable($id))
+    //         ->setDefaultOrder('pcost_desc', 'ASC')
+    //         ->setOrder([
+    //             'pcost_desc', 'pcost_amount', 'pcost_quantity',
+    //             'pcost_unit', 'pcost_duration', 'pcost_unit_duration', NULL
+    //         ])
+    //         ->setSearch(['pcost_desc'])
+    //         ->setOutput([
+    //             'pcost_desc', 'pcost_amount', 'pcost_quantity',
+    //             'pcost_unit', 'pcost_duration', 'pcost_unit_duration', $this->pcostModel->button()
+    //         ]);
+    //     return $table->getDatatable();
+    // }
+
     public function transaction($id)
     {
         $data = [

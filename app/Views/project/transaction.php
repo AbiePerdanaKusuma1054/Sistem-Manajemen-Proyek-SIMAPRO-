@@ -3,7 +3,6 @@
 <?= $this->section('content'); ?>
 <div class="canvas-2">
     <div class="lay" style="text-align: left ;">
-        <!-- tolong dikasih class text-center untuk disetiap halaman yg ada menu ini, cuma div class dibawah ini doang -->
         <div class="menu-detail text-center">
             <div class="table-responsive">
                 <ul>

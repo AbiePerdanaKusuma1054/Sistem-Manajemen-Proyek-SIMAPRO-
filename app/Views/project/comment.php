@@ -97,7 +97,7 @@
 
                     <div class="modal-footer">
                         <input type="hidden" name="comment_id" id="comment_id" />
-                        <button class="btn btn-secondary sends" type="submit" id="submitEditButton">Edit</i></button>
+                        <button class="btn btn-light plus" type="submit" id="submitEditButton">Edit</button>
                     </div>
                 </form>
             </div>
@@ -184,7 +184,7 @@
             dataType: "JSON",
 
             beforeSend: function() {
-                $('#submitEditButton').html('<i class="fa fa-spinner fa-spin" style="color: white;"></i>');
+                $('#submitEditButton').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
                 $('#submitEditButton').attr('disabled', 'disabled');
             },
 
@@ -201,6 +201,7 @@
                     })
 
                 } else {
+                    $('#editCommentModal').modal('hide');
                     setTimeout(location.reload.bind(location), 700);
                 }
             }
