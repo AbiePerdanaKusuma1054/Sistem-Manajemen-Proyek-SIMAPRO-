@@ -25,8 +25,8 @@
 
         <div class="box">
             <div class="left-box">
-                <?php foreach ($category as $cat) : ?>
-                    <div class="detail-box back-rab inclusion">
+                <div class="detail-box back-rab inclusion">
+                    <?php foreach ($category as $cat) : ?>
                         <div class="row sub" style="margin-bottom: -20px;">
                             <div class="col" style="margin-bottom: 0;">
                                 <p class="category-rab"><?= $cat['category_name'] ?>
@@ -40,38 +40,40 @@
                                 </a>
                             </div>
                         </div>
-                        <table id="table" class="table table-striped table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
-                            <thead>
-                                <tr>
-                                    <th>Cost Description</th>
-                                    <th>Amount</th>
-                                    <th>Quantity</th>
-                                    <th>Unit Quantity</th>
-                                    <th>Duration</th>
-                                    <th>Unit Duration</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <?php $cost = $costs->where('category_id', $cat['id'])->findAll() ?>
-                            <tbody>
-                                <?php foreach ($cost as $c) : ?>
+                        <div class="table-responsive">
+                            <table id="table" class="table table-striped table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
+                                <thead>
                                     <tr>
-                                        <td><?= $c['pcost_desc'] ?></td>
-                                        <td class="text-right">Rp<?= $c['pcost_amount'] ?></td>
-                                        <td class="text-right"><?= $c['pcost_quantity'] ?></td>
-                                        <td><?= $c['pcost_unit'] ?></td>
-                                        <td class="text-right"><?= $c['pcost_duration'] ?></td>
-                                        <td><?= $c['pcost_unit_duration'] ?></td>
-                                        <td class="act-rab">
-                                            <i class="fa fa-pencil act icon-edit-member editCost" data-id="<?= $c['id'] ?>"></i>
-                                            <i class="fa fa-trash-o icon-del-team deleteCost" data-id="<?= $c['id'] ?>"></i>
-                                        </td>
+                                        <th>Cost Description</th>
+                                        <th>Amount</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Quantity</th>
+                                        <th>Duration</th>
+                                        <th>Unit Duration</th>
+                                        <th>Action</th>
                                     </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php endforeach; ?>
+                                </thead>
+                                <?php $cost = $costs->where('category_id', $cat['id'])->findAll() ?>
+                                <tbody>
+                                    <?php foreach ($cost as $c) : ?>
+                                        <tr>
+                                            <td><?= $c['pcost_desc'] ?></td>
+                                            <td class="text-right">Rp<?= $c['pcost_amount'] ?></td>
+                                            <td class="text-right"><?= $c['pcost_quantity'] ?></td>
+                                            <td><?= $c['pcost_unit'] ?></td>
+                                            <td class="text-right"><?= $c['pcost_duration'] ?></td>
+                                            <td><?= $c['pcost_unit_duration'] ?></td>
+                                            <td class="act-rab">
+                                                <i class="fa fa-pencil act icon-edit-member editCost" data-id="<?= $c['id'] ?>"></i>
+                                                <i class="fa fa-trash-o icon-del-team deleteCost" data-id="<?= $c['id'] ?>"></i>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </div>

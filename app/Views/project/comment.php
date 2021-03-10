@@ -36,9 +36,10 @@
                                 <div class="massages">
                                     <div class="message">
                                         <div class="<?= $c['username'] == session()->get('username')  ? 'fromThem myMessage' : 'fromThem'; ?>">
-                                            <p><?= $c['comment_text'] ?></p>
+                                            <p class="text-comment"><?= $c['comment_text'] ?></p>
                                             <p class="date">
                                                 <b><?= $c['username'] ?></b>
+                                            </p>
                                             <p class="txt-date"><?= substr(date('d/m/Y', strtotime($c['created_at'])), 0, 10) ?>
                                                 <span class="txt-time"><?= substr(date('d/m/Y H:i:s', strtotime($c['created_at'])), 11) ?></span>
                                                 <?php if ($c['updated_at'] != $c['created_at']) : ?>

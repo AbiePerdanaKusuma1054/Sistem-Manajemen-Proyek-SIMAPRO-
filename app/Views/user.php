@@ -61,9 +61,9 @@
         <table id="table" class="table table-striped table-dark display nowrap anim" style="cursor: default; width: 100%;">
             <thead class="attr">
                 <tr>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Action</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Role</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
         </table>
@@ -81,6 +81,14 @@
 
         $('#table').DataTable({
             "aoColumnDefs": [{
+                    targets: 1,
+                    className: 'text-left'
+                },
+                {
+                    targets: 0,
+                    className: 'text-left'
+                },
+                {
                     responsivePriority: 2,
                     targets: -1
                 },

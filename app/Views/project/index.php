@@ -15,15 +15,15 @@
 
         <table id="table" class="table table-striped table-dark display nowrap text-left anim" style="cursor: default;  width: 100%;">
             <thead class="attr">
-                <tr class="text-center">
-                    <th>Project</th>
-                    <th>Client</th>
-                    <th>Project Manager</th>
-                    <th>Start Date</th>
-                    <th>Deadline</th>
-                    <th>Project Status</th>
+                <tr>
+                    <th class="text-center">Project</th>
+                    <th class="text-center">Client</th>
+                    <th class="text-center">Project Manager</th>
+                    <th class="text-center">Start Date</th>
+                    <th class="text-center">Deadline</th>
+                    <th class="text-center">Project Status</th>
                     <!-- <th>Payment</th> -->
-                    <th>Action</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <!-- <tbody>
@@ -111,6 +111,18 @@
     $(document).ready(function() {
         $('#table').DataTable({
             "aoColumnDefs": [{
+                    targets: -4,
+                    className: 'text-right'
+                },
+                {
+                    targets: -3,
+                    className: 'text-right'
+                },
+                {
+                    targets: -2,
+                    className: 'text-center'
+                },
+                {
                     targets: -1,
                     className: 'text-center'
                 },

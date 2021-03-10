@@ -71,11 +71,11 @@
         <table id="table" class="table table-striped table-dark display nowrap anim" style="cursor: default;  width: 100%;">
             <thead class="attr">
                 <tr>
-                    <th>Employee Name</th>
-                    <th>Gender</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Action</th>
+                    <th class="text-center">Employee Name</th>
+                    <th class="text-center">Gender</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
         </table>
@@ -93,9 +93,25 @@
 
         $('#table').DataTable({
             "aoColumnDefs": [{
-                "bSortable": false,
-                "aTargets": [4]
-            }],
+                    targets: 0,
+                    className: 'text-left'
+                },
+                {
+                    targets: 1,
+                    className: 'text-left'
+                },
+                {
+                    targets: 2,
+                    className: 'text-left'
+                },
+                {
+                    targets: 3,
+                    className: 'text-left'
+                }, {
+                    "bSortable": false,
+                    "aTargets": [4]
+                }
+            ],
             "scrollX": true,
             "order": [],
             "serverSide": true,

@@ -9,6 +9,15 @@ html {
 body {
   min-height: 100vh;
 }
+.li-head :hover {
+  color: rgb(179, 176, 176);
+}
+.quit {
+  color: rgb(255, 255, 255);
+}
+.quit :hover {
+  color: rgb(179, 176, 176);
+}
 .l1 {
   background-repeat: no-repeat;
   background-image: url(/img/background.png);
@@ -145,7 +154,8 @@ body {
   justify-content: center;
   width: 70%;
   padding: 10px 0;
-  background: rgba(56, 55, 55, 0.66);
+  background: rgba(80, 80, 80, 0.66);
+  /* background: rgba(56, 55, 55, 0.66); */
   text-align: center;
   margin: 16px auto 30px auto;
   border-radius: 6px;
@@ -156,7 +166,8 @@ body {
   align-items: center;
   width: 70%;
   height: auto;
-  background: rgba(56, 55, 55, 0.66);
+  background: rgba(80, 80, 80, 0.66);
+  /* background: rgba(56, 55, 55, 0.66); */
   text-align: center;
   margin: 16px auto 30px auto;
   border-radius: 6px;
@@ -875,6 +886,7 @@ option:first {
 }
 
 .detail-row .r {
+  color: #cecece;
   border-color: rgb(255, 255, 255);
   padding-left: 10%;
   width: 100%;
@@ -1036,7 +1048,10 @@ option:first {
   font-size: 9pt;
   position: relative;
 }
-
+.text-comment {
+  color: white;
+  font-size: 9pt;
+}
 .back-massage .txt-name {
   margin-top: 3px;
   position: relative;
@@ -1066,170 +1081,7 @@ span.txt-time {
   transition-duration: 500ms;
   -webkit-transform: translateY(18px);
 }
-/* end */
-/* comment */
-/*form.chat * {
-  transition: all 0.5s;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
 
-form.chat {
-  margin: 0;
-  cursor: default;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-form.chat span.spinner {
-  -moz-animation: loading-bar 1s 1;
-  -webkit-animation: loading-bar 1s 1;
-  animation: loading-bar 1s 1;
-  display: block;
-  height: 2px;
-  background-color: #00e34d;
-  transition: width 0.2s;
-  z-index: 0;
-}
-
-form.chat .messages {
-  display: block;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: 90%;
-  width: 100%;
-}
-
-form.chat ::-webkit-scrollbar {
-  width: 3px;
-  height: 1px;
-  transition: all 0.5s;
-}
-form.chat ::-webkit-scrollbar-track {
-  background-color: none;
-}
-
-form.chat .message {
-  display: block;
-  width: 100%;
-  padding: 5px 10px;
-}
-
-form.chat .message p {
-  margin: 0;
-}
-
-form.chat .myMessage,
-form.chat .fromThem {
-  max-width: 100%;
-  word-wrap: break-word;
-  margin-bottom: 20px;
-}
-
-form.chat .myMessage,
-.fromThem {
-  padding: 10px 20px;
-  color: white;
-  width: 100%;
-  border-radius: 10px;
-  clear: both;
-  font: 400 15px "Open Sans", sans-serif;
-}
-
-form.chat .myMessage {
-  background: #151518;
-  color: white;
-  clear: both;
-}
-
-form.chat .fromThem {
-  background: #070707;
-  color: white;
-  clear: both;
-}
-form.chat date {
-  top: 10px;
-  font-size: 14px;
-  white-space: nowrap;
-  vertical-align: middle;
-  color: #8b8b90;
-}
-
-form.chat .myMessage date {
-  left: 105%;
-}
-
-form.chat .fromThem date {
-  right: 105%;
-}
-
-form.chat input {
-  font: 400 13px "Open Sans", sans-serif;
-  border: 0;
-  padding: 0 15px;
-  height: 10%;
-  outline: 0;
-}
-
-form.chat input[type="text"] {
-  width: 65%;
-  float: left;
-  font-size: 10pt;
-  font-weight: 600;
-  margin-left: 1rem;
-  height: 35px;
-  color: #1a1515;
-}
-
-form.chat input[type="submit"] {
-  width: 15%;
-  background: transparent;
-  color: #00e34d;
-  font-weight: 700;
-  text-align: center;
-  float: right;
-  border-radius: 5px;
-  border-color: #222121;
-  background-color: #222121;
-  font-size: 14pt;
-  font-weight: 600;
-  height: 35px;
-  margin-right: 1rem;
-}
-
-form.chat .myMessage,
-form.chat .fromThem {
-  font-size: 12px;
-}
-
-form.chat .message .myMessage:hover {
-  transform: translateY(18px);
-  -webkit-transform: translateY(18px);
-}
-
-form.chat .message .fromThem:hover {
-  transform: translateY(18px);
-  -webkit-transform: translateY(18px);
-}
-
-form.chat .myMessage date,
-form.chat .fromThem date {
-  top: -20px;
-  left: auto;
-  right: 0;
-  font-size: 12px;
-}
-
-form.chat .myMessage,
-form.chat .fromThem {
-  max-width: 100%;
-} */
-/* comment */
 .chat * {
   transition: all 0.5s;
   box-sizing: border-box;
@@ -1374,7 +1226,7 @@ form.chat .fromThem {
   background: #070707;
   border: none;
 }
-
+/* end */
 /* Cost and Transaction */
 
 .complete-bedge {
@@ -1401,4 +1253,8 @@ form.chat .fromThem {
 .anim {
   transform-origin: top center;
   animation: rotateX 1000ms ease-in-out backwards;
+}
+
+.table-responsive ul {
+  cursor: pointer;
 }
