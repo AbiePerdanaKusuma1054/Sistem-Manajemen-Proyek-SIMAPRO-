@@ -15,6 +15,15 @@ class PcostModel extends Model
         'pcost_unit', 'pcost_duration', 'pcost_unit_duration'
     ];
 
+    public function getDescription($id)
+    {
+        return $this->db->table($this->table)->select('pcost.id, pcost_desc')
+            ->join('cost_category', 'pcost.category_id = cost_category.id')
+            ->where('project_id', $id)->where('pcost.deleted_at', NULL)
+            ->where('cost_category.deleted_at', NULL)
+            ->get()->getResultArray();
+    }
+
     // public function noticeTable($id)
     // {
     //     $builder = $this->db->table($this->table)

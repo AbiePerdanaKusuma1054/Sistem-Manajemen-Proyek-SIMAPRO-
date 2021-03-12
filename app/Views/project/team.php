@@ -125,6 +125,17 @@
 </div>
 
 <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1700,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
     //Create Team Member
     $('#addTeam').click(function() {
         $('#teamForm')[0].reset();
@@ -160,17 +171,6 @@
 
                 $('#submitButton').attr('disabled', false);
 
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1700,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-
                 if (data.error == 'yes') {
                     $('#name_error').text(data.name_error);
                     $('#position_error').text(data.position_error);
@@ -182,12 +182,7 @@
                 } else {
                     $('#teamModal').modal('hide');
 
-                    setTimeout(location.reload.bind(location), 2200);
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'New member added'
-                    })
+                    setTimeout(location.reload.bind(location));
                 }
             }
         })
@@ -249,6 +244,24 @@
             }
         })
     });
+
+    <?php if (session()->getFlashdata('msg') == 'create') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'New member added'
+        })
+    <?php } else if (session()->getFlashdata('msg') == 'edit') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'Member Updated'
+        })
+    <?php } else if (session()->getFlashdata('msg') == 'delete') { ?>
+        Swal.fire(
+            'Deleted!',
+            'A member has been deleted.',
+            'success'
+        )
+    <?php } ?>
 </script>
 
 <?= $this->endSection(); ?>

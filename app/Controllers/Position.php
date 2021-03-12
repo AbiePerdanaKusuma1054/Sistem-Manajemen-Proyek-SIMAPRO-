@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\PositionModel;
-use monken\TablesIgniter;
 
 class Position extends BaseController
 {
@@ -30,14 +29,12 @@ class Position extends BaseController
 
     public function fetchPositionData()
     {
-        $table = new TablesIgniter();
-
-        $table->setTable($this->positionModel->noticeTable())
+        $this->table->setTable($this->positionModel->noticeTable())
             ->setDefaultOrder('position_name', 'ASC')
             ->setOrder(['position_name', 'position_desc', null, null])
             ->setSearch(['position_name'])
             ->setOutput(['position_name', 'position_desc', $this->positionModel->button()]);
-        return $table->getDatatable();
+        return $this->table->getDatatable();
     }
 
     public function savePositionData()

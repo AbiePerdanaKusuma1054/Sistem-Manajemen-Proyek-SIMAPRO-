@@ -17,9 +17,8 @@ class ProjectModel extends Model
 
     public function noticeTable()
     {
-        $builder = $this->db->table('client')
+        return $this->db->table('client')
             ->join($this->table, 'project.client_id = client.id')->where('project.deleted_at', NULL);
-        return $builder;
     }
 
     public function status()

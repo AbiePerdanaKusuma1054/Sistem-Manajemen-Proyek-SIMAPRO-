@@ -10,7 +10,8 @@ use App\Models\PteamModel;
 use App\Models\CommentModel;
 use App\Models\CostCategoryModel;
 use App\Models\PcostModel;
-use monken\TablesIgniter;
+use App\Models\PcostTransactionModel;
+use App\Models\PrevenuesModel;
 
 class Project extends BaseController
 {
@@ -25,6 +26,8 @@ class Project extends BaseController
         $this->commentModel = new CommentModel();
         $this->costModel = new CostCategoryModel();
         $this->pcostModel = new PcostModel();
+        $this->prevenuesModel = new PrevenuesModel();
+        $this->pcostTransactionModel = new PcostTransactionModel();
     }
 
     public function index()
@@ -186,9 +189,7 @@ class Project extends BaseController
 
     public function fetchProjectData()
     {
-        $table = new TablesIgniter();
-
-        $table->setTable($this->projectModel->noticeTable())
+        $this->table->setTable($this->projectModel->noticeTable())
             ->setDefaultOrder('project_name', 'ASC')
             ->setOrder([
                 'project_name', 'client_name', 'project_manager',
@@ -199,7 +200,7 @@ class Project extends BaseController
                 'project_name', 'client_name', 'project_manager', $this->projectModel->startDate(),
                 $this->projectModel->finishDate(), $this->projectModel->status(), $this->projectModel->button()
             ]);
-        return $table->getDatatable();
+        return $this->table->getDatatable();
     }
 
     //Project's team and it's members
@@ -257,6 +258,7 @@ class Project extends BaseController
                         'employee_id' => intval($request->getVar('name')),
                         'position_id' => intval($request->getVar('position'))
                     ]);
+                    session()->setFlashdata('msg', 'create');
                 }
 
                 if ($request->getVar('action') == 'edit') {
@@ -267,6 +269,7 @@ class Project extends BaseController
                     ];
 
                     $this->pteamModel->update($id, $data);
+                    session()->setFlashdata('msg', 'edit');
                 }
             }
 
@@ -303,6 +306,7 @@ class Project extends BaseController
         if ($request->getVar('id')) {
             $id = $request->getVar('id');
             $this->pteamModel->where('id', $id)->delete();
+            session()->setFlashdata('msg', 'delete');
         }
     }
 
@@ -353,6 +357,7 @@ class Project extends BaseController
                         'project_id' => intval($request->getVar('project_id')),
                         'category_name' => $request->getVar('name')
                     ]);
+                    session()->setFlashdata('msg', 'create');
                 }
 
                 if ($request->getVar('action_costcat') == 'edit') {
@@ -362,6 +367,7 @@ class Project extends BaseController
                     ];
 
                     $this->costModel->update($id, $data);
+                    session()->setFlashdata('msg', 'edit');
                 }
             }
             $output = [
@@ -392,6 +398,7 @@ class Project extends BaseController
         if ($request->getVar('id')) {
             $id = $request->getVar('id');
             $this->costModel->where('id', $id)->delete();
+            session()->setFlashdata('msg', 'delete');
         }
     }
 
@@ -497,6 +504,7 @@ class Project extends BaseController
                         'pcost_duration' => $request->getVar('duration'),
                         'pcost_unit_duration' => $request->getVar('unitDuration'),
                     ]);
+                    session()->setFlashdata('msg', 'create_cost');
                 } else {
                     $id = $request->getVar('cost_id');
                     $data = [
@@ -509,6 +517,7 @@ class Project extends BaseController
                     ];
 
                     $this->pcostModel->update($id, $data);
+                    session()->setFlashdata('msg', 'edit_cost');
                 }
             }
 
@@ -543,8 +552,10 @@ class Project extends BaseController
         if ($request->getVar('id')) {
             $id = $request->getVar('id');
             $this->pcostModel->where('id', $id)->delete();
+            session()->setFlashdata('msg', 'delete_cost');
         }
     }
+
     // public function fetchCostsData($id)
     // {
     //     $table = new TablesIgniter();
@@ -566,11 +577,297 @@ class Project extends BaseController
     public function transaction($id)
     {
         $data = [
-            'id' => $id
+            'id' => $id,
+            'revenues_sum' => $this->prevenuesModel->rvsum($id),
+            'transaction_sum' => $this->pcostTransactionModel->trsum($id),
+            'desc' => $this->pcostModel->getDescription($id)
         ];
 
         return view('/project/transaction', $data);
     }
+
+    // Income/Revenues
+
+    public function fetchRevenues($id)
+    {
+        $this->table->setTable($this->prevenuesModel->noticeTable($id))
+            ->setDefaultOrder('prevenues_desc', 'ASC')
+            ->setOrder([
+                null, 'prevenues_desc', 'prevenues_status',
+                'prevenues_amount', 'prevenues_date'
+            ])
+            ->setOutput([
+                $this->prevenuesModel->button(), $this->prevenuesModel->date(), 'prevenues_desc',
+                $this->prevenuesModel->status(), 'prevenues_amount'
+            ]);
+        return $this->table->getDatatable();
+    }
+
+    public function saveIncome()
+    {
+        $request = service('request');
+
+        if ($request->getVar('action_income')) {
+            helper(['form', 'url']);
+            $date_error = '';
+            $desc_error = '';
+            $amount_error = '';
+            $status_error = '';
+            $error = 'no';
+
+            $rules = [
+                'desc' => [
+                    'rules' => 'required|max_length[255]',
+                    'errors' => [
+                        'required' => 'Please describe the income',
+                        'max_length' => 'The amount should be less than 255 character'
+                    ]
+                ],
+                'date' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Please input the date'
+                    ]
+                ],
+                'amount' => [
+                    'rules' => 'required|max_length[10]',
+                    'errors' => [
+                        'required' => 'Please input the amount',
+                        'max_length' => 'The amount should be less than 10 character'
+                    ]
+                ],
+                'status' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Please input the status'
+                    ]
+                ]
+            ];
+
+            $error = $this->validate($rules);
+
+            if (!$error) {
+                $error = 'yes';
+                $validator = \Config\Services::validation();
+
+                if ($validator->getError('amount')) {
+                    $amount_error = $validator->getError('amount');
+                }
+
+                if ($validator->getError('desc')) {
+                    $desc_error = $validator->getError('desc');
+                }
+                if ($validator->getError('date')) {
+                    $date_error = $validator->getError('date');
+                }
+                if ($validator->getError('status')) {
+                    $status_error = $validator->getError('status');
+                }
+            } else {
+                if ($request->getVar('action_income') == 'create') {
+                    $this->prevenuesModel->save([
+                        'project_id' => intval($request->getVar('project_id')),
+                        'prevenues_date' => $request->getVar('date'),
+                        'prevenues_desc' => $request->getVar('desc'),
+                        'prevenues_amount' => $request->getVar('amount'),
+                        'prevenues_status' => $request->getVar('status')
+                    ]);
+                }
+
+                if ($request->getVar('action_income') == 'edit') {
+                    $id = $request->getVar('income_id');
+                    $data = [
+                        'prevenues_date' => $request->getVar('date'),
+                        'prevenues_desc' => $request->getVar('desc'),
+                        'prevenues_amount' => $request->getVar('amount'),
+                        'prevenues_status' => $request->getVar('status')
+                    ];
+
+                    $this->prevenuesModel->update($id, $data);
+                }
+            }
+
+            $output = [
+                'date_error' => $date_error,
+                'desc_error' => $desc_error,
+                'amount_error' => $amount_error,
+                'status_error' => $status_error,
+                'error' => $error
+            ];
+
+            echo json_encode($output);
+        }
+    }
+
+    public function fetchIdIncome()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $prevenuesID = $this->prevenuesModel->where('id', $request->getVar('id'))->first();
+            echo json_encode($prevenuesID);
+        }
+    }
+
+    public function deleteIncome()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $id = $request->getVar('id');
+            $this->prevenuesModel->where('id', $id)->delete();
+        }
+    }
+
+    // Outcome (Pcost transactions)
+
+    public function fetchOutcome($id)
+    {
+        $this->table->setTable($this->pcostTransactionModel->noticeTable($id))
+            ->setDefaultOrder('pcost_desc', 'ASC')
+            ->setOrder([
+                null, 'pcost_date', 'pcost_desc', 'cost_item',
+                'cost_status', 'pcost_amount'
+            ])
+            ->setOutput([
+                $this->pcostTransactionModel->button(), $this->pcostTransactionModel->date(), 'pcost_desc', 'cost_item',
+                $this->pcostTransactionModel->status(), 'pcost_amount'
+            ]);
+        return $this->table->getDatatable();
+    }
+
+    public function fetchIdOutcome()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $pcostTransactionID = $this->pcostTransactionModel
+                ->select('pcost_transaction.pcost_date, pcost.id, pcost_transaction.pcost_amount, cost_item, cost_status')
+                ->join('pcost', 'pcost_transaction.pcost_id = pcost.id')
+                ->join('cost_category', 'pcost.category_id = cost_category.id')
+                ->where('pcost_transaction.id', $request->getVar('id'))->first();
+            echo json_encode($pcostTransactionID);
+        }
+    }
+
+    public function saveOutcome()
+    {
+        $request = service('request');
+
+        if ($request->getVar('action_outcome')) {
+            helper(['form', 'url']);
+            $outcome_date_error = '';
+            $cost_desc_error = '';
+            $cost_item_error = '';
+            $outcome_amount_error = '';
+            $outcome_status_error = '';
+            $error = 'no';
+
+            $rules = [
+                'cost_desc' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Please input the cost description'
+                    ]
+                ],
+                'cost_item' => [
+                    'rules' => 'required|max_length[50]',
+                    'errors' => [
+                        'required' => 'Please input the item',
+                        'max_length' => 'The amount should be less than 50 character'
+                    ]
+                ],
+                'outcome_date' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Please input the date'
+                    ]
+                ],
+                'outcome_amount' => [
+                    'rules' => 'required|max_length[10]',
+                    'errors' => [
+                        'required' => 'Please describe the income',
+                        'max_length' => 'The amount should be less than 10 character'
+                    ]
+                ],
+                'outcome_status' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Please input the status'
+                    ]
+                ]
+            ];
+
+            $error = $this->validate($rules);
+
+            if (!$error) {
+                $error = 'yes';
+                $validator = \Config\Services::validation();
+
+                if ($validator->getError('outcome_amount')) {
+                    $outcome_amount_error = $validator->getError('outcome_amount');
+                }
+                if ($validator->getError('cost_desc')) {
+                    $cost_desc_error = $validator->getError('cost_desc');
+                }
+                if ($validator->getError('cost_item')) {
+                    $cost_item_error = $validator->getError('cost_item');
+                }
+                if ($validator->getError('outcome_date')) {
+                    $outcome_date_error = $validator->getError('outcome_date');
+                }
+                if ($validator->getError('outcome_status')) {
+                    $outcome_status_error = $validator->getError('outcome_status');
+                }
+            } else {
+                if ($request->getVar('action_outcome') == 'create') {
+                    $this->pcostTransactionModel->save([
+                        'pcost_id' => intval($request->getVar('cost_desc')),
+                        'cost_item' => $request->getVar('cost_item'),
+                        'pcost_amount' => $request->getVar('outcome_amount'),
+                        'cost_status' => $request->getVar('outcome_status'),
+                        'pcost_date' => $request->getVar('outcome_date'),
+                    ]);
+                }
+
+                if ($request->getVar('action_outcome') == 'edit') {
+                    $id = $request->getVar('outcome_id');
+                    $data = [
+                        'pcost_id' => intval($request->getVar('cost_desc')),
+                        'cost_item' => $request->getVar('cost_item'),
+                        'pcost_amount' => $request->getVar('outcome_amount'),
+                        'cost_status' => $request->getVar('outcome_status'),
+                        'pcost_date' => $request->getVar('outcome_date'),
+                    ];
+
+                    $this->pcostTransactionModel->update($id, $data);
+                }
+            }
+
+            $output = [
+                'outcome_date_error' => $outcome_date_error,
+                'cost_desc_error' => $cost_desc_error,
+                'cost_item_error' => $cost_item_error,
+                'outcome_amount_error' => $outcome_amount_error,
+                'outcome_status_error' => $outcome_status_error,
+                'error' => $error
+            ];
+
+            echo json_encode($output);
+        }
+    }
+
+    public function deleteOutcome()
+    {
+        $request = service('request');
+
+        if ($request->getVar('id')) {
+            $id = $request->getVar('id');
+            $this->pcostTransactionModel->where('id', $id)->delete();
+        }
+    }
+
+    // Project's comments
 
     public function comment($id)
     {

@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\ClientModel;
-use monken\TablesIgniter;
 
 class Client extends BaseController
 {
@@ -30,14 +29,12 @@ class Client extends BaseController
 
     public function fetchClientData()
     {
-        $table = new TablesIgniter();
-
-        $table->setTable($this->clientModel->noticeTable())
+        $this->table->setTable($this->clientModel->noticeTable())
             ->setDefaultOrder('client_name', 'ASC')
             ->setOrder(['client_name', 'client_email', null, null])
             ->setSearch(['client_name', 'client_email', 'client_address'])
             ->setOutput(['client_name', 'client_email', 'client_address', $this->clientModel->button()]);
-        return $table->getDatatable();
+        return $this->table->getDatatable();
     }
 
     public function saveClientData()

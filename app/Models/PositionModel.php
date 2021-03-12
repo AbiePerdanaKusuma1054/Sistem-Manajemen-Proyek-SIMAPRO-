@@ -14,8 +14,7 @@ class PositionModel extends Model
 
     public function noticeTable()
     {
-        $builder = $this->db->table($this->table)->where('deleted_at', NULL);
-        return $builder;
+        return $this->db->table($this->table)->where('deleted_at', NULL);
     }
 
 
@@ -33,8 +32,7 @@ class PositionModel extends Model
 
     public function getPositionNames()
     {
-        $builder = $this->db->table($this->table)
+        return $this->db->table($this->table)
             ->select('id, position_name')->where('deleted_at', NULL)->get()->getResultArray();
-        return $builder;
     }
 }

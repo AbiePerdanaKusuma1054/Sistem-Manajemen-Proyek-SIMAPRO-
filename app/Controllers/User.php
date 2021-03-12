@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use monken\TablesIgniter;
 
 class User extends BaseController
 {
@@ -30,14 +29,12 @@ class User extends BaseController
 
     public function fetchUserData()
     {
-        $table = new TablesIgniter();
-
-        $table->setTable($this->userModel->noticeTable())
+        $this->table->setTable($this->userModel->noticeTable())
             ->setDefaultOrder('username', 'ASC')
             ->setOrder(['username', 'role', null])
             ->setSearch(['username', 'role'])
             ->setOutput(['username', 'role', $this->userModel->button()]);
-        return $table->getDatatable();
+        return $this->table->getDatatable();
     }
 
     public function saveUserData()

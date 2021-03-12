@@ -14,8 +14,7 @@ class UserModel extends Model
 
     public function noticeTable()
     {
-        $builder = $this->db->table($this->table)->where('deleted_at', NULL);
-        return $builder;
+        return $this->db->table($this->table)->where('deleted_at', NULL);
     }
 
     public function button()

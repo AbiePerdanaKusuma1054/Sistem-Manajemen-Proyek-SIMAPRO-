@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\EmployeeModel;
-use monken\TablesIgniter;
 
 class Employee extends BaseController
 {
@@ -30,14 +29,12 @@ class Employee extends BaseController
 
     public function fetchEmployeeData()
     {
-        $table = new TablesIgniter();
-
-        $table->setTable($this->employeeModel->noticeTable())
+        $this->table->setTable($this->employeeModel->noticeTable())
             ->setDefaultOrder('employee_name', 'ASC')
             ->setOrder(['employee_name', 'employee_gender', 'employee_email', null, null])
             ->setSearch(['employee_name', 'employee_gender', 'employee_email', 'employee_address'])
             ->setOutput(['employee_name', 'employee_gender', 'employee_email', 'employee_address', $this->employeeModel->button()]);
-        return $table->getDatatable();
+        return $this->table->getDatatable();
     }
 
     public function saveEmployeeData()

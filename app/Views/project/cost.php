@@ -53,8 +53,8 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <?php $cost = $costs->where('category_id', $cat['id'])->findAll() ?>
                                 <tbody>
+                                    <?php $cost = $costs->where('category_id', $cat['id'])->findAll() ?>
                                     <?php foreach ($cost as $c) : ?>
                                         <tr>
                                             <td><?= $c['pcost_desc'] ?></td>
@@ -130,12 +130,12 @@
                         </div>
                         <div class="col">
                             <label class="form-label">Amount *</label>
-                            <input type="text" class="form-control fc" name="amount" placeholder="Type a number..." required>
+                            <input type="text" class="form-control fc" name="amount" placeholder="Type a number...">
                             <span class="text-danger" id="amount_error"></span>
                         </div>
                         <div class="col">
                             <label class="form-label">Quantity *</label>
-                            <input type="number" class="form-control fc" name="quantity" placeholder="Type a number..." required>
+                            <input type="number" class="form-control fc" name="quantity" placeholder="Type a number...">
                             <span class="text-danger" id="quantity_error"></span>
                         </div>
                         <div class="col">
@@ -145,7 +145,7 @@
                         </div>
                         <div class="col">
                             <label class="form-label">Duration *</label>
-                            <input type="number" class="form-control fc" name="duration" placeholder="Type a number..." required>
+                            <input type="number" class="form-control fc" name="duration" placeholder="Type a number...">
                             <span class="text-danger" id="duration_error"></span>
                         </div>
                         <div class="col">
@@ -157,7 +157,7 @@
                             <input type="hidden" name="category_id" id="category_id" />
                             <input type="hidden" name="cost_id" id="cost_id" />
                             <input type="hidden" name="action_cost" id="action_cost" />
-                            <button class="btn btn-light plus" type="submit" name="submit" id="submitButtonCost">Add</button>
+                            <button class="btn btn-light plus" type="submit" name="submit" id="submitButtonCost"></button>
                         </div>
                     </form>
                 </div>
@@ -174,6 +174,17 @@
 
 <!-- JQuery -->
 <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1700,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
     //Create New Cost Category
     $('#addCostCat').click(function() {
         $('#costCatForm')[0].reset();
@@ -208,17 +219,6 @@
 
                 $('#submitButtonCostCat').attr('disabled', false);
 
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1700,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-
                 if (data.error == 'yes') {
                     $('#name_error').text(data.name_error);
 
@@ -236,19 +236,7 @@
                 } else {
                     $('#costCatModal').modal('hide');
 
-                    setTimeout(location.reload.bind(location), 2200);
-
-                    if ($('#action_costcat').val() == 'add') {
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'New category added'
-                        })
-                    } else {
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Updated'
-                        })
-                    }
+                    setTimeout(location.reload.bind(location));
                 }
             }
         })
@@ -346,17 +334,6 @@
                 }
                 $('#submitButtonCost').attr('disabled', false);
 
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1700,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-
                 if (data.error == 'yes') {
                     $('#name_error').text(data.name_error);
                     $('#desc_error').text(data.desc_error);
@@ -380,19 +357,7 @@
                 } else {
                     $('#costModal').modal('hide');
 
-                    setTimeout(location.reload.bind(location), 2200);
-
-                    if ($('#action_cost').val() == 'add') {
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'New details added'
-                        })
-                    } else {
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Details updated'
-                        })
-                    }
+                    setTimeout(location.reload.bind(location));
                 }
             }
         })
@@ -462,6 +427,40 @@
             }
         })
     });
+
+    <?php if (session()->getFlashdata('msg') == 'create') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'New category added'
+        })
+    <?php } else if (session()->getFlashdata('msg') == 'edit') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'Category updated'
+        })
+    <?php } else if (session()->getFlashdata('msg') == 'delete') { ?>
+        Swal.fire(
+            'Deleted!',
+            'Category has been deleted.',
+            'success'
+        )
+    <?php } else if (session()->getFlashdata('msg') == 'create_cost') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'New details added'
+        })
+    <?php } else if (session()->getFlashdata('msg') == 'edit_cost') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'Details updated'
+        })
+    <?php } else if (session()->getFlashdata('msg') == 'delete_cost') { ?>
+        Swal.fire(
+            'Deleted!',
+            'Cost details has been deleted.',
+            'success'
+        )
+    <?php } ?>
 </script>
 
 <?= $this->endSection(); ?>
