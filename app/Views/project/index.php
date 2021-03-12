@@ -120,7 +120,7 @@
                 },
                 {
                     targets: -3,
-                    className: 'text-right'
+                    className: 'text-center'
                 },
                 {
                     targets: -2,

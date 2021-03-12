@@ -26,6 +26,9 @@
         <div class="box">
             <div class="left-box">
                 <div class="detail-box back-rab inclusion">
+                    <div class="no-data">
+                        <p>No data available</p>
+                    </div>
                     <?php foreach ($category as $cat) : ?>
                         <div class="row sub" style="margin-bottom: -20px;">
                             <div class="col" style="margin-bottom: 0;">
@@ -41,16 +44,16 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table id="table" class="table table-striped table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
+                            <table id="table" class="table table-striped table-bordered table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
                                 <thead>
                                     <tr>
-                                        <th>Cost Description</th>
-                                        <th>Amount</th>
-                                        <th>Quantity</th>
-                                        <th>Unit Quantity</th>
-                                        <th>Duration</th>
-                                        <th>Unit Duration</th>
-                                        <th>Action</th>
+                                        <th class="text-center">Cost Description</th>
+                                        <th class="text-center">Amount</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Unit Quantity</th>
+                                        <th class="text-center">Duration</th>
+                                        <th class="text-center">Unit Duration</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -240,65 +240,65 @@ body {
 }
 
 .waiting {
-  --bg-color: #ffd861;
-  --bg-color-light: #ffeeba;
+  --bg-color: #fffd77;
+  --bg-color-light: #ffffff;
   --text-color-hover: #4c5656;
-  --box-shadow-color: rgba(255, 215, 97, 0.48);
+  --box-shadow-color: rgba(255, 253, 117, 0.478);
 }
 
 .on-progress {
-  --bg-color: #3b9cd4;
-  --bg-color-light: #44b1f0;
-  --text-color-hover: #fff;
-  --box-shadow-color: rgba(137, 170, 212, 0.48);
+  --bg-color: #95c6ff;
+  --bg-color-light: #f2f7ff;
+  --text-color-hover: #4c5656;
+  --box-shadow-color: rgba(148, 198, 255, 0.478);
 }
 
 .hold {
-  --bg-color: #b8f9d3;
-  --bg-color-light: #e2fced;
+  --bg-color: #e4c1f9;
+  --bg-color-light: #fcf7ff;
   --text-color-hover: #4c5656;
-  --box-shadow-color: rgba(184, 249, 211, 0.48);
+  --box-shadow-color: rgba(228, 193, 249, 0.478);
 }
 
 .finish {
-  --bg-color: #ceb2fc;
-  --bg-color-light: #f0e7ff;
-  --text-color-hover: rgb(39, 4, 4);
-  --box-shadow-color: rgba(206, 178, 252, 0.48);
+  --bg-color: #c1fba4;
+  --bg-color-light: #ecffe5;
+  --text-color-hover: #4c5656;
+  --box-shadow-color: rgba(193, 251, 164, 0.478);
 }
 
 .cancel {
-  --bg-color: #dce9ff;
-  --bg-color-light: #f1f7ff;
-  --text-color-hover: #404949;
-  --box-shadow-color: rgba(220, 233, 255, 0.48);
+  --bg-color: #f08080;
+  --bg-color-light: #ffe0e0;
+  --text-color-hover: #000000;
+  --box-shadow-color: rgba(240, 128, 128, 0.478);
 }
 
 .notyet {
-  --bg-color: #3b9cd4;
-  --bg-color-light: #44b1f0;
-  --text-color-hover: #fff;
-  --box-shadow-color: rgba(137, 170, 212, 0.48);
+  --bg-color: #f08080;
+  --bg-color-light: #ffe0e0;
+  --text-color-hover: #000000;
+  --box-shadow-color: rgba(240, 128, 128, 0.478);
 }
 
 .pending {
-  --bg-color: #ceb2fc;
-  --bg-color-light: #f0e7ff;
-  --text-color-hover: rgb(39, 4, 4);
-  --box-shadow-color: rgba(206, 178, 252, 0.48);
+  --bg-color: #fffd77;
+  --bg-color-light: #ffffff;
+  --text-color-hover: #270404;
+  --box-shadow-color: rgba(255, 253, 119, 0.478);
 }
 
 .complete {
-  --bg-color: #dce9ff;
-  --bg-color-light: #f1f7ff;
-  --text-color-hover: #494141;
-  --box-shadow-color: rgba(220, 233, 255, 0.48);
+  --bg-color: #c1fba4;
+  --bg-color-light: #ecffe5;
+  --text-color-hover: #270404;
+  --box-shadow-color: rgba(193, 251, 164, 0.478);
 }
 
 .card {
   width: 146px;
   height: 200px;
-  background: rgba(214, 214, 214, 0.55);
+  background: rgba(214, 214, 214, 0.15);
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   overflow: hidden;
@@ -1257,4 +1257,17 @@ span.txt-time {
 
 .table-responsive ul {
   cursor: pointer;
+}
+
+progress {
+  width: 75%;
+}
+.no-data {
+  text-align: center;
+  margin-bottom: -40px;
+}
+.no-data p {
+  color: rgb(116, 233, 0);
+  font-size: 10pt;
+  letter-spacing: 3px;
 }

@@ -24,6 +24,10 @@ class User extends BaseController
         ];
 
         session()->set($sessions);
+
+        if (session()->get('role') != 'admin') {
+            return redirect()->to('/');
+        }
         return view('user');
     }
 
@@ -34,11 +38,20 @@ class User extends BaseController
             ->setOrder(['username', 'role', null])
             ->setSearch(['username', 'role'])
             ->setOutput(['username', 'role', $this->userModel->button()]);
+
+        if (session()->get('role') != 'admin') {
+            return redirect()->to('/');
+        }
+
         return $this->table->getDatatable();
     }
 
     public function saveUserData()
     {
+        if (session()->get('role') != 'admin') {
+            return redirect()->to('/');
+        }
+
         $request = service('request');
 
         if ($request->getVar('action')) {
@@ -142,6 +155,10 @@ class User extends BaseController
 
     public function fetchIdUser()
     {
+        if (session()->get('role') != 'admin') {
+            return redirect()->to('/');
+        }
+
         $request = service('request');
 
         if ($request->getVar('id')) {
@@ -152,6 +169,10 @@ class User extends BaseController
 
     public function deleteUser()
     {
+        if (session()->get('role') != 'admin') {
+            return redirect()->to('/');
+        }
+
         $request = service('request');
 
         if ($request->getVar('id')) {

@@ -56,7 +56,7 @@
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" value="<?= $detail['contract_amount'] ?>" required>
+                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" placeholder="Type a number..." value="<?= $detail['contract_amount'] ?>" required>
                 <div class="invalid-feedback">
                     Please input a contract amount.
                 </div>
@@ -91,7 +91,8 @@
             </div>
             <div class="col-md-3">
                 <label class="form-label">Project Progress</label>
-                <input type="text" class="form-control fc <?= ($validator->hasError('project_progress')) ? 'is-invalid' : ''; ?>" name="project_progress" value="<?= $detail['project_progress'] ?>">
+                <input type="number" class="form-control fc <?= ($validator->hasError('project_progress')) ? 'is-invalid' : ''; ?>" placeholder="Type a number..." min="0" max="100" name="project_progress" value="<?= $detail['project_progress'] ?>">
+                <span class="badge badge-pill badge-light" style="float: right;margin-bottom: 20px;margin-right: 5px;margin-top: -31px;">0-100</span>
             </div>
             <div class="col-12">
                 <button class="btn btn-light plus" type="submit">Save</button>

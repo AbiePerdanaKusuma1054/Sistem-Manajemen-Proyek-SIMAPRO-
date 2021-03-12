@@ -220,7 +220,7 @@ class Project extends BaseController
             ->setSearch(['project_name', 'client_name', 'project_manager', 'project_status'])
             ->setOutput([
                 'project_name', 'client_name', 'project_manager', $this->projectModel->startDate(),
-                $this->projectModel->finishDate(), 'project_progress',
+                $this->projectModel->finishDate(), $this->projectModel->progress(),
                 $this->projectModel->status(), $this->projectModel->button()
             ]);
         return $this->table->getDatatable();

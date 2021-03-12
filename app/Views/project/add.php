@@ -13,7 +13,7 @@
         <form class="row g-3 needs-validation" action="<?= base_url() ?>/project/addProject" method="POST">
             <div class="col-md-6">
                 <label for="project_name" class="form-label">Project Name *</label>
-                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" value="<?= old('project_name') ?>" required>
+                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" placeholder="Type here..." value="<?= old('project_name') ?>" required>
                 <div class="invalid-feedback">
                     <?= ($validator->getError('project_name')); ?>
                 </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" value="<?= old('contract_amount') ?>" required>
+                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" placeholder="Type a number..." value="<?= old('contract_amount') ?>" required>
                 <div class="invalid-feedback">
                     Please input a contract amount.
                 </div>
@@ -88,12 +88,12 @@
                 <textarea class="form-control fc" name="project_desc" rows="4" placeholder="Describe the project..." value="<?= old('project_desc') ?>"></textarea>
             </div>
             <div class="col-md-3">
-                <label class="form-label">Project Progress</label>
-                <input disabled type="number" class="form-control fc" value="0">
+                <label class="form-label">Project Status</label>
+                <input disabled type="text" class="form-control fc" value="Waiting">
             </div>
             <div class="col-md-3">
-                <label class="form-label">Project Status</label>
-                <input disabled type="text" class="form-control fc" value="waiting">
+                <label class="form-label">Project Progress</label>
+                <input disabled type="number" class="form-control fc" value="0">
             </div>
             <div class="col-12">
                 <button class="btn btn-light plus" type="submit">Create</button>

@@ -29,13 +29,13 @@
 
                             <div class="col">
                                 <label class="form-label">Position Name *</label>
-                                <input type="text" name="name" id="name" class="form-control fc">
+                                <input type="text" name="name" id="name" class="form-control fc" placeholder="Input an position...">
                                 <span class="text-danger" id="name_error"></span>
                             </div>
 
                             <div class="col">
                                 <label class="form-label">Description *</label>
-                                <textarea class="form-control fc" id="position_desc" name="position_desc" rows="3" placeholder="Position's description"></textarea>
+                                <textarea class="form-control fc" id="position_desc" name="position_desc" rows="3" placeholder="Position's description..."></textarea>
                             </div>
 
                             <div class="modal-footer">

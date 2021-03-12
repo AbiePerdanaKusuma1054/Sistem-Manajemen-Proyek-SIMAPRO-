@@ -28,7 +28,7 @@
                         <form id="userForm" style="text-align: left;" method="POST">
                             <div class="col">
                                 <label class="form-label">Username *</label>
-                                <input type="text" name="username" id="username" class="form-control fc">
+                                <input type="text" name="username" id="username" class="form-control fc" placeholder="Input a username...">
                                 <span class="text-danger" id="username_error"></span>
                             </div>
                             <div class="col">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col">
                                 <label class="form-label">Password *</label>
-                                <input type="password" class="form-control fc" name="password" id="password">
+                                <input type="password" class="form-control fc" name="password" id="password" placeholder="Input a password...">
                                 <span class="text-danger" id="password_error"></span>
                             </div>
                             <div class="modal-footer">

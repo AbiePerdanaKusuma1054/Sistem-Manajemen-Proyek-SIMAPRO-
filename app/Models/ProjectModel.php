@@ -26,13 +26,13 @@ class ProjectModel extends Model
         $statusFun = function ($row) {
 
             if ($row['project_status'] == 'hold') {
-                return '<span class="badge rounded-pill bg-primary">Hold</span>';
+                return '<span class="badge rounded-pill bg-light text-dark">Hold</span>';
             } else if ($row['project_status'] == 'waiting') {
-                return '<span class="badge rounded-pill bg-secondary">Waiting</span>';
+                return '<span class="badge rounded-pill bg-warning">Waiting</span>';
             } else if ($row['project_status'] == 'on progress') {
                 return '<span class="badge rounded-pill bg-info">On Progress</span>';
             } else if ($row['project_status'] == 'cancelled') {
-                return '<span class="badge rounded-pill bg-light text-dark">Cancelled</span>';
+                return '<span class="badge rounded-pill bg-danger">Cancelled</span>';
             } else if ($row['project_status'] == 'finish') {
                 return '<span class="badge rounded-pill bg-success">Finished</span>';
             } else {
@@ -61,6 +61,15 @@ class ProjectModel extends Model
         };
 
         return $finishDateFun;
+    }
+
+    public function progress()
+    {
+        $progressFun = function ($row) {
+            return '<progress title="' . $row['project_progress'] . '%" value="' . $row['project_progress'] . '" max="100"></progress>';
+        };
+
+        return $progressFun;
     }
 
     public function button()

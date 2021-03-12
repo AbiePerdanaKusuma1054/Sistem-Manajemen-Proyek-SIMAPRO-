@@ -29,19 +29,19 @@
 
                             <div class="col">
                                 <label class="form-label">Client Name *</label>
-                                <input type="text" name="name" id="name" class="form-control fc">
+                                <input type="text" name="name" id="name" class="form-control fc" placeholder="Input client's name...">
                                 <span class="text-danger" id="name_error"></span>
                             </div>
 
                             <div class="col">
                                 <label class="form-label">Email *</label>
-                                <input type="text" name="email" id="email" class="form-control fc">
+                                <input type="text" name="email" id="email" class="form-control fc" placeholder="Input client's email...">
                                 <span class="text-danger" id="email_error"></span>
                             </div>
 
                             <div class="col">
                                 <label class="form-label">Address *</label>
-                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="Client's address"></textarea>
+                                <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="Client's address..."></textarea>
                                 <span class="text-danger" id="address_error"></span>
                             </div>
 
