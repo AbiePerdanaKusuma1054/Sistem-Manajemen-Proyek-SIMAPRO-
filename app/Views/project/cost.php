@@ -130,12 +130,12 @@
                         </div>
                         <div class="col">
                             <label class="form-label">Amount *</label>
-                            <input type="text" class="form-control fc" name="amount" placeholder="Type a number...">
+                            <input type="text" class="form-control fc" name="amount" id="amount" placeholder="Type a number...">
                             <span class="text-danger" id="amount_error"></span>
                         </div>
                         <div class="col">
                             <label class="form-label">Quantity *</label>
-                            <input type="number" class="form-control fc" name="quantity" placeholder="Type a number...">
+                            <input type="number" class="form-control fc" name="quantity" id="quantity" placeholder="Type a number...">
                             <span class="text-danger" id="quantity_error"></span>
                         </div>
                         <div class="col">
@@ -145,7 +145,7 @@
                         </div>
                         <div class="col">
                             <label class="form-label">Duration *</label>
-                            <input type="number" class="form-control fc" name="duration" placeholder="Type a number...">
+                            <input type="number" class="form-control fc" name="duration" id="duration" placeholder="Type a number...">
                             <span class="text-danger" id="duration_error"></span>
                         </div>
                         <div class="col">
@@ -308,6 +308,7 @@
         $('.modal-title').html('<i class="fa fa-list" style="color: white;"></i> Add the Cost Details');
         $('#action_cost').val('add');
         $('#costModal').modal('show');
+        $('#submitButtonCost').html('Add')
         $('#category_id').val(id);
     })
 

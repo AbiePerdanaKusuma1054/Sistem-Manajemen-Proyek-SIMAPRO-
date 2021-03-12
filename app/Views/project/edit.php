@@ -89,6 +89,10 @@
                     <option value="cancelled" <?= $detail['project_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
                 </select>
             </div>
+            <div class="col-md-3">
+                <label class="form-label">Project Progress</label>
+                <input type="text" class="form-control fc <?= ($validator->hasError('project_progress')) ? 'is-invalid' : ''; ?>" name="project_progress" value="<?= $detail['project_progress'] ?>">
+            </div>
             <div class="col-12">
                 <button class="btn btn-light plus" type="submit">Save</button>
             </div>

@@ -25,7 +25,7 @@ class PcostTransaction extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
-			'pcost_amount'       => [
+			'cost_amount'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
@@ -33,7 +33,7 @@ class PcostTransaction extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
-			'pcost_date'      => [
+			'cost_date'      => [
 				'type'           => 'DATE',
 				'null'     		 => TRUE,
 			],

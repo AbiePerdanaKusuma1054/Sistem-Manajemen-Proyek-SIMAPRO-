@@ -78,7 +78,13 @@ class Project extends BaseController
             'client_id' => 'required',
             'project_start' => 'required',
             'project_finish' => 'required',
-            'contract_amount' => 'required|max_length[10]'
+            'contract_amount' => [
+                'rules' => 'required|max_length[10]',
+                'errors' => [
+                    'required' => 'Please input the amount.',
+                    'max_length' => 'The amount should not be more than 10 numbers.'
+                ]
+            ]
         ];
 
         if ($this->validate($rules)) {
@@ -90,7 +96,8 @@ class Project extends BaseController
                 'project_finish' => $request->getVar('project_finish'),
                 'contract_amount' => $request->getVar('contract_amount'),
                 'project_desc' => $request->getVar('project_desc'),
-                'project_status' => 'waiting'
+                'project_status' => 'waiting',
+                'project_progress' => 0
             ];
 
             $this->projectModel->insert($data);
@@ -151,7 +158,21 @@ class Project extends BaseController
             'project_start' => 'required',
             'project_finish' => 'required',
             'project_status' => 'required',
-            'contract_amount' => 'required'
+            'project_progress' => [
+                'rules' => 'required|max_length[3]|integer',
+                'errors' => [
+                    'required' => 'Please input the amount.',
+                    'max_length' => 'Input should not be more than 3 numbers.',
+                    'integer' => 'Input must be a number.'
+                ]
+            ],
+            'contract_amount' => [
+                'rules' => 'required|max_length[10]',
+                'errors' => [
+                    'required' => 'Please input the amount.',
+                    'max_length' => 'The amount should not be more than 10 numbers.'
+                ]
+            ],
         ];
 
         if ($this->validate($rules)) {
@@ -163,7 +184,8 @@ class Project extends BaseController
                 'project_finish' => $request->getVar('project_finish'),
                 'contract_amount' => $request->getVar('contract_amount'),
                 'project_desc' => $request->getVar('project_desc'),
-                'project_status' => $request->getVar('project_status')
+                'project_status' => $request->getVar('project_status'),
+                'project_progress' => $request->getVar('project_progress')
             ];
 
             $this->projectModel->update($id, $data);
@@ -198,7 +220,8 @@ class Project extends BaseController
             ->setSearch(['project_name', 'client_name', 'project_manager', 'project_status'])
             ->setOutput([
                 'project_name', 'client_name', 'project_manager', $this->projectModel->startDate(),
-                $this->projectModel->finishDate(), $this->projectModel->status(), $this->projectModel->button()
+                $this->projectModel->finishDate(), 'project_progress',
+                $this->projectModel->status(), $this->projectModel->button()
             ]);
         return $this->table->getDatatable();
     }
@@ -726,12 +749,12 @@ class Project extends BaseController
         $this->table->setTable($this->pcostTransactionModel->noticeTable($id))
             ->setDefaultOrder('pcost_desc', 'ASC')
             ->setOrder([
-                null, 'pcost_date', 'pcost_desc', 'cost_item',
-                'cost_status', 'pcost_amount'
+                null, 'cost_date', 'pcost_desc', 'cost_item',
+                'cost_status', 'cost_amount'
             ])
             ->setOutput([
                 $this->pcostTransactionModel->button(), $this->pcostTransactionModel->date(), 'pcost_desc', 'cost_item',
-                $this->pcostTransactionModel->status(), 'pcost_amount'
+                $this->pcostTransactionModel->status(), 'cost_amount'
             ]);
         return $this->table->getDatatable();
     }
@@ -742,7 +765,7 @@ class Project extends BaseController
 
         if ($request->getVar('id')) {
             $pcostTransactionID = $this->pcostTransactionModel
-                ->select('pcost_transaction.pcost_date, pcost.id, pcost_transaction.pcost_amount, cost_item, cost_status')
+                ->select('cost_date, pcost.id, cost_amount, cost_item, cost_status')
                 ->join('pcost', 'pcost_transaction.pcost_id = pcost.id')
                 ->join('cost_category', 'pcost.category_id = cost_category.id')
                 ->where('pcost_transaction.id', $request->getVar('id'))->first();
@@ -824,9 +847,9 @@ class Project extends BaseController
                     $this->pcostTransactionModel->save([
                         'pcost_id' => intval($request->getVar('cost_desc')),
                         'cost_item' => $request->getVar('cost_item'),
-                        'pcost_amount' => $request->getVar('outcome_amount'),
+                        'cost_amount' => $request->getVar('outcome_amount'),
                         'cost_status' => $request->getVar('outcome_status'),
-                        'pcost_date' => $request->getVar('outcome_date'),
+                        'cost_date' => $request->getVar('outcome_date'),
                     ]);
                 }
 
@@ -835,9 +858,9 @@ class Project extends BaseController
                     $data = [
                         'pcost_id' => intval($request->getVar('cost_desc')),
                         'cost_item' => $request->getVar('cost_item'),
-                        'pcost_amount' => $request->getVar('outcome_amount'),
+                        'cost_amount' => $request->getVar('outcome_amount'),
                         'cost_status' => $request->getVar('outcome_status'),
-                        'pcost_date' => $request->getVar('outcome_date'),
+                        'cost_date' => $request->getVar('outcome_date'),
                     ];
 
                     $this->pcostTransactionModel->update($id, $data);

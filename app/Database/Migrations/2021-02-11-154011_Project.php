@@ -49,6 +49,10 @@ class Project extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '255'
 			],
+			'project_progress'      => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '3'
+			],
 			'created_at' => [
 				'type'           => 'DATETIME',
 				'null'     		 => TRUE,

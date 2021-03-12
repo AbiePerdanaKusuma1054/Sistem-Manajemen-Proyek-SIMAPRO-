@@ -157,7 +157,7 @@
                             </div>
                             <div class="col" style="height: fit-content;">
                                 <?php foreach ($transaction_sum as $sum) : ?>
-                                    <p style="margin-right: 10px;text-align: right;">Rp<?= ($sum['pcost_amount'] == NULL) ? '0' : $sum['pcost_amount'] ?></p>
+                                    <p style="margin-right: 10px;text-align: right;">Rp<?= ($sum['cost_amount'] == NULL) ? '0' : $sum['cost_amount'] ?></p>
                                 <?php endforeach ?>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="col">
                                     <label class="form-label">Amount *</label>
-                                    <input type="number" class="form-control fc" name="amount" placeholder="Type a number..." value="">
+                                    <input type="number" class="form-control fc" name="amount" id="amount" placeholder="Type a number...">
                                     <span class="text-danger" id="amount_error"></span>
                                 </div>
                                 <div class="col mb-4">
@@ -635,10 +635,10 @@
             dataType: "JSON",
 
             success: function(data) {
-                $('#outcome_date').val(data.pcost_date);
+                $('#outcome_date').val(data.cost_date);
                 $('#cost_item').val(data.cost_item);
                 $('#cost_desc').val(data.id);
-                $('#outcome_amount').val(data.pcost_amount);
+                $('#outcome_amount').val(data.cost_amount);
                 $('#outcome_status').val(data.cost_status);
 
                 $('#outcome_date_error').text('');

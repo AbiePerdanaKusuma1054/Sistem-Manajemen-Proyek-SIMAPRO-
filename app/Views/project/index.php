@@ -21,8 +21,8 @@
                     <th class="text-center">Project Manager</th>
                     <th class="text-center">Start Date</th>
                     <th class="text-center">Deadline</th>
+                    <th class="text-center">Progress</th>
                     <th class="text-center">Project Status</th>
-                    <!-- <th>Payment</th> -->
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
@@ -111,6 +111,10 @@
     $(document).ready(function() {
         $('#table').DataTable({
             "aoColumnDefs": [{
+                    targets: -5,
+                    className: 'text-right'
+                },
+                {
                     targets: -4,
                     className: 'text-right'
                 },

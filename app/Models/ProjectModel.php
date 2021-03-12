@@ -12,7 +12,7 @@ class ProjectModel extends Model
     protected $useSoftDeletes = true;
     protected $allowedFields = [
         'project_name', 'client_id', 'project_manager', 'project_start',
-        'project_finish', 'project_desc', 'project_status', 'contract_amount'
+        'project_finish', 'project_desc', 'project_status', 'project_progress', 'contract_amount'
     ];
 
     public function noticeTable()

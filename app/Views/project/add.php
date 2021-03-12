@@ -88,6 +88,10 @@
                 <textarea class="form-control fc" name="project_desc" rows="4" placeholder="Describe the project..." value="<?= old('project_desc') ?>"></textarea>
             </div>
             <div class="col-md-3">
+                <label class="form-label">Project Progress</label>
+                <input disabled type="number" class="form-control fc" value="0">
+            </div>
+            <div class="col-md-3">
                 <label class="form-label">Project Status</label>
                 <input disabled type="text" class="form-control fc" value="waiting">
             </div>
