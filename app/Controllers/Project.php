@@ -74,10 +74,30 @@ class Project extends BaseController
                     'max_length' => 'The name should not be more than 50 characters.'
                 ]
             ],
-            'project_manager' => 'required',
-            'client_id' => 'required',
-            'project_start' => 'required',
-            'project_finish' => 'required',
+            'project_manager' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please choose a project manager'
+                ]
+            ],
+            'client_id' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please choose a client'
+                ]
+            ],
+            'project_start' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please pick a date'
+                ]
+            ],
+            'project_finish' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please pick a date'
+                ]
+            ],
             'contract_amount' => [
                 'rules' => 'required|max_length[10]',
                 'errors' => [
@@ -153,11 +173,36 @@ class Project extends BaseController
                     'max_length' => 'The name should not be more than 50 characters'
                 ]
             ],
-            'project_manager' => 'required',
-            'client_id' => 'required',
-            'project_start' => 'required',
-            'project_finish' => 'required',
-            'project_status' => 'required',
+            'project_manager' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please choose a project manager'
+                ]
+            ],
+            'client_id' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please choose a client'
+                ]
+            ],
+            'project_start' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please pick a date'
+                ]
+            ],
+            'project_finish' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please pick a date'
+                ]
+            ],
+            'project_status' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Please pick a suitable status'
+                ]
+            ],
             'project_progress' => [
                 'rules' => 'required|max_length[3]|integer',
                 'errors' => [
@@ -206,6 +251,7 @@ class Project extends BaseController
         if ($request->getVar('id')) {
             $id = $request->getVar('id');
             $this->projectModel->where('id', $id)->delete();
+            session()->setFlashdata('msg', 'delete');
         }
     }
 
@@ -258,7 +304,12 @@ class Project extends BaseController
                         'required' => 'Please select a name'
                     ]
                 ],
-                'position' => 'required'
+                'position' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Please select the position'
+                    ]
+                ],
             ];
 
             $error = $this->validate($rules);
@@ -918,7 +969,6 @@ class Project extends BaseController
     {
         $request = service('request');
         helper(['form', 'url']);
-        $comment_error = '';
         $error = 'no';
 
         $rules = [
@@ -935,8 +985,6 @@ class Project extends BaseController
 
         if (!$error) {
             $error = 'yes';
-            $validator = \Config\Services::validation();
-            $comment_error = $validator->getError('comment');
         } else {
             $this->commentModel->save([
                 'project_id' => intval($request->getVar('project_id')),
@@ -947,7 +995,6 @@ class Project extends BaseController
         }
 
         $output = [
-            'comment_error' => $comment_error,
             'error' => $error
         ];
 
@@ -1002,6 +1049,7 @@ class Project extends BaseController
         if ($request->getVar('id')) {
             $id = $request->getVar('id');
             $this->commentModel->where('id', $id)->delete();
+            session()->setFlashdata('msg', 'success_delete');
         }
     }
 }

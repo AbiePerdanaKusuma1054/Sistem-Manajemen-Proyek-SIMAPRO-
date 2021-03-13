@@ -144,7 +144,7 @@
 
                         <div class="modal-footer">
                             <input type="hidden" name="action" id="action" />
-                            <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
+                            <button class="btn btn-light plus" type="submit" name="submit" id="submitButton"></button>
                         </div>
 
                     </form>
@@ -184,7 +184,7 @@
             $('#address_error').text('');
             $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Employee');
             $('#action').val('create');
-            $('#submitButton').val('Create');
+            $('#submitButton').html('Create');
             $('#employeeModal').modal('show');
         });
 
@@ -198,13 +198,13 @@
                 dataType: "JSON",
 
                 beforeSend: function() {
-                    $('#submitButton').val('Wait...');
+                    $('#submitButton').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
                     $('#submitButton').attr('disabled', 'disabled');
                 },
 
                 success: function(data) {
 
-                    $('#submitButton').val('Create');
+                    $('#submitButton').html('Create');
                     $('#submitButton').attr('disabled', false);
 
                     if (data.error == 'yes') {

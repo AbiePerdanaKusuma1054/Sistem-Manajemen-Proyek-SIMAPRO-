@@ -93,7 +93,6 @@
                 <form id="editComment" style="text-align: left;" method="POST">
                     <div class="col">
                         <textarea class="form-control fc" id="comment_edit" name="comment_edit" rows="3" placeholder="Comment..."></textarea>
-                        <span class="text-danger" id="comment_edit_error"></span>
                     </div>
 
                     <div class="modal-footer">
@@ -112,7 +111,7 @@
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 1700,
+        timer: 3000,
         didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
@@ -138,15 +137,12 @@
                 $('#submitButton').attr('disabled', false);
 
                 if (data.error == 'yes') {
-                    $('#comment_error').text(data.comment_error);
-
                     Toast.fire({
                         icon: 'error',
-                        title: 'failed to upload your comment'
+                        title: 'Please type something'
                     })
-
                 } else {
-                    setTimeout(location.reload.bind(location), 500);
+                    setTimeout(location.reload.bind(location));
                 }
             }
         })
@@ -198,7 +194,7 @@
 
                     Toast.fire({
                         icon: 'error',
-                        title: 'failed to edit your comment'
+                        title: 'Please type something'
                     })
 
                 } else {
@@ -242,13 +238,17 @@
             icon: 'success',
             title: 'Comment Updated'
         })
-    <?php } ?>
-
-    <?php if (session()->getFlashdata('msg') == 'success_create') { ?>
+    <?php } else if (session()->getFlashdata('msg') == 'success_create') { ?>
         Toast.fire({
             icon: 'success',
             title: 'Comment Uploaded'
         })
+    <?php } else if (session()->getFlashdata('msg') == 'success_delete') { ?>
+        Swal.fire(
+            'Deleted!',
+            'Your comment has been deleted.',
+            'success'
+        )
     <?php } ?>
     /*
 

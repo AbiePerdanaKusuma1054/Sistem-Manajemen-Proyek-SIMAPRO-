@@ -20,20 +20,14 @@
                     Project Team
                 </span>
                 <!-- Button trigger modal -->
-
             </i>
-            <a>
-                <i class="fa fa-plus-circle fa-lg btn-addteam" id="addTeam"></i>
-            </a>
-            <!-- <div class="add-team">
-            </div> -->
+            <button style="float: right;" type="button" class="btn btn-light" id="addEmployee"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Emloyee</span></i></button>
         </div>
 
         <div class="box">
             <div class="left-box">
                 <div class="detail-box anim">
-
-
+                    <button style="float: right;" type="button" class="btn btn-light" id="addTeam"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Member</span></i></button>
                     <div id="back-team" style="padding: 20px 1.5rem 0 1.5rem;">
                         <div class="row">
                             <div class="col">
@@ -105,12 +99,65 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <input type="hidden" name="action" id="action" />
+                                <input type="hidden" name="action" id="action_member" />
                                 <input type="hidden" name="project_id" id="project_id" value="<?= $id ?>" />
                                 <input type="hidden" name="member_id" id="member_id" />
-                                <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
+                                <button class="btn btn-light plus" type="submit" name="submit" id="submitButtonMember"></button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+
+            <!-- Modal Add & Edit Employee -->
+            <div class="modal fade" name="employeeModal" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title" id="exampleModalLabel" style="color: white;">
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="employeeForm" style="text-align: left;" method="POST">
+
+                                <div class="col">
+                                    <label class="form-label">Employee Name *</label>
+                                    <input type="text" name="name" id="name" class="form-control fc" placeholder="Input name...">
+                                    <span class="text-danger" id="name_error"></span>
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label">Email *</label>
+                                    <input type="text" name="email" id="email" class="form-control fc" placeholder="Input email...">
+                                    <span class="text-danger" id="email_error"></span>
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label">Gender *</label>
+                                    <select class="form-select form-control fc" name="gender" id="gender">
+                                        <option disabled selected>Select one...</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                    <span class="text-danger" id="gender_error"></span>
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label">Address *</label>
+                                    <textarea class="form-control fc" id="address" name="address" rows="3" placeholder="employee's address..."></textarea>
+                                    <span class="text-danger" id="address_error"></span>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <input type="hidden" name="action" id="action" />
+                                    <button class="btn btn-light plus" type="submit" name="submit" id="submitButtonEmployee"></button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,8 +189,8 @@
         $('#name_error').text('');
         $('#position_error').text('');
         $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add a Team Member');
-        $('#action').val('create');
-        $('#submitButton').val('Add');
+        $('#action_member').val('create');
+        $('#submitButtonMember').html('Add');
         $('#teamModal').modal('show');
     })
 
@@ -157,19 +204,19 @@
             dataType: "JSON",
 
             beforeSend: function() {
-                $('#submitButton').val('Wait...');
-                $('#submitButton').attr('disabled', 'disabled');
+                $('#submitButtonMember').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
+                $('#submitButtonMember').attr('disabled', 'disabled');
             },
 
             success: function(data) {
 
-                if ($('#action').val() == 'create') {
-                    $('#submitButton').val('Add');
+                if ($('#action_member').val() == 'create') {
+                    $('#submitButtonMember').html('Add');
                 } else {
-                    $('#submitButton').val('Edit');
+                    $('#submitButtonMember').html('Edit');
                 }
 
-                $('#submitButton').attr('disabled', false);
+                $('#submitButtonMember').attr('disabled', false);
 
                 if (data.error == 'yes') {
                     $('#name_error').text(data.name_error);
@@ -209,8 +256,8 @@
                 $('#name_error').text('');
                 $('#position_error').text('');
                 $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Member');
-                $('#action').val('edit');
-                $('#submitButton').val('Edit');
+                $('#action_member').val('edit');
+                $('#submitButtonMember').html('Edit');
                 $('#teamModal').modal('show');
                 $('#member_id').val(id);
             }
@@ -245,6 +292,68 @@
         })
     });
 
+    //Add employee
+
+    $('#addEmployee').click(function() {
+        $('#employeeForm')[0].reset();
+        $('#name_error').text('');
+        $('#email_error').text('');
+        $('#gender_error').text('');
+        $('#address_error').text('');
+        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Employee');
+        $('#action').val('create');
+        $('#submitButtonEmployee').html('Create');
+        $('#employeeModal').modal('show');
+    });
+
+    $('#employeeForm').on('submit', function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: "<?= base_url(); ?>/employee/saveEmployeeData",
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "JSON",
+
+            beforeSend: function() {
+                $('#submitButtonEmployee').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
+                $('#submitButtonEmployee').attr('disabled', 'disabled');
+            },
+
+            success: function(data) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1700,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                $('#submitButtonEmployee').html('Create');
+                $('#submitButtonEmployee').attr('disabled', false);
+
+                if (data.error == 'yes') {
+                    $('#name_error').text(data.name_error);
+                    $('#email_error').text(data.email_error);
+                    $('#gender_error').text(data.gender_error);
+                    $('#address_error').text(data.address_error);
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Failed to create an Employee'
+                    })
+
+                } else {
+                    $('#employeeModal').modal('hide');
+                    setTimeout(location.reload.bind(location));
+                }
+            }
+        })
+    });
+
     <?php if (session()->getFlashdata('msg') == 'create') { ?>
         Toast.fire({
             icon: 'success',
@@ -261,6 +370,11 @@
             'A member has been deleted.',
             'success'
         )
+    <?php } else if (session()->getFlashdata('msg') == 'create_employee') { ?>
+        Toast.fire({
+            icon: 'success',
+            title: 'New data created'
+        })
     <?php } ?>
 </script>
 

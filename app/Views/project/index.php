@@ -163,6 +163,12 @@
             icon: 'success',
             title: 'Project created'
         })
+    <?php } else if (session()->getFlashdata('msg') == 'delete') { ?>
+        Swal.fire(
+            'Deleted!',
+            'Project has been deleted.',
+            'success',
+        )
     <?php } ?>
 </script>
 <?= $this->endSection(); ?>

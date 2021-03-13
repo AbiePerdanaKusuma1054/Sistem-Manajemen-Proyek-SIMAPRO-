@@ -66,15 +66,40 @@ class Client extends BaseController
                             'valid_email' => 'The email is invalid',
                         ]
                     ],
-                    'address' => 'required|max_length[255]'
+                    'address' => [
+                        'rules' => 'required|max_length[255]',
+                        'errors' => [
+                            'required' => 'Please input a valid address',
+                            'max_length' => 'The address should not be more than 255 characters'
+                        ]
+                    ]
                 ];
             }
 
             if ($request->getVar('action') == 'edit') {
                 $rules = [
-                    'name' => 'required|max_length[255]',
-                    'email' => 'required|valid_email|max_length[50]',
-                    'address' => 'required|max_length[255]'
+                    'name' => [
+                        'rules' => 'required|max_length[255]',
+                        'errors' => [
+                            'required' => 'Please input a valid client name',
+                            'max_length' => 'The name should not be more than 255 characters'
+                        ]
+                    ],
+                    'email' => [
+                        'rules' => 'required|valid_email|max_length[50]',
+                        'errors' => [
+                            'required' => 'Please input the email',
+                            'max_length' => 'The email should not be more than 50 characters',
+                            'valid_email' => 'The email is invalid',
+                        ]
+                    ],
+                    'address' => [
+                        'rules' => 'required|max_length[255]',
+                        'errors' => [
+                            'required' => 'Please input a valid address',
+                            'max_length' => 'The address should not be more than 255 characters'
+                        ]
+                    ]
                 ];
             }
 

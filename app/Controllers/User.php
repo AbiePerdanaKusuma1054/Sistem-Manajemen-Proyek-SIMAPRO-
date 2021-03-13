@@ -79,7 +79,12 @@ class User extends BaseController
                             'min_length' => 'The password should not be less than 6 characters'
                         ]
                     ],
-                    'role' => 'required'
+                    'role' => [
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => 'Please choose a role'
+                        ]
+                    ]
                 ];
             }
 
@@ -100,7 +105,12 @@ class User extends BaseController
                             'min_length' => 'The password should not be less than 6 characters'
                         ]
                     ],
-                    'role' => 'required'
+                    'role' => [
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => 'Please choose a role'
+                        ]
+                    ]
                 ];
             }
 

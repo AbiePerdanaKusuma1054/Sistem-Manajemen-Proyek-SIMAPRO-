@@ -134,7 +134,7 @@
 
                             <div class="modal-footer">
                                 <input type="hidden" name="action" id="action" />
-                                <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
+                                <button class="btn btn-light plus" type="submit" name="submit" id="submitButton"></button>
                             </div>
                         </form>
                     </div>
@@ -187,7 +187,7 @@
 
                             <div class="modal-footer">
                                 <input type="hidden" name="action" id="actionEmployee" />
-                                <input class="btn btn-light plus" type="submit" name="submit" id="submitButtonEmployee" />
+                                <button class="btn btn-light plus" type="submit" name="submit" id="submitButtonEmployee"></button>
                             </div>
 
                         </form>
@@ -229,7 +229,7 @@
             $('#address_error').text('');
             $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Client');
             $('#action').val('create');
-            $('#submitButton').val('Create');
+            $('#submitButton').html('Create');
             $('#clientModal').modal('show');
         });
 
@@ -243,13 +243,13 @@
                 dataType: "JSON",
 
                 beforeSend: function() {
-                    $('#submitButton').val('Wait...');
+                    $('#submitButton').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
                     $('#submitButton').attr('disabled', 'disabled');
                 },
 
                 success: function(data) {
 
-                    $('#submitButton').val('Create');
+                    $('#submitButton').html('Create');
                     $('#submitButton').attr('disabled', false);
 
                     const Toast = Swal.mixin({
@@ -295,7 +295,7 @@
             $('#employee_address_error').text('');
             $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Employee');
             $('#actionEmployee').val('create');
-            $('#submitButtonEmployee').val('Create');
+            $('#submitButtonEmployee').html('Create');
             $('#employeeModal').modal('show');
         });
 
@@ -309,13 +309,13 @@
                 dataType: "JSON",
 
                 beforeSend: function() {
-                    $('#submitButtonEmployee').val('Wait...');
+                    $('#submitButtonEmployee').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
                     $('#submitButtonEmployee').attr('disabled', 'disabled');
                 },
 
                 success: function(data) {
 
-                    $('#submitButtonEmployee').val('Create');
+                    $('#submitButtonEmployee').html('Create');
                     $('#submitButtonEmployee').attr('disabled', false);
 
                     if (data.error == 'yes') {
@@ -343,12 +343,10 @@
         });
     });
 
-    <?php if (session()->getFlashdata('msg') == 'error') { ?>
-        Toast.fire({
+    <?php if (session()->getFlashdata('msg') == 'error') { ?> Toast.fire({
             icon: 'error',
             title: 'failed to create project'
-        })
-    <?php } ?>
+        }) <?php } ?>
 </script>
 <!-- End of JS -->
 

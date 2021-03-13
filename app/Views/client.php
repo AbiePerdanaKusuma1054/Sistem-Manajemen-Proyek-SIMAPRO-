@@ -48,7 +48,7 @@
                             <div class="modal-footer">
                                 <input type="hidden" name="action" id="action" />
                                 <input type="hidden" name="hidden_id" id="hidden_id" />
-                                <input class="btn btn-light plus" type="submit" name="submit" id="submitButton" />
+                                <button class="btn btn-light plus" type="submit" name="submit" id="submitButton"></button>
                             </div>
                         </form>
                     </div>
@@ -129,7 +129,7 @@
             $('#address_error').text('');
             $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Client');
             $('#action').val('create');
-            $('#submitButton').val('Create');
+            $('#submitButton').html('Create');
             $('#clientModal').modal('show');
         });
 
@@ -143,7 +143,7 @@
                 dataType: "JSON",
 
                 beforeSend: function() {
-                    $('#submitButton').val('Wait...');
+                    $('#submitButton').html('<i class="fa fa-spinner fa-spin" style="color: black;"></i>');
                     $('#submitButton').attr('disabled', 'disabled');
                 },
 
@@ -160,9 +160,9 @@
                     })
 
                     if ($('#action').val() == 'create') {
-                        $('#submitButton').val('Create');
+                        $('#submitButton').html('Create');
                     } else {
-                        $('#submitButton').val('Edit');
+                        $('#submitButton').html('Edit');
                     }
 
                     $('#submitButton').attr('disabled', false);
@@ -232,7 +232,7 @@
                     $('#address_error').text('');
                     $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit Client Data');
                     $('#action').val('edit');
-                    $('#submitButton').val('Edit');
+                    $('#submitButton').html('Edit');
                     $('#clientModal').modal('show');
                     $('#hidden_id').val(id);
                 }

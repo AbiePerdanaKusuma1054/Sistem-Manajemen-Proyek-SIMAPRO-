@@ -125,6 +125,7 @@ class Employee extends BaseController
                         'employee_gender' => $request->getVar('gender'),
                         'employee_address' => $request->getVar('address')
                     ]);
+                    session()->setFlashdata('msg', 'create_employee');
                 }
 
                 if ($request->getVar('action') == 'edit') {

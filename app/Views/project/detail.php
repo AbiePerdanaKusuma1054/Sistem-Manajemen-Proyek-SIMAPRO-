@@ -113,23 +113,17 @@
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Project has been deleted.',
-                    'success',
+                $.ajax({
+                    url: "<?= base_url() ?>/project/delete",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
 
-                    $.ajax({
-                        url: "<?= base_url() ?>/project/delete",
-                        method: "POST",
-                        data: {
-                            id: id
-                        },
-
-                        success: function(data) {
-                            location.href = "<?= base_url() ?>/project"
-                        }
-                    })
-                )
+                    success: function(data) {
+                        location.href = "<?= base_url() ?>/project"
+                    }
+                })
             }
         })
     });
@@ -148,7 +142,7 @@
 
         Toast.fire({
             icon: 'success',
-            title: 'Project updated'
+            title: 'Details of project updated'
         })
     <?php } ?>
 </script>

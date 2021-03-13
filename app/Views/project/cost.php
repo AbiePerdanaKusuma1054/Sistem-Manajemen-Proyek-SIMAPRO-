@@ -26,9 +26,11 @@
         <div class="box">
             <div class="left-box">
                 <div class="detail-box back-rab inclusion">
-                    <div class="no-data">
-                        <p>No data available</p>
-                    </div>
+                    <?php if (empty($category)) : ?>
+                        <div class="no-data">
+                            <p>No data available</p>
+                        </div>
+                    <?php endif; ?>
                     <?php foreach ($category as $cat) : ?>
                         <div class="row sub" style="margin-bottom: -20px;">
                             <div class="col" style="margin-bottom: 0;">
