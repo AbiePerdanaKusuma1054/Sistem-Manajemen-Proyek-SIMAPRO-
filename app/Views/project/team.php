@@ -19,9 +19,7 @@
                 <span class="add-team-text">
                     Project Team
                 </span>
-                <!-- Button trigger modal -->
             </i>
-            <button style="float: right;" type="button" class="btn btn-light" id="addEmployee"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Emloyee</span></i></button>
         </div>
 
         <div class="box">
@@ -65,7 +63,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <div class="modal-title" id="exampleModalLabel" style="color: white;">
+                            <div class="modal-title" id="teamModalLabel" style="color: white;">
                             </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -75,14 +73,22 @@
                             <div class="modal-body">
                                 <div class="col">
                                     <label for="" class="form-label">Name</label>
-                                    <select class="form-select form-control fc" name="name" id="name">
-                                        <option disabled selected value=''>Choose one..</option>
-                                        <?php foreach ($employee as $e) : ?>
-                                            <option value="<?= $e['id'] ?>">
-                                                <?= $e['employee_name'] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <div class="input-group">
+                                        <select class="form-select form-control fc" name="name" id="name">
+                                            <option disabled selected value=''>Choose one..</option>
+                                            <?php foreach ($employee as $e) : ?>
+                                                <option value="<?= $e['id'] ?>">
+                                                    <?= $e['employee_name'] ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <!-- Button Triggered Modal Add Employee -->
+                                            <button class="btn btn-secondary" type="button" name="addEmployee" id="addEmployee">
+                                                + New Employee
+                                            </button>
+                                        </div>
+                                    </div>
                                     <span class="text-danger" id="name_error"></span>
                                 </div>
                                 <div class="col">
@@ -115,7 +121,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <div class="modal-title" id="exampleModalLabel" style="color: white;">
+                            <div class="modal-title" id="employeeModalLabel" style="color: white;">
                             </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -188,7 +194,7 @@
         $('#teamForm')[0].reset();
         $('#name_error').text('');
         $('#position_error').text('');
-        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add a Team Member');
+        $('#teamModalLabel').html('<i class="fa fa-user-plus" style="color: white;"></i> Add a Team Member');
         $('#action_member').val('create');
         $('#submitButtonMember').html('Add');
         $('#teamModal').modal('show');
@@ -255,7 +261,7 @@
 
                 $('#name_error').text('');
                 $('#position_error').text('');
-                $('.modal-title').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Member');
+                $('#teamModalLabel').html('<i class="fa fa-pencil-square-o" style="color: white;"></i> Edit a Member');
                 $('#action_member').val('edit');
                 $('#submitButtonMember').html('Edit');
                 $('#teamModal').modal('show');
@@ -300,7 +306,7 @@
         $('#email_error').text('');
         $('#gender_error').text('');
         $('#address_error').text('');
-        $('.modal-title').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Employee');
+        $('#employeeModalLabel').html('<i class="fa fa-user-plus" style="color: white;"></i> Add Employee');
         $('#action').val('create');
         $('#submitButtonEmployee').html('Create');
         $('#employeeModal').modal('show');
@@ -348,6 +354,7 @@
 
                 } else {
                     $('#employeeModal').modal('hide');
+                    $('#teamModal').modal('hide');
                     setTimeout(location.reload.bind(location));
                 }
             }

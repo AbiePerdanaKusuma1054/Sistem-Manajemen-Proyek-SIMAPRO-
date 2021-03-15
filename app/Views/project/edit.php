@@ -14,16 +14,14 @@
         <form class="row g-3 needs-validation" action="<?= base_url() ?>/project/saveEditProject/<?= $detail['id'] ?>">
             <div class="col-md-6">
                 <label for="validationCustom01" class="form-label">Project Name *</label>
-                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" value="<?= $detail['project_name'] ?>" required>
-                <div class="invalid-feedback">
-                    <?= ($validator->getError('project_name')); ?>
-                </div>
+                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" value="<?= $detail['project_name'] ?>">
+                <span class="text-danger"><?= ($validator->getError('project_name')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom02" class="form-label">Project Manager *</label>
                 <div class="input-group">
                     <select class="form-select form-control fc <?= ($validator->hasError('project_manager')) ? 'is-invalid' : ''; ?>" name="project_manager">
-                        <option disabled selected value=''>Choose one..</option>
+                        <option disabled value=''>Choose one..</option>
                         <?php foreach ($employee as $e) : ?>
                             <option value="<?= $e['employee_name'] ?>" <?= $e['employee_name'] == $detail['project_manager'] ? 'selected' : ''; ?>>
                                 <?= $e['employee_name'] ?>
@@ -37,9 +35,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="invalid-feedback">
-                    Please input a project manager.
-                </div>
+                <span class="text-danger"><?= ($validator->getError('project_manager')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom03" class="form-label">Client *</label>
@@ -50,30 +46,22 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="invalid-feedback">
-                    Please input a client.
-                </div>
+                <span class="text-danger"><?= ($validator->getError('client_id')); ?></span>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" placeholder="Type a number..." value="<?= $detail['contract_amount'] ?>" required>
-                <div class="invalid-feedback">
-                    Please input a contract amount.
-                </div>
+                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" placeholder="Type a number..." value="<?= $detail['contract_amount'] ?>">
+                <span class="text-danger"><?= ($validator->getError('contract_amount')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom05" class="form-label">Project Start *</label>
-                <input type="date" class="form-control fc <?= ($validator->hasError('project_start')) ? 'is-invalid' : ''; ?>" name="project_start" value="<?= $detail['project_start'] ?>" required>
-                <div class="invalid-feedback">
-                    Please input a valid start date.
-                </div>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_start')) ? 'is-invalid' : ''; ?>" name="project_start" value="<?= $detail['project_start'] ?>">
+                <span class="text-danger"><?= ($validator->getError('project_start')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom06" class="form-label">Project Deadline *</label>
-                <input type="date" class="form-control fc <?= ($validator->hasError('project_finish')) ? 'is-invalid' : ''; ?>" name="project_finish" value="<?= $detail['project_finish'] ?>" required>
-                <div class="invalid-feedback">
-                    Please input a valid date for deadline.
-                </div>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_finish')) ? 'is-invalid' : ''; ?>" name="project_finish" value="<?= $detail['project_finish'] ?>">
+                <span class="text-danger"><?= ($validator->getError('project_finish')); ?></span>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Project Description</label>
@@ -88,11 +76,13 @@
                     <option value="finish" <?= $detail['project_status'] == 'finish' ? 'selected' : ''; ?>>Finished</option>
                     <option value="cancelled" <?= $detail['project_status'] == 'cancelled' ? 'selected' : ''; ?>>Cancelled</option>
                 </select>
+                <span class="text-danger"><?= ($validator->getError('project_status')); ?></span>
             </div>
             <div class="col-md-3">
                 <label class="form-label">Project Progress</label>
                 <input type="number" class="form-control fc <?= ($validator->hasError('project_progress')) ? 'is-invalid' : ''; ?>" placeholder="Type a number..." min="0" max="100" name="project_progress" value="<?= $detail['project_progress'] ?>">
                 <span class="badge badge-pill badge-light" style="float: right;margin-bottom: 20px;margin-right: 5px;margin-top: -31px;">0-100</span>
+                <span class="text-danger"><?= ($validator->getError('project_progress')); ?></span>
             </div>
             <div class="col-12">
                 <button class="btn btn-light plus" type="submit">Save</button>

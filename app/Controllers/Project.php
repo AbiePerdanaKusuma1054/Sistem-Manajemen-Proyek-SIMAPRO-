@@ -206,7 +206,7 @@ class Project extends BaseController
             'project_progress' => [
                 'rules' => 'required|max_length[3]|integer',
                 'errors' => [
-                    'required' => 'Please input the amount.',
+                    'required' => 'Please input a number between 0-100.',
                     'max_length' => 'Input should not be more than 3 numbers.',
                     'integer' => 'Input must be a number.'
                 ]
@@ -629,24 +629,6 @@ class Project extends BaseController
             session()->setFlashdata('msg', 'delete_cost');
         }
     }
-
-    // public function fetchCostsData($id)
-    // {
-    //     $table = new TablesIgniter();
-
-    //     $table->setTable($this->pcostModel->noticeTable($id))
-    //         ->setDefaultOrder('pcost_desc', 'ASC')
-    //         ->setOrder([
-    //             'pcost_desc', 'pcost_amount', 'pcost_quantity',
-    //             'pcost_unit', 'pcost_duration', 'pcost_unit_duration', NULL
-    //         ])
-    //         ->setSearch(['pcost_desc'])
-    //         ->setOutput([
-    //             'pcost_desc', 'pcost_amount', 'pcost_quantity',
-    //             'pcost_unit', 'pcost_duration', 'pcost_unit_duration', $this->pcostModel->button()
-    //         ]);
-    //     return $table->getDatatable();
-    // }
 
     public function transaction($id)
     {

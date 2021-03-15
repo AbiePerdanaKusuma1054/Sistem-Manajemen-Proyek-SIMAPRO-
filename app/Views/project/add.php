@@ -13,10 +13,8 @@
         <form class="row g-3 needs-validation" action="<?= base_url() ?>/project/addProject" method="POST">
             <div class="col-md-6">
                 <label for="project_name" class="form-label">Project Name *</label>
-                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" placeholder="Type here..." value="<?= old('project_name') ?>" required>
-                <div class="invalid-feedback">
-                    <?= ($validator->getError('project_name')); ?>
-                </div>
+                <input type="text" class="form-control fc <?= ($validator->hasError('project_name')) ? 'is-invalid' : ''; ?>" name="project_name" placeholder="Type here..." value="<?= old('project_name') ?>">
+                <span class="text-danger"><?= ($validator->getError('project_name')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom02" class="form-label">Project Manager *</label>
@@ -36,9 +34,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="invalid-feedback">
-                    Please input a project manager.
-                </div>
+                <span class="text-danger"><?= ($validator->getError('project_manager')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom03" class="form-label">Client *</label>
@@ -58,30 +54,22 @@
                         </button>
                     </div>
                 </div>
-                <div class="invalid-feedback">
-                    Please input a client
-                </div>
+                <span class="text-danger"><?= ($validator->getError('client_id')); ?></span>
             </div>
             <div class="col-md-4">
                 <label for="validationCustom04" class="form-label">Contract Amount *</label>
-                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" placeholder="Type a number..." value="<?= old('contract_amount') ?>" required>
-                <div class="invalid-feedback">
-                    Please input a contract amount.
-                </div>
+                <input type="number" class="form-control fc <?= ($validator->hasError('contract_amount')) ? 'is-invalid' : ''; ?>" name="contract_amount" placeholder="Type a number..." value="<?= old('contract_amount') ?>">
+                <span class="text-danger"><?= ($validator->getError('contract_amount')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom05" class="form-label">Project Start *</label>
-                <input type="date" class="form-control fc <?= ($validator->hasError('project_start')) ? 'is-invalid' : ''; ?>" name="project_start" value="<?= old('project_start') ?>" required>
-                <div class="invalid-feedback">
-                    Please input a valid start date.
-                </div>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_start')) ? 'is-invalid' : ''; ?>" name="project_start" value="<?= old('project_start') ?>">
+                <span class="text-danger"><?= ($validator->getError('project_start')); ?></span>
             </div>
             <div class="col-md-6">
                 <label for="validationCustom06" class="form-label">Project Deadline *</label>
-                <input type="date" class="form-control fc <?= ($validator->hasError('project_finish')) ? 'is-invalid' : ''; ?>" name="project_finish" value="<?= old('project_finish') ?>" required>
-                <div class="invalid-feedback">
-                    Please input a valid date for deadline.
-                </div>
+                <input type="date" class="form-control fc <?= ($validator->hasError('project_finish')) ? 'is-invalid' : ''; ?>" name="project_finish" value="<?= old('project_finish') ?>">
+                <span class="text-danger"><?= ($validator->getError('project_finish')); ?></span>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Project Description</label>
