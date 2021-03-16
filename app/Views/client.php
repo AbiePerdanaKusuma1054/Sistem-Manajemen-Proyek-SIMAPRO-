@@ -94,11 +94,11 @@
                     className: 'text-left'
                 },
                 {
-                    responsivePriority: 3,
+                    responsivePriority: 2,
                     targets: -1
                 },
                 {
-                    responsivePriority: 2,
+                    responsivePriority: 3,
                     targets: 1
                 },
                 {

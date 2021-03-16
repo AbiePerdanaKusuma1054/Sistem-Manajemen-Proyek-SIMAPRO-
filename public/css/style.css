@@ -133,6 +133,7 @@ body {
   font-weight: 300;
   font-size: 12pt;
   height: 0;
+  text-transform: capitalize;
   text-decoration: none;
   cursor: pointer;
 }
@@ -631,7 +632,7 @@ input[type="number"] {
 }
 .left-box .detail-box {
   background-color: #232923;
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 0.5rem 2rem 1rem 2rem;
   width: 100%;
   border-radius: 5px;
   position: sticky;
@@ -967,6 +968,7 @@ option:first {
   color: white;
 }
 .add-rab:hover {
+  transition-duration: 500ms;
   color: rgb(169, 155, 248);
 }
 .detail-rab tbody tr td {
@@ -1023,10 +1025,12 @@ option:first {
   color: white;
   font-weight: 600;
   font-size: 13pt;
+  text-transform: capitalize;
 }
 
 .act-rab {
   text-align: center;
+  cursor: pointer;
 }
 
 /* comment */
@@ -1270,4 +1274,5 @@ progress {
   color: rgb(116, 233, 0);
   font-size: 10pt;
   letter-spacing: 3px;
+  margin-bottom: 2rem;
 }

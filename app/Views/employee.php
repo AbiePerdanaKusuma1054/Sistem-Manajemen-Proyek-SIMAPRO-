@@ -107,10 +107,23 @@
                 {
                     targets: 3,
                     className: 'text-left'
-                }, {
+                },
+                {
                     "bSortable": false,
                     "aTargets": [4]
-                }
+                },
+                {
+                    responsivePriority: 3,
+                    targets: 2
+                },
+                {
+                    responsivePriority: 2,
+                    targets: -1
+                },
+                {
+                    responsivePriority: 1,
+                    targets: 0
+                },
             ],
             "scrollX": true,
             "order": [],

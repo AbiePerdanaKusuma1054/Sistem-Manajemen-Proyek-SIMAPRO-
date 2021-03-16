@@ -32,21 +32,21 @@
                         </div>
                     <?php endif; ?>
                     <?php foreach ($category as $cat) : ?>
-                        <div class="row sub" style="margin-bottom: -20px;">
+                        <div class="row sub" style="margin-top: 1rem;margin-bottom: -20px;">
                             <div class="col" style="margin-bottom: 0;">
-                                <p class="category-rab"><?= $cat['category_name'] ?>
+                                <p class="category-rab" style="cursor: pointer;"><?= $cat['category_name'] ?>
                                     <i class="fa fa-pencil act icon-edit-member editCat" data-id="<?= $cat['id'] ?>"></i>
                                     <i class="fa fa-trash-o icon-del-team deleteCat" data-id="<?= $cat['id'] ?>"></i>
                                 </p>
                             </div>
                             <div class="col" style="text-align: right;">
                                 <a>
-                                    <i class="fa fa-plus-circle add-rab addCost" data-id="<?= $cat['id'] ?>"></i>
+                                    <i class="fa fa-plus-circle add-rab addCost fa-lg" data-id="<?= $cat['id'] ?>"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table id="table" class="table table-striped table-bordered table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
+                            <table id="table" class="table table-striped table-bordered table-dark display nowrap responsive detail-rab" style="width:100%;">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Cost Description</th>
@@ -99,7 +99,7 @@
                     <form id="costCatForm" method="POST">
                         <div class="col">
                             <label class="form-label">Category *</label>
-                            <input type="text" name="name" id="name" class="form-control fc" placeholder="New category...">
+                            <input type="text" name="name" id="name" class="form-control fc" placeholder="New category..." value="">
                             <span class="text-danger" id="name_error"></span>
                         </div>
                         <div class="modal-footer">

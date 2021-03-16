@@ -27,7 +27,7 @@
                 <div class="detail-box back-rab inclusion">
 
                     <!-- Pemasukkan -->
-                    <div class="row sub" style="margin-bottom: -15px;">
+                    <div class="row sub" style="margin-bottom: -15px;margin-top: 0.5rem;">
                         <div class="col" style="margin-bottom: 0;">
 
                             <p class="category-rab">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="col" style="text-align: right;">
                             <a>
-                                <i class="fa fa-plus-circle add-rab" id="addIncome"></i>
+                                <i class="fa fa-plus-circle add-rab fa-lg" id="addIncome"></i>
                             </a>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="col" style="text-align: right;">
                             <a>
-                                <i class="fa fa-plus-circle add-rab" id="addOutcome"></i>
+                                <i class="fa fa-plus-circle add-rab fa-lg" id="addOutcome"></i>
                             </a>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                                             <th class="text-center">Amount</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <!-- <tbody>
                                         <tr>
                                             <td class="act-rab">
                                                 <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
@@ -146,7 +146,7 @@
                                             <td class="text-center"><i class="fa fa-check-circle-o fa-lg complete-bedge" aria-hidden="true"><span>Complete</span></i></td>
                                             <td class="text-right">7000000</td>
                                         </tr>
-                                    </tbody>
+                                    </tbody> -->
                                 </table>
                             </div>
                         </div>
