@@ -72,13 +72,12 @@ class ProjectModel extends Model
         return $progressFun;
     }
 
-    public function button()
+    public function text()
     {
-        $buttonFun = function ($row) {
-            return '<a href="' . base_url() . '/project/detail/' . $row['id'] . '">
-            <button type="button" class="btn btn-info">Detail</button></a>';
+        $textFun = function ($row) {
+            return '<a class="customhref" href="' . base_url() . '/project/detail/' . $row['id'] . '">' . $row['project_name'] . '</a>';
         };
-        return $buttonFun;
+        return $textFun;
     }
 
     public function getPM($id)

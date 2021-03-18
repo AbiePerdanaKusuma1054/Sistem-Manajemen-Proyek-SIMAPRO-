@@ -17,15 +17,13 @@ class ClientModel extends Model
         return $this->db->table($this->table)->where('deleted_at', NULL);
     }
 
-
     public function button()
     {
         $buttonFun = function ($row) {
-            return '<button type="button" class="btn btn-info edit" data-id="' . $row['id'] . '"
-            data-toggle="modal" data-target="#clientModal">Edit</button>
+            return '<i class="fa fa-pencil act icon-edit-member edit" 
+            data-target="#clientModal" data-id="' . $row['id'] . '"></i>
             &nbsp; 
-            <button type="button" class="btn btn-danger delete" 
-            data-id="' . $row['id'] . '">Delete</button></a>';
+            <i class="fa fa-trash-o icon-del-team delete" data-id="' . $row['id'] . '"></i>';
         };
         return $buttonFun;
     }
