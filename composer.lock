@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d73ed25734e5359dc55ea73cb8ab7cd7",
+    "content-hash": "1027ab9a949f94d86368149202c56d8d",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -239,16 +239,16 @@
         },
         {
             "name": "monken/tablesigniter",
-            "version": "v1.1.3",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monkenWu/TablesIgniter.git",
-                "reference": "c8114e6c92d4441b899c618a4a7ce151b651aed4"
+                "reference": "701e9ad7205160df618d4c4833762726dd474095"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monkenWu/TablesIgniter/zipball/c8114e6c92d4441b899c618a4a7ce151b651aed4",
-                "reference": "c8114e6c92d4441b899c618a4a7ce151b651aed4",
+                "url": "https://api.github.com/repos/monkenWu/TablesIgniter/zipball/701e9ad7205160df618d4c4833762726dd474095",
+                "reference": "701e9ad7205160df618d4c4833762726dd474095",
                 "shasum": ""
             },
             "require": {
@@ -276,7 +276,11 @@
                 "codeigniter4",
                 "datatables"
             ],
-            "time": "2020-04-19T13:30:45+00:00"
+            "support": {
+                "issues": "https://github.com/monkenWu/TablesIgniter/issues",
+                "source": "https://github.com/monkenWu/TablesIgniter/tree/v1.2.0"
+            },
+            "time": "2021-02-25T14:49:35+00:00"
         },
         {
             "name": "psr/log",
@@ -2382,5 +2386,5 @@
         "php": "^7.3||^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
