@@ -6,7 +6,7 @@
         <div class="menu-detail text-center">
             <div class="table-responsive">
                 <ul>
-                    <li class=""><a href="<?= base_url() ?>/project/detail/<?= $id ?>">Project</a></li>
+                    <li class=""><a href="<?= base_url() ?>/project/detail/<?= $id ?>">Details</a></li>
                     <li class=""><a href="<?= base_url() ?>/project/cost/<?= $id ?>">Cost</a></li>
                     <li class="actived"><a href="<?= base_url() ?>/project/transaction/<?= $id ?>">Transaction</a></li>
                     <li class=""><a href="<?= base_url() ?>/project/team/<?= $id ?>">Team</a></li>

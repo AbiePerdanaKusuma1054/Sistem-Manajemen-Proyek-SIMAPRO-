@@ -261,13 +261,13 @@ class Project extends BaseController
             ->setDefaultOrder('project_name', 'ASC')
             ->setOrder([
                 'project_name', 'client_name', 'project_manager',
-                'project_start', 'project_finish', 'project_status', null
+                'project_start', 'project_finish', 'project_status'
             ])
             ->setSearch(['project_name', 'client_name', 'project_manager', 'project_status'])
             ->setOutput([
-                'project_name', 'client_name', 'project_manager', $this->projectModel->startDate(),
+                $this->projectModel->text(), 'client_name', 'project_manager', $this->projectModel->startDate(),
                 $this->projectModel->finishDate(), $this->projectModel->progress(),
-                $this->projectModel->status(), $this->projectModel->button()
+                $this->projectModel->status()
             ]);
         return $this->table->getDatatable();
     }

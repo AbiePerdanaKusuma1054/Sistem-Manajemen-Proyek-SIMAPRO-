@@ -1271,3 +1271,7 @@ progress {
   font-size: 10pt;
   letter-spacing: 3px;
 }
+
+.customhref {
+  color:white;
+}

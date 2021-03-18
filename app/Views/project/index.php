@@ -23,7 +23,6 @@
                     <th class="text-center">Deadline</th>
                     <th class="text-center">Progress</th>
                     <th class="text-center">Project Status</th>
-                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <!-- <tbody>
@@ -112,7 +111,7 @@
         $('#table').DataTable({
             "aoColumnDefs": [{
                     targets: -5,
-                    className: 'text-right'
+                    className: 'text-left'
                 },
                 {
                     targets: -4,
@@ -120,7 +119,7 @@
                 },
                 {
                     targets: -3,
-                    className: 'text-center'
+                    className: 'text-right'
                 },
                 {
                     targets: -2,
