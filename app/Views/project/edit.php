@@ -143,10 +143,6 @@
         </div>
     </div>
     <!-- End -->
-
-    <div class="space">
-        <p class="dot">.</p>
-    </div>
 </div>
 </div>
 

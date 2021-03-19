@@ -33,13 +33,4 @@ class ClientModel extends Model
         return $this->db->table($this->table)
             ->select('id, client_name')->where('deleted_at', NULL)->get()->getResultArray();
     }
-
-    public function getDetail($id)
-    {
-        return $this->select('project.id, project_name, project_start, 
-        project_finish, client_id, client_name, contract_amount, 
-        project_desc, project_manager, project_status, project_progress')
-            ->join('project', 'project.client_id = client.id')
-            ->where('project.id', $id)->where('project.deleted_at', NULL)->first();
-    }
 }

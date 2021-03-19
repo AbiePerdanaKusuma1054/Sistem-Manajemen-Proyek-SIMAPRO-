@@ -41,31 +41,6 @@
         <?php if (session()->has('login') && session()->get('login') == TRUE) : ?>
 
             <!-- Navigation Bar -->
-            <!-- <nav class="navbar navbar-expand-sm navbar-dark header">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="<?= base_url() ?>/">
-                        <img src="<?= base_url() ?>/img/logo.png" alt="" style="margin-top: -4px;">
-                        <span class="brand">SIMAPRO</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav" style="max-width: 160px;">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <img src="<?= base_url() ?>/img/user-icons.png" alt="">
-                                    <span class="user"><?= session()->get('username') ?></span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url() ?>/auth/logout">
-                                    <img src="<?= base_url() ?>/img/exit.png" alt="Log Out" style="margin-top: -2px;">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav> -->
             <nav class="navbar navbar-expand-sm navbar-dark">
                 <a class="navbar-brand li-head" href="<?= base_url() ?>/">
                     <img src="<?= base_url() ?>/img/logo.png" alt="" style="margin-top: -4px;">
@@ -119,12 +94,15 @@
             <?= $this->renderSection('content'); ?>
 
             <?php if (session()->has('login') && session()->get('login') == TRUE) : ?>
+                <div class="space">
+                    <div class="dot">.</div>
+                </div>
                 <div class="footer">
                     <p class="foot1">
                         Sistem Manajemen Proyek (SIMAPRO)
                     </p>
                     <p class="foot2">
-                        Copyright @2021
+                        © 2021 - KP Ilmu Komputer FMIPA Unila
                     </p>
                 </div>
             <?php endif; ?>

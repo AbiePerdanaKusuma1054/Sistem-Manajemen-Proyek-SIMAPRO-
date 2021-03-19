@@ -14,7 +14,7 @@
                 </ul>
             </div>
         </div>
-        <div class="add-back" style="margin-left: 10px;">
+        <div class="add-back" style="margin-left: 10PX;">
             <i class="fa fa-comments-o">
                 <span class="add-back-text">
                     Comments
@@ -71,9 +71,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="space">
-        <p class="dot">.</p>
     </div>
 </div>
 </div>

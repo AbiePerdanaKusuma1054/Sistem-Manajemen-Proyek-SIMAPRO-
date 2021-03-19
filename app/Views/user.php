@@ -68,9 +68,6 @@
             </thead>
         </table>
     </div>
-    <div class="space">
-        <p class="dot">.</p>
-    </div>
 </div>
 </div>
 

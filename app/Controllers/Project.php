@@ -139,7 +139,7 @@ class Project extends BaseController
         }
 
         $data = [
-            'detail' => $this->clientModel->getDetail($id),
+            'detail' => $this->projectModel->getDetail($id),
             'id' => $id
         ];
 
@@ -154,7 +154,7 @@ class Project extends BaseController
 
         $data = [
             'validator' => \Config\Services::validation(),
-            'detail' => $this->clientModel->getDetail($id),
+            'detail' => $this->projectModel->getDetail($id),
             'employee' => $this->employeeModel->getEmployeeNames(),
             'client' => $this->clientModel->getClientNames()
         ];
