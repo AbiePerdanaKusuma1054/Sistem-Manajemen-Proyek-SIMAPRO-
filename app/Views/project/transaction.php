@@ -87,7 +87,7 @@
                             </div>
                             <div class="col" style="height: fit-content;">
                                 <?php foreach ($revenues_sum as $sum) : ?>
-                                    <p style="margin-right: 10px;text-align: right;">Rp<?= ($sum['prevenues_amount'] == NULL) ? '0' : $sum['prevenues_amount'] ?></p>
+                                    <p style="margin-right: 10px;text-align: right;font-size: 11pt;">Rp<?= ($sum['prevenues_amount'] == NULL) ? '0' : $sum['prevenues_amount'] ?></p>
                                 <?php endforeach ?>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                             </div>
                             <div class="col" style="height: fit-content;">
                                 <?php foreach ($transaction_sum as $sum) : ?>
-                                    <p style="margin-right: 10px;text-align: right;">Rp<?= ($sum['cost_amount'] == NULL) ? '0' : $sum['cost_amount'] ?></p>
+                                    <p style="margin-right: 10px;text-align: right;font-size: 11pt;">Rp<?= ($sum['cost_amount'] == NULL) ? '0' : $sum['cost_amount'] ?></p>
                                 <?php endforeach ?>
                             </div>
                         </div>
