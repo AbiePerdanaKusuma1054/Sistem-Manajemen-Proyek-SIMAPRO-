@@ -89,9 +89,6 @@
             </tbody> -->
         </table>
     </div>
-    <div class="space">
-        <p class="dot">.</p>
-    </div>
 </div>
 </div>
 
@@ -130,8 +127,12 @@
                     className: 'text-center'
                 },
                 {
+                    responsivePriority: 4,
+                    targets: 6
+                },
+                {
                     responsivePriority: 3,
-                    targets: -1
+                    targets: 5
                 },
                 {
                     responsivePriority: 2,

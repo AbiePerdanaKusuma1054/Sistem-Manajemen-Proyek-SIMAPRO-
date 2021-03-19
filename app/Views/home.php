@@ -47,7 +47,7 @@
             <p>Cancelled</p>
         </a>
     </div>
-    <div class="status">
+    <!-- <div class="status">
         <div class="back-text">
             <p class="text">Payment Status</p>
         </div>
@@ -75,10 +75,7 @@
             </div>
             <p>Complete</p>
         </a>
-    </div>
-    <div class="space">
-        <p class="dot">.</p>
-    </div>
+    </div> -->
 </div>
 </div>
 <script>

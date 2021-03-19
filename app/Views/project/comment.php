@@ -14,7 +14,7 @@
                 </ul>
             </div>
         </div>
-        <div class="add-back">
+        <div class="add-back" style="margin-left: 10PX;">
             <i class="fa fa-comments-o">
                 <span class="add-back-text">
                     Comments
@@ -27,7 +27,7 @@
                 <div style="padding-bottom: 2rem;">
                     <!-- comment -->
                     <?php if (empty($comment)) : ?>
-                        <p>Be the first to give a comment!</p>
+                        <p style="margin-left: 10px;">Be the first to give a comment!</p>
                     <?php endif; ?>
                     <?php foreach ($comment as $c) : ?>
                         <div class="borders">
@@ -71,9 +71,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="space">
-        <p class="dot">.</p>
     </div>
 </div>
 </div>

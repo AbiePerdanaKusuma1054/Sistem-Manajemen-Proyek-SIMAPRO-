@@ -18,7 +18,8 @@ class ProjectModel extends Model
     public function noticeTable()
     {
         return $this->db->table('client')
-            ->join($this->table, 'project.client_id = client.id')->where('project.deleted_at', NULL);
+            ->join($this->table, 'project.client_id = client.id')
+            ->where('project.deleted_at', NULL);
     }
 
     public function status()
@@ -83,5 +84,14 @@ class ProjectModel extends Model
     public function getPM($id)
     {
         return $this->select('project_manager')->where('id', $id)->first();
+    }
+
+    public function getDetail($id)
+    {
+        return $this->select('project.id, project_name, project_start, 
+        project_finish, client_id, client_name, contract_amount, 
+        project_desc, project_manager, project_status, project_progress')
+            ->join('client', 'project.client_id = client.id')
+            ->where('project.id', $id)->where('project.deleted_at', NULL)->first();
     }
 }

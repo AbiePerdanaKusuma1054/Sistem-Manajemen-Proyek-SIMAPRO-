@@ -20,13 +20,13 @@
                     Project Team
                 </span>
             </i>
+            <i style="float: right;" type="button" id="addTeam" class="fa fa-plus-circle add-rab fa-lg"></i>
         </div>
 
         <div class="box">
             <div class="left-box">
                 <div class="detail-box anim">
-                    <button style="float: right;" type="button" class="btn btn-light" id="addTeam"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Member</span></i></button>
-                    <div id="back-team" style="padding: 20px 1.5rem 0 1.5rem;">
+                    <div id="back-team" style="padding: 20px 1.5rem 0 1.5rem;margin-bottom: 10px;">
                         <div class="row">
                             <div class="col">
                                 <i class="fa fa-user-circle white"><span class="name-text"><?= $pm['project_manager'] ?>
@@ -170,9 +170,6 @@
             <!-- End -->
 
         </div>
-    </div>
-    <div class="space">
-        <p class="dot">.</p>
     </div>
 </div>
 </div>

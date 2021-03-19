@@ -39,7 +39,7 @@
                         </div>
                         <div class="col" style="text-align: right;">
                             <a>
-                                <i class="fa fa-plus-circle add-rab" id="addIncome"></i>
+                                <i class="fa fa-plus-circle add-rab fa-lg" id="addIncome"></i>
                             </a>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="col" style="text-align: right;">
                             <a>
-                                <i class="fa fa-plus-circle add-rab" id="addOutcome"></i>
+                                <i class="fa fa-plus-circle add-rab fa-lg" id="addOutcome"></i>
                             </a>
                         </div>
                     </div>
@@ -275,9 +275,6 @@
             <!-- End -->
 
         </div>
-    </div>
-    <div class="space">
-        <p class="dot">.</p>
     </div>
 </div>
 </div>

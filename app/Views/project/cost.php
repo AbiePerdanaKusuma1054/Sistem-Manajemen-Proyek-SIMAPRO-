@@ -20,19 +20,19 @@
                     Costs
                 </span>
             </i>
-            <button style="float: right;" type="button" class="btn btn-light" id="addCostCat"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Category</span></i></button>
+            <button style="float: right;transition-duration: 500ms;" type="button" class="btn btn-light" id="addCostCat"><i class="fa fa-plus-circle"><span style="font-size: 10pt;font-weight: 600;margin-left: 5px;">New Category</span></i></button>
         </div>
 
         <div class="box">
             <div class="left-box">
-                <div class="detail-box back-rab inclusion">
+                <div class="detail-box back-rab inclusion" style="padding-bottom: 0rem;">
                     <?php if (empty($category)) : ?>
                         <div class="no-data">
                             <p>No data available</p>
                         </div>
                     <?php endif; ?>
                     <?php foreach ($category as $cat) : ?>
-                        <div class="row sub" style="margin-bottom: -20px;">
+                        <div class="row sub" style="margin-bottom: -20px;margin-top: 10px;">
                             <div class="col" style="margin-bottom: 0;">
                                 <p class="category-rab"><?= $cat['category_name'] ?>
                                     <i class="fa fa-pencil act icon-edit-member editCat" data-id="<?= $cat['id'] ?>"></i>
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table id="table" class="table table-striped table-bordered table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 50px;">
+                            <table id="table" class="table table-striped table-bordered table-dark display nowrap responsive detail-rab" style="width:100%;margin-bottom: 30px;">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Cost Description</th>
@@ -170,10 +170,6 @@
         </div>
     </div>
     <!-- End -->
-
-</div>
-<div class="space text-center">
-    <p class="dot">.</p>
 </div>
 </div>
 
