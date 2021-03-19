@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use monken\TablesIgniter;
 use App\Models\ProjectModel;
 use App\Models\ClientModel;
 use App\Models\EmployeeModel;
@@ -257,7 +258,8 @@ class Project extends BaseController
 
     public function fetchProjectData()
     {
-        $this->table->setTable($this->projectModel->noticeTable())
+        $table = new TablesIgniter();
+        $table->setTable($this->projectModel->noticeTable())
             ->setDefaultOrder('project_name', 'ASC')
             ->setOrder([
                 'project_name', 'client_name', 'project_manager',
@@ -269,7 +271,7 @@ class Project extends BaseController
                 $this->projectModel->finishDate(), $this->projectModel->progress(),
                 $this->projectModel->status()
             ]);
-        return $this->table->getDatatable();
+        return $table->getDatatable();
     }
 
     //Project's team and it's members
@@ -646,7 +648,8 @@ class Project extends BaseController
 
     public function fetchRevenues($id)
     {
-        $this->table->setTable($this->prevenuesModel->noticeTable($id))
+        $table = new TablesIgniter();
+        $table->setTable($this->prevenuesModel->noticeTable($id))
             ->setDefaultOrder('prevenues_desc', 'ASC')
             ->setOrder([
                 null, 'prevenues_desc', 'prevenues_status',
@@ -656,7 +659,7 @@ class Project extends BaseController
                 $this->prevenuesModel->button(), $this->prevenuesModel->date(), 'prevenues_desc',
                 $this->prevenuesModel->status(), 'prevenues_amount'
             ]);
-        return $this->table->getDatatable();
+        return $table->getDatatable();
     }
 
     public function saveIncome()
@@ -779,7 +782,8 @@ class Project extends BaseController
 
     public function fetchOutcome($id)
     {
-        $this->table->setTable($this->pcostTransactionModel->noticeTable($id))
+        $table = new TablesIgniter();
+        $table->setTable($this->pcostTransactionModel->noticeTable($id))
             ->setDefaultOrder('pcost_desc', 'ASC')
             ->setOrder([
                 null, 'cost_date', 'pcost_desc', 'cost_item',
@@ -789,7 +793,7 @@ class Project extends BaseController
                 $this->pcostTransactionModel->button(), $this->pcostTransactionModel->date(), 'pcost_desc', 'cost_item',
                 $this->pcostTransactionModel->status(), 'cost_amount'
             ]);
-        return $this->table->getDatatable();
+        return $table->getDatatable();
     }
 
     public function fetchIdOutcome()
