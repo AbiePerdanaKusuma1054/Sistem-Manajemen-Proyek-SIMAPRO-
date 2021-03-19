@@ -24,7 +24,7 @@
 
         <div class="box">
             <div class="left-box">
-                <div style="padding-bottom: 2rem;">
+                <div>
                     <!-- comment -->
                     <?php if (empty($comment)) : ?>
                         <p style="margin-left: 10px;">Be the first to give a comment!</p>

@@ -133,6 +133,7 @@ body {
   font-weight: 300;
   font-size: 12pt;
   height: 0;
+  text-transform: capitalize;
   text-decoration: none;
   cursor: pointer;
 }
@@ -970,6 +971,7 @@ option:first {
   color: white;
 }
 .add-rab:hover {
+  transition-duration: 500ms;
   color: rgb(169, 155, 248);
   transition-duration: 500ms;
 }
@@ -1027,10 +1029,12 @@ option:first {
   color: white;
   font-weight: 600;
   font-size: 13pt;
+  text-transform: capitalize;
 }
 
 .act-rab {
   text-align: center;
+  cursor: pointer;
 }
 
 /* comment */
@@ -1275,6 +1279,7 @@ progress {
   font-size: 10pt;
   margin: 0;
   letter-spacing: 3px;
+  margin-bottom: 2rem;
 }
 
 .customhref {
