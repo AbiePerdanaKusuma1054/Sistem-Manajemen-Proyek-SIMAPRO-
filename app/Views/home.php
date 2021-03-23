@@ -47,35 +47,6 @@
             <p>Cancelled</p>
         </a>
     </div>
-    <!-- <div class="status">
-        <div class="back-text">
-            <p class="text">Payment Status</p>
-        </div>
-    </div>
-    <div class="backg">
-        <a href="#" class="card cards notyet">
-            <div class="overlay overlays"></div>
-            <div class="circle">
-                <p class="quantity">7</p>
-            </div>
-            <p>Not Yet</p>
-        </a>
-        <a href="#" class="card cards pending">
-            <div class="overlay overlays"></div>
-            <div class="circle">
-                <p class="quantity">10</p>
-            </div>
-            <p>Pending</p>
-        </a>
-
-        <a href="#" class="card cards complete">
-            <div class="overlay overlays"></div>
-            <div class="circle">
-                <p class="quantity">76</p>
-            </div>
-            <p>Complete</p>
-        </a>
-    </div> -->
 </div>
 </div>
 <script>

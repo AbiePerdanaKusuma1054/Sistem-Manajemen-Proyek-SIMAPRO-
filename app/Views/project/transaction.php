@@ -56,28 +56,6 @@
                                             <th class="text-center">Amount</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
-                                        <tr>
-                                            <td class="act-rab">
-                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                            </td>
-                                            <td class="text-right">02/03/2021</td>
-                                            <td>DP 1</td>
-                                            <td class="text-center"><i class="fa fa-times-circle-o fa-lg incomplete-bedge" aria-hidden="true"><span>Incomplete</span></i></td>
-                                            <td class="text-right">2000000</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="act-rab">
-                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                            </td>
-                                            <td class="text-right">04/03/2021</td>
-                                            <td>Pelunasan Biaya Proyek</td>
-                                            <td class="text-center"><i class="fa fa-check-circle-o fa-lg complete-bedge" aria-hidden="true"><span>Complete</span></i></td>
-                                            <td class="text-right">8000000</td>
-                                        </tr>
-                                    </tbody> -->
                                 </table>
                             </div>
                         </div>
@@ -123,30 +101,6 @@
                                             <th class="text-center">Amount</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
-                                        <tr>
-                                            <td class="act-rab">
-                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                            </td>
-                                            <td class="text-right">02/03/2021</td>
-                                            <td>Server</td>
-                                            <td>Perawatan</td>
-                                            <td class="text-center"><i class="fa fa-times-circle-o fa-lg incomplete-bedge" aria-hidden="true"><span>Incomplete</span></i></td>
-                                            <td class="text-right">800000</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="act-rab">
-                                                <i class="fa fa-pencil act icon-edit-member" id="editInlcu"></i>
-                                                <i class="fa fa-trash-o icon-del-team" id="deleteInclu"></i>
-                                            </td>
-                                            <td class="text-right">04/03/2021</td>
-                                            <td>Gaji Developer</td>
-                                            <td>A</td>
-                                            <td class="text-center"><i class="fa fa-check-circle-o fa-lg complete-bedge" aria-hidden="true"><span>Complete</span></i></td>
-                                            <td class="text-right">7000000</td>
-                                        </tr>
-                                    </tbody> -->
                                 </table>
                             </div>
                         </div>

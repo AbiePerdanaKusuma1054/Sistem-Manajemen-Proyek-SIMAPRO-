@@ -25,68 +25,6 @@
                     <th class="text-center">Project Status</th>
                 </tr>
             </thead>
-            <!-- <tbody>
-                <tr>
-                    <td>Website Design</td>
-                    <td>Dacoda</td>
-                    <td>Alexander</td>
-                    <td>01/02/2021</td>
-                    <td>01/03/2021</td>
-                    <td>
-                        <span class="badge rounded-pill bg-primary">Hold</span>
-                    </td>
-                    <td><img src="/img/pending.png" alt="" class="pin">
-                        <span class="pins">PENDING</span>
-                    </td>
-                    <td>
-                        <a href="/home/detailproject">
-                            <button type="button" class="btn btn-info">
-                                Detail
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>E-Ticket</td>
-                    <td>Bioskop XXI</td>
-                    <td>Frans Simanjuntak</td>
-                    <td>08/02/2021</td>
-                    <td>-</td>
-                    <td>
-                        <span class="badge rounded-pill bg-secondary">Waiting</span>
-                    </td>
-                    <td><img src="/img/notyet.png" alt="" class="pin">
-                        <span class="pins">NOT YET</span>
-                    </td>
-                    <td>
-                        <a href="/home/detailproject">
-                            <button type="button" class="btn btn-info">
-                                Detail
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>App Mobile</td>
-                    <td>Dicoding</td>
-                    <td>Felix</td>
-                    <td>01/09/2020</td>
-                    <td>01/10/2020</td>
-                    <td>
-                        <span class="badge rounded-pill bg-success">Finish</span>
-                    </td>
-                    <td><img src="/img/complete.png" alt="" class="pin">
-                        <span class="pins">COMPLETE</span>
-                    </td>
-                    <td>
-                        <a href="/home/detailproject">
-                            <button type="button" class="btn btn-info">
-                                Detail
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-            </tbody> -->
         </table>
     </div>
 </div>

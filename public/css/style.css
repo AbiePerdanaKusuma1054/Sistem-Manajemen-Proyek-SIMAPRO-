@@ -49,7 +49,6 @@ body {
   width: 369px;
   height: 369px;
   background-image: url(/img/back-login.jpg);
-  /* margin: 149px auto; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -156,7 +155,6 @@ body {
   width: 70%;
   padding: 10px 0;
   background: rgba(80, 80, 80, 0.66);
-  /* background: rgba(56, 55, 55, 0.66); */
   text-align: center;
   margin: 16px auto 30px auto;
   border-radius: 6px;
@@ -168,7 +166,6 @@ body {
   width: 70%;
   min-height: 478px;
   background: rgba(80, 80, 80, 0.66);
-  /* background: rgba(56, 55, 55, 0.66); */
   text-align: center;
   margin: 16px auto 30px auto;
   border-radius: 6px;
