@@ -24,7 +24,7 @@ class Auth extends BaseController
         if ($row == NULL) {
             return redirect()->to('/auth/login')->withInput()->with('errlog', 'username');
         }
-        if ($password == $row->password) {
+        if (password_verify($password, $row->password)) {
             $data = [
                 'login' => TRUE,
                 'user_id' => $row->id,

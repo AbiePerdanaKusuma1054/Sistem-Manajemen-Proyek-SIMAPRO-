@@ -137,7 +137,7 @@ class User extends BaseController
                 if ($request->getVar('action') == 'create') {
                     $this->userModel->save([
                         'username' => $request->getVar('username'),
-                        'password' => $request->getVar('password'),
+                        'password' => password_hash($request->getVar('password'), PASSWORD_DEFAULT),
                         'role' => $request->getVar('role')
                     ]);
                 }
@@ -146,7 +146,7 @@ class User extends BaseController
                     $id = $request->getVar('hidden_id');
                     $data = [
                         'username' => $request->getVar('username'),
-                        'password' => $request->getVar('password'),
+                        'password' => password_hash($request->getVar('password'), PASSWORD_DEFAULT),
                         'role' => $request->getVar('role'),
                     ];
 
