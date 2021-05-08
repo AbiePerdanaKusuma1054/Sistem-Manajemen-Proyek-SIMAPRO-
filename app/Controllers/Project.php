@@ -138,6 +138,10 @@ class Project extends BaseController
             return redirect()->to('/project');
         }
 
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $data = [
             'detail' => $this->projectModel->getDetail($id),
             'id' => $id
@@ -149,6 +153,10 @@ class Project extends BaseController
     public function edit($id)
     {
         if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
             return redirect()->to('/project');
         }
 
@@ -164,6 +172,14 @@ class Project extends BaseController
 
     public function saveEditProject($id)
     {
+        if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $request = service('request');
 
         $rules = [
@@ -278,6 +294,14 @@ class Project extends BaseController
 
     public function team($id)
     {
+        if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $data = [
             'id' => $id,
             'pm' => $this->projectModel->getPM($id),
@@ -390,6 +414,14 @@ class Project extends BaseController
 
     public function cost($id)
     {
+        if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $data = [
             'category' => $this->costModel->getCategories($id),
             'costs' => $this->pcostModel,
@@ -634,6 +666,14 @@ class Project extends BaseController
 
     public function transaction($id)
     {
+        if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $data = [
             'id' => $id,
             'revenues_sum' => $this->prevenuesModel->rvsum($id),
@@ -648,6 +688,14 @@ class Project extends BaseController
 
     public function fetchRevenues($id)
     {
+        if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $table = new TablesIgniter();
         $table->setTable($this->prevenuesModel->noticeTable($id))
             ->setDefaultOrder('prevenues_desc', 'ASC')
@@ -782,6 +830,14 @@ class Project extends BaseController
 
     public function fetchOutcome($id)
     {
+        if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $table = new TablesIgniter();
         $table->setTable($this->pcostTransactionModel->noticeTable($id))
             ->setDefaultOrder('pcost_desc', 'ASC')
@@ -931,6 +987,14 @@ class Project extends BaseController
 
     public function comment($id)
     {
+        if (session()->get('project_mode') == false) {
+            return redirect()->to('/project');
+        }
+
+        if ($this->projectModel->getDetail($id) == NULL) {
+            return redirect()->to('/project');
+        }
+
         $data = [
             'id' => $id,
             'comment' => $this->commentModel->getComment($id)
