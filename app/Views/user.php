@@ -212,7 +212,6 @@
 
                 success: function(data) {
                     $('#username').val(data.username);
-                    $('#password').val(data.password);
                     $('#role').val(data.role);
 
                     $('#username_error').text('');

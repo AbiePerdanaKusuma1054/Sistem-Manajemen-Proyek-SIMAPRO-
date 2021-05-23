@@ -174,7 +174,8 @@ class User extends BaseController
         $request = service('request');
 
         if ($request->getVar('id')) {
-            $userID = $this->userModel->where('id', $request->getVar('id'))->first();
+            $userID = $this->userModel->select('username, role')
+                ->where('id', $request->getVar('id'))->first();
             echo json_encode($userID);
         }
     }
